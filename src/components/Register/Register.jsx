@@ -16,27 +16,28 @@ const validationSchema = Yup.object({
 });
 
 const Register = () => {
-
   const handleSubmit = async (values) => {
     try {
+
       const response = await SendVerifyMessage(values);
+            
+      console.log("Submitting data:", values); 
 
       if (response) {
-        console.log('User successfully registered:', response.data);
-       
+        console.log("User successfully registered:", response);
       } else {
-        console.log('Registration failed.');
+        console.log("Registration failed.");
       }
     } catch (error) {
-      console.error('An error occurred:', error);
+      console.error("An error occurred:", error);
     }
   };
 
   return (
     <div className="Registerholder">
       <Formik
-        initialValues={{ name: '', phone: '', password: '' }}
-        validationSchema={validationSchema} 
+        initialValues={{ name: "", phone: "", password: "" }}
+        validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         {() => (
@@ -57,5 +58,4 @@ const Register = () => {
     </div>
   );
 };
-
 export { Register };

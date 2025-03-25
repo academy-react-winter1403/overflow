@@ -1,9 +1,11 @@
 import axios from "axios";
 
-const baseURL = import.meta.env.VIT_BASE_URL;
+const baseURL = import.meta.env.VITE_BASE_URL; 
+
+console.log("Base URL:", baseURL); 
 
 const instance = axios.create({
-  baseURL: baseURL,
+  baseURL: baseURL, 
 });
 
 const onSuccess = (response) => {
@@ -27,4 +29,4 @@ instance.interceptors.request.use((opt) => {
   return opt;
 });
 
-export default instance;
+export { instance };
