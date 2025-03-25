@@ -1,6 +1,6 @@
-import http from "../interceptor";
+import http from '../interceptor';
 
-export const SendVerifyMessage = async (user) => {
+ const SendVerifyMessage = async (user) => {
   try {
     const response = await http.post("/Sign/SendVerifyMessage", user);
 
@@ -13,3 +13,4 @@ export const SendVerifyMessage = async (user) => {
     return false;
   }
 };
+export {SendVerifyMessage}

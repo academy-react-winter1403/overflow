@@ -1,53 +1,61 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';  
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { SendVerifyMessage } from '../../core/services/api/sendverify';
+
+const validationSchema = Yup.object({
+
+  name: Yup.string().required('نام ضروری است'),
+
+  phone: Yup.string()
+    .matches(/^\d{10,11}$/, 'شماره تماس معتبر وارد کنید')
+    .required('شماره تماس ضروری است'),
+
+  password: Yup.string()
+    .min(6, 'رمز عبور باید حداقل 6 کاراکتر باشد')
+    .required('رمز عبور ضروری است'),
+});
 
 const Register = () => {
 
+  const handleSubmit = async (values) => {
+    try {
+      const response = await SendVerifyMessage(values);
 
-  
-const handleSubmit = (values) => {  
-    console.log(values);  
-  }; 
-  
+      if (response) {
+        console.log('User successfully registered:', response.data);
+       
+      } else {
+        console.log('Registration failed.');
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
+  };
+
   return (
-<div className='Registerholder'>  
-        <div className='image'><img src="../picture/Image 6.png" alt="" /></div>  
+    <div className="Registerholder">
+      <Formik
+        initialValues={{ name: '', phone: '', password: '' }}
+        validationSchema={validationSchema} 
+        onSubmit={handleSubmit}
+      >
+        {() => (
+          <Form className="inputholder">
+            <Field type="text" name="name" placeholder="نام" />
+            <ErrorMessage name="name" component="div" className="error" />
 
-        <div className='Registerinputs'>  
-          <div className='academylogo'><img src="../picture/ac-Logo.png" alt="" /></div>  
-          <div className='academyname'>آکادمی سپهر</div>  
+            <Field type="text" name="phone" placeholder="شماره تماس" />
+            <ErrorMessage name="phone" component="div" className="error" />
 
-          <div className='singupholder'>  
-            <div className='singup'>ثبت نام</div>  
-            <div className='account'>حساب کاربری دارید؟</div>  
-            <a className='singin'>وارد شوید</a>  
-          </div>  
+            <Field type="password" name="password" placeholder="رمز عبور" />
+            <ErrorMessage name="password" component="div" className="error" />
 
-          <Formik  
-            initialValues={{ name: '', phone: '', password: '' }}  
-            onSubmit={handleSubmit}  
-          >  
-            {() => (  
-              <Form className='inputholder'>  
-                <Field type="text" name="name" placeholder='نام' />  
-                <ErrorMessage name="name" component="div" className="error" />  
-                
-                <Field type="text" name="phone" placeholder='شماره تماس' />  
-                <ErrorMessage name="phone" component="div" className="error" />  
-                
-                <Field type="password" name="password" placeholder='رمز عبور' />  
-                <ErrorMessage name="password" component="div" className="error" />  
-                
-                <button type="submit" className='inputs'>ادامه</button>  
-              </Form>  
-            )}  
-          </Formik>  
+            <button type="submit" className="inputs">ادامه</button>
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
+};
 
-          <div className='rules'>قوانین و شرایط</div>  
-          
-        </div>  
-      </div>  
-  )
-}
-
-export  {Register}
-
+export { Register };
