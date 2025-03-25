@@ -29,4 +29,4 @@ instance.interceptors.request.use((opt) => {
   return opt;
 });
 
-export { instance };
+export default instance ;
