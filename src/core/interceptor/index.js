@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getItem } from "../common/storage.services";
 
-const baseURL = import.meta.env.VITE_BASE_URL;
+const baseURL = import.meta.env.VIT_BASE_URL;
 
 const instance = axios.create({
   baseURL: baseURL,
