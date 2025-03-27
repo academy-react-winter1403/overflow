@@ -6,7 +6,7 @@ import { Register } from '../components/Register/Register'
 import { Registerlvl2 } from '../components/Register/Registerlvl2'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>

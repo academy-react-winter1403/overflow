@@ -1,6 +1,6 @@
 import axios from "axios";
  
- const baseURL = import.meta.env.VITE_BASE_URL;
+ const baseURL ="https://classapi.sepehracademy.ir/api";
 
 console.log("Base URL:", baseURL); 
 
