@@ -5,7 +5,7 @@ import axios from "axios";
 console.log("Base URL:", baseURL); 
 
 const instance = axios.create({
-  baseURL:  "https://classapi.sepehracademy.ir/api", 
+  baseURL: baseURL, 
 });
 
 const onSuccess = (response) => {
