@@ -1,8 +1,8 @@
 import axios from "axios";
  
-// const baseURL = import.meta.env.VITE_BASE_URL;
+ const baseURL = import.meta.env.VITE_BASE_URL;
 
-// console.log("Base URL:", baseURL); 
+console.log("Base URL:", baseURL); 
 
 const instance = axios.create({
   baseURL:  "https://classapi.sepehracademy.ir/api", 
