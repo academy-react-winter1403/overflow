@@ -152,16 +152,16 @@ body{
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  width: 327px;
+  width: 413px;
   height: 53px;
   border: 1px solid transparent;
-  margin-left: 190px;
+  margin-left: 110px;
   gap: 25px;
 }
 .Registerholder > .Registerinputs >.inputholder2 > input {
 
   border: 1px solid transparent;
-  width: 53px;
+  width: 327px;
   height: 53px;
   border-radius:5px ;
   background-color: #efefef;
