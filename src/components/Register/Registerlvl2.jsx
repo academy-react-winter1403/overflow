@@ -33,6 +33,7 @@ const Registerlvl2 = () => {
       const response = await VerifyMessage(payload);
 
       if (response) {
+        alert("<<<Payload successfully sent>>>");
         console.log("Payload successfully sent:", response.data);
       } else {
         console.error("Failed to send payload.");
