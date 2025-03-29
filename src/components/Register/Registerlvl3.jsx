@@ -28,7 +28,7 @@ const Registerlvl3 = () => {
       };
   
      
-      console.log("info format:", JSON.stringify(payload, null, 2));
+      // console.log("info format:", JSON.stringify(payload, null, 2));
   
      
       const response = await Register(payload);
