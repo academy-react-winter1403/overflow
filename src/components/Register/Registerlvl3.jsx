@@ -28,7 +28,7 @@ const Registerlvl3 = () => {
       };
   
      
-      // console.log("info format:", JSON.stringify(payload, null, 2));
+      console.log("info format:", JSON.stringify(payload, null, 2));
   
      
       const response = await Register(payload);
@@ -53,7 +53,9 @@ const Registerlvl3 = () => {
 
   return (
     <div className="flex flex-wrap justify-center w-[1136px] h-[679px] bg-white rounded-[30px]">
-      <div className="w-[540px] h-[550px] mt-[60px]"></div>
+      <div className="w-[540px] h-[550px] mt-[60px]">
+        <img src="../../../picture/Image 6.png" alt="" />
+      </div>
       <div className="w-[540px] h-[550px] mt-[60px]">
 
         <div className="flex justify-end">
