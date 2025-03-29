@@ -68,7 +68,7 @@ const Register = () => {
               <ErrorMessage name="phone" component="div" className="error" />
               <button
                 type="submit"
-                className="w-[327px] text-center bg-[#436E8E] text-white py-2 rounded ml-[50px]">ادامه</button>
+                className="w-[327px] text-center bg-[#436E8E] text-black py-2 rounded ml-[50px]">ادامه</button>
             </Form>
           )}
         </Formik>

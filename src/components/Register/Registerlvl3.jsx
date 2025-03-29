@@ -52,34 +52,31 @@ const Registerlvl3 = () => {
   };
 
   return (
-    <div className="flex flex-wrap justify-center w-[1136px] h-[679px] bg-white rounded-[30px]">
-      <div className="w-[540px] h-[550px] mt-[60px]">
-        <img src="../../../picture/Image 6.png" alt="" />
-      </div>
-      <div className="w-[540px] h-[550px] mt-[60px]">
+    <div className="flex flex-wrap justify-center w-[1136px] h-[679px] bg-white rounded-[30px] ">
+    <div className="w-[540px] h-[550px] mt-[60px]">
+      <img src='../../../picture/Image 6.png'  />
+    </div>
+    <div className="w-[540px] h-[550px] mt-[60px] ">
 
-        <div className="flex justify-end">
-          <img
-            src="../../../picture/ac-Logo.png"
-            alt="logo"
-            className="w-[83px] h-[63px] mt-[33px] mr-[13px]"
-          />
-        </div>
-        <div className="text-center text-[40px] mt-[-77px]"> آکادمی سپهر</div>
-        <div className="flex flex-wrap justify-center mt-2">
-          <div className="text-[30px] mt-2 ml-5"> ثبت نام</div>
-          <div className="absolute right-[250px] top-[233px] text-end text-[20px]">
-            حساب کاربری دارید؟
-          </div>
-          <div className="absolute right-[418px] top-[237px] text-[15px]"> وارد شوید.</div>
-        </div>
+      <div className="flex justify-end">
+        <img
+          src="../../../picture/ac-Logo.png" 
+          alt="logo"
+          className="w-[83px] h-[63px] mt-[33px] mr-[50px]"
+        />
+      </div>
+      <div className="text-center text-[40px] mt-[-70px] mr-[-30px] "> آکادمی سپهر</div>
+      <div className="flex flex-wrap justify-center mt-2 ">
+        <div className="text-[30px] mt-[20px] ml-[330px] "> ثبت نام</div>
+      </div>
+
         <Formik
           initialValues={{ phone: "", gmail: "", password: "" }}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
           {() => (
-            <Form className="flex flex-col mt-[60px] mx-auto w-[327px] gap-[10px]">
+            <Form className=" flex flex-col justify-center mt-[15px] mx-auto w-[350px] gap-[10px] ml-[160px]">
               <Field
                 type="text"
                 name="phone"
@@ -106,16 +103,11 @@ const Registerlvl3 = () => {
 
               <button
                 type="submit"
-                className="w-[339px] text-center bg-[#436E8E] text-white py-2 rounded"
-              >
-                ادامه
-              </button>
+                className="w-[327px] text-center bg-[#436E8E] text-black py-2 rounded">ادامه</button>
             </Form>
           )}
         </Formik>
-        <div className="text-[14px] mt-[20px] text-start">
-          قوانین و شرایط
-        </div>
+        <div className="text-[14px] mt-[20px] ml-[160px] text-start">قوانین و شرایط</div>
       </div>
     </div>
   );
