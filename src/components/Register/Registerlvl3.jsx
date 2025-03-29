@@ -17,23 +17,34 @@ const validationSchema = Yup.object({
 });
 
 const Registerlvl3 = () => {
+  
   const handleSubmit = async ({ phone, gmail, password }) => {
     try {
-      const payload = { phoneNumber: phone, gmail, password };
-
+      
+      const payload = {
+        password: password,   
+        gmail: gmail,         
+        phoneNumber: phone,   
+      };
+  
+     
+      console.log("info format:", JSON.stringify(payload, null, 2));
+  
+     
       const response = await Register(payload);
-      console.log("Submitting payload:", payload);
-
+  
+      
       if (response) {
         console.log("Payload successfully sent:", response);
       } else {
         console.log("Failed to send payload.");
       }
-
+  
+      
       setItem("userPhone", phone);
       setItem("userGmail", gmail);
       setItem("userPassword", password);
-
+  
       console.log("Data saved to local storage:", { phone, gmail, password });
     } catch (error) {
       console.error("An error occurred:", error);
@@ -44,7 +55,7 @@ const Registerlvl3 = () => {
     <div className="flex flex-wrap justify-center w-[1136px] h-[679px] bg-white rounded-[30px]">
       <div className="w-[540px] h-[550px] mt-[60px]"></div>
       <div className="w-[540px] h-[550px] mt-[60px]">
-        {/* Adding your logo */}
+
         <div className="flex justify-end">
           <img
             src="../../../picture/ac-Logo.png"
