@@ -2,7 +2,9 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { SendVerifyMessage } from "../../core/services/api/(step1)sendverify";
 import { setItem } from "../../core/services/common/storage.services";
-import '../../app/App.css'
+import { useNavigate } from "react-router-dom";
+import '../../app/App.css';
+
 const validationSchema = Yup.object({
   phone: Yup.string()
     .matches(/^\d{10,11}$/, "شماره تماس معتبر وارد کنید")
@@ -10,6 +12,8 @@ const validationSchema = Yup.object({
 });
 
 const Register = () => {
+  const navigate = useNavigate(); 
+
   const handleSubmit = async ({ phone }) => {
     try {
       const payload = { phoneNumber: phone };
@@ -19,12 +23,13 @@ const Register = () => {
 
       if (response) {
         console.log("Phone number successfully sent:", response);
+        setItem("userPhone", phone);
+        console.log("Phone number saved to local storage:", phone);
+
+        navigate("/step2"); 
       } else {
         console.log("Failed to send phone number.");
       }
-
-      setItem("userPhone", phone);
-      console.log("Phone number saved to local storage:", phone);
     } catch (error) {
       console.error("An error occurred:", error);
     }
@@ -33,7 +38,7 @@ const Register = () => {
   return (
     <div className="flex flex-wrap justify-center w-[1136px] h-[679px] bg-white rounded-[30px] ">
       <div className="w-[540px] h-[550px] mt-[60px]">
-        <img src='../../../picture/Image 6.png'  />
+        <img src='../../../picture/Image 6.png' />
       </div>
       <div className="w-[540px] h-[550px] mt-[60px] ">
 
@@ -47,8 +52,7 @@ const Register = () => {
         <div className="text-center text-[40px] mt-[-70px] mr-[-30px] "> آکادمی سپهر</div>
         <div className="flex flex-wrap justify-center mt-2 ">
           <div className="text-[30px] mt-[20px] ml-[330px] "> ثبت نام</div>
-          <div className="w-[300px] text-end text-[20px] mt-[10px] ml-[125px]">
-          حساب کاربری دارید؟
+          <div className="w-[300px] text-end text-[20px] mt-[10px] ml-[125px]">حساب کاربری دارید؟
           <a className=" text-[15px] w-[90px] mt-[-25px] ml-[40px]"> وارد شوید.</a>
           </div>
         </div>

@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { setItem } from "../../core/services/common/storage.services";
 import '../../app/App.css';
-import { Register } from "./Register";
+import { Register } from "../../core/services/api/(step3)register"; 
 
 const validationSchema = Yup.object({
   phone: Yup.string()

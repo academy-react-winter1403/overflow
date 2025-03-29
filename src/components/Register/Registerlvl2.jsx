@@ -1,8 +1,11 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import { VerifyMessage } from "../../core/services/api/(step2)verifymessage";
+import { useNavigate } from "react-router-dom"; 
 
 const Registerlvl2 = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = async (values) => {
     try {
       let phoneNumber = localStorage.getItem("userPhone");
@@ -31,6 +34,8 @@ const Registerlvl2 = () => {
       if (response) {
         alert("<<<Payload successfully sent>>>");
         console.log("Payload successfully sent:", response.data);
+
+        navigate("/step3"); // Redirect to the next step
       } else {
         console.error("Failed to send payload.");
       }
@@ -42,7 +47,7 @@ const Registerlvl2 = () => {
   return (
     <div className="flex flex-wrap justify-center w-[1136px] h-[679px] bg-white rounded-[30px] ">
       <div className="w-[540px] h-[550px] mt-[60px]">
-        <img src='../../../picture/Image 6.png'  />
+        <img src='../../../picture/Image 6.png' />
       </div>
       <div className="w-[540px] h-[550px] mt-[60px] ">
 
@@ -56,7 +61,7 @@ const Registerlvl2 = () => {
         <div className="text-center text-[40px] mt-[-70px] mr-[-30px] "> آکادمی سپهر</div>
         <div className="flex flex-wrap justify-center mt-2 ">
           <div className="text-[30px] mt-[20px] ml-[330px] "> ثبت نام</div>
-          <div className="w-[300px] text-end text-[20px] mt-[10px] ml-[125px]">کد ارسال شده را وارد کنید  </div>
+          <div className="w-[300px] text-end text-[20px] mt-[10px] ml-[125px]">کد ارسال شده را وارد کنید</div>
         </div>
         <Formik
           initialValues={{ verifyCode: "" }}

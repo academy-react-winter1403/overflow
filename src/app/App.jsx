@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <Register />
+      {/* <Register /> */}
       {/* <Registerlvl2 /> */}
       {/* <Registerlvl3 /> */}
     </>
