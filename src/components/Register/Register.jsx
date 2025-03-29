@@ -31,24 +31,26 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-wrap justify-center w-[1136px] h-[679px] bg-white rounded-[30px]">
-      <div className="w-[540px] h-[550px] mt-[60px]"></div>
+    <div className="flex flex-wrap justify-center w-[1136px] h-[679px] bg-white rounded-[30px] ">
       <div className="w-[540px] h-[550px] mt-[60px]">
-        {/* Adding your logo */}
+        <img src='../../../picture/Image 6.png'  />
+      </div>
+      <div className="w-[540px] h-[550px] mt-[60px] ">
+
         <div className="flex justify-end">
           <img
             src="../../../picture/ac-Logo.png" 
             alt="logo"
-            className="w-[83px] h-[63px] mt-[33px] mr-[13px]"
+            className="w-[83px] h-[63px] mt-[33px] mr-[50px]"
           />
         </div>
-        <div className="text-center text-[40px] mt-[-77px]"> آکادمی سپهر</div>
-        <div className="flex flex-wrap justify-center mt-2">
-          <div className="text-[30px] mt-2 ml-5"> ثبت نام</div>
-          <div className="absolute right-[250px] top-[233px] text-end text-[20px]">
+        <div className="text-center text-[40px] mt-[-70px] mr-[-30px] "> آکادمی سپهر</div>
+        <div className="flex flex-wrap justify-center mt-2 ">
+          <div className="text-[30px] mt-[20px] ml-[330px] "> ثبت نام</div>
+          <div className="w-[300px] text-end text-[20px] mt-[10px] ml-[125px]">
           حساب کاربری دارید؟
+          <a className=" text-[15px] w-[90px] mt-[-25px] ml-[40px]"> وارد شوید.</a>
           </div>
-          <div className="absolute right-[418px] top-[237px] text-[15px]"> وارد شوید.</div>
         </div>
         <Formik
           initialValues={{ phone: "" }}
@@ -61,21 +63,16 @@ const Register = () => {
                 type="text"
                 name="phone"
                 placeholder="شماره تماس"
-                className="w-[327px] h-[50px] bg-gray-200 outline-none border-none rounded-[5px] text-end pr-[10px]"
+                className="w-[327px] h-[50px] bg-gray-200 outline-none border-none rounded-[5px] text-end pr-[10px] mt-[-30px] ml-[50px]"
               />
               <ErrorMessage name="phone" component="div" className="error" />
               <button
                 type="submit"
-                className="w-[339px] text-center bg-[#436E8E] text-white py-2 rounded"
-              >
-                ادامه
-              </button>
+                className="w-[327px] text-center bg-[#436E8E] text-white py-2 rounded ml-[50px]">ادامه</button>
             </Form>
           )}
         </Formik>
-        <div className="text-[14px] mt-[20px] text-start">
-        قوانین و شرایط
-        </div>
+        <div className="text-[14px] mt-[20px] ml-[160px] text-start">قوانین و شرایط</div>
       </div>
     </div>
   );
