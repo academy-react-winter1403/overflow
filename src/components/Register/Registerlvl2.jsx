@@ -2,6 +2,8 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import { VerifyMessage } from "../../core/services/api/(step2)verifymessage";
 import { useNavigate } from "react-router-dom"; 
+import signin from '../../assets/register/Image 6.png';
+import academylogo from '../../assets/register/ac-Logo.png';
 
 const Registerlvl2 = () => {
   const navigate = useNavigate();
@@ -47,13 +49,13 @@ const Registerlvl2 = () => {
   return (
     <div className="flex flex-wrap justify-center w-[1136px] h-[679px] bg-white rounded-[30px] ">
       <div className="w-[540px] h-[550px] mt-[60px]">
-        <img src='../../../picture/Image 6.png' />
+        <img src={signin}/>
       </div>
       <div className="w-[540px] h-[550px] mt-[60px] ">
 
         <div className="flex justify-end">
           <img
-            src="../../../picture/ac-Logo.png" 
+            src={academylogo}
             alt="logo"
             className="w-[83px] h-[63px] mt-[33px] mr-[50px]"
           />
