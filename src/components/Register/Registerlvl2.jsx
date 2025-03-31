@@ -1,9 +1,9 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
-import { VerifyMessage } from "../../core/services/api/(step2)verifymessage";
 import { useNavigate } from "react-router-dom"; 
 import signin from '../../assets/register/Image 6.png';
 import academylogo from '../../assets/register/ac-Logo.png';
+import { VerifyMessage } from "../../core/services/api/Register/RegisterPages";
 
 const Registerlvl2 = () => {
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ const Registerlvl2 = () => {
         alert("<<<Payload successfully sent>>>");
         console.log("Payload successfully sent:", response.data);
 
-        navigate("/step3"); // Redirect to the next step
+        navigate("/step3"); 
       } else {
         console.error("Failed to send payload.");
       }
