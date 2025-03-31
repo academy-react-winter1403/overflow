@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import '../../app/App.css';
 import signin from '../../assets/register/Image 6.png';
 import academylogo from '../../assets/register/ac-Logo.png';
-import { SendVerifyMessage } from "../../core/services/api/Register/RegisterPage";
+import { SendVerifyMessage } from "../../core/services/api/Register/RegisterPages";
 
 const validationSchema = Yup.object({
   phone: Yup.string()

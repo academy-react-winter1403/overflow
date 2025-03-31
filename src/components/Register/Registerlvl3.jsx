@@ -1,10 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { setItem } from "../../core/services/common/storage.services";
-import '../../app/App.css'; 
+import '../../app/App.css';
 import signin from '../../assets/register/Image 6.png';
 import academylogo from '../../assets/register/ac-Logo.png';
-import { Register } from "./Register";
+import { Register } from "../../core/services/api/Register/RegisterPages";
 
 const validationSchema = Yup.object({
   phone: Yup.string()
