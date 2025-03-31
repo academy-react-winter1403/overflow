@@ -1,13 +1,12 @@
-import http from '../../interceptor';
-import { setItem } from '../../common/storage.services';
 
-const Sendresetpassrequest = async (email) => {
+import http from '../interceptor';
+
+const SendVerifyMessage = async (phonenumber) => {
   try {
-  const response = await http.post('/Sign/ForgetPassword', email);
+  const response = await http.post('/Sign/SendVerifyMessage', phonenumber);
 
+    console.log("number;",response);
 
-    console.log(";",response);
-    setItem("id",response.id)
     return response;
   } catch (error) {
 
@@ -19,4 +18,4 @@ const Sendresetpassrequest = async (email) => {
       return false
   }
 }
-export { Sendresetpassrequest };
+export { SendVerifyMessage };
