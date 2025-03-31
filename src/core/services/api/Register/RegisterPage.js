@@ -1,10 +1,11 @@
+
 import http from '../../interceptor';
 
-const Sendloginrequest = async (logininfo) => {
+const SendVerifyMessage = async (phonenumber) => {
   try {
-  const response = await http.post('/Sign/Login', logininfo);
+  const response = await http.post('/Sign/SendVerifyMessage', phonenumber);
 
-    console.log(";",response);
+    console.log("number;",response);
 
     return response;
   } catch (error) {
@@ -17,7 +18,8 @@ const Sendloginrequest = async (logininfo) => {
       return false
   }
 }
-<<<<<<<< HEAD:src/core/services/api/Register/RegisterPages.js
+
+
 
 const VerifyMessage = async (user) => {
   try {
@@ -31,6 +33,7 @@ const VerifyMessage = async (user) => {
 };
 
 
+
 const Register = async (user) => {
   try {
     const response = await http.post("/Sign/Register", user);
@@ -42,11 +45,7 @@ const Register = async (user) => {
   }
 };
 
-export {   
-    SendVerifyMessage,
-    VerifyMessage,
-    Register };
-
-========
-export { Sendloginrequest };
->>>>>>>> c7e56083e815e5e61302e2a79d274c2ee971fb55:src/core/services/api/login/login acation.js
+export { 
+  SendVerifyMessage,
+  VerifyMessage,
+  Register };
