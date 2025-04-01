@@ -5,14 +5,14 @@ const Root = () => {
     return (
         <div className="flex gap-20">
             <div className=" absolute top-[10px] left-[700px] w-[50px] h-[30px] bg-amber-200 rounded ">
-                <otton>
+                <button>
                     <Link to='/'> home </Link>
-                </otton>
+                </button>
             </div>
             <div className=" absolute top-[10px] left-[760px] w-[100px] h-[30px] bg-amber-200 rounded">
-            <botton >
+            <button >
                 <Link to='/step1'>Register page </Link>
-            </botton>
+            </button>
             </div>
             <main>
                 <Outlet />

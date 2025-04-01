@@ -7,6 +7,7 @@ import { Register } from './components/Register/Register.jsx'
 import { Registerlvl2 } from './components/Register/Registerlvl2.jsx'
 import { Registerlvl3 } from './components/Register/Registerlvl3.jsx'
 import { Root } from './routes/Root.jsx'
+import Landing from '../src/pages/Landing/Landing.jsx'
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,12 @@ const router = createBrowserRouter([
       //   index:true,
       //   path:'/App',
       //   element:<App />
+
       // },
+      {
+        path:'/landing',
+        element:<Landing />,
+      },
       {
         path:'/step1',
         element:<Register />
