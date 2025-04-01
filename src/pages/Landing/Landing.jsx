@@ -3,14 +3,14 @@ import { Hero, NewCourses, News, BestSellers, Services, SiteStats, CourseCategor
 function Landing() {
   return (
     <>
-      <div className=" gap-8 flex flex-col bg-white dark:bg-gray-900 dark:text-white duration-200 align-center ">
-        <Hero/>
-        <NewCourses />
+      <div className=" gap-8 flex flex-col bg-white text-black dark:bg-gray-900 dark:text-white duration-200 align-center ">
+        {/* <Hero/> */}
+        {/* <NewCourses /> */}
         <News />
-        <BestSellers />
-        <Services />
-        <SiteStats />
-        <CourseCategories />
+        {/* <BestSellers /> */}
+        {/* <Services /> */}
+        {/* <SiteStats /> */}
+        {/* <CourseCategories /> */}
       </div>
     </>
   );

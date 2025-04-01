@@ -1,4 +1,5 @@
 import React from 'react'
+const URL="/Home/LandingReport"
 
 function SiteStats() {
   return (

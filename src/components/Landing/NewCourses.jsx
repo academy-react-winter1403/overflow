@@ -1,18 +1,19 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import { getApi } from "../../core/services/api/getApi";
 function NewCourses() {
-  const courses = [
-    {
-      title: "آموزش پیشرفته وردپرس",
-      description:
-        "در دوره آموزش پیشرفته وردپرس قصد داریم نیروهای حرفه‌ای وردپرس کاری آماده کنیم که بتوانند هر سایت وردپرسی با هر چالشی را طراحی کنند.",
-      instructor: "استاد موند زاده",
-      price: "رایگان!",
-      duration: "1:05:31",
-      image: "path/to/image.jpg", // Replace with actual image path
-    },
-    // Add more courses as needed
-  ];
+  const URL="/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=4&SortingCol=lastUpdate"
+
+  const [newCoursesData, setNewCoursesData] = useState([]);
+  useEffect(() => {
+    getNewCoursesData();
+
+  }, []);
+  const getNewCoursesData = async () => {
+    const response = await getApi(
+      URL,"courseFilterDtos")
+    setNewCoursesData(response);
+    console.log(response)
+  };
 
   return (
     <div className="text-center py-8">
@@ -20,25 +21,25 @@ function NewCourses() {
         جدید ترین دوره ها
       </h2>
       <div className="flex flex-wrap justify-center gap-6">
-        {courses.map((course, index) => (
+        {newCoursesData.map((item, index) => (
           <div
             className="bg-white rounded-lg shadow-lg w-64 p-4 text-right"
             key={index}
           >
             <img
-              src={course.image}
-              alt={course.title}
+              src={item.tumbImageAddress}
+              alt={item.title}
               className="w-full h-40 object-cover rounded-lg mb-4"
             />
             <h3 className="text-lg font-semibold text-gray-800 mb-2">
-              {course.title}
+              {item.title}
             </h3>
-            <p className="text-sm text-gray-600 mb-4">{course.description}</p>
+            <p className="text-sm text-gray-600 mb-4">{item.describe}</p>
             <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
-              <span>{course.instructor}</span>
-              <span>{course.duration}</span>
+              <span>{item.teacherName}</span>
+              <span>{item.duration}</span>
             </div>
-            <span className="text-green-600 font-bold">{course.price}</span>
+            <span className="text-green-600 font-bold">{item.cost}</span>
           </div>
         ))}
       </div>
