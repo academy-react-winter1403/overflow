@@ -1,5 +1,5 @@
 
-import http from '../interceptor';
+import http from '../../interceptor/index.js';
 
 const SendVerifyMessage = async (phonenumber) => {
   try {

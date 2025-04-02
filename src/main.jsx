@@ -7,6 +7,7 @@ import { Register } from './components/Register/Register.jsx'
 import { Registerlvl2 } from './components/Register/Registerlvl2.jsx'
 import { Registerlvl3 } from './components/Register/Registerlvl3.jsx'
 import { Root } from './routes/Root.jsx'
+import { Courses } from './components/Courses/Courses.jsx'
 
 const router = createBrowserRouter([
   {
@@ -29,10 +30,15 @@ const router = createBrowserRouter([
       {
         path:'/step3',
         element:<Registerlvl3 />
+      }  ,      
+      {
+        path:'/Courses',
+        element:<Courses />
       }
 
     ]
   }
+
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
