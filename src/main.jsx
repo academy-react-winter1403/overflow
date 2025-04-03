@@ -7,7 +7,7 @@ import { Register } from './components/Register/Register.jsx'
 import { Registerlvl2 } from './components/Register/Registerlvl2.jsx'
 import { Registerlvl3 } from './components/Register/Registerlvl3.jsx'
 import { Root } from './routes/Root.jsx'
-import { Courses } from './components/Courses/Courses.jsx'
+import { Courses } from './components/Courses/MainCourses.jsx'
 
 const router = createBrowserRouter([
   {
