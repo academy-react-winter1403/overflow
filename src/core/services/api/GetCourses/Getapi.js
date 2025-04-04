@@ -12,18 +12,20 @@ const GetCourses = async () => {
 
   }
 };
+// Ensure you import the necessary library  
 
-
-const Getteachers = async () => {
+const Getteachers = async (token) => {
   try {
-    const response = await http.get('/Course/TeacherCourseList?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=Expire&Query');
+    const response = await http.get('/Course/TeacherCourseList?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=Expire&Query', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     console.log("Error fetching teachers:", error.message);
     return false;
   }
 };
-
-
 
 export { GetCourses,Getteachers };
