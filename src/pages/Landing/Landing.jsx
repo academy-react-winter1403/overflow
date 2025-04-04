@@ -6,10 +6,10 @@ function Landing() {
       <div className=" gap-8 flex flex-col bg-white text-black dark:bg-gray-900 dark:text-white duration-200 align-center ">
         {/* <Hero/> */}
         {/* <NewCourses /> */}
-        <News />
+        {/* <News /> */}
         {/* <BestSellers /> */}
         {/* <Services /> */}
-        {/* <SiteStats /> */}
+        <SiteStats />
         {/* <CourseCategories /> */}
       </div>
     </>
