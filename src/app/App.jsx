@@ -5,6 +5,7 @@ import { Registerlvl3 } from "../components/Register/Registerlvl3";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Landing from "../pages/Landing/Landing";
 import Layout from "../pages/Layout/Layout";
+import { Courses } from "../pages/Courses/Courses.jsx";
 
 function App() {
   const publicRoutes = [
@@ -28,6 +29,10 @@ function App() {
           path: "/step3",
           element: <Registerlvl3 />,
         },
+        {
+          path: "/Courses",
+          element: <Courses />,
+        }
       ],
     },
   ];

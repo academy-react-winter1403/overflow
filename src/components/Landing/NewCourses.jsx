@@ -20,6 +20,7 @@ function NewCourses() {
       <h2 className="text-2xl font-bold text-blue-500 mb-6">
         جدید ترین دوره ها
       </h2>
+      
       <div className="flex flex-wrap justify-center gap-6">
         {newCoursesData.map((item, index) => (
           <div
@@ -43,6 +44,7 @@ function NewCourses() {
           </div>
         ))}
       </div>
+
       <a href="#" className="inline-block mt-6 text-blue-500 hover:underline">
         مشاهده همه
       </a>
