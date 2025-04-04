@@ -12,7 +12,7 @@ const GetCourses = async () => {
 
   }
 };
-// Ensure you import the necessary library  
+
 
 const Getteachers = async (token) => {
   try {
