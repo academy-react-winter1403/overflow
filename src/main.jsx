@@ -4,10 +4,10 @@ import './index.css'
 import App from './app/App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import { Register } from './components/Register/Register.jsx'
-import { Registerlvl2 } from './components/Register/Registerlvl2.jsx'
-import { Registerlvl3 } from './components/Register/Registerlvl3.jsx'
 import { Root } from './routes/Root.jsx'
 import { Courses } from './components/Courses/MainCourses.jsx'
+import { Registerlvl2 } from './components/Register/Registerlvl2.jsx'
+import { Registerlvl3 } from './components/Register/Registerlvl3.jsx'
 
 const router = createBrowserRouter([
   {
