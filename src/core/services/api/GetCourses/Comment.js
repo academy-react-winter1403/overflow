@@ -4,8 +4,7 @@ const GetComment = async () => {
 
   try {
   
-    const response = await http.get('/Course/GetCourseCommnets/:CourseId');
-
+    const response = await http.get('/Course/GetCourseComments/:CourseId');
     return response.data;
 
   } catch (error) {
