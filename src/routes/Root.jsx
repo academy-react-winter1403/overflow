@@ -11,7 +11,7 @@ const Root = () => {
                 </button>
             </div>
 
-            <div className=" absolute top-[10px] left-[700px] w-[150px] h-[30px border-2 rounded-2xl bg-amber-300 ">
+            <div className=" absolute top-[10px] left-[700px] w-[150px] h-[30px] border-2 rounded-2xl bg-amber-300 ">
             <button >
                 <Link to='/step1'>Register page </Link>
             </button>
