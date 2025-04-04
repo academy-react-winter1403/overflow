@@ -10,10 +10,10 @@ const Master = () => {
 
   const Getmaster = async () => {
     try {
-      // Retrieve the token from local storage  
+     
       const token = localStorage.getItem('token');
 
-      // Call the Getteachers function, passing the token to the API  
+      
       const response = await Getteachers(token);
 
       if (response) {
