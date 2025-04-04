@@ -1,11 +1,9 @@
 import "./App.css";
-import { Register } from "../components/Register/Register";
-import { Registerlvl2 } from "../components/Register/Registerlvl2";
-import { Registerlvl3 } from "../components/Register/Registerlvl3";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Landing from "../pages/Landing/Landing";
 import Layout from "../pages/Layout/Layout";
 import { Courses } from "../pages/Courses/Courses.jsx";
+import { Register } from "../core/services/api/Register/RegisterPages.js";
 
 function App() {
   const publicRoutes = [
