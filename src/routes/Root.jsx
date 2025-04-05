@@ -1,31 +1,19 @@
-import { Link } from "react-router"
+import { NavLink } from "react-router"
 import { Outlet } from "react-router"
 
 const Root = () => {
-    return (
-        <div className="flex gap-20">
 
-            <div className=" absolute top-[10px] left-[600px] w-[50px] h-[30px] border-2 rounded-2xl bg-amber-300 ">
-                <button>
-                    <Link to='/'> home </Link>
-                </button>
-            </div>
+    return (   
+            <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+                <nav className="flex space-x-4">
+                    <NavLink to="/landing" className="text-blue-500 hover:underline">Landing</NavLink>
+                    <NavLink to="/step1" className="text-blue-500 hover:underline">Step 1</NavLink>
+                    <NavLink to="/step2" className="text-blue-500 hover:underline">Step 2</NavLink>
+                    <NavLink to="/step3" className="text-blue-500 hover:underline">Step 3</NavLink>
+                </nav>
 
-            <div className=" absolute top-[10px] left-[700px] w-[150px] h-[30px] border-2 rounded-2xl bg-amber-300 ">
-            <button >
-                <Link to='/step1'>Register page </Link>
-            </button>
-            </div>
-
-            <div className="absolute top-[10px] left-[870px] w-[100px] h-[30px] border-2 rounded-2xl bg-amber-300">
-
-                <button><Link to='/Courses'>CoursesPage</Link></button>
-            </div>
-
-            <main>
                 <Outlet />
-            </main>
-        </div>
-    )
+            </div>
+     )
 }
 export {Root}
