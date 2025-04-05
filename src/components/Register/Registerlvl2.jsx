@@ -1,11 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
-import { VerifyMessage } from "../../core/services/api/(step2)verifymessage";
+import { VerifyMessage } from "../../core/services/api/Register/RegisterPages.js";
 import { useNavigate } from "react-router-dom"; 
 import signin from '../../assets/register/Image 6.png';
 import academylogo from '../../assets/register/ac-Logo.png';
 
 const Registerlvl2 = () => {
+  
   const navigate = useNavigate();
 
   const handleSubmit = async (values) => {

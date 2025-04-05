@@ -10,7 +10,7 @@ function News() {
   const getNews = async () => {
     const response = await getApi(URL,"news");
     setNewsData(response);
-    console.log(response);
+    // console.log(response);
   };
 
   return (
