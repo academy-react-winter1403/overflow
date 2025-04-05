@@ -12,7 +12,7 @@ function BestSellers() {
     const response = await getApi(
       URL)
     setNewCoursesData(response);
-    console.log(response)
+    // console.log(response)
   };
 
   return (

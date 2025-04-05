@@ -3,8 +3,9 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import Landing from "../pages/Landing/Landing";
 import Layout from "../pages/Layout/Layout";
 import { Courses } from "../pages/Courses/Courses.jsx";
-import { Register } from "../core/services/api/Register/RegisterPages.js";
-
+import { Registerlvl2 } from "../components/Register/Registerlvl2.jsx";
+import { Registerlvl3 } from "../components/Register/Registerlvl3.jsx";
+import { Register } from "../components/Register/Register.jsx";
 
 
 function App() {
@@ -18,15 +19,15 @@ function App() {
           element: <Landing />,
         },
         {
-          path: "/step1",
+          path: "/Register-1",
           element: <Register />,
         },
         {
-          path: "/step2",
+          path: "/Register-2",
           element: <Registerlvl2 />,
         },
         {
-          path: "/step3",
+          path: "/Register-3",
           element: <Registerlvl3 />,
         },
         {

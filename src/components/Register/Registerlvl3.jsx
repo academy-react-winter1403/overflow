@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { setItem } from "../../core/services/common/storage.services";
 import '../../app/App.css';
-import { Register } from "../../core/services/api/(step3)register"; 
+import { Register } from "../../core/services/api/Register/RegisterPages.js"; 
 import signin from '../../assets/register/Image 6.png';
 import academylogo from '../../assets/register/ac-Logo.png';
 
