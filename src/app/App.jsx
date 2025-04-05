@@ -17,18 +17,6 @@ function App() {
           index: true,
           element: <Landing />,
         },
-        // {
-        //   path: "/step1",
-        //   element: <Register />,
-        // },
-        // {
-        //   path: "/step2",
-        //   element: <Registerlvl2 />,
-        // },
-        // {
-        //   path: "/step3",
-        //   element: <Registerlvl3 />,
-        // },
         {
           path: "/step1",
           element: <Register />,

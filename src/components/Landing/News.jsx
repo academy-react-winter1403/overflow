@@ -10,7 +10,6 @@ function News() {
   const getNews = async () => {
     const response = await getApi(URL,"news");
     setNewsData(response);
-    console.log(response);
     // console.log(response);
   };
 
@@ -27,7 +26,6 @@ function News() {
       </div>
 
       <div className="space-y-6">
-        {newsData.map((newsItem) => (
         {newsData.map((newsItem,) => (
           <div key={newsItem.id} className="bg-white shadow-lg rounded-lg p-6">
             <div className="flex justify-between items-center">
