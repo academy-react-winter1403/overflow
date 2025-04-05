@@ -1,6 +1,6 @@
 import http from '../../interceptor/index.js';
 
-const GetCourses = async () => {
+const TopCourses = async () => {
   try {
 
     const response = await http.get('/Home/GetCoursesTop?Count=5');
@@ -28,4 +28,4 @@ const Getteachers = async (token) => {
   }
 };
 
-export { GetCourses,Getteachers };
+export { TopCourses,Getteachers };

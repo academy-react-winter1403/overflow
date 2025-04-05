@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import productimg from '../../assets/Coursesimage/product-img.png';
-import { GetCourses } from '../../core/services/api/GetCourses/Getapi';
+import {TopCourses} from '../../core/services/api/GetCourses/Getapi.js'; // Adjust the import path as necessary
+
 
 const Coursesmap = () => {
   const [courses, setCourses] = useState([]); 
 
   const fetchCourses = async () => {
     try {
-      const response = await GetCourses();
+      const response = await TopCourses(); 
       if (response) {
         console.log('Courses data:', response);
         setCourses(response); 

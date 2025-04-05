@@ -4,6 +4,7 @@ import { Form } from 'react-router';
 import { PostComment } from '../../core/services/api/GetCourses/Comment';
 
 
+
 const CommentSection = () => {
 
   const handleSubmit = async (values, { resetForm }) => {
@@ -11,7 +12,7 @@ const CommentSection = () => {
 
     if (response) {
       alert('نظر شما با موفقیت ارسال شد!'); 
-      // reset form after submit
+
       resetForm(); 
 
     } else {

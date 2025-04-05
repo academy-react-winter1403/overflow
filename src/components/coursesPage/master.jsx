@@ -3,9 +3,11 @@ import profile from '../../assets/Coursesimage/IMG_6504.png';
 import bottomline from '../../assets/Coursesimage/Path 4.png';
 import layout from '../../assets/Coursesimage/logout.png';
 import { useEffect, useState } from 'react';
-import { Getteachers } from '../../core/services/api/GetCourses/Getapi.js';
+import { Getteachers } from '../../core/services/api/GetCourses/Getapi';
 
-const Master = () => {
+
+const Masters = () => {
+
   const [teacher, setteacher] = useState([]);
 
   const Getmaster = async () => {
@@ -79,4 +81,4 @@ const Master = () => {
   );
 };
 
-export { Master };  
+export { Masters };  

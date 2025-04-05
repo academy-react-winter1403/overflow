@@ -6,9 +6,11 @@ import Footer from './Footer'
 function Layout() {
   return (
     <div>
-        <Header/>
-        <Outlet/>
-        <Footer/>
+        {/* <Header/> */}
+       
+          <Outlet/>
+
+        {/* <Footer/> */}
     </div>
   )
 }

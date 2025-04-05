@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { GetComment } from "../../core/services/api/GetCourses/Comment.js"; 
+import { GetComment } from "../../core/services/api/GetCourses/Comment";
+ 
 
 const Commentdiv = () => {
 
@@ -21,7 +22,7 @@ const Commentdiv = () => {
 
   useEffect(() => {
 
-    fetchComments();
+    // fetchComments();
 
   }, []);
 

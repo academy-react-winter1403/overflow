@@ -36,4 +36,4 @@ const Top = () => {
   )
 }
 
-export  {Top}
+export  {Top};
