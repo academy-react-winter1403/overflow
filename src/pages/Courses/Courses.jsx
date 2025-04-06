@@ -10,7 +10,7 @@ import { Commentdiv } from "../../components/coursesPage/Commentdiv";
 
 const Courses = () => {
   return (
-    <div className="flex justify-center relative">
+    <div className=" flex justify-center relative">
            
         <Top />
                

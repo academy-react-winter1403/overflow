@@ -47,7 +47,7 @@ function News() {
                     "/path-to-your-default-image.jpeg"
                   } // Fallback to default image if no image URL
                   alt={newsItem.title}
-                  className="w-full h-auto rounded-md"
+                  className="h-auto w-50 rounded-md"
                 />
               </div>
             </div>

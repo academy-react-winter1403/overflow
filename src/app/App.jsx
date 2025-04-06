@@ -6,6 +6,7 @@ import { Courses } from "../pages/Courses/Courses.jsx";
 import { Register } from "../components/Register/Register.jsx";
 import { Registerlvl3 } from "../components/Register/Registerlvl3.jsx";
 import { Registerlvl2 } from "../components/Register/Registerlvl2.jsx";
+import SamoleCoursePage from "../components/samoleCoursePage.jsx";
 
 
 
@@ -16,8 +17,12 @@ function App() {
       element: <Layout />,
       children: [
         {
-          index: true,
+          path: "/",
           element: <Landing />,
+        },
+        {
+          path: "/samole/:id",
+          element: <SamoleCoursePage />,
         },
         {
           path: "/Register-1",
@@ -32,7 +37,7 @@ function App() {
           element: <Registerlvl3 />,
         },
         {
-          path: "/Courses",
+          path: "/Courses/:id",
           element: <Courses />,
         }
       ],

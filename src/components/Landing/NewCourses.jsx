@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, {  useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { getApi } from "../../core/services/api/getApi";
 
 function NewCourses() {
-
+  const params= useParams();
+  // console.log(params)
   const URL = "/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=4&SortingCol=lastUpdate";
 
   const [newCoursesData, setNewCoursesData] = useState([]);
@@ -16,11 +17,12 @@ function NewCourses() {
   const getNewCoursesData = async () => {
     const response = await getApi(URL, "courseFilterDtos");
     setNewCoursesData(response);
-    // console.log(response);
+    console.log("NewCourse",response);
   };
 
-  const handleNavigation = (courseId) => {
-    navigate(`/courses/${courseId}`); 
+  const handleNavigation = (id) => {
+    console.log(id)
+    navigate(`/Courses/${id}`); 
   };
 
   return (
@@ -32,7 +34,7 @@ function NewCourses() {
           <div
             className="bg-white rounded-lg shadow-lg w-64 p-4 text-right cursor-pointer"
             key={index}
-            onClick={() => handleNavigation(item.id)} 
+            onClick={() => handleNavigation(item.courseId)} 
           >
             <img
               src={item.tumbImageAddress}

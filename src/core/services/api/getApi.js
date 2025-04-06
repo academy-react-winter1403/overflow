@@ -3,7 +3,7 @@ import http from "../interceptor";
 export const getApi = async (url, key = null) => {
   try {
     const response = await http.get(url);
-    // console.log("response", response);
+    console.log("response", response);
     if (key == null) {
       return response;
     }
