@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getApi } from "../../core/services/api/getApi";
 
 function NewCourses() {
-  const params= useParams();
   // console.log(params)
   const URL = "/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=4&SortingCol=lastUpdate";
 
@@ -22,7 +21,7 @@ function NewCourses() {
 
   const handleNavigation = (id) => {
     console.log(id)
-    navigate(`/Courses/${id}`); 
+    navigate(`samole/${id}`); 
   };
 
   return (

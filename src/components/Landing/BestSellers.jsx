@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { getApi } from "../../core/services/api/getApi";
 function BestSellers() {
   const URL="/Home/GetCoursesTop?Count=4"
@@ -14,6 +15,11 @@ function BestSellers() {
     setNewCoursesData(response);
     // console.log(response)
   };
+  const navigate = useNavigate();
+  const handleNavigation = (id) => {
+    console.log(id)
+    navigate(`/samole/${id}`); 
+  };
 
   return (
     <div className="text-center py-8">
@@ -22,7 +28,7 @@ function BestSellers() {
       </h2>
       <div className="flex flex-wrap justify-center gap-6">
         {newCoursesData.map((item, index) => (
-          <div
+          <div onClick={()=>handleNavigation(item.courseId)}
             className="bg-white rounded-lg shadow-lg w-64 p-4 text-right"
             key={index}
           >

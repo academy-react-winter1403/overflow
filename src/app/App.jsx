@@ -36,10 +36,10 @@ function App() {
           path: "/Register-3",
           element: <Registerlvl3 />,
         },
-        {
-          path: "/Courses/:id",
-          element: <Courses />,
-        }
+        // {
+        //   path: "/Courses/:id",
+        //   element: <Courses />,
+        // }
       ],
     },
   ];
