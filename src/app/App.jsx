@@ -3,9 +3,10 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import Landing from "../pages/Landing/Landing";
 import Layout from "../pages/Layout/Layout";
 import { Courses } from "../pages/Courses/Courses.jsx";
-import { Registerlvl2 } from "../components/Register/Registerlvl2.jsx";
-import { Registerlvl3 } from "../components/Register/Registerlvl3.jsx";
 import { Register } from "../components/Register/Register.jsx";
+import { Registerlvl3 } from "../components/Register/Registerlvl3.jsx";
+import { Registerlvl2 } from "../components/Register/Registerlvl2.jsx";
+
 
 
 function App() {
