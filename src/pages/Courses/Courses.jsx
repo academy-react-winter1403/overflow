@@ -10,11 +10,12 @@ import { Commentdiv } from "../../components/coursesPage/Commentdiv";
 
 const Courses = () => {
   return (
-    <div className=" flex justify-center relative">
+    
+    <div className=" flex justify-center relative mt-80">
            
         <Top />
                
-        <About />
+        {/* <About />
 
         <Masters />
 
@@ -22,7 +23,7 @@ const Courses = () => {
 
         <CommentSection />
 
-        <Commentdiv />
+        <Commentdiv /> */}
 
     </div>
   );

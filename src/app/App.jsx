@@ -20,10 +20,10 @@ function App() {
           path: "/",
           element: <Landing />,
         },
-        {
-          path: "/samole/:id",
-          element: <SamoleCoursePage />,
-        },
+        // {
+        //   path: "/samole/:id",
+        //   element: <SamoleCoursePage />,
+        // },
         {
           path: "/Register-1",
           element: <Register />,
@@ -36,10 +36,10 @@ function App() {
           path: "/Register-3",
           element: <Registerlvl3 />,
         },
-        // {
-        //   path: "/Courses/:id",
-        //   element: <Courses />,
-        // }
+        {
+          path: "/Courses/:id",
+          element: <Courses />,
+        }
       ],
     },
   ];

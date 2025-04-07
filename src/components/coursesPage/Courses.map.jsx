@@ -23,14 +23,14 @@ const Coursesmap = () => {
   }, []);
 
   return (
-    <div className="absolute top-[610px] left-[-675px] rounded-4xl bg-white w-[470px] h-[320px]">
+    <div className=" top-[610px] left-[-675px] rounded-4xl bg-white w-[470px] h-[320px]">
       <div className="relative rounded-4xl bg-white w-[470px] h-[320px]">
-        <span className="absolute right-[40px] top-[20px] text-sky-800 font-bold text-2xl">دوره های مشابه</span>
+        <span className=" right-[40px] top-[20px] text-sky-800 font-bold text-2xl">دوره های مشابه</span>
         {courses.length > 0 ? (
           courses.map((course, index) => (
             <div
               key={index}
-              className="absolute right-[40px] top-[70px] w-[390px] h-[60px] rounded-2xl border-2"
+              className=" right-[40px] top-[70px] w-[390px] h-[60px] rounded-2xl border-2"
             >
               <img
                 className="ml-[305px] mt-[8px] w-[70px] rounded-2xl"
@@ -41,7 +41,7 @@ const Coursesmap = () => {
             </div>
           ))
         ) : (
-          <p className="absolute right-[40px] top-[70px] text-gray-500">هیچ دوره‌ای یافت نشد</p>
+          <p className=" right-[40px] top-[70px] text-gray-500">هیچ دوره‌ای یافت نشد</p>
         )}
       </div>
     </div>
