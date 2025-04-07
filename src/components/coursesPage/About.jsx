@@ -1,22 +1,19 @@
 import React from 'react'
 
-const About = () => {
+const About = ({data}) => {
+
+  const courseData = data || {};
+  console.log("desc:",courseData.describe)
+
   return (
     
-<div className="flex flex-col gap-[30px] items-start top-[250px] right-[-675px] w-[830px] min-h-[680px] rounded-2xl bg-white p-10">
+<div className="flex flex-col gap-[30px] items-start mt-11 w-9/10 h-150 rounded-2xl bg-white p-10">
   <h1 className="text-sky-800 font-bold text-3xl self-end">توضیحات</h1>
 
-  <p className="text-right w-full leading-7">
-    یکی از اصلی‌ترین شاخص‌های یک اپلیکیشن مدرن، استفاده آن از تکنولوژی REST API است. با استفاده از چنین تکنولوژی شما قابلیت ایجاد یک پل ارتباطی میان Back-End و Front-End را پیدا خواهید کرد و مستقل از اینکه از چه تکنولوژی‌هایی در هر دو سمت استفاده می‌کنید، می‌توانید محتوا بک-اند را به فرانت-اند ارسال کنید.
-  </p>
+  <p className="text-right w-full leading-7">{courseData.describe}</p>
+  <p className="text-right w-full leading-7">{courseData.describe}</p>
+  <p className="text-right w-full leading-7">{courseData.describe}</p>
 
-  <p className="text-right w-full leading-7">
-    در واقع با ظهور چنین تکنولوژی بود که معماری بسیاری از اپلیکیشن‌ها تغییر کرد و رویکرد تازه‌ای در فرایند توسعه اپلیکیشن ایجاد شد. اما برای اینکه چنین قابلیتی را پیاده‌سازی کنیم، نیاز است که از ابزارهای درست استفاده کنیم.
-  </p>
-
-  <p className="text-right w-full leading-7">
-    لاراول یکی از آن ابزارهای درست است! در واقع لاراول بیشتر تمرکز خود را روی توسعه هر چه بهتر APIها گذاشته و ویژگی‌های بی‌شماری را در این زمینه توسعه داده است. اگر که پیشتر با لاراول کار کرده و دوره‌های مقدماتی را طی کرده‌اید، باید بگویم که شانس در خانه شما را زده، چرا که امروز می‌توانید با شرکت در این دوره آموزشی، به صورت کامل با تمام ویژگی‌های لاراول در زمینه توسعه API آشنا شوید.
-  </p>
 </div>
   )
 }

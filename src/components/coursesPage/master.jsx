@@ -1,82 +1,60 @@
 import { Link } from 'react-router';
 import profile from '../../assets/Coursesimage/IMG_6504.png';
-import bottomline from '../../assets/Coursesimage/Path 4.png';
 import layout from '../../assets/Coursesimage/logout.png';
-import { useEffect, useState } from 'react';
-import { Getteachers } from '../../core/services/api/GetCourses/Getapi';
 
 
-const Masters = () => {
 
-  const [teacher, setteacher] = useState([]);
+const Masters = ({data}) => {
 
-  const Getmaster = async () => {
-    try {
-     
-      const token = localStorage.getItem('token');
-
-      
-      const response = await Getteachers(token);
-
-      if (response) {
-        console.log('Teachers data:', response);
-        setteacher(response);
-      }
-    } catch (error) {
-      console.log('Error fetching teachers:', error);
-    }
-  };
-
-  useEffect(() => {
-    Getmaster();
-  }, []);
+const courseData = data || {};
 
   return (
-    <div className=" top-[250px] left-[-675px] rounded-4xl bg-white w-[470px] h-auto">
-      {teacher.length > 0 ? (
-        teacher.map((teacherItem, index) => (
-          <div key={index} className="relative h-[320px]">
+    <div className="rounded-4xl  bg-white w-9/10 h-5/10 " >
+          <div className="flex text-right flex-col h-[320px] border-sky-900">
+
             {/* Profile */}
-            <div className="relative h-[80px]">
-              <img
-                className=" right-[30px] top-[30px]"
-                src={teacherItem.profileImage || profile}
-                alt={teacherItem.name}
-              />
-              <span className=" right-[100px] top-[30px] text-sky-800 font-bold text-2xl">
-                {teacherItem.name || 'آرمان غنی زاده'}
+            <div className='w-full h-3/10 flex flex-row-reverse justify-center'>
+
+                <img className=' w-3/20 h-12/20 mt-2 ml-2 mr-5' src={profile} />
+
+                <div className='w-8/10'>
+                  <h2 className='text-sky-800 font-bold text-2xl w-full h-2/10 mt-2 '>
+                    {courseData.teacherName}
+                  </h2>
+                  <p className=" text-xs b w-full mt-3">مدرس دوره</p>
+                </div>
+
+            </div>
+            <span className=" right-[30px] top-[120px] w-[410px] text-right text-xs">
+              {courseData.description }
               </span>
-              <p className=" right-[100px] top-[60px] text-xs">
-                {teacherItem.role || 'مدرس دوره'}
-              </p>
-              <img className=" right-[30px] top-[100px] w-[410px]" src={bottomline} alt="bottom line" />
+
+            {/* miniddesc */}
+
+            <div>
+    
+              <div className=' ml-5 flex justify-center border-t border-b w-9/10 border-gray-300 h-35 pt-5'>
+                <span className='text-xs'>
+                  {courseData.techs}
+                </span>
+              </div>
+
+
             </div>
 
-            {/* Description */}
-            <span className=" right-[30px] top-[120px] w-[410px] text-right text-xs">
-              {teacherItem.description ||
-                'از سال 92 وارد حوزه نرم افزار و برنامه نویسی شدم… طی 10 سال گذشته تجربه کار با زبانها و پلتفرمهای مختلفی رو دارم ولی 4 سال اخیر به شکل متمرکز به عنوان فول استک وب مشغول به کار بودم و در حال حاضر استک اصلیم لاراول و ریکت هست اما خب میتونم بگم این روز…'}
-            </span>
-
-            <img className=" right-[30px] top-[230px] w-[410px]" src={bottomline} alt="bottom line" />
-
             <Link to="/">
-              <div className=" right-[50px] top-[250px] w-[410px] text-xs">
+              <div className='mt-5 w-7/10 ml-20 flex justify-center'>
+              <div className="  text-xs">
                 مشاهده سایر آموزش های این استاد
               </div>
               <img
-                className=" right-[150px] top-[253px]"
+                className="w-3 h-3 mt-1 ml-2"
                 src={layout}
                 alt="layout icon"
               />
+              </div>
             </Link>
           </div>
-        ))
-      ) : (
-        <p className=" right-[50px] top-[150px] text-gray-500">
-          هیچ استادی یافت نشد
-        </p>
-      )}
     </div>
   );
 };

@@ -16,16 +16,16 @@ const TopCourses = async () => {
 
 const Getteachers = async (token) => {
   try {
-    const response = await http.get('/Course/TeacherCourseList?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=Expire&Query', {
+    const response = await http.get('/Home/GetTeachers', {
       headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     return response.data;
   } catch (error) {
-    console.log("Error fetching teachers:", error.message);
+    console.log('Error fetching teachers:', error.message);
     return false;
   }
-};
+}
 
 export { TopCourses,Getteachers };
