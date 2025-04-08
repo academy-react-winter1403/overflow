@@ -34,25 +34,30 @@ const Courses = () => {
     }
   return (
     
-    <div className="border-2 flex justify-center align flex-col relative mt-10">
+    <div className=" flex justify-center align flex-col relative mt-10 mb-10">
            
         <Top data={courseData} />
                
-        <div className=" border-2 border-amber-500 flex flex-row-reverse g-10 w-10/10">
+        <div className=" flex flex-row-reverse w-10/10 ">
           <About data={courseData} />
 
-          <div className="flex justify-center flex-col items-center gap-10 mt-10 w-5/10">
-          <Masters  data={courseData}/>
+          <div className="flex justify-center flex-col items-center gap-10 mt-10 w-5/10  ">
 
-          {/* <Coursesmap data={courseData} /> */}
+            <Masters  data={courseData}/>
+
+            <Coursesmap data={courseData} />
+
+          </div>
 
         </div>
 
-        </div>
-{/* 
-        <CommentSection />
+        <div className=" flex flex-row-reverse w-10/10 mt-10 gap-2.5">
+          
+          <CommentSection />
 
-        <Commentdiv /> */}
+          <Commentdiv />
+
+        </div>
 
     </div>
   );

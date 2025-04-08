@@ -9,7 +9,7 @@ const Masters = ({data}) => {
 const courseData = data || {};
 
   return (
-    <div className="rounded-4xl  bg-white w-9/10 h-5/10 " >
+    <div className="rounded-4xl  bg-white w-9/10 h-7/15  mr-12" >
           <div className="flex text-right flex-col h-[320px] border-sky-900">
 
             {/* Profile */}
@@ -33,12 +33,11 @@ const courseData = data || {};
 
             <div>
     
-              <div className=' ml-5 flex justify-center border-t border-b w-9/10 border-gray-300 h-35 pt-5'>
+              <div className=' ml-5 flex justify-center border-t border-b w-9/10 border-gray-300 h-25 pt-5'>
                 <span className='text-xs'>
                   {courseData.techs}
                 </span>
               </div>
-
 
             </div>
 
