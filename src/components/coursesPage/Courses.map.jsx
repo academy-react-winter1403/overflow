@@ -8,27 +8,25 @@ const courseData = data || {};
 console.log("courseData",courseData)
 
   return (
-    <div className=" top-[610px] left-[-675px] rounded-4xl bg-white w-[470px] h-[320px]">
-      <div className="relative rounded-4xl bg-white w-[470px] h-[320px]">
-        <span className=" right-[40px] top-[20px] text-sky-800 font-bold text-2xl">دوره های مشابه</span>
-        {courseData.length > 0 ? (
-          courseData.map((courseData, index) => (
-            <div
-              key={index}
-              className=" right-[40px] top-[70px] w-[390px] h-[60px] rounded-2xl border-2"
-            >
-              <img
-                className="ml-[305px] mt-[8px] w-[70px] rounded-2xl"
-                src={courseData.image || productimg}
-                alt={courseData.title}
-              />
-              <p className="mt-[-35px] mr-[35px]">{courseData.title}</p>
-            </div>
-          ))
-        ) : (
-          <p className=" right-[40px] top-[70px] text-gray-500">هیچ دوره‌ای یافت نشد</p>
-        )}
+    <div className="rounded-4xl  bg-white w-9/10 h-5/10 mr-13 overflow-auto">
+
+      <div className="flex text-right flex-col h-auto">
+
+        <span className=" mt-3 mr-6 text-sky-800 font-bold text-2xl ">دوره های مشابه</span>
+
+        <div className=' flex flex-row flex-wrap justify-end'>
+          
+          <div className='flex flex-row-reverse border border-gary-300 mt-5 mr-5 rounded-3xl h-13 w-9/10 '>
+            <img className='w-18 rounded-3xl m-2 ' src={productimg} />
+            <p className='mt-3'>sadasdasdADsdaklfjhakfhDFKFH</p>
+          </div>         
+
+        </div>
+
       </div>
+
+
+
     </div>
   );
 };

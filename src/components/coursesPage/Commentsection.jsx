@@ -22,8 +22,8 @@ const CommentSection = () => {
   };
 
   return (
-    <div className=" top-[980px] right-[-674px] w-[830px] h-[350px] bg-white rounded-2xl">
-      <h5 className=" top-[30px] right-[100px] text-3xl font-bold text-sky-800">
+    <div className="flex items-end flex-col w-9/10 h-[350px] bg-white rounded-2xl pr-10">
+      <h5 className="mt-5  mb-5 text-3xl font-bold text-sky-800">
         نظرات
       </h5>
       <Formik
@@ -32,17 +32,17 @@ const CommentSection = () => {
       >
         {({ handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
-            <div className=" top-[90px] right-[100px] w-[630px] h-[170px]">
+            <div className="flex items-end w-10/10 h-13/10 mr-50">
               <Field
                 as="textarea"
                 name="feedback"
-                className="w-full h-full border-2 rounded-2xl text-right p-2"
+                className="w-10/10 h-full border-2 rounded-2xl text-right "
                 placeholder="نظر خود را بنویسید..."
               />
             </div>
             <button
               type="submit"
-              className=" top-[280px] right-[100px] border-2 rounded-2xl bg-sky-800 w-[147px] h-[52px] text-amber-50 leading-11"
+              className="ml-105 mt-5 border-2 rounded-2xl bg-sky-800 w-[147px] h-[52px] text-amber-50 leading-11"
             >
               ارسال نظر
             </button>
