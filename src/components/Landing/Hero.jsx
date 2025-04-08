@@ -1,17 +1,10 @@
 import React from "react";
 import HeroImg from '../../assets/landing/heroimg.png'
-import buble from "../../assets/landing/buble.png"
+
 function Hero() {
   return (
-    <section className="flex flex-row-reverse items-center justify-between px-10 py-16 dark:bg-gray-900">
+    <section className="flex flex-row-reverse items-center justify-between px-10 py-16 bg-white dark:bg-gray-900">
       {/* Text Section */}
-      <div className="hidden md:block absolute top-0 right-0 w-[300px] h-[300px] bg-blue-100 rounded-full opacity-50 transform -translate-x-1/2 translate-y-1/2">
-        <img
-          src={buble}
-          alt="Bubble"
-          className="absolute top-0 right-0 w-[300px] h-[300px] opacity-50"  />
-          </div>
-      
       <div className="w-full md:w-1/2 text-right space-y-6">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
           دنبال چی می‌گردی؟
