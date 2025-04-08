@@ -28,8 +28,8 @@ const Commentdiv = () => {
 
   return (
     <div className=' rounded-4xl bg-white w-5/10 h-88 mr-9'>
-      <div className=' border-t-2 rounded-4xl border-sky-800 w--5/10'>
-        <span className=' top-4 right-84 text-sky-800 font-bold text-2xl'>Comments:</span>
+      <div className=' border-t-2 rounded-4xl border-depp-blue w--5/10'>
+        <span className=' top-4 right-84 text-deep-blue font-bold text-2xl'>Comments:</span>
         <div className=' top-16 px-4 overflow-y-auto h-[300px]'>
           {comments.length > 0 ? (
             comments.map((comment, index) => (
