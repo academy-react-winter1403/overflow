@@ -27,7 +27,7 @@ function Header() {
           خانه
         </NavLink>
         <NavLink
-          to={"/Register-1"}
+          to={"/step1"}
           className={({ isActive }) =>
             isActive
               ? "bg-blue-500 text-white px-4 py-2 rounded"

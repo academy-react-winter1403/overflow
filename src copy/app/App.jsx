@@ -20,6 +20,10 @@ function App() {
           path: "/",
           element: <Landing />,
         },
+        // {
+        //   path: "/samole/:id",
+        //   element: <SamoleCoursePage />,
+        // },
         {
           path: "/Register-1",
           element: <Register />,

@@ -1,42 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { getApi } from "../../core/services/api/getApi";
-
-function NewCourses() {
-  // console.log(params)
-  const URL =
-    "/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=4&SortingCol=lastUpdate";
+function BestSellers() {
+  const URL = "/Home/GetCoursesTop?Count=4";
 
   const [coursesData, setNewCoursesData] = useState([]);
-  const navigate = useNavigate();
-
   useEffect(() => {
     getNewCoursesData();
   }, []);
-
   const getNewCoursesData = async () => {
-    const response = await getApi(URL, "courseFilterDtos");
+    const response = await getApi(URL);
     setNewCoursesData(response);
-    console.log("NewCourse", response);
+    // console.log(response)
   };
-
+  const navigate = useNavigate();
   const handleNavigation = (id) => {
     console.log(id);
-    navigate(`Courses/${id}`);
+    navigate(`/samole/${id}`);
   };
 
   return (
     <div className="text-center py-8">
       <h2 className="text-2xl font-bold text-blue-500 mb-6">
-        جدید ترین دوره ها
+        پرفروش‌ترین دوره‌ها
       </h2>
-
       <div className="flex flex-wrap justify-center gap-6">
         {coursesData.map((item, index) => (
           <div
-            className="bg-white rounded-lg shadow-lg w-64 p-4 text-right cursor-pointer"
-            key={index}
             onClick={() => handleNavigation(item.courseId)}
+            className="bg-white rounded-lg shadow-lg w-64 p-4 text-right"
+            key={index}
           >
             <img
               src={item.tumbImageAddress}
@@ -55,7 +48,6 @@ function NewCourses() {
           </div>
         ))}
       </div>
-
       <a href="#" className="inline-block mt-6 text-blue-500 hover:underline">
         مشاهده همه
       </a>
@@ -63,4 +55,4 @@ function NewCourses() {
   );
 }
 
-export default NewCourses;
+export default BestSellers;
