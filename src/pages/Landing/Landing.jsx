@@ -1,4 +1,5 @@
 import { Hero, NewCourses, News, BestSellers, Services, SiteStats, CourseCategories } from '../../components/Landing';
+import Footer from '../Layout/Footer';
 
 function Landing() {
   return (
@@ -11,6 +12,7 @@ function Landing() {
         <Services />
         <SiteStats />
         <CourseCategories />
+        <Footer />
       </div>
     </>
   );

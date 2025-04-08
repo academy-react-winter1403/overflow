@@ -16,7 +16,7 @@ function NewCourses() {
   const getNewCoursesData = async () => {
     const response = await getApi(URL, "courseFilterDtos");
     setNewCoursesData(response);
-    console.log("NewCourse",response);
+    // console.log("NewCourse",response);
   };
 
   const handleNavigation = (id) => {

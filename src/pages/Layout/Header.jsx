@@ -12,7 +12,7 @@ function Header() {
   return (
     <div
       className={`flex flex-row-reverse justify-between items-center px-6 py-4 ${
-        isDarkMode ? "bg-gray-800 text-white" : "bg-white "
+        isDarkMode ? "bg-gray-800 text-white" : ""
       } text-black`}
     >
       <div className="flex flex-row-reverse gap-6">
