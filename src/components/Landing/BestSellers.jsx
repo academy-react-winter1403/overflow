@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import Card from "../Common/Card";
 import { getApi } from "../../core/services/api/getApi";
-import Card from "../Common/Card"
 function BestSellers() {
-  const URL = "/Home/GetCoursesTop?Count=4";
+  const URL="/Home/GetCoursesTop?Count=4"
 
   const [coursesData, setCoursesData] = useState([]);
   useEffect(() => {
     getCoursesData();
+
   }, []);
   const getCoursesData = async () => {
-    const response = await getApi(URL);
+    const response = await getApi(
+      URL)
     setCoursesData(response);
     // console.log(response)
   };
   const navigate = useNavigate();
   const handleNavigation = (id) => {
-    console.log(id);
-    navigate(`/Courses/${id}`);
+    // console.log(id)
+    navigate(`/Courses/${id}`); 
   };
 
   return (
@@ -26,27 +28,12 @@ function BestSellers() {
         پرفروش‌ترین دوره‌ها
       </h2>
       <div className="flex flex-wrap justify-center gap-6">
-        {coursesData.map((item, index) => (
-          <div
-            onClick={() => handleNavigation(item.courseId)}
-            className="bg-white rounded-lg shadow-lg w-64 p-4 text-right"
-            key={index}
-          >
-            <img
-              src={item.tumbImageAddress}
-              alt={item.title}
-              className="w-full h-40 object-cover rounded-lg mb-4"
-            />
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">
-              {item.title}
-            </h3>
-            <p className="text-sm text-gray-600 mb-4">{item.describe}</p>
-            <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
-              <span>{item.teacherName}</span>
-              <span>{item.duration}</span>
-            </div>
-            <span className="text-green-600 font-bold">{item.cost}</span>
-          </div>
+        {coursesData.map((item, index) => (<  Card 
+        item={item}
+        index={index}
+        handleNavigation={handleNavigation}
+        key={index}     
+        />
         ))}
       </div>
       <a href="#" className="inline-block mt-6 text-blue-500 hover:underline">
