@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { getApi } from "../../core/services/api/getApi";
+import Card from "../Common/Card"
 function BestSellers() {
-  const URL="/Home/GetCoursesTop?Count=4"
+  const URL = "/Home/GetCoursesTop?Count=4";
 
-  const [newCoursesData, setNewCoursesData] = useState([]);
+  const [coursesData, setCoursesData] = useState([]);
   useEffect(() => {
-    getNewCoursesData();
-
+    getCoursesData();
   }, []);
-  const getNewCoursesData = async () => {
-    const response = await getApi(
-      URL)
-    setNewCoursesData(response);
-    console.log(response)
+  const getCoursesData = async () => {
+    const response = await getApi(URL);
+    setCoursesData(response);
+    // console.log(response)
+  };
+  const navigate = useNavigate();
+  const handleNavigation = (id) => {
+    console.log(id);
+    navigate(`/Courses/${id}`);
   };
 
   return (
@@ -21,8 +26,9 @@ function BestSellers() {
         پرفروش‌ترین دوره‌ها
       </h2>
       <div className="flex flex-wrap justify-center gap-6">
-        {newCoursesData.map((item, index) => (
+        {coursesData.map((item, index) => (
           <div
+            onClick={() => handleNavigation(item.courseId)}
             className="bg-white rounded-lg shadow-lg w-64 p-4 text-right"
             key={index}
           >

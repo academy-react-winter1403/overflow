@@ -1,0 +1,194 @@
+body{
+  background-color: rgb(237, 237, 237);
+}
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+                          /* registercss lvl 1 */
+/* 
+
+.Registerholder{
+
+  border: 1px solid transparent;
+  border-radius:30px;
+  width: 1136px;
+  height: 679px;
+  background-color: white;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center
+}
+.Registerholder > .image{
+  border: 1px solid transparent;
+  width: 540px;
+  height: 550px;
+  margin-top: 60px;
+}
+.Registerholder > .Registerinputs{
+  width:540px ;
+  height: 550px;
+  border: 1px solid transparent;
+  margin-top: 60px;
+}
+.Registerholder > .Registerinputs > .academylogo > img{
+  margin-top: 33px;
+  margin-left: 397px;
+  width: 83px;
+  height: 63px;
+
+}
+.Registerholder > .Registerinputs  > .academyname{
+  width: 214px;
+  height: 55px;
+  margin-left: 201px;
+  margin-top: -77px;
+  font-size: 40px;
+}
+.Registerholder > .Registerinputs > .singupholder{
+  display: flex;
+  flex-flow: row wrap;
+
+}
+.Registerholder > .Registerinputs > .singupholder>.singup{
+  width:91px ;
+  height:40px ;
+  font-size: 30px;
+  margin-left: 415px;
+  margin-top: 10px;
+}
+.Registerholder > .Registerinputs > .singupholder > .account{
+  width: 167px;
+  font-size: 20px;
+  position: absolute;
+  right: 250px;
+  top: 233px;
+  text-align: end;
+}
+.Registerholder > .Registerinputs > .singupholder >.singin{
+  position: absolute;
+  right: 418px;
+  top: 237px;
+  font-size:15px ;
+}
+
+.Registerholder > .Registerinputs >.inputholder{
+  display: flex;
+  flex-flow: column;
+  margin-top: 60px;
+  margin-left: 181px;
+  width: 327px;
+  gap: 10px;
+}
+.Registerholder > .Registerinputs > .inputholder > input{
+  width: 327px;
+  height: 50px;
+  background-color: #efefef;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  text-align: end;
+  padding-right: 10px;
+}
+.Registerholder > .Registerinputs > .inputholder > .inputs{
+  width: 339px;
+  text-align: center;
+  background-color: #436E8E;
+}
+.Registerholder > .Registerinputs > .rules{
+  width: 86px;
+  height: 19px;
+  font-size: 14px;
+  margin-left: 180px;
+  margin-top: 20px;
+} */
+
+                    /* Register lvl 2 */
+
+
+
+.Registerholder > .Registerinputs >.inputholder2 {
+  margin-top: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 413px;
+  height: 53px;
+  border: 1px solid transparent;
+  margin-left: 110px;
+  gap: 25px;
+}
+.Registerholder > .Registerinputs >.inputholder2 > input {
+
+  border: 1px solid transparent;
+  width: 327px;
+  height: 53px;
+  border-radius:5px ;
+  background-color: #efefef;
+  text-align: center;
+
+}
+.Registerholder > .Registerinputs >.inputholder2 > .inputs2{
+  position: absolute;
+  top: 415px;
+  width: 327px;
+  height: 53px;
+  background-color:#436E8E;
+  color: white;
+  font-size: 25px;
+  line-height: 20px;
+}
+
+.Registerholder >.Registerinputs > .singupholder > .insertcode{
+  border: 1px solid transparent;
+  width: 208px;
+  height: 27px;
+  font-size: 20px;
+  margin-left: 300px;
+  margin-top: 38px;
+}
+.Registerholder >.Registerinputs > .rules2{
+  margin-top: 132px;
+  margin-left: 310px;
+  font-size: 10px;  
+}
