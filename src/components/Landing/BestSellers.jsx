@@ -18,7 +18,7 @@ function BestSellers() {
   const navigate = useNavigate();
   const handleNavigation = (id) => {
     console.log(id)
-    navigate(`/samole/${id}`); 
+    navigate(`/Courses/${id}`); 
   };
 
   return (

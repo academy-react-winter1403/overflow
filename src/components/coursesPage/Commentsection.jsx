@@ -22,7 +22,7 @@ const CommentSection = () => {
   };
 
   return (
-    <div className="flex items-end flex-col w-9/10 h-[350px] bg-white rounded-2xl pr-10">
+    <div className="flex items-end flex-col w-9/10 h-88 bg-white rounded-2xl pr-10">
       <h5 className="mt-5  mb-5 text-3xl font-bold text-sky-800">
         نظرات
       </h5>

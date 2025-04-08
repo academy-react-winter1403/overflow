@@ -22,11 +22,11 @@ const Top = ({data}) => {
 
       </div>
 
-        <div className="w-3/10 h-4/10 mt-10 mr-45">
+        <div className=" text-amber-50 shadow-2xl shadow-amber-50 rounded-2xl w-3/10 h-4/10 mt-10 mr-45">
         <img
           src={courseData.imageAddress || productimg }
           alt="Course Banner"
-          className="w-10/10 rounded-2xl "
+          className="rounded-2xl "
         />
         </div>
 
