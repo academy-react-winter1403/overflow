@@ -6,7 +6,7 @@ const AllCourse = () => {
 
     return (
         <div className="w-11/13 bg-gray-50 flex justify-center m-auto flex-wrap ">
-            <div className="border border-black h-16 w-full mt-14 mb-14">دوره </div>
+            <div className="border border-black h-16 w-full mt-14 mb-14 bg-white text-right leading-14 text-3xl "> دوره ها</div>
             <div className=" border border-black w-full h-18 bg-white rounded flex justify-center"  >
                 <div className=" w-15/100 h-full text-center leading-14 text-3xl text-gray-400">ارزان ترین</div>
                 <div className=" w-15/100 h-full text-center leading-14 text-3xl text-gray-400">گران ترین</div>
