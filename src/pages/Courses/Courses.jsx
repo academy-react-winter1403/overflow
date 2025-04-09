@@ -55,7 +55,7 @@ const Courses = () => {
           
           <CommentSection />
 
-          <Commentdiv />
+          <Commentdiv data={courseData} />
 
         </div>
 
