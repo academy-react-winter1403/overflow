@@ -1,7 +1,19 @@
 @import "tailwindcss";
+@import url('/src/assets/common/font/font.css');
+
 @theme {
 --color-deep-blue: #436e8e;
+
 }
+@theme {
+--font-iransans: 'IRANSans', sans-serif;
+--font-kalameh: 'Kalameh', sans-serif;
+--font-peyda: 'Peyda', sans-serif;
+--font-vazir: 'Vazir', sans-serif;
+--font-vazir-num: 'VazirNum', sans-serif;
+}
+
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

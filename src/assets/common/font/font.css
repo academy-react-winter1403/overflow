@@ -1,0 +1,327 @@
+/* IRANSans Font */
+@font-face {
+    font-family: 'IRANSans';
+    src: url('/src/assets/common/font/iransans/IRANSansX-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'IRANSans';
+    src: url('/src/assets/common/font/iransans/IRANSansX-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'IRANSans';
+    src: url('/src/assets/common/font/iransans/IRANSansX-DemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'IRANSans';
+    src: url('/src/assets/common/font/iransans/IRANSans-ExtraBlack.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'IRANSans';
+    src: url('/src/assets/common/font/iransans/IRANSans-Heavy.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'IRANSans';
+    src: url('/src/assets/common/font/iransans/IRANSans-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'IRANSans';
+    src: url('/src/assets/common/font/iransans/IRANSans-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'IRANSans';
+    src: url('/src/assets/common/font/iransans/IRANSans-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'IRANSans';
+    src: url('/src/assets/common/font/iransans/IRANSans-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'IRANSans';
+    src: url('/src/assets/common/font/iransans/IRANSansX-Ultralight.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  /* Kalameh Font */
+  @font-face {
+    font-family: 'Kalameh';
+    src: url('./assets/common/font/kalameh/KalamehWeb-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Kalameh';
+    src: url('./assets/common/font/kalameh/KalamehWeb-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Kalameh';
+    src: url('./assets/common/font/kalameh/KalamehWeb-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Kalameh';
+    src: url('./assets/common/font/kalameh/KalamehWeb-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Kalameh';
+    src: url('./assets/common/font/kalameh/KalamehWeb-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Kalameh';
+    src: url('./assets/common/font/kalameh/KalamehWeb-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Kalameh';
+    src: url('./assets/common/font/kalameh/KalamehWeb-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Kalameh';
+    src: url('./assets/common/font/kalameh/KalamehWeb-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Kalameh';
+    src: url('./assets/common/font/kalameh/KalamehWeb-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  /* Peyda Font */
+  @font-face {
+    font-family: 'Peyda';
+    src: url('./assets/common/font/peyda/PeydaWeb-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Peyda';
+    src: url('./assets/common/font/peyda/PeydaWeb-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Peyda';
+    src: url('./assets/common/font/peyda/PeydaWeb-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Peyda';
+    src: url('./assets/common/font/peyda/PeydaWeb-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Peyda';
+    src: url('./assets/common/font/peyda/PeydaWeb-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Peyda';
+    src: url('./assets/common/font/peyda/PeydaWeb-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Peyda';
+    src: url('./assets/common/font/peyda/PeydaWeb-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Peyda';
+    src: url('./assets/common/font/peyda/PeydaWeb-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Peyda';
+    src: url('./assets/common/font/peyda/PeydaWeb-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  /* Vazir Font */
+  @font-face {
+    font-family: 'Vazir';
+    src: url('./assets/common/font/vazir/Vazirmatn-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Vazir';
+    src: url('./assets/common/font/vazir/Vazirmatn-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Vazir';
+    src: url('./assets/common/font/vazir/Vazirmatn-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Vazir';
+    src: url('./assets/common/font/vazir/Vazirmatn-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Vazir';
+    src: url('./assets/common/font/vazir/Vazirmatn-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Vazir';
+    src: url('./assets/common/font/vazir/Vazirmatn-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Vazir';
+    src: url('./assets/common/font/vazir/Vazirmatn-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Vazir';
+    src: url('./assets/common/font/vazir/Vazirmatn-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Vazir';
+    src: url('./assets/common/font/vazir/Vazirmatn-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+  }
+  /* src/index.css */
+
+/* KalamehWeb (FaNum) Font */
+@font-face {
+    font-family: 'KalamehNumber';
+    src: url('/src/assets/common/font/vazirNumber/KalamehWeb(FaNum)-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'KalamehNumber';
+    src: url('/src/assets/common/font/vazirNumber/KalamehWeb(FaNum)-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'KalamehNumber';
+    src: url('/src/assets/common/font/vazirNumber/KalamehWeb(FaNum)-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'KalamehNumber';
+    src: url('/src/assets/common/font/vazirNumber/KalamehWeb(FaNum)-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'KalamehNumber';
+    src: url('/src/assets/common/font/vazirNumber/KalamehWeb(FaNum)-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'KalamehNumber';
+    src: url('/src/assets/common/font/vazirNumber/KalamehWeb(FaNum)-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'KalamehNumber';
+    src: url('/src/assets/common/font/vazirNumber/KalamehWeb(FaNum)-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'KalamehNumber';
+    src: url('/src/assets/common/font/vazirNumber/KalamehWeb(FaNum)-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'KalamehNumber';
+    src: url('/src/assets/common/font/vazirNumber/KalamehWeb(FaNum)-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+  }
