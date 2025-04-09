@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import { GetComment } from "../../core/services/api/GetCourses/Comment";
  
 
-const Commentdiv = () => {
+const Commentdiv = ({data}) => {
+
+  const courseData = data || {};
+
 
   const [comments, setComments] = useState([]);
 
@@ -16,6 +19,7 @@ const Commentdiv = () => {
         console.log("datafromgetcommet :",data);
         setComments(data); 
 
+        console.log("courseData from get comment :", courseData);
       }
     };
 
