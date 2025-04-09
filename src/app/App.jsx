@@ -7,6 +7,7 @@ import { Register } from "../components/Register/Register.jsx";
 import { Registerlvl3 } from "../components/Register/Registerlvl3.jsx";
 import { Registerlvl2 } from "../components/Register/Registerlvl2.jsx";
 import SamoleCoursePage from "../components/samoleCoursePage.jsx";
+import { Panel } from "../components/Panel/Panel.jsx";
 
 
 
@@ -35,6 +36,10 @@ function App() {
         {
           path: "/Courses/:id",
           element: <Courses />,
+        },
+        {
+          path: "/Panel",
+          element: <Panel />,
         }
       ],
     },
