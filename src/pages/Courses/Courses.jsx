@@ -34,7 +34,7 @@ const Courses = () => {
     }
   return (
     
-    <div className=" flex justify-center align flex-col relative mt-10 mb-10">
+    <div className=" flex justify-center align flex-col relative mt-10 mb-10 w-370 ml-5">
            
         <Top data={courseData} />
                
