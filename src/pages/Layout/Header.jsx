@@ -18,7 +18,7 @@ function Header() {
     >
       <div className="mt-14 mr-25 gap-11 flex items-center text-gray-400 text-[22px] font-kalameh font-bold flex-row-reverse ">
         {/* Logo */}
-        <div className="mb-1 relative w-7  shrink-0 h-7">
+        <div className="mb-1 relative w-7  shrink-0 h-7 hover:scale-110 transition-transform">
           <div className="bg-deep-blue opacity-95 z-2 rounded-[6px] rotate-45 -skew-20 w-full h-full absolute"></div>
           <div className="bg-black opacity-92 mt-[10px] z-0  rounded-[6px] rotate-45 -skew-20 w-full h-full "></div>
         </div>
@@ -86,7 +86,7 @@ function Header() {
             <img
               src={user}
               alt="user"
-              className="w-8 h-8 scale-120 hover:scale-110 transition-transform duration-200"
+              className="w-8 h-8 scale-120 hover:scale-130 transition-transform duration-200"
             />
           
          </div>
