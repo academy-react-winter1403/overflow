@@ -5,8 +5,18 @@ import search from "../../assets/landing/search.png";
 
 function Hero() {
   return (
-    <section className="flex flex-row-reverse items-center justify-between px-10 py-16 dark:bg-gray-900">
-      <div className="w-full flex-shrink-2  md:w-1/2 text-right space-y-6">
+    <section className="flex items-center justify-between px-30 py-16 dark:bg-gray-900">
+
+      {/* Image Section */}
+      <div className="w-full md:w-1/2 flex justify-center">
+        <img
+          src={HeroImg}
+          alt="آموزش"
+          className="max-w-[900px] w-full h-auto"
+        />
+      </div>
+      {/* right section */}
+      <div className="w-full flex-shrink-2 flex  flex-col justify-start items-end md:w-1/2  space-y-6">
         <h1 className=" text-[59px]  font-extrabold font-peyda  text-deep-blue dark:text-white">
           دنبال چی می‌گردی؟
         </h1>
@@ -31,15 +41,6 @@ function Hero() {
           آکادمی آموزشی سپهر مکانی برای پیشرفت تو با تمرین مهارت‌های موردنیاز
           برای طراحی وب و هرچه سریع‌تر با بهترین روش یاد بگیری
         </p>
-      </div>
-
-      {/* Image Section */}
-      <div className="w-full md:w-1/2 flex justify-center">
-        <img
-          src={HeroImg}
-          alt="آموزش"
-          className="max-w-[900px] w-full h-auto"
-        />
       </div>
     </section>
   );
