@@ -25,11 +25,11 @@ function NewCourses() {
   };
 
   return (
-    <div className="text-center py-8">
-      <h2 className="text-2xl font-bold text-blue-500 mb-6">جدید ترین دوره ها</h2>
+    <div className="flex self-center flex-col max-w-[1641px] z-10  text-center my-24 py-8">
+      <h2 className="text-5xl font-peyda font-black text-[#267dff] mb-28">جدید ترین دوره ها</h2>
 
-      <div className="flex flex-wrap justify-center gap-6">
-        {newCoursesData.map((item, index) => (
+      <div className="flex justify-between gap-6">
+        {newCoursesData&&newCoursesData.map((item, index) => (
           <Card
             item={item}
             index={index}
