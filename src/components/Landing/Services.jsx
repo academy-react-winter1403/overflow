@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getApi } from "../../core/services/api/getApi";
 import serviceImges from "../../assets/landing/services.png";
+import bubbleBack from "../../assets/landing/bubbleBack.png";
+import path3 from "../../assets/landing/path3.png";
+
+
 function Services() {
   const [servicesData, setServicesData] = useState([
     {
@@ -56,46 +60,57 @@ function Services() {
   // };
 
   return (
-    <div className="container mx-auto py-10">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold text-gray-800"> سرویس ها </h2>
-        <div className="flex space-x-2">
-          <button className="text-blue-500 hover:underline">
-            مشاهده همه سرویس ها{" "}
-          </button>
-          <button className="text-gray-500 hover:underline">1 / 2</button>
-        </div>
-      </div>
+    <div className=" flex flex-col  py-10">
+     <div className="relative z-0">
+             <img
+               src={bubbleBack}
+               alt=""
+               className="absolute w-[1511px] h-[1511px] opacity-98 -top-130 -right-190 "
+             />
+             <img
+               src={bubbleBack}
+               alt=""
+               className="absolute w-[1511px] h-[1511px] opacity-98 top-90 -left-158 "
+             />
+             <img
+               src={path3}
+               alt=""
+               className=" absolute h-[548px]  opacity-98 top-70 -left-0 "
+             />
+             </div>
+      <h2 className="relative mb-14 text-5xl z-10 font-peyda font-black text-deep-blue">
+       خدمات
+      </h2>
+      <section className=" justify-center flex overflow-hidden relative z-10">
+        <div className=" w-264 h-119 relative items-center flex flex-col space-y-6">
+          <div className="absolute top-16 -left-1 bg-white opacity-80 w-241 h-95  rounded-sm shadow-[0px_5px_27.5px_rgba(0,0,0,0.16)] "></div>
 
-      <div className="space-y-6">
-        {servicesData.map((newsItem) => (
-          <div key={newsItem.id} className="bg-white shadow-lg rounded-lg p-6">
-            <div className="flex justify-between items-center">
-              <div className="w-full md:w-1/2">
-                <h3 className="text-xl font-semibold text-gray-700 mb-4">
-                  {newsItem.title}
-                </h3>
-                <p className="text-sm text-gray-600 mb-6">
-                  {newsItem.miniDescribe}
-                </p>
-                <button className="bg-blue-500 text-white py-2 px-4 rounded-md">
-                  مشاهده بیشتر
-                </button>
-              </div>
-              <div className="w-full md:w-1/2 flex justify-center">
-                <img
-                  src={
-                    newsItem.currentImageAddressTumb ||
-                    "/path-to-your-default-image.jpeg"
-                  } // Fallback to default image if no image URL
-                  alt={newsItem.title}
-                  className="w-full h-auto rounded-md"
-                />
+          {servicesData.map((service) => (
+            <div className="mt-11 mr-16 z-10" key={service.id}>
+              <div className="bg-white w-241 h-95 rounded-sm shadow-[0px_5px_27.5px_rgba(0,0,0,0.16)] py-8 px-11 flex flex-col md:flex-row-reverse gap-6 text-right">
+                {/* Image */}
+                <div className="md:w-1/3 w-full flex justify-center">
+                  <img
+                    src={serviceImges}
+                    alt={service.title}
+                    className="w-[328px] h-[328px] object-cover rounded-md"
+                  />
+                </div>
+
+                {/* Text content */}
+                <div className="md:w-2/3 w-full space-y-4 ">
+                  <h3 className="mt-16 text-5xl font-kalameh font-black text-deep-blue">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-400 text-lg font-semibold font-vazir leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
