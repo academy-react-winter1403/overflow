@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import url("/src/assets/common/font/font.css");
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
