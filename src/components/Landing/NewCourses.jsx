@@ -30,6 +30,7 @@ function NewCourses() {
 
       <div className="flex justify-between gap-6">
         {newCoursesData&&newCoursesData.map((item, index) => (
+
           <Card
             item={item}
             index={index}

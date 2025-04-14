@@ -6,7 +6,8 @@ import { Courses } from "../pages/Courses/Courses.jsx";
 import { Register } from "../components/Register/Register.jsx";
 import { Registerlvl3 } from "../components/Register/Registerlvl3.jsx";
 import { Registerlvl2 } from "../components/Register/Registerlvl2.jsx";
-
+import { Panel } from "../components/Panel/Panel.jsx";
+import { AllCourse } from "../pages/Courses/AllCourses.jsx";
 
 
 function App() {
@@ -19,10 +20,6 @@ function App() {
           path: "/",
           element: <Landing />,
         },
-        // {
-        //   path: "/samole/:id",
-        //   element: <SamoleCoursePage />,
-        // },
         {
           path: "/Register-1",
           element: <Register />,
@@ -38,6 +35,13 @@ function App() {
         {
           path: "/Courses/:id",
           element: <Courses />,
+        },
+        {
+          path: "/Panel",
+          element: <Panel />,
+        },{
+          path: "/allcourses",
+          element : <AllCourse/>
         }
       ],
     },
