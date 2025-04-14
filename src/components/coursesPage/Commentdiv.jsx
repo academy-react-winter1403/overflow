@@ -26,7 +26,7 @@ const Commentdiv = ({data}) => {
 
   useEffect(() => {
 
-    // fetchComments();
+    fetchComments();
 
   }, []);
 

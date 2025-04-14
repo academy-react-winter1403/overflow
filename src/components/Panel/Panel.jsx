@@ -71,7 +71,7 @@ const Panel = () => {
                     {/* map over newCoursesData */}  
                     {newCoursesData.map((course, index) => (  
                         <div key={index} className='flex flex-row-reverse flex-wrap w-3/10 h-80 bg-white rounded-2xl justify-center'>  
-                            <img className='w-9/10 h-40 mt-[-40px]' src={newCoursesData.tumbImageAddress} alt="Course Thumbnail" />  
+                            <img className='w-9/10 h-40 mt-[-40px]' src={word} alt="Course Thumbnail" />  
                             <div className='flex flex-col text-right w-10/10 rounded-2xl mt-[-190px]'>  
                                 <h1 className='w-10/10 pr-6 mt-45'>{course.title}</h1>  
                                 <span className='pt-2 pr-6 text-xs'>{course.description}</span>  
