@@ -10,7 +10,7 @@ function Layout() {
        
           <Outlet/>
 
-        <Footer/>
+      
     </div>
   )
 }
