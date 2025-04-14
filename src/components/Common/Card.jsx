@@ -5,8 +5,9 @@ function Card({ item, index, handleNavigation }) {
   const courseDuration = item?.lastUpdate;
 
   return (
+    <div className=" pt-15">
     <div
-      className="relative  bg-white rounded-[29px] shadow-lg w-96 h-140 px-6 text-right cursor-pointer"
+      className="relative bg-white rounded-[29px] shadow-lg w-96 h-140 px-6 text-right cursor-pointer"
       key={index}
       onClick={() => handleNavigation(item.courseId)}
     >
@@ -55,6 +56,7 @@ function Card({ item, index, handleNavigation }) {
           </span>
         </div>
       </div>
+    </div>
     </div>
   );
 }
