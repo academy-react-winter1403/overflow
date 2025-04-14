@@ -1,11 +1,9 @@
 body{
-  background-color: rgb(237, 237, 237);
-  display: flex;
-  justify-content: center;
-
+  background-color: #f3f4f6
 }
 #root {
-  max-width: 1920px;
+  max-width:1920px;
   margin: 0 auto;
   text-align: center;
 }
+

@@ -1,19 +1,5 @@
 @import "tailwindcss";
-@import url('/src/assets/common/font/font.css');
-
-@theme {
---color-deep-blue: #436e8e;
-
-}
-@theme {
---font-iransans: 'IRANSans', sans-serif;
---font-kalameh: 'Kalameh', sans-serif;
---font-peyda: 'Peyda', sans-serif;
---font-vazir: 'Vazir', sans-serif;
---font-vazir-num: 'VazirNum', sans-serif;
-}
-
-
+@import url("/src/assets/common/font/font.css");
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -22,10 +8,19 @@
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.87);
   background-color: #f5f2f2;
-
+  overflow-x: hidden;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+@theme {
+  --color-deep-blue: #436e8e;
+}
+@theme {
+  --font-iransans: "IRANSans", sans-serif;
+  --font-kalameh: "Kalameh", sans-serif;
+  --font-peyda: "Peyda", sans-serif;
+  --font-vazir: "Vazir", sans-serif;
+  --font-kalameh-num: "KalamehNumber", sans-serif;
+}

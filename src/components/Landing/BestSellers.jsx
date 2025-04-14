@@ -14,17 +14,18 @@ function BestSellers() {
     const response = await getApi(
       URL)
     setCoursesData(response);
-    // console.log(response)
+    console.log("bestsellll", response)
   };
   const navigate = useNavigate();
   const handleNavigation = (id) => {
+
     // console.log(id)
     navigate(`/Courses/${id}`); 
   };
 
   return (
-    <div className="text-center py-8">
-      <h2 className="text-2xl font-bold text-blue-500 mb-6">
+    <div className="z-10 text-center py-48">
+      <h2 className="text-6xl font-peyda font-black text-deep-blue mb-28">
         پرفروش‌ترین دوره‌ها
       </h2>
       <div className="flex flex-wrap justify-center gap-6">
