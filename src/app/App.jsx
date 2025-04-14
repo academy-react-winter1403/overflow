@@ -8,6 +8,8 @@ import { Registerlvl3 } from "../components/Register/Registerlvl3.jsx";
 import { Registerlvl2 } from "../components/Register/Registerlvl2.jsx";
 import { Panel } from "../components/Panel/Panel.jsx";
 import { AllCourse } from "../pages/Courses/AllCourses.jsx";
+import News from "../pages/News/News.jsx";
+
 
 
 function App() {
@@ -37,10 +39,13 @@ function App() {
           element: <Courses />,
         },
         {
-          path: "/Panel",
-          element: <Panel />,
+          path: "/News",
+          element: <News />,
         },
         {
+          path: "/Panel",
+          element: <Panel />,
+        },{
           path: "/allcourses",
           element : <AllCourse/>
         }
