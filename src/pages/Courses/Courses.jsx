@@ -9,7 +9,7 @@ import { getApi } from "../../core/services/api/getApi";
 import { useEffect, useState } from "react";
 
 const Courses = () => {
-  const { id } = useParams(); // Retrieve the courseId from the route
+  const { id } = useParams(); 
   console.log("Course ID:", id);
 
   const [courseData, setCourseData] = useState(null);
@@ -36,11 +36,11 @@ const Courses = () => {
   }, [id]);
 
   if (isLoading) {
-    return <div className="loading-spinner">Loading...</div>; // Display a spinner
+    return <div className="loading-spinner">Loading...</div>; 
   }
 
   if (error) {
-    return <div className="text-red-600">{error}</div>; // Show error message
+    return <div className="text-red-600">{error}</div>; 
   }
 
   return (
@@ -56,9 +56,11 @@ const Courses = () => {
         </div>
       </div>
 
-      <div className="flex flex-row-reverse w-10/10 mt-10 gap-2.5">
+                      {/* comments */}
+
+      <div className="flex flex-col w-10/10 mt-10 gap-10 items-end ">
         <CommentSection />
-        <Commentdiv courseId={id} /> {/* Pass the course ID to Commentdiv */}
+        <Commentdiv courseId={id} /> 
       </div>
     </div>
   );
