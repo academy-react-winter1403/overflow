@@ -12,10 +12,10 @@ const GetComment = async (id) => {
     
     console.log("Full API response:", response);
 
-    const { data } = response || {}; 
-    console.log("Data fetched from API:", data);
+    // const { data } = response || {}; 
+    // console.log("Data fetched from API:", data);
 
-    return data || []; 
+    return response || []; 
   } catch (error) {
     console.error(`Error fetching comments for Course ID ${id}:`, error.message || error);
     return false; 
