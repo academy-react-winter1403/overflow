@@ -31,8 +31,7 @@ const AllCourse = () => {
 
         console.log("api response", response);
 
-        setNewCoursesData(response.data || response.result || []);
-        console.log("api sdsadsadresponse", getNewCoursesData);
+        setNewCoursesData(response);
     };
 
 
@@ -41,11 +40,12 @@ const AllCourse = () => {
     }, [filters]);
 
 
-    const handleSorting = (sortingCol) => {
+    const handleSorting = (sortingCol,SortType) => {
         setFilters((prev) => ({
             ...prev,
             SortingCol: sortingCol,
             PageNumber: 1,
+            SortType:SortType|| "DESC"
         }));
         setActiveSort(sortingCol);
     };
@@ -65,21 +65,21 @@ const AllCourse = () => {
 
             <div className="border border-black w-full h-18 bg-white rounded flex justify-center">
                 <div
-                    onClick={() => handleSorting("cheapest")}
+                    onClick={() => handleSorting("cost","ASC")}
                     className={`cursor-pointer w-[15%] h-full text-center leading-14 text-3xl ${activeSort === "cheapest" ? "text-blue-500 font-bold" : "text-gray-400"
                         }`}
                 >
                     ارزان ترین
                 </div>
                 <div
-                    onClick={() => handleSorting("price")}
+                    onClick={() => handleSorting("cost","DESC")}
                     className={`cursor-pointer w-[15%] h-full text-center leading-14 text-3xl ${activeSort === "price" ? "text-blue-500 font-bold" : "text-gray-400"
                         }`}
                 >
                     گران ترین
                 </div>
                 <div
-                    onClick={() => handleSorting("bestseller")}
+                    onClick={() => handleSorting("currentRegistrants")}
                     className={`cursor-pointer w-[15%] h-full text-center leading-14 text-3xl ${activeSort === "bestseller" ? "text-blue-500 font-bold" : "text-gray-400"
                         }`}
                 >

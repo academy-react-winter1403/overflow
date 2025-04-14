@@ -39,7 +39,8 @@ function App() {
         {
           path: "/Panel",
           element: <Panel />,
-        },{
+        },
+        {
           path: "/allcourses",
           element : <AllCourse/>
         }
