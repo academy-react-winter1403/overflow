@@ -32,7 +32,7 @@ function Header() {
           خانه
         </NavLink>
         <NavLink
-          to={"/Register-1"}
+          to={"/AllCourses"}
           className={({ isActive }) =>
             isActive ? "text-gray-500" : " hover:text-black"
           }
