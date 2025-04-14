@@ -22,8 +22,8 @@ const CommentSection = () => {
   };
 
   return (
-    <div className="flex items-end flex-col w-9/10 h-[350px] bg-white rounded-2xl pr-10">
-      <h5 className="mt-5  mb-5 text-3xl font-bold text-sky-800">
+    <div className="flex items-end flex-col w-8/10 h-88 bg-white rounded-2xl pr-10 ">
+      <h5 className="mt-5  mb-5 text-3xl font-bold text-deep-blue">
         نظرات
       </h5>
       <Formik
@@ -42,7 +42,7 @@ const CommentSection = () => {
             </div>
             <button
               type="submit"
-              className="ml-105 mt-5 border-2 rounded-2xl bg-sky-800 w-[147px] h-[52px] text-amber-50 leading-11"
+              className="ml-105 mt-5 border-2 rounded-2xl bg-deep-blue w-[147px] h-[52px] text-amber-50 leading-11"
             >
               ارسال نظر
             </button>

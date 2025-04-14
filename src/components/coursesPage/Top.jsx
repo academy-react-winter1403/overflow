@@ -22,18 +22,18 @@ const Top = ({data}) => {
 
       </div>
 
-        <div className="w-3/10 h-4/10 mt-10 mr-45">
+        <div className=" text-amber-50 shadow-2xl shadow-amber-50 rounded-2xl w-3/10 h-4/10 mt-10 mr-45">
         <img
           src={courseData.imageAddress || productimg }
           alt="Course Banner"
-          className="w-10/10 rounded-2xl "
+          className="rounded-2xl "
         />
         </div>
 
         <div className="flex items-center justify-between w-6/10 mr-10 mb-15 ">
 
           <span className="text-amber-50 font-bold text-2xl text-left"> {courseData.cost} T </span>
-          <div className="text-amber-50 font-bold text-2xl bg-cyan-800 rounded-3xl px-6 py-3 text-center">
+          <div className="text-amber-50 font-bold text-2xl bg-deep-blue rounded-3xl px-6 py-3 text-center">
             <Link to='/'>خرید نقدی دوره</Link>
           </div>
 

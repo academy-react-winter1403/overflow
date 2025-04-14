@@ -34,7 +34,7 @@ const Courses = () => {
     }
   return (
     
-    <div className=" flex justify-center align flex-col relative mt-10 mb-10">
+    <div className=" flex justify-center items-center align flex-col relative mt-10 mb-10 w-9/10 m-auto">
            
         <Top data={courseData} />
                
@@ -55,7 +55,7 @@ const Courses = () => {
           
           <CommentSection />
 
-          <Commentdiv />
+          <Commentdiv data={courseData} />
 
         </div>
 

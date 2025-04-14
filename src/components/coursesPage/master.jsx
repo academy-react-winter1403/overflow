@@ -18,7 +18,7 @@ const courseData = data || {};
                 <img className=' w-3/20 h-12/20 mt-2 ml-2 mr-5' src={profile} />
 
                 <div className='w-8/10'>
-                  <h2 className='text-sky-800 font-bold text-2xl w-full h-2/10 mt-2 '>
+                  <h2 className='text-deep-blue font-bold text-2xl w-full h-2/10 mt-2 '>
                     {courseData.teacherName}
                   </h2>
                   <p className=" text-xs b w-full mt-3">مدرس دوره</p>
