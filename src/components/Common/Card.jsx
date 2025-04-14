@@ -58,6 +58,7 @@ function Card({ item, index, handleNavigation }) {
         </div>
       </div>
     </div>
+    </div>
   );
 }
 

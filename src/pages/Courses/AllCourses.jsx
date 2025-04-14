@@ -103,8 +103,8 @@ const AllCourse = () => {
                 />
             </div>
 
-            <div className="w-full flex border border-black mt-12 justify-center">
-                <div className="w-[75%] border border-black mr-3 flex flex-wrap flex-row gap-4 justify-center">
+            <div className="w-full flex border border-black  justify-center">
+                <div className="w-[75%] border border-blue-500 pt-30 mr-3 flex flex-wrap flex-row gap-4 justify-center">
                     {
                         newCoursesData.map((item, index) => (
                             <Card

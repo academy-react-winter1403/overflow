@@ -22,7 +22,7 @@ const CommentSection = () => {
   };
 
   return (
-    <div className="flex items-end flex-col w-8/10 h-88 bg-white rounded-2xl pr-10 ">
+    <div className="flex items-end flex-col w-7/11 h-88 bg-white rounded-3xl pr-10  overflow-hidden ">
       <h5 className="mt-5  mb-5 text-3xl font-bold text-deep-blue">
         نظرات
       </h5>
@@ -32,7 +32,7 @@ const CommentSection = () => {
       >
         {({ handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
-            <div className="flex items-end w-10/10 h-13/10 mr-50">
+            <div className="flex flex-row items-end w-10/10 h-13/10 mr-50 ">
               <Field
                 as="textarea"
                 name="feedback"

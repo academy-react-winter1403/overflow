@@ -1,18 +1,24 @@
 import http from '../../interceptor/index.js';
 
-const GetComment = async () => {
+const GetComment = async (id) => {
+  if (!id) {
+    console.error("Invalid ID provided to GetComment.");
+    return false; 
+  }
 
   try {
-  
-    const response = await http.get('/Course/GetCourseCommnets/:CourseId');
 
-    return response.data;
+    const response = await http.get(`/Course/GetCourseCommnets/${id}`); 
+    
+    console.log("Full API response:", response);
 
+    const { data } = response || {}; 
+    console.log("Data fetched from API:", data);
+
+    return data || []; 
   } catch (error) {
-
-    console.log(" from get comment", error.message);
-    return false;
-
+    console.error(`Error fetching comments for Course ID ${id}:`, error.message || error);
+    return false; 
   }
 };
 
