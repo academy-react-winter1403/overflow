@@ -38,14 +38,15 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-wrap  w-8/10 h-140 bg-white rounded-[30px] mt-10 mb-10 ml-40 ">
+    <div className="flex flex-wrap  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10">
 
-      <div className="w-5/10 h-120 mt-15  ">
-        <img className="h-120 " src={signin} />
+    <div className=" w-10/10 flex-wrap flex justify-center gap-20">
+    <div className="w-4/10 h-138 mt-15 ml-10 ">
+        <img className="h-120 w-8/10" src={signin} />
         
       </div>
 
-      <div className="w-5/10 h-138 mt-15 ">
+      <div className="w-4/10 h-138 mt-15 ">
 
         <div className="flex justify-end  pr-9">
           <img
@@ -90,6 +91,8 @@ const Register = () => {
         </Formik>
         <div className="text-[14px] mt-[20px] ml-[160px] text-start">قوانین و شرایط</div>
       </div>
+    </div>
+
     </div>
   );
 };

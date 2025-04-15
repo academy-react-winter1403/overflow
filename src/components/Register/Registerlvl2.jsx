@@ -48,13 +48,16 @@ const Registerlvl2 = () => {
   };
 
   return (
-    <div className="flex flex-wrap  w-8/10 h-140 bg-white rounded-[30px] mt-10 mb-10 ml-40">
+    <div className="flex flex-wrap  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10">
 
-      <div className="w-5/10 h-138 mt-15 ">
+      <div className="w-10/10 flex-wrap flex justify-center gap-20">
+
+        
+      <div className="w-4/10 h-138 mt-15 ">
         <img className="h-120 " src={signin}/>
       </div>
       
-      <div className="w-5/10 h-138 mt-15 ">
+      <div className="w-4/10 h-138 mt-15 ">
 
         <div className="flex justify-end  pr-9">
           <img
@@ -102,6 +105,9 @@ const Registerlvl2 = () => {
           
         </div>
       </div>
+
+      </div>
+
     </div>
   );
 };
