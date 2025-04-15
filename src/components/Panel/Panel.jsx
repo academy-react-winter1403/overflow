@@ -72,7 +72,7 @@ const Panel = () => {
                     </div>  
                 </div>  
 
-                <div className='flex flex-row-reverse w-10/10 h-auto justify-center gap-8 mt-[-150px] border-4 border-sky-800'>  
+                <div className='flex flex-row-reverse flex-wrap w-10/10 h-auto justify-center gap-8 mt-10 border-4 border-sky-800'>  
                     {/* map over newCoursesData */}  
                     {newCoursesData.map((course, index) => (  
                         <Card
