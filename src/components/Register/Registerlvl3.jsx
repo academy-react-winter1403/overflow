@@ -55,10 +55,10 @@ const Registerlvl3 = () => {
 
   return (
     
-    <div className="flex flex-wrap  w-10/10 h-170 bg-white rounded-[30px] mt-10 mb-10  ">
+    <div className="flex flex-wrap  w-8/10 h-140 bg-white rounded-[30px] mt-10 mb-10 ml-40 ">
 
       <div className="w-5/10 h-138 mt-15">
-        <img src={signin}  />
+        <img className="h-120 " src={signin}  />
       </div>
 
       <div className="w-5/10 h-138 mt-15 ">
