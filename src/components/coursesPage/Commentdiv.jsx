@@ -5,9 +5,9 @@ const Commentdiv = ({ courseId }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
+const [id, setid] = useState(courseId)
   const fetchComments = async () => {
-    if (!courseId) {
+    if (!id) {
       console.error("Course ID is missing.");
       setError("Invalid course ID.");
       return;
@@ -17,7 +17,7 @@ const Commentdiv = ({ courseId }) => {
     setError(null); 
 
     try {
-      const fetchedData = await GetComment(courseId); 
+      const fetchedData = await GetComment(id); 
       if (fetchedData) {
         console.log("Fetched comments:", fetchedData);
         setComments(fetchedData);
@@ -35,7 +35,7 @@ const Commentdiv = ({ courseId }) => {
 
   useEffect(() => {
     fetchComments(); 
-  }, [courseId]);
+  }, [id]);
 
   return (
     <div className="rounded-4xl bg-white w-7/11 h-88">
@@ -49,7 +49,7 @@ const Commentdiv = ({ courseId }) => {
           ) : comments.length > 0 ? (
             comments.map((comment, index) => (
               <p key={index} className="text-gray-600">
-                {comment}
+                {comment.describe}
               </p>
             ))
           ) : (
