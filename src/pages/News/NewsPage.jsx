@@ -33,7 +33,7 @@ function NewsPage() {
           </button> */}
           {/* Sort */}
           <div>
-            <select className="m-3  border-l-2 h-full font-black font-kalameh text-4xl  border-gray-300 focus:outline-none  ">
+            <select className="m-3  border-l-2 h-full font-black font-kalameh text-4xl  border-gray-300 focus:outline-none appearence-none ">
               <option value="">مرتب سازی</option>
               <option value="date">تاریخ</option>
               <option value="popularity">محبوبیت</option>
