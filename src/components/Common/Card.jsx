@@ -24,12 +24,12 @@ function Card({ item, index, handleNavigation }) {
         </div>
 
         {/* Description */}
-        <div className="overflow-ellipsis text-right overflow-hidden ">
+        <div className="overflow-ellipsis text-right  ">
           <h3 className="font-bold font-peyda text-2xl  text-gray-600 mb-2">
             {item.title}
           </h3>
-          <div className=" w-full relative text-ellipsis h-[160px] mb-4 pt-1 ">
-            <h5 className="text-[20px] text-ellipsis font-vazir font-semibold text-gray-400 ">
+          <div className=" w-full relative h-[160px] mb-4 pt-1 ">
+            <h5 className="text-[20px] text-ellipsis break-all font-vazir font-semibold text-gray-400 ">
               {item.describe}
             </h5>
           </div>
@@ -42,7 +42,7 @@ function Card({ item, index, handleNavigation }) {
               <span className="text-white font-iransans ">10:25:35</span>
               <img className="py-0.5" src={clock} alt="" />
             </div>
-            <span className="relative text-deep-blue gap-1 w-1/2 flex flex-wrap justify-center text-2xl  font-bold">
+            <span className="relative truncate text-deep-blue gap-1 w-auto max-w-5/7 flex flex-wrap  justify-center text-2xl  font-bold">
               {Number(item.cost).toLocaleString("fa-IR")}
 
               <svg
@@ -57,7 +57,6 @@ function Card({ item, index, handleNavigation }) {
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }
