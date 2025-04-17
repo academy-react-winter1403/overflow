@@ -14,10 +14,10 @@ const Top = ({ data }) => {
 
   useEffect(() => {
    
-    const today = new Date();
-    const jalaaliDate = toJalaali(today.getFullYear(), today.getMonth() + 1, today.getDate());
-    const formattedDate = `${jalaaliDate.jy}/${jalaaliDate.jm}/${jalaaliDate.jd}`;
-    setCurrentDate(formattedDate);
+    // const today = new Date();
+    // const jalaaliDate = toJalaali(today.getFullYear(), today.getMonth() + 1, today.getDate());
+    // const formattedDate = `${jalaaliDate.jy}/${jalaaliDate.jm}/${jalaaliDate.jd}`;
+    // setCurrentDate(formattedDate);
     
   }, []);
 
