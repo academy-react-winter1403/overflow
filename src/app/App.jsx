@@ -10,7 +10,8 @@ import { Panel } from "../components/Panel/Panel.jsx";
 import { AllCourse } from "../pages/Courses/AllCourses.jsx";
 import NewsPage from "../pages/News/NewsPage.jsx";
 import NewsDetails from "../pages/News/NewsDetails.jsx";
-
+import { AllTeacers } from "../pages/teachers/AllTeachers.jsx";
+import { Loginlevel1 } from "../pages/Auth/Login.jsx";
 
 
 function App() {
