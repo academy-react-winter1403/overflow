@@ -1,18 +1,24 @@
 import http from '../../interceptor/index.js';
 
-const GetComment = async () => {
+const GetComment = async (id) => {
+  if (!id) {
+    console.error("Invalid ID provided to GetComment.");
+    return false; 
+  }
 
   try {
-  
-    const response = await http.get('/Course/GetCourseCommnets/:CourseId');
 
-    return response.data;
+    const response = await http.get(`/Course/GetCourseCommnets/${id}`); 
+    
+    console.log("Full API response:", response);
 
+    // const { data } = response || {}; 
+    // console.log("Data fetched from API:", data);
+
+    return response || []; 
   } catch (error) {
-
-    console.log(" from get comment", error.message);
-    return false;
-
+    console.error(`Error fetching comments for Course ID ${id}:`, error.message || error);
+    return false; 
   }
 };
 
@@ -30,4 +36,58 @@ const PostComment = async (commentData) => {
   }
 };
 
-export { GetComment,PostComment };
+const Likecommnet = async (commentId, token) => {
+  try {
+    const response = await http.post(
+      `/Course/AddCourseCommentLike`,
+      null,
+      {
+        params: { CourseCommandId: commentId },
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
+      }
+    );
+
+    console.log("Raw response:", response);
+
+    if (!response || !response.data) {
+      throw new Error("API response is undefined or missing required fields.");
+    }
+
+    return response.data;
+  } catch (error) {
+    console.error("Error submitting like:", error);
+    throw error;
+  }
+};
+
+
+const DisLikecommnet = async (commentId, token) => {
+  try {
+    const response = await http.post(
+      `/Course/AddCourseCommentDissLike?CourseCommandId=<uuid>`,
+      null,
+      {
+        params: { CourseCommandId: commentId },
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
+      }
+    );
+
+    console.log("Raw response:", response);
+
+    if (!response || !response.data) {
+      throw new Error("API response is undefined or missing required fields.");
+    }
+
+    return response.data;
+  } catch (error) {
+    console.error("Error submitting like:", error);
+    throw error;
+  }
+};
+
+
+export { GetComment,PostComment,Likecommnet,DisLikecommnet };
