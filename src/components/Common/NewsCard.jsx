@@ -1,6 +1,7 @@
 import React from "react";
 import cardImg from "../../assets/common/cardImg.png";
 import clock from "../../assets/common/clock.png";
+import SmartImage from "./SmartImage";
 
 function NewsCard({ item, index, handleNavigation }) {
   return (
@@ -11,16 +12,8 @@ function NewsCard({ item, index, handleNavigation }) {
       onClick={() => handleNavigation(item.id)}
     >
       <div className="relative h-[200px]">
-        <img
-          src={
-            item?.currentImageAddressTumb &&
-            item?.currentImageAddressTumb !== "null"
-              ? item?.currentImageAddressTumb.replace(/\\/g, "")
-              : cardImg
-          }
-          alt={item.title}
-          className="absolute shadow-deep-blue shadow-lg -top-15 w-[340px] h-[223px] object-cover rounded-3xl"
-        />
+       {/* image */}
+        <SmartImage src={item?.currentImageAddressTumb} fallback={cardImg} alt={item.title} className="absolute shadow-deep-blue shadow-lg -top-15 w-[340px] h-[223px] object-cover rounded-3xl" />
       </div>
 
       <div className="overflow-ellipsis text-right overflow-hidden">
@@ -40,7 +33,7 @@ function NewsCard({ item, index, handleNavigation }) {
 
         <div className="flex items-center justify-between text-sm text-gray-500">
           <span>👁 {item.currentView}</span>
-          <span>❤️ {item.currentLikeCount}</span>
+          <span>👍🏼 {item.currentLikeCount}</span>
           <span>👎 {item.currentDissLikeCount}</span>
         </div>
       </div>

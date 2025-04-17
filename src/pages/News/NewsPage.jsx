@@ -1,49 +1,75 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getApi } from "../../core/services/api/getApi";
 import NewsCard from "../../components/Common/NewsCard";
+import SearchSortBox from "../../components/Common/SearchSortBox";
+import { useNavigate, useSearchParams } from "react-router";
 
 function NewsPage() {
-  const [newsList, setNewsList] = useState([]);
+  const categoryURL = "/News/GetListNewsCategory";
+  const [newsList, setnewsList] = useState([]);
+  const navigate = useNavigate();
+  const [urlParams, seturlParams] = useState({
+    Query: "",
+    RowsOfPage: 10,
+    PageNumber: 1,
+    NewsCategoryId: "",
+    SortingCol: "InsertDate",
+    SortType: "DESC",
+  });
 
+  const [searchParams, setSearchParams] = useSearchParams(); // Correct usage of useSearchParams
+
+  // Dynamic URL
+  const URL = `/News?NewsCategoryId=${urlParams.NewsCategoryId}&PageNumber=${urlParams.PageNumber}&RowsOfPage=${urlParams.RowsOfPage}&Query=${urlParams.Query}&SortingCol=${urlParams.SortingCol}&SortType=${urlParams.SortType}`;
+
+  // Get Data
   const getNewsData = async () => {
-    const response = await getApi(
-      "/News?PageNumber=1&RowsOfPage=10&SortingCol=InsertDate&SortType=DESC",
-      "news"
-    );
-    setNewsList(response);
-    console.log(response);
+    const response = await getApi(URL, "news");
+    setnewsList(response);
   };
 
   useEffect(() => {
     getNewsData();
-  }, []);
+    navigate(URL);
+  }, [URL]);
+
+  // Update the state when searchParams change
+  useEffect(() => {
+    seturlParams({
+      Query: searchParams.get("Query") || "",
+      PageNumber: searchParams.get("PageNumber") || 1,
+      NewsCategoryId: searchParams.get("NewsCategoryId") || "",
+      RowsOfPage: searchParams.get("RowsOfPage") || 10,
+      SortingCol: searchParams.get("SortingCol") || "InsertDate",
+      SortType: searchParams.get("SortType") || "DESC",
+    });
+  }, [searchParams]);
+  // Handle Sort Change
+  const handleSortChange = (sort) => {
+    seturlParams((prev) => ({
+      ...prev,
+      SortingCol: sort.col || prev.SortingCol,
+      SortType: sort.type || prev.SortType,
+      NewsCategoryId: sort.categoryId || prev.NewsCategoryId,
+      pageNumber: 1,
+    }));
+  };
+  // Handle Search Change
+  const handelSearch = (search) => {
+    seturlParams((prev) => ({
+      ...prev,
+      Query: search,
+      pageNumber: 1,
+    }));
+  };
 
   return (
-    <div className=" container text-gray-600 mx-auto px-4 py-10">
-      {/* Search */}
-      <div className="my-6 mb-17 h-20  rounded-3xl bg-white">
-        <div className="flex h-full flex-row-reverse items-center ">
-          <input
-            type="text"
-            placeholder="جستجو"
-            className="w-3/10 text-right text-4xl font-kalameh font-black h-full pr-8  focus:w-5/10 border-gray-300 rounded-md focus:outline-none transition-all duration-300"
-          />
-          {/* <button className="mt-2 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-            جستجو
-          </button> */}
-          {/* Sort */}
-          <div>
-            <select className="m-3  border-l-2 h-full font-black font-kalameh text-4xl  border-gray-300 focus:outline-none appearence-none ">
-              <option value="">مرتب سازی</option>
-              <option value="date">تاریخ</option>
-              <option value="popularity">محبوبیت</option>
-              <option value="alphabetical">الفبایی</option>
-            </select>
-          </div>
-        
-        </div>
-      </div>
-
+    <div className="container text-gray-600 mx-auto px-4 py-10">
+      <SearchSortBox
+        setSort={handleSortChange}
+        setSearch={handelSearch}
+        categoryURL={categoryURL}
+      />
       {/* Title */}
       <div className="flex flex-nowrap justify-center items-center mb-10">
         <div className="border-b-4 border-gray-500 w-full"></div>
@@ -53,9 +79,9 @@ function NewsPage() {
         <div className="border-b-4 border-gray-600 w-full"></div>
       </div>
       {/* News List */}
-      <div className="grid grid-cols-4 max-sm:grid-cols-2 max-md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-3 max-sm:grid-cols-2 max-md:grid-cols-3 gap-6">
         {newsList.map((news) => (
-          <NewsCard item={news} />
+          <NewsCard item={news} key={news.id} />
         ))}
       </div>
     </div>
