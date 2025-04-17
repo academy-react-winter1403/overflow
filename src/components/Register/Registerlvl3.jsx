@@ -55,28 +55,32 @@ const Registerlvl3 = () => {
 
   return (
     
-    <div className="flex flex-wrap  w-10/10 h-170 bg-white rounded-[30px] mt-10 mb-10  ">
+    <div className="flex flex-wrap  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 ">
 
-      <div className="w-5/10 h-138 mt-15">
-        <img src={signin}  />
-      </div>
+      <div className="w-10/10 flex-wrap flex justify-center gap-20">
 
-      <div className="w-5/10 h-138 mt-15 ">
+        <div className="w-4/10 h-138 mt-15">
+          <img className="h-120 " src={signin}  />
+        </div>
 
-      <div className="flex justify-end  pr-9">
+        <div className="w-4/10 h-138 mt-15 ">
 
-        <img
-          src={academylogo}
-          alt="logo"
-          className="w-[83px] h-[63px] mt-[33px] mr-[50px]"
-        />
-      </div>
+          <div className="w-10/10 flex flex-row flex-wrap gap-2 justify-end pr-20">
 
-      <div className="text-center text-[40px] mt-[-70px] mr-[-30px] "> آکادمی سپهر</div>
+            <p className="w-5/10 h-full text-center text-[40px] "> آکادمی سپهر</p>
+            <img
+            src={academylogo}
+            alt="logo"
+            className="w-2/10 h-full"
+            />
+        </div>
 
-      <div className="flex flex-wrap item-center mt-2 pl-20 ">
-        <div className="text-[30px] mt-[20px] ml-[330px] "> ثبت نام</div>
-      </div>
+
+
+        <div className="flex flex-wrap item-center mt-2 pl-20 ">
+          <h2 className=""></h2>
+          <p className="text-[30px] mt-[20px] ml-[330px] "> ثبت نام</p>
+        </div>
 
         <Formik
           initialValues={{ phone: "", gmail: "", password: "" }}
@@ -116,7 +120,9 @@ const Registerlvl3 = () => {
           )}
         </Formik>
         <div className="text-[14px] mt-[20px] ml-[160px] text-start">قوانین و شرایط</div>
-      </div>
+        </div>
+        </div>
+
     </div>
   );
 };

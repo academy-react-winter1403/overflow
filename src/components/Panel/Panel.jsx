@@ -5,17 +5,19 @@ import courses from '../../assets/userpanel/Path 29.png';
 import ticket from '../../assets/userpanel/Path 30.png';  
 import profile from '../../assets/userpanel/Path 31.png';  
 import exit from '../../assets/userpanel/Path 32.png';  
-import userprofile from '../../assets/userpanel/profile-user.png';  
-import moon from '../../assets/userpanel/moon.png';  
+// import userprofile from '../../assets/userpanel/profile-user.png';  
+// import moon from '../../assets/userpanel/moon.png';  
 import word from '../../assets/userpanel/word.png';  
 import DOT from '../../assets/userpanel/Ellipse 2.PNG';  
 import clock from '../../assets/userpanel/clock.png';  
 import { getApi } from '../../core/services/api/getApi';
+import Card from '../Common/Card';
+import { useNavigate } from 'react-router';
 
 const Panel = () => {  
     const URL = "/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=4&SortingCol=lastUpdate";  
     const [newCoursesData, setNewCoursesData] = useState([]);  
-
+    const navigate = useNavigate();
     useEffect(() => {  
         getNewCoursesData();  
     }, []);  
@@ -29,7 +31,10 @@ const Panel = () => {
             console.error("Error fetching courses data:", error);  
         }  
     };  
-
+    const handleNavigation = (id) => {
+        console.log(id)
+        navigate(`Courses/${id}`); 
+      };
     return (  
         <div className="flex flex-row-reverse flex-wrap w-9/10 border-2 bg-gray-100 ml-20">  
             {/* right panel */}  
@@ -62,32 +67,20 @@ const Panel = () => {
                         آرمان غنی زاده عزیز؛ خوش اومدی 🙌  
                     </div>  
                     <div className='pl-2 flex flex-row w-3/10 gap-2.5 mr-21'>  
-                        <img src={userprofile} alt="User Profile" />  
-                        <img src={moon} alt="Night Mode" />  
+                        {/* <img src={userprofile} alt="User Profile" />  
+                        <img src={moon} alt="Night Mode" />   */}
                     </div>  
                 </div>  
 
-                <div className='flex flex-row-reverse w-10/10 h-auto justify-center gap-8 mt-[-150px]'>  
+                <div className='flex flex-row-reverse flex-wrap w-10/10 h-auto justify-center gap-8 mt-10 border-4 border-sky-800'>  
                     {/* map over newCoursesData */}  
                     {newCoursesData.map((course, index) => (  
-                        <div key={index} className='flex flex-row-reverse flex-wrap w-3/10 h-80 bg-white rounded-2xl justify-center'>  
-                            <img className='w-9/10 h-40 mt-[-40px]' src={word} alt="Course Thumbnail" />  
-                            <div className='flex flex-col text-right w-10/10 rounded-2xl mt-[-190px]'>  
-                                <h1 className='w-10/10 pr-6 mt-45'>{course.title}</h1>  
-                                <span className='pt-2 pr-6 text-xs'>{course.description}</span>  
-                                <div className='flex flex-row text-right items-end justify-end pr-7 mt-5'>  
-                                    <p className='text-xs text-deep-blue mr-1'>{course.instructor}</p>  
-                                    <img className='w-1/30' src={DOT} alt="Dot" />  
-                                </div>  
-                                <div className='flex flex-row-reverse items-end justify-end mt-5 pt-2 border-t-2 border-gray-300 w-9/10 ml-3'>  
-                                    <div className='text-white items-center justify-start flex bg-gray-400 rounded-2xl w-5/10 ml-20 pl-2'>  
-                                        {course.time}  
-                                        <img className='ml-5' src={clock} alt="Clock" />  
-                                    </div>  
-                                    <span className='text-deep-blue'>رایگان!</span>  
-                                </div>  
-                            </div>  
-                        </div>  
+                        <Card
+                        item={course}
+                        index={index}
+                        handleNavigation={handleNavigation}
+                        key={index}
+                      />
                     ))}  
                 </div>  
             </div>  

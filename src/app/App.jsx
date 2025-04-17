@@ -12,6 +12,7 @@ import NewsPage from "../pages/News/NewsPage.jsx";
 import NewsDetails from "../pages/News/NewsDetails.jsx";
 
 
+
 function App() {
   const publicRoutes = [
     {
@@ -51,7 +52,13 @@ function App() {
           element: <Panel />,
         },{
           path: "/allcourses",
-          element : <AllCourse/>
+          element : <AllCourse/>,
+        },{
+          path:"/login",
+          element:<Loginlevel1/>
+        },{
+          path:"teachers",
+          element:<AllTeacers/>
         }
       ],
     },

@@ -3,6 +3,10 @@ import React from "react";
 import * as Yup from "yup";
 import { Sendloginrequest } from "../../core/services/api/login/login acrion";
 import { setItem } from "../../core/services/common/storage.services";
+import signin from '../../assets/register/Image 6.png';
+import academylogo from '../../assets/register/ac-Logo.png';
+import { handletoken } from "../../redux/token";
+import { useDispatch,useSelector } from "react-redux";
 
 const Loginlevel1 = () => {
   const validationSchema = Yup.object({
@@ -24,6 +28,8 @@ const Loginlevel1 = () => {
       if (response) {
         alert("successfully sent");
         setItem("token", response.token);
+        dispatch(handletoken(response.token))
+
       } else {
         console.error("Failed");
       }

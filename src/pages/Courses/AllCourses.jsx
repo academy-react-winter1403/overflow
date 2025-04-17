@@ -56,7 +56,7 @@ const AllCourse = () => {
     };
 
     return (
-        <div className="w-full bg-gray-50 flex justify-center m-auto flex-wrap ">
+        <div className="w-9/10 bg-gray-50 flex justify-center m-auto flex-wrap ">
 
             <div className="border border-black h-16 w-full mt-14 mb-14 bg-white text-right leading-14 text-3xl">
                 دوره ها
@@ -117,7 +117,7 @@ const AllCourse = () => {
                 </div>
 
 
-                <div className="w-[25%] border border-black justify-items-center bg-white rounded-md">
+                <div className="w-[25%] border border-black justify-items-center bg-white rounded-md h-120">
                     <div className="w-8/10 h-12 mt-9 text-right text-blue-900 text-xl">فیلتر ها</div>
                     <div className="mt-4 w-8/10 h-10 border-2 border-gray-300 rounded-md"></div>
                     <div className="mt-4 w-8/10 h-10 border-2 border-gray-300 rounded-md"></div>
