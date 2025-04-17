@@ -25,3 +25,25 @@
   --font-vazir: "Vazir", sans-serif;
   --font-kalameh-num: "KalamehNumber", sans-serif;
 }
+/* Hide scrollbar but allow scrolling */
+.custom-scrollbar {
+  overflow-y: scroll; /* Enable scrolling */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0px; /* Remove scrollbar width */
+  height: 0px; /* Remove scrollbar height for horizontal scroll */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent; /* Hide the scrollbar thumb */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Hide the scrollbar track */
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none; /* For Internet Explorer */
+  scrollbar-width: none; /* For Firefox */
+}

@@ -8,9 +8,8 @@ import { Registerlvl3 } from "../components/Register/Registerlvl3.jsx";
 import { Registerlvl2 } from "../components/Register/Registerlvl2.jsx";
 import { Panel } from "../components/Panel/Panel.jsx";
 import { AllCourse } from "../pages/Courses/AllCourses.jsx";
-import News from "../pages/News/News.jsx";
-import { AllTeacers } from "../pages/teachers/AllTeachers.jsx";
-import { Loginlevel1 } from "../pages/Auth/Login.jsx";
+import NewsPage from "../pages/News/NewsPage.jsx";
+import NewsDetails from "../pages/News/NewsDetails.jsx";
 
 
 
@@ -42,7 +41,11 @@ function App() {
         },
         {
           path: "/News",
-          element: <News />,
+          element: <NewsPage />,
+        },
+        {
+          path: "/NewsDetails",
+          element: <NewsDetails />,
         },
         {
           path: "/Panel",
