@@ -38,7 +38,7 @@ const Registerlvl2 = () => {
         alert("<<<Payload successfully sent>>>");
         console.log("Payload successfully sent:", response.data);
 
-        navigate("/step3"); // Redirect to the next step
+        navigate("/Register-3"); // Redirect to the next step
       } else {
         console.error("Failed to send payload.");
       }

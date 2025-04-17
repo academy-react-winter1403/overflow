@@ -28,7 +28,7 @@ const Register = () => {
         setItem("userPhone", phone);
         console.log("Phone number saved to local storage:", phone);
 
-        navigate("/step2"); 
+        navigate("/Register-2"); 
       } else {
         console.log("Failed to send phone number.");
       }
