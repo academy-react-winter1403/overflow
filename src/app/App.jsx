@@ -14,6 +14,7 @@ import { AllTeacers } from "../pages/teachers/AllTeachers.jsx";
 import { Loginlevel1 } from "../pages/Auth/Login.jsx";
 import { Resetpasswordlevel1 } from "../pages/Auth/ForgetPassStep1.jsx";
 import { Resetpasswordlevel2 } from "../pages/Auth/ForgetPassStep2.jsx";
+import { Idk } from "../components/Ep/Idk.jsx";
 
 
 function App() {
@@ -71,11 +72,16 @@ function App() {
         {
           path : "/rest1",
           element:<Resetpasswordlevel1/>
-        },{
+        },
+        {
           path : "/rest2/:code",
           element : <Resetpasswordlevel2/>
         }
-
+        ,
+        {
+          path:'/sendyourthing',
+          element:<Idk /> 
+        }
       ],
     },
   ];
