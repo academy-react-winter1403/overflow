@@ -18,7 +18,7 @@ const Resetpasswordlevel1 = () => {
     try {
       const sendData = {
         email: values.email,
-        baseUrl: "https://localhost:5173/resetpassword"
+        baseUrl: "http://localhost:5173/rest1"
       };
       console.log(sendData);
 
