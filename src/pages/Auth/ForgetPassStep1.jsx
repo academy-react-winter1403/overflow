@@ -5,10 +5,10 @@ import { SendVerifyMessage } from "../../core/services/api/forgetpassworld/restp
 import signin from '../../assets/register/Image 6.png';
 import academylogo from '../../assets/register/ac-Logo.png';
 import { setItem } from "../../core/services/common/storage.services";
-import { useNavigate } from "react-router";
+
 
 const Resetpasswordlevel1 = () => {
-  const navigate = useNavigate(); 
+
 
   const validationSchema = Yup.object({
     email: Yup.string().email("ایمیل معتبر نیست").required("وارد کردن ایمیل الزامی است"),
@@ -18,7 +18,7 @@ const Resetpasswordlevel1 = () => {
     try {
       const sendData = {
         email: values.email,
-        baseUrl: "http://localhost:5173/rest1"
+        baseUrl: "http://localhost:5173/rest2"
       };
       console.log(sendData);
 
@@ -27,8 +27,7 @@ const Resetpasswordlevel1 = () => {
       if (response) {
         alert("کد با موفقیت ارسال شد");
         setItem("id", response.id);
-        console.log(response.id);
-        navigate("/rest2"); 
+        console.log(response.id); 
       } else {
         console.error("ارسال ناموفق");
       }
