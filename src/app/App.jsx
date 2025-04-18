@@ -72,7 +72,7 @@ function App() {
           path : "/rest1",
           element:<Resetpasswordlevel1/>
         },{
-          path : "/rest2",
+          path : "/rest2/:code",
           element : <Resetpasswordlevel2/>
         }
 
