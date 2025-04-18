@@ -12,6 +12,9 @@ import NewsPage from "../pages/News/NewsPage.jsx";
 import NewsDetails from "../pages/News/NewsDetails.jsx";
 import { AllTeacers } from "../pages/teachers/AllTeachers.jsx";
 import { Loginlevel1 } from "../pages/Auth/Login.jsx";
+import { Resetpasswordlevel1 } from "../pages/Auth/ForgetPassStep1.jsx";
+import { Resetpasswordlevel2 } from "../pages/Auth/ForgetPassStep2.jsx";
+
 
 function App() {
   const publicRoutes = [
@@ -65,6 +68,14 @@ function App() {
           path: "teachers",
           element: <AllTeacers />,
         },
+        ,{
+          path : "/rest1",
+          element:<Resetpasswordlevel1/>
+        },{
+          path : "/rest2",
+          element : <Resetpasswordlevel2/>
+        }
+
       ],
     },
   ];

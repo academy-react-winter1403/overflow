@@ -7,8 +7,13 @@ import { Commentdiv } from "../../components/coursesPage/Commentdiv";
 import { useParams } from "react-router";
 import { getApi } from "../../core/services/api/getApi";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Courses = () => {
+
+  const usetoken = useSelector((state) => state.token);
+
+
   const { id } = useParams(); 
   console.log("Course ID:", id);
 
@@ -32,6 +37,7 @@ const Courses = () => {
   useEffect(() => {
     if (id) {
       getCourseDetails();
+      console.log("token :",usetoken)
     }
   }, [id]);
 
