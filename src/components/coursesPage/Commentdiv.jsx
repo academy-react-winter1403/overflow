@@ -89,8 +89,8 @@ const Commentdiv = ({ courseId }) => {
           ) : comments.length > 0 ? (
             comments.map((comment) => (
               <div key={comment.id} className="pl-2 h-80 text-right flex flex-row items-end justify-end border-b-2 border-gray-300">
-                <div className="flex flex-col w-2/10 gap-20 h-full">
-                  <div className="flex flex-row">{comment.insertDate}</div>
+                <div className="flex flex-col w-2/10 gap-20 h-full text-left">
+                  <div className="flex flex-row">{comment.insertDate.slice(0,10)}<br/> {comment.insertDate.slice(11,19)} </div>
                   <div className="flex flex-row gap-5 pb-5">
                     <button
                       onClick={() => handleLike(comment.id)}
