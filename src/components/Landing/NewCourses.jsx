@@ -21,7 +21,7 @@ function NewCourses() {
 
   const handleNavigation = (id) => {
     console.log(id)
-    navigate(`Courses/${id}`); 
+    navigate(`AllCourses/Courses/${id}`); 
   };
 
   return (

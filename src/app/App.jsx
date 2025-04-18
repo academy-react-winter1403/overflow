@@ -13,7 +13,6 @@ import NewsDetails from "../pages/News/NewsDetails.jsx";
 import { AllTeacers } from "../pages/teachers/AllTeachers.jsx";
 import { Loginlevel1 } from "../pages/Auth/Login.jsx";
 
-
 function App() {
   const publicRoutes = [
     {
@@ -36,31 +35,36 @@ function App() {
           path: "/Register-3",
           element: <Registerlvl3 />,
         },
-        {
-          path: "/Courses/:id",
-          element: <Courses />,
-        },
+
         {
           path: "/News",
           element: <NewsPage />,
         },
         {
-          path: "/NewsDetails",
+          path: "News/NewsDetails/:id",
           element: <NewsDetails />,
         },
         {
           path: "/Panel",
           element: <Panel />,
-        },{
+        },
+        {
           path: "/allcourses",
-          element : <AllCourse/>,
-        },{
-          path:"/login",
-          element:<Loginlevel1/>
-        },{
-          path:"teachers",
-          element:<AllTeacers/>
-        }
+          element: <AllCourse />,
+        },
+        {
+          path: "/allcourses/Courses/:id",
+          element: <Courses />,
+        },
+
+        {
+          path: "/login",
+          element: <Loginlevel1 />,
+        },
+        {
+          path: "teachers",
+          element: <AllTeacers />,
+        },
       ],
     },
   ];

@@ -54,6 +54,11 @@ function NewsPage() {
       pageNumber: 1,
     }));
   };
+  //Handel navigation
+  const handleNavigation = (id) => {
+    console.log(id)
+    navigate(`NewsDetails/${id}`); 
+  };
   // Handle Search Change
   const handelSearch = (search) => {
     seturlParams((prev) => ({
@@ -81,7 +86,11 @@ function NewsPage() {
       {/* News List */}
       <div className="grid grid-cols-3 max-sm:grid-cols-2 max-md:grid-cols-3 gap-6">
         {newsList.map((news) => (
-          <NewsCard item={news} key={news.id} />
+          <NewsCard
+            handleNavigation={handleNavigation}
+            item={news}
+            key={news.id}
+          />
         ))}
       </div>
     </div>
