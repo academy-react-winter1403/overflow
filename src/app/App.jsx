@@ -68,7 +68,7 @@ function App() {
           path: "teachers",
           element: <AllTeacers />,
         },
-        ,{
+        {
           path : "/rest1",
           element:<Resetpasswordlevel1/>
         },{
