@@ -5,11 +5,11 @@ import { Setnewpass } from "../../core/services/api/forgetpassworld/setnewpasswo
 import signin from '../../assets/register/Image 6.png';
 import academylogo from '../../assets/register/ac-Logo.png';
 import { getItem } from "../../core/services/common/storage.services";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 
 
 const Resetpasswordlevel2 = () => {
-    const { code } = useParams(); // فقط code رو گرفتم
+    const { code } = useParams(); 
   
     const validationSchema = Yup.object({
       newpassword: Yup.string().required("وارد کردن پسورد الزامی است"),
@@ -20,7 +20,7 @@ const Resetpasswordlevel2 = () => {
         const resetdata = {
           newPassword: values.newpassword,
           userId: getItem("id"),
-          resetValue: code, // اینجا
+          resetValue: code, 
         };
   
         console.log(resetdata);

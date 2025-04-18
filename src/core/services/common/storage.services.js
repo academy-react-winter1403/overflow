@@ -7,6 +7,7 @@ const setItem = (key, value) => {
     return false;
   };
   
+  
   const getItemGeneric = (key) => {
     if (localStorage.getItem(key)) return localStorage.getItem(key);
     return false;
