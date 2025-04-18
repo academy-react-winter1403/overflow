@@ -32,6 +32,7 @@ const Loginlevel1 = () => {
         alert("ورود موفقیت‌آمیز بود");
         setItem("token", response.token);
         dispatch(handletoken(response.token));
+        console.log(response.token)
       } else {
         console.error("Failed");
       }
