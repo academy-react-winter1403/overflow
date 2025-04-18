@@ -66,7 +66,7 @@ const Top = ({ data }) => {
 
         <div className='flex flex-row-reverse text-white gap-2'>
           <img src={calender} />
-          <p>{currentDate}</p> 
+          <p>{courseData.insertDate.slice(0,10)}</p> 
         </div>
       </div>
     </div>
