@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const token=createSlice({
     name:"token",
     initialState:{
-        token:""
+        token:"11"
     },
     reducers:{
         handletoken :(state,{payload})=>{
