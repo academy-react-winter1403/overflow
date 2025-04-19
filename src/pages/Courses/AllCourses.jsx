@@ -63,7 +63,7 @@ const AllCourse = () => {
             </div>
 
 
-            <div className="border border-black w-full h-18 bg-white rounded flex justify-center">
+            <div className="border font-kalameh text-gray-700 font-black text-4xl border-black w-full h-18 bg-white rounded flex justify-center">
                 <div
                     onClick={() => handleSorting("cost","ASC")}
                     className={`cursor-pointer w-[15%] h-full text-center leading-14 text-3xl ${activeSort === "cheapest" ? "text-blue-500 font-bold" : "text-gray-400"
