@@ -1,3 +1,4 @@
+import { getItem } from '../../common/storage.services.js';
 import http from '../../interceptor/index.js';
 
 const GetComment = async (id) => {
@@ -26,6 +27,7 @@ const PostComment = async (commentData) => {
   try {
     
     const response = await http.post('/Course/AddCommentCourse', commentData,);
+    
     return response.data;
 
   } catch (error) {
@@ -36,18 +38,12 @@ const PostComment = async (commentData) => {
   }
 };
 
-const Likecommnet = async (commentId, token) => {
+const Likecommnet = async () => {
   try {
-    const response = await http.post(
-      `/Course/AddCourseCommentLike`,
-      null,
-      {
-        params: { CourseCommandId: commentId },
-        headers: {
-          Authorization: `Bearer ${token}`, 
-        },
-      }
-    );
+
+          const token = getItem("token");
+          console.log("token:",token) 
+    const response = await http.post(`/Course/AddCourseCommentLike`);
 
     console.log("Raw response:", response);
 
@@ -63,17 +59,11 @@ const Likecommnet = async (commentId, token) => {
 };
 
 
-const DisLikecommnet = async (commentId, token) => {
+const DisLikecommnet = async () => {
   try {
+
     const response = await http.post(
-      `/Course/AddCourseCommentDissLike?CourseCommandId=<uuid>`,
-      null,
-      {
-        params: { CourseCommandId: commentId },
-        headers: {
-          Authorization: `Bearer ${token}`, 
-        },
-      }
+      `/Course/AddCourseCommentDissLike?CourseCommandId=<uuid>`
     );
 
     console.log("Raw response:", response);

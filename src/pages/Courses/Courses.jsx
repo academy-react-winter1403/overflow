@@ -50,7 +50,7 @@ const Courses = () => {
   }
 
   return (
-    <div className="flex justify-center items-center align flex-col relative mt-10 mb-10 w-9/10 m-auto">
+    <div className="flex justify-center items-center align flex-col relative mt-10 mb-10 w-9/10 m-auto font-kalameh">
       <Top data={courseData} />
 
       <div className="flex flex-row-reverse w-10/10">
@@ -65,7 +65,7 @@ const Courses = () => {
                       {/* comments */}
 
       <div className="flex flex-col w-10/10 mt-10 gap-10 items-end ">
-        <CommentSection />
+        <CommentSection CourseId={id}/>
         <Commentdiv courseId={id} /> 
       </div>
     </div>
