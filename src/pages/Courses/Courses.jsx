@@ -65,7 +65,7 @@ const Courses = () => {
                       {/* comments */}
 
       <div className="flex flex-col w-10/10 mt-10 gap-10 items-end ">
-        <CommentSection CourseId={id}/>
+        <CommentSection CourseId={id} data={courseData} />
         <Commentdiv courseId={id} /> 
       </div>
     </div>

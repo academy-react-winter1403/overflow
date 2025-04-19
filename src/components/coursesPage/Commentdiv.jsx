@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { GetComment, Likecommnet, DisLikecommnet } from "../../core/services/api/GetCourses/Comment.js";
+import { GetComment, Likecommnet, DisLikecommnet,Getreply } from "../../core/services/api/GetCourses/Comment.js";
 
 import Like from '../../assets/Coursesimage/like.png';
 import disLike from '../../assets/Coursesimage/dislike.png';
 import { getItem } from "../../core/services/common/storage.services.js";
 
+
 const Commentdiv = ({ courseId }) => {
+
+  console.log("couseid::::::::::::::::::::::::",courseId);
   const [comments, setComments] = useState([]);
   const [Openreply, setOpenreply] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false); // State to manage button text
@@ -77,6 +80,33 @@ const Commentdiv = ({ courseId }) => {
       alert("Error submitting dislike:", err.message || err);
     }
   };
+const handleReply = async (commentId, courseId) => { // Ensure courseId is the correct variable name
+  try {
+    // Check if both commentId and courseId are valid
+    if (!commentId || !courseId) {
+      alert("CommentId or CourseId is missing. Cannot fetch replies.");
+      return;
+    }
+
+    console.log("Fetching replies with:", { courseId, commentId });
+
+    // Make the API call
+    const response = await Getreply(courseId, commentId);
+
+    console.log("Getreply API response:", response);
+
+    // Handle response
+    if (response) {
+      alert("Replies fetched successfully!");
+      // Process or display replies as needed (e.g., update state or UI)
+    } else {
+      alert("No replies found for this comment.");
+    }
+  } catch (err) {
+    console.error("Error fetching replies:", err.message || err);
+    alert("Error fetching replies. Please try again later.");
+  }
+};
 
   const handlereply = () => {
     setOpenreply(!Openreply);
@@ -148,12 +178,25 @@ const Commentdiv = ({ courseId }) => {
                       </div>
                     </div>
                   )}
-                  <button
-                    onClick={handlereply}
-                    className="mt-1 mb-1 border w-1/10 h-4/10 rounded-3xl bg-deep-blue text-white font-bold transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-700"
-                  >
-                    {isExpanded ? "مشاهده کمتر" : "مشاهده بیشتر"}
-                  </button>
+
+                      <div className="gap-3 flex flex-row h-10/10">
+                        <button
+
+                          onClick={handlereply}
+                          className="mt-1 mb-1 border w-1/10 h-7/10 rounded-3xl bg-deep-blue text-white font-bold transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-700"
+                        >
+                          {isExpanded ? "مشاهده کمتر" : "مشاهده بیشتر"}
+                        </button> 
+                                 
+                        <button
+
+                          onClick={handleReply}
+                          className="mt-1 mb-1 border w-1/10 h-7/10 rounded-3xl bg-deep-blue text-white font-bold transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-700"
+                        >
+                          {isExpanded ? " کمتر" : " بیشتر"}
+                        </button>
+
+                      </div>
                 </div>
               </div>
             ))

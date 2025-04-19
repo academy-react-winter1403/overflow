@@ -2,6 +2,7 @@ import { getItem } from '../../common/storage.services.js';
 import http from '../../interceptor/index.js';
 
 const GetComment = async (id) => {
+
   if (!id) {
     console.error("Invalid ID provided to GetComment.");
     return false; 
@@ -13,8 +14,6 @@ const GetComment = async (id) => {
     
     console.log("Full API response:", response);
 
-    // const { data } = response || {}; 
-    // console.log("Data fetched from API:", data);
 
     return response || []; 
   } catch (error) {
@@ -25,33 +24,61 @@ const GetComment = async (id) => {
 
 const PostComment = async (commentData) => {
   try {
-    
-    const response = await http.post('/Course/AddCommentCourse', commentData,);
-    
+    const token = getItem("token"); 
+
+    if (!token) {
+      throw new Error("Authentication token is missing. Please log in.");
+    }
+
+    const response = await http.post('/Course/AddCommentCourse', commentData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json", 
+      },
+    });
+
+    console.log("Response Data:", response.data);
+
     return response.data;
-
   } catch (error) {
+    console.error("Error in PostComment:", error.message || error.response?.data || "Unknown error");
 
-    console.log('error', error.message);
-    return false;
 
+    console.log("Error Response:", error.response?.data);
+
+    return false; 
   }
 };
 
-const Likecommnet = async () => {
+const Likecommnet = async (commentId) => {
   try {
+    
+    const token = getItem("token");
+    if (!token) {
+      throw new Error("Authentication token is missing. Please log in.");
+    }
+    console.log("Token:", token);
 
-          const token = getItem("token");
-          console.log("token:",token) 
-    const response = await http.post(`/Course/AddCourseCommentLike`);
+    
+    const response = await http.post(
+      `/Course/AddCourseCommentLike`,
+      { commentId }, 
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     console.log("Raw response:", response);
 
+   
     if (!response || !response.data) {
       throw new Error("API response is undefined or missing required fields.");
     }
 
-    return response.data;
+    return response.data; 
   } catch (error) {
     console.error("Error submitting like:", error);
     throw error;
@@ -79,5 +106,36 @@ const DisLikecommnet = async () => {
   }
 };
 
+const Getreply = async (CourseId, CommentId) => {
+  try {
 
-export { GetComment,PostComment,Likecommnet,DisLikecommnet };
+    if (!CourseId || !CommentId) {
+      throw new Error("CourseId or CommentId is missing or invalid.");
+    }
+
+    console.log("Fetching replies for:", { CourseId, CommentId });
+
+
+    const reply = await http.get(`/Course/GetCourseReplyCommnets/${CourseId}/${CommentId}`);
+
+    console.log("Data from reply API:", reply);
+
+    return reply.data; 
+  } catch (error) {
+    console.error("Error fetching reply:", error.response?.data || error.message);
+
+    if (error.response) {
+      console.log("Response Data:", error.response.data);
+    }
+
+    throw error; 
+  }
+};
+
+
+export { 
+        GetComment,
+        PostComment,
+        Likecommnet,
+        DisLikecommnet,
+        Getreply };

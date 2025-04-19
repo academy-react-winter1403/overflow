@@ -1,66 +1,71 @@
-import { Field, Formik } from 'formik';
-import React from 'react';
-import { Form } from 'react-router';
-import { PostComment } from '../../core/services/api/GetCourses/Comment';
-import { getItem } from '../../core/services/common/storage.services';
+import { Field, Formik } from "formik";
+import React from "react";
+import { Form } from "react-router"; // Verify correct import
+import { PostComment } from "../../core/services/api/GetCourses/Comment";
+import { getItem } from "../../core/services/common/storage.services";
 
+const CommentSection = ({ CourseId,data }) => {
 
+  console.log("Course ID:", CourseId);
+  console.log("Courseeeeeeeeeeeeeeeeeeeeeeeeeeeeee data:", data);
 
-const CommentSection = ({CourseId}) => {
-  console.log("kkk ",CourseId);
-  
   const handleSubmit = async (values, { resetForm }) => {
-    const gettoken = getItem("token");
-    console.log(gettoken);
-
-    const DataForSend = {
-      title: values.title,
-      CourseId: CourseId,
-      Describe: values.Describe,
-    };
-    console.log(DataForSend)
-    const response = await PostComment(DataForSend); 
-
-    if (response) {
-      alert('نظر شما با موفقیت ارسال شد!'); 
-
-      resetForm(); 
-
-    } else {
-
-      alert('ارسال نظر ناموفق بود. لطفا مجدد تلاش کنید.');
+    const token = getItem("token");
+    if (!token) {
+      alert("لطفا وارد شوید تا بتوانید نظر ارسال کنید."); // Alert if token is missing
+      return;
     }
 
+    // Prepare data for API call
+    const DataForSend = {
+      title: values.title.trim(), // Ensure no extra spaces
+      CourseId: CourseId, // Pass course ID
+      Describe: values.Describe.trim(), // Ensure no extra spaces
+    };
+
+    console.log("Data for API:", DataForSend);
+
+    try {
+      const response = await PostComment(DataForSend);
+
+      if (response && response.success) { // Check if the response indicates success
+        alert(response.message || "نظر شما با موفقیت ارسال شد!");
+        resetForm(); // Clear the form fields after successful submission
+      } else {
+        alert(response.errors || "ارسال نظر ناموفق بود. لطفا مجدد تلاش کنید.");
+      }
+    } catch (error) {
+      alert("مشکلی در ارسال نظر پیش آمد. لطفا دوباره تلاش کنید.");
+      console.error("Submission error:", error);
+    }
   };
 
   return (
-    <div className="flex items-end flex-col w-7/11 h-88 bg-white rounded-3xl pr-10  overflow-hidden border-2">
-      <h5 className="mt-5  mb-5 text-3xl font-bold text-deep-blue">
-        نظرات
-      </h5>
+    <div className="flex items-end flex-col w-7/11 h-88 bg-white rounded-3xl pr-10 overflow-hidden">
+      <h5 className="mt-5 mb-5 text-3xl font-bold text-deep-blue">نظرات</h5>
       <Formik
-        initialValues={{ Describe: '' , title:'' }}
-        onSubmit={handleSubmit} 
+        initialValues={{ Describe: "", title: "" }}
+        onSubmit={handleSubmit}
       >
         {({ handleSubmit }) => (
-          <Form onSubmit={handleSubmit} >
-            <div className="flex flex-row items-end w-10/10 h-13/10 mr-50 ">
+          <Form onSubmit={handleSubmit}>
+            <div className="flex flex-col gap-4 w-10/10 ">
               <Field
                 type="text"
                 name="title"
-                className="w-10/10 h-full border-2 rounded-2xl text-right "
+                className="w-10/10 h-12 border-2 rounded-2xl p-2 text-right"
                 placeholder="موضوع"
-              /> 
+              />
               <Field
-                type="text"
+                as="textarea"
                 name="Describe"
-                className="w-10/10 h-full border-2 rounded-2xl text-right "
+                className="w-full h-20 border-2 rounded-2xl p-2 text-right"
                 placeholder="نظر خود را بنویسید..."
               />
             </div>
             <button
               type="submit"
-              className="ml-105 mt-5 border-2 rounded-2xl bg-deep-blue w-[147px] h-[52px] text-amber-50 leading-11"
+              className="ml-auto mt-5 border-2 rounded-2xl bg-deep-blue px-6 py-2 text-amber-50 font-bold"
             >
               ارسال نظر
             </button>
