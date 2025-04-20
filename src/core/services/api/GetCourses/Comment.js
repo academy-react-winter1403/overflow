@@ -56,24 +56,18 @@ const Likecommnet = async (commentId) => {
 
     
     const response = await http.post(
-      `/Course/AddCourseCommentLike`,
-      { commentId }, 
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
+      `/Course/AddCourseCommentLike?CourseCommandId=${commentId}`,
+ 
     );
 
     console.log("Raw response:", response);
 
    
-    if (!response || !response.data) {
+    if (!response || !response) {
       throw new Error("API response is undefined or missing required fields.");
     }
 
-    return response.data; 
+    return response; 
   } catch (error) {
     console.error("Error submitting like:", error);
     throw error;
@@ -81,20 +75,20 @@ const Likecommnet = async (commentId) => {
 };
 
 
-const DisLikecommnet = async () => {
+const DisLikecommnet = async (commentId) => {
   try {
 
     const response = await http.post(
-      `/Course/AddCourseCommentDissLike?CourseCommandId=<uuid>`
+      `/Course/AddCourseCommentDissLike?CourseCommandId=${commentId}`
     );
 
     console.log("Raw response:", response);
 
-    if (!response || !response.data) {
+    if (!response || !response) {
       throw new Error("API response is undefined or missing required fields.");
     }
 
-    return response.data;
+    return response;
   } catch (error) {
     console.error("Error submitting like:", error);
     throw error;
@@ -115,7 +109,26 @@ const Getreply = async (CourseId, CommentId) => {
 
     console.log("Data from reply API:", reply);
 
-    return reply.data; 
+    return reply; 
+  } catch (error) {
+    console.error("Error fetching reply:", error.response?.data || error.message);
+
+    if (error.response) {
+      console.log("Response Data:", error.response.data);
+    }
+
+    throw error; 
+  }
+};
+
+const Sendreply = async (replydata) => {
+  try {
+
+    const reply = await http.post(`/Course/AddReplyCourseComment`,replydata);
+
+    console.log("Data from reply API:", reply);
+
+    return reply; 
   } catch (error) {
     console.error("Error fetching reply:", error.response?.data || error.message);
 
@@ -133,4 +146,5 @@ export {
         PostComment,
         Likecommnet,
         DisLikecommnet,
-        Getreply };
+        Getreply,
+        Sendreply };
