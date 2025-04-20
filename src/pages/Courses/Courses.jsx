@@ -8,10 +8,11 @@ import { useParams } from "react-router";
 import { getApi } from "../../core/services/api/getApi";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { getItem } from "../../core/services/common/storage.services";
 
 const Courses = () => {
 
-  const usetoken = useSelector((state) => state.token);
+  const usetoken = getItem("token");
 
 
   const { id } = useParams(); 
@@ -24,7 +25,7 @@ const Courses = () => {
   const getCourseDetails = async () => {
     try {
       const response = await getApi(`/Home/GetCourseDetails?CourseId=${id}`);
-      console.log("Course details fetched:", response);
+      // console.log("Course details fetched:", response);
       setCourseData(response);
     } catch (err) {
       console.error("Error fetching course details:", err.message);
@@ -37,7 +38,7 @@ const Courses = () => {
   useEffect(() => {
     if (id) {
       getCourseDetails();
-      console.log("token :",usetoken)
+      console.log("token course :",usetoken)
     }
   }, [id]);
 

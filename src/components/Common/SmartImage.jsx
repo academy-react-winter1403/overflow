@@ -1,9 +1,9 @@
 import React from "react";
-
+import backupImg from "../../assets/common/cardImg.png"
 const SmartImage = ({ src, fallback, alt = "Image", className = "" }) => {
   const handleError = (e) => {
     e.target.onerror = null; 
-    e.target.src = fallback;
+    e.target.src = fallback || backupImg;
   };
 
   return (

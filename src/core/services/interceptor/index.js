@@ -1,10 +1,11 @@
 import axios from "axios";
 import { getItem } from "../common/storage.services";
- 
- const baseURL = import.meta.env.VITE_BASE_URL;
+
+const baseURL = import.meta.env.VITE_BASE_URL;
 
 const instance = axios.create({
-  baseURL: baseURL, 
+  baseURL: baseURL,
+  
 });
 
 const onSuccess = (response) => {
@@ -24,13 +25,11 @@ const onError = (err) => {
 instance.interceptors.response.use(onSuccess, onError);
 
 instance.interceptors.request.use((opt) => {
-
   const token = getItem("token");
+  console.log(token);
+  opt.headers.Authorization = "Bearer " + token;
 
-  opt.headers.Authorization = "bearer " + token;
-  
   return opt;
-
 });
 
 export default instance;

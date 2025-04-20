@@ -1,73 +1,118 @@
-import { Field, Formik } from "formik";
 import React from "react";
-import { Form } from "react-router"; // Verify correct import
-import { PostComment } from "../../core/services/api/GetCourses/Comment";
-import { getItem } from "../../core/services/common/storage.services";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import http from "../../core/services/interceptor";  // Assuming you are using an interceptor for http requests
 
-const CommentSection = ({ CourseId,data }) => {
+const CommentSection = ({ CourseId, data }) => {
+  const handleSubmit = async (values) => {
+    const { courseId, title, describe } = values;
 
-  console.log("Course ID:", CourseId);
-  console.log("Courseeeeeeeeeeeeeeeeeeeeeeeeeeeeee data:", data);
+    const formData = new FormData();
+    formData.append('CourseId', courseId);
+    formData.append('Title', title);
+    formData.append('Describe', describe);
 
-  const handleSubmit = async (values, { resetForm }) => {
-    const token = getItem("token");
-    if (!token) {
-      alert("لطفا وارد شوید تا بتوانید نظر ارسال کنید."); // Alert if token is missing
-      return;
+    // Log FormData entries
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
     }
 
-    // Prepare data for API call
-    const DataForSend = {
-      title: values.title.trim(), // Ensure no extra spaces
-      CourseId: CourseId, // Pass course ID
-      Describe: values.Describe.trim(), // Ensure no extra spaces
-    };
-
-    console.log("Data for API:", DataForSend);
-
     try {
-      const response = await PostComment(DataForSend);
+      // Make the API request
+      const responseData = await http.post("/Course/AddCommentCourse", formData);
 
-      if (response && response.success) { // Check if the response indicates success
-        alert(response.message || "نظر شما با موفقیت ارسال شد!");
-        resetForm(); // Clear the form fields after successful submission
+      // Log the response data
+      console.log(responseData);
+
+      if (responseData.data.success) {
+        alert('Comment posted successfully!');
       } else {
-        alert(response.errors || "ارسال نظر ناموفق بود. لطفا مجدد تلاش کنید.");
+        alert('Failed to post comment');
       }
+
+      return responseData.data;
     } catch (error) {
-      alert("مشکلی در ارسال نظر پیش آمد. لطفا دوباره تلاش کنید.");
-      console.error("Submission error:", error);
+      // Handle error if the API request fails
+      alert('Error: ' + (error.response ? error.response.data.message : error.message));
     }
   };
 
   return (
-    <div className="flex items-end flex-col w-7/11 h-88 bg-white rounded-3xl pr-10 overflow-hidden">
-      <h5 className="mt-5 mb-5 text-3xl font-bold text-deep-blue">نظرات</h5>
+    <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg">
+      <h2 className="text-2xl font-semibold mb-4">Post a Comment for a Course</h2>
       <Formik
-        initialValues={{ Describe: "", title: "" }}
+        initialValues={{
+          courseId: CourseId || '',  // Set the courseId to the prop value
+          title: '',
+          describe: '',
+        }}
+        validate={(values) => {
+          const errors = {};
+          if (!values.courseId) errors.courseId = 'Course ID is required';
+          if (!values.title) errors.title = 'Title is required';
+          if (!values.describe) errors.describe = 'Description is required';
+          return errors;
+        }}
         onSubmit={handleSubmit}
       >
-        {({ handleSubmit }) => (
-          <Form onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-4 w-10/10 ">
+        {() => (
+          <Form className="space-y-4">
+            <div>
+              <label htmlFor="courseId" className="block text-sm font-medium text-gray-700">
+                Course ID
+              </label>
               <Field
                 type="text"
-                name="title"
-                className="w-10/10 h-12 border-2 rounded-2xl p-2 text-right"
-                placeholder="موضوع"
+                id="courseId"
+                name="courseId"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
               />
-              <Field
-                as="textarea"
-                name="Describe"
-                className="w-full h-20 border-2 rounded-2xl p-2 text-right"
-                placeholder="نظر خود را بنویسید..."
+              <ErrorMessage
+                name="courseId"
+                component="div"
+                className="text-red-500 text-sm mt-1"
               />
             </div>
+
+            <div>
+              <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+                Title
+              </label>
+              <Field
+                type="text"
+                id="title"
+                name="title"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              />
+              <ErrorMessage
+                name="title"
+                component="div"
+                className="text-red-500 text-sm mt-1"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="describe" className="block text-sm font-medium text-gray-700">
+                Description
+              </label>
+              <Field
+                as="textarea"
+                id="describe"
+                name="describe"
+                rows="4"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              />
+              <ErrorMessage
+                name="describe"
+                component="div"
+                className="text-red-500 text-sm mt-1"
+              />
+            </div>
+
             <button
               type="submit"
-              className="ml-auto mt-5 border-2 rounded-2xl bg-deep-blue px-6 py-2 text-amber-50 font-bold"
+              className="w-full py-2 bg-indigo-600 text-black font-semibold rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
             >
-              ارسال نظر
+              Submit Comment
             </button>
           </Form>
         )}

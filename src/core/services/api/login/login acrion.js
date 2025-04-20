@@ -4,7 +4,7 @@ const Sendloginrequest = async (logininfo) => {
   try {
   const response = await http.post('/Sign/Login', logininfo);
 
-    console.log(";",response);
+    console.log("login responsee",response);
 
     return response;
   } catch (error) {

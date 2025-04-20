@@ -30,14 +30,9 @@ const PostComment = async (commentData) => {
       throw new Error("Authentication token is missing. Please log in.");
     }
 
-    const response = await http.post('/Course/AddCommentCourse', commentData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json", 
-      },
-    });
+    const response = await http.post('/Course/AddCommentCourse', commentData);
 
-    console.log("Response Data:", response.data);
+    console.log("Response Data:", commentData);
 
     return response.data;
   } catch (error) {

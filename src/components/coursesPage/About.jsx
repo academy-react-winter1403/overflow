@@ -3,7 +3,7 @@ import React from 'react'
 const About = ({data}) => {
 
   const courseData = data || {};
-  console.log("desc:",courseData.describe)
+  // console.log("desc:",courseData.describe)
 
   return (
     

@@ -1,5 +1,5 @@
 import React from "react";
-import cardImg from "../../assets/common/cardImg.png";
+import fallbackNews from "../../assets/News/newspaper.png";
 import clock from "../../assets/common/clock.png";
 import SmartImage from "./SmartImage";
 
@@ -13,7 +13,7 @@ function NewsCard({ item, index, handleNavigation }) {
     >
       <div className="relative h-[200px]">
        {/* image */}
-        <SmartImage src={item?.currentImageAddressTumb} fallback={cardImg} alt={item.title} className="absolute shadow-deep-blue shadow-lg -top-15 w-[340px] h-[223px] object-cover rounded-3xl" />
+        <SmartImage src={item?.currentImageAddressTumb} fallback={fallbackNews} alt={item.title} className="absolute shadow-deep-blue shadow-lg -top-15 w-[340px] h-[223px] object-cover rounded-3xl" />
       </div>
 
       <div className="overflow-ellipsis text-right overflow-hidden">
