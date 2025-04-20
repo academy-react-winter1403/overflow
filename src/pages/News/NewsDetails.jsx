@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams,NavLink } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { getApi } from "../../core/services/api/getApi";
 import SmartImage from "../../components/Common/SmartImage";
 import fallbackNews from "../../assets/News/newspaper.png";
+
 const NewsDetails = () => {
   const [newsData, setNewsData] = useState(null);
   const { id } = useParams(); // Get the news ID from URL
   const URL = `/News/${id}`;
-  const navigate = useNavigate();
-
 
   useEffect(() => {
     const getNewsDetails = async () => {
       const response = await getApi(URL, "detailsNewsDto");
-      console.log(response);
       setNewsData(response);
     };
 
@@ -27,9 +25,6 @@ const NewsDetails = () => {
       </div>
     );
   }
-const handelNavigate=()=>{
-
-}
 
   const {
     title,
@@ -47,44 +42,43 @@ const handelNavigate=()=>{
     insertDate,
   } = newsData;
 
-  // addUserFullName: "امیرررر-حسینی"
-
-  // currentDissLikeCount: 189
-  // currentLikeCount: 473
-  // describe: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده ازلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده ازلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از"
-  googleDescribe: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان ";
-  insertDate: "2025-02-22T08:57:20.02";
-  miniDescribe: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از";
-  newsCatregoryId: 2;
-  newsCatregoryName: "arasdasdda";
-  title: "یک خبر تستی222";
-  userId: 40322;
   return (
-    <div className=" mx-auto p-6">
-      <header className="text-center mb-6">
-        <h1 className="text-4xl font-bold text-gray-800">
-          {title || googleTitle}
-        </h1>
-        {miniDescribe && (
-          <p className="mt-2 text-lg text-gray-600">{miniDescribe}</p>
-        )}
-      </header>
-
-      <div className="mb-6">
-          <SmartImage
-            src={currentImageAddress||currentImageAddressTumb}
-            fallback={fallbackNews}
-            className="w- h-full object-cover rounded-lg shadow-lg"
-          />
+    <div className="font-kalameh text-gray-700 font-semibold flex flex-col items-center justify-center px-6 py-8">
+      
+      <div className="flex flex-col lg:flex-row justify-center max-w-8/10 w-full space-y-6 lg:space-y-0">
+        <header className="text-center lg:text-left lg:w-2/3 px-4">
+          <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-800">
+            {title || googleTitle}
+          </h1>
+          {miniDescribe && (
+            <p className="mb-4 text-lg text-gray-600">{miniDescribe}</p>
+          )}
+          <div className="flex space-x-4 mb-6">
+            <p className="text-deep-blue text-sm">{addUserFullName}</p>
+            <p className="text-xs text-gray-400">{new Date(insertDate).toLocaleDateString("fa-IR")}</p>
+            <p className="text-xs text-gray-400">{new Date(insertDate).toLocaleTimeString("fa-IR")}</p>
+          </div>
+          <NavLink
+            to={`/News?NewsCategoryId=${newsCatregoryId}`}
+            className="text-deep-blue bg-gray-200 px-4 py-2 rounded-full hover:scale-105 transition"
+          >
+            {newsCatregoryName}
+          </NavLink>
+        </header>
         
-        <p className="text-lg text-gray-700 whitespace-pre-line">
-          {describe || googleDescribe}
-        </p>
-        <p>{addUserFullName}</p>
-        <p>{new Date(insertDate).toLocaleDateString("fa-IR")}</p>
-        <p>{new Date(insertDate).toLocaleTimeString("fa-IR")}</p>
-        <NavLink to={`/News?NewsCategoryId=${newsCatregoryId}`} className="w-[108px] bg-deep-blue text-white h-[27px] rounded-[50px] ">{newsCatregoryName}</NavLink>
+        <div className="flex justify-center lg:w-1/3">
+          <SmartImage
+            src={currentImageAddress || currentImageAddressTumb}
+            fallback={fallbackNews}
+            className="w-full h-full object-cover rounded-lg shadow-lg"
+          />
+        </div>
       </div>
+      
+      <div className="mt-10 max-w-8/10 w-full">
+        <p className="text-lg text-gray-700 whitespace-pre-line">{describe || googleDescribe}</p>
+      </div>
+
     </div>
   );
 };
