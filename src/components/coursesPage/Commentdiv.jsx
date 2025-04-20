@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { GetComment, Likecommnet, DisLikecommnet,Getreply } from "../../core/services/api/GetCourses/Comment.js";
+import { GetComment, Likecommnet, DisLikecommnet,Getreply, Sendreply } from "../../core/services/api/GetCourses/Comment.js";
 
 import Like from '../../assets/Coursesimage/like.png';
 import disLike from '../../assets/Coursesimage/dislike.png';
@@ -65,8 +65,8 @@ const Commentdiv = ({ courseId }) => {
 
   const handleDislike = async (commentId) => {
     try {
-      const token = "your-authentication-token"; 
-      const response = await DisLikecommnet(commentId, token);
+      
+      const response = await DisLikecommnet(commentId);
 
       console.log("API response:", response);
 
@@ -107,10 +107,34 @@ const handleReply = async (commentId, courseId) => {
   }
 };
 
-  const handlereply = () => {
-    setOpenreply(!Openreply);
-    setIsExpanded((prevState) => !prevState);  
+  const handlereply = async (commentId,courseId) => {
+
+    const formData = new FormData();
+    
+    formData.append('CommentId', commentId);
+    formData.append('CourseId', courseId);
+    formData.append('Title', title);
+    formData.append('Describe', describe);
+    
+
+    try {
+
+      const respone = await Sendreply(formData);
+
+      return respone;
+
+    } catch (error) {
+      console.log("error from send reply :",error);
+    }
+
   };
+
+  const openreply = () =>{
+ 
+ 
+    setOpenreply(!Openreply);
+    setIsExpanded((prevState) => !prevState); 
+  }
 
   useEffect(() => {
     fetchComments();
@@ -170,6 +194,7 @@ const handleReply = async (commentId, courseId) => {
                           placeholder="Write your reply here..."
                         ></textarea>
                         <button
+                          onSubmit={() => handlereply()}
                           className="flex items-center justify-center bg-gray-300 rounded-3xl p-2 w-1/10 text-xs"
                         >
                           Submit Reply
@@ -180,8 +205,7 @@ const handleReply = async (commentId, courseId) => {
 
                       <div className="gap-3 flex flex-row h-10/10">
                         <button
-
-                          onClick={handlereply}
+                          onClick={openreply}
                           className="mt-1 mb-1 border w-1/10 h-7/10 rounded-3xl bg-deep-blue text-white font-bold transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-700"
                         >
                           {isExpanded ? "مشاهده کمتر" : "مشاهده بیشتر"}
@@ -189,7 +213,7 @@ const handleReply = async (commentId, courseId) => {
                                  
                         <button
 
-                          onClick={handleReply}
+                          onClick={() => handleReply(comment.id,courseId)}
                           className="mt-1 mb-1 border w-1/10 h-7/10 rounded-3xl bg-deep-blue text-white font-bold transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-700"
                         >
                           {isExpanded ? " کمتر" : " بیشتر"}
