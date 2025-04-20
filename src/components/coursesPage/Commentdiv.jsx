@@ -80,9 +80,9 @@ const Commentdiv = ({ courseId }) => {
       alert("Error submitting dislike:", err.message || err);
     }
   };
-const handleReply = async (commentId, courseId) => { // Ensure courseId is the correct variable name
+const handleReply = async (commentId, courseId) => { 
   try {
-    // Check if both commentId and courseId are valid
+    
     if (!commentId || !courseId) {
       alert("CommentId or CourseId is missing. Cannot fetch replies.");
       return;
@@ -90,16 +90,15 @@ const handleReply = async (commentId, courseId) => { // Ensure courseId is the c
 
     console.log("Fetching replies with:", { courseId, commentId });
 
-    // Make the API call
+   
     const response = await Getreply(courseId, commentId);
 
     console.log("Getreply API response:", response);
 
-    // Handle response
+   
     if (response) {
       alert("Replies fetched successfully!");
-      // Process or display replies as needed (e.g., update state or UI)
-    } else {
+      
       alert("No replies found for this comment.");
     }
   } catch (err) {
@@ -110,7 +109,7 @@ const handleReply = async (commentId, courseId) => { // Ensure courseId is the c
 
   const handlereply = () => {
     setOpenreply(!Openreply);
-    setIsExpanded((prevState) => !prevState); // Toggle text state
+    setIsExpanded((prevState) => !prevState);  
   };
 
   useEffect(() => {
