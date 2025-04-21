@@ -1,24 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams,NavLink } from "react-router-dom";
+import { useParams, NavLink, useNavigate } from "react-router-dom";
 import { getApi } from "../../core/services/api/getApi";
 import SmartImage from "../../components/Common/SmartImage";
 import fallbackNews from "../../assets/News/newspaper.png";
+import NewsCard from "../../components/Common/NewsCard";
+
 const NewsDetails = () => {
   const [newsData, setNewsData] = useState(null);
+  const [similarNews, setSimilarNews] = useState([]);
   const { id } = useParams(); // Get the news ID from URL
   const URL = `/News/${id}`;
   const navigate = useNavigate();
-
-
   useEffect(() => {
     const getNewsDetails = async () => {
       const response = await getApi(URL, "detailsNewsDto");
-      console.log(response);
       setNewsData(response);
     };
 
     getNewsDetails();
   }, [id]);
+
+  useEffect(() => {
+    if (newsData) {
+      const { newsCatregoryId } = newsData;
+      const getSimilarNews = async () => {
+        const similarNewsData = await getApi(
+          `/News/GetNewsWithCategory/${newsCatregoryId}`
+        );
+        setSimilarNews(similarNewsData);
+      };
+
+      getSimilarNews();
+    }
+  }, [newsData]); // Add newsData as a dependency
 
   if (!newsData) {
     return (
@@ -27,9 +41,11 @@ const NewsDetails = () => {
       </div>
     );
   }
-const handelNavigate=()=>{
-
-}
+  
+  const handleNavigation = (id) => {
+    console.log(id)
+    navigate(`NewsDetails/${id}`); 
+  };
 
   const {
     title,
@@ -47,43 +63,82 @@ const handelNavigate=()=>{
     insertDate,
   } = newsData;
 
-  // addUserFullName: "امیرررر-حسینی"
-
-  // currentDissLikeCount: 189
-  // currentLikeCount: 473
-  // describe: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده ازلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده ازلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از"
-  googleDescribe: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان ";
-  insertDate: "2025-02-22T08:57:20.02";
-  miniDescribe: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از";
-  newsCatregoryId: 2;
-  newsCatregoryName: "arasdasdda";
-  title: "یک خبر تستی222";
-  userId: 40322;
   return (
-    <div className=" mx-auto p-6">
-      <header className="text-center mb-6">
-        <h1 className="text-4xl font-bold text-gray-800">
-          {title || googleTitle}
-        </h1>
-        {miniDescribe && (
-          <p className="mt-2 text-lg text-gray-600">{miniDescribe}</p>
-        )}
-      </header>
+    <div className="font-kalameh text-gray-700 font-semibold flex gap-10 justify-center px-6 py-8">
+      <div className="flex-col flex items-center  max-w-6/10">
+        <div className=" flex flex-col items-center  w-full space-y-6 lg:space-y-0">
+          <div className="mb-8 relative flex justify-center w-3/3 h-[500px]">
+            <div className=" absolute rounded-2xl w-full h-full bg-deep-blue opacity-25"></div>
+            <SmartImage
+              src={currentImageAddress || currentImageAddressTumb}
+              fallback={fallbackNews}
+              className=" w-full h-full  object-contain rounded-2xl shadow-lg shadow-deep-blue z-10 "
+            />
+          </div>
+          <div className="flex items-center justify-between w-full">
+            <p className="text-deep-blue  break-all text-sm">{addUserFullName}</p>
+            <div className="flex items-center space-x-4 ">
+              <p className="text-xs text-gray-400">
+                {new Date(insertDate).toLocaleDateString("fa-IR")}
+              </p>
+              <p className="text-xs text-gray-400">
+                {new Date(insertDate).toLocaleTimeString("fa-IR")}
+              </p>
+              <NavLink
+                to={`/News?NewsCategoryId=${newsCatregoryId}`}
+                className="text-deep-blue bg-gray-200 px-4 py-2 rounded-full hover:scale-105 transition"
+              >
+                {newsCatregoryName}
+              </NavLink>
+            </div>
+          </div>
+          <header className="text-right text-gray-700 w-full p-8">
+            <h1 className="text-3xl lg:text-4xl  break-all font-bold mb-4 ">
+              {title || googleTitle}
+            </h1>
+            {miniDescribe && (
+              <p className="mb-4 text-lg text-gray-600  break-all">{miniDescribe}</p>
+            )}
+          </header>
+        </div>
 
-      <div className="mb-6">
-          <SmartImage
-            src={currentImageAddress||currentImageAddressTumb}
-            fallback={fallbackNews}
-            className="w- h-full object-cover rounded-lg shadow-lg"
-          />
-        
-        <p className="text-lg text-gray-700 whitespace-pre-line">
-          {describe || googleDescribe}
-        </p>
-        <p>{addUserFullName}</p>
-        <p>{new Date(insertDate).toLocaleDateString("fa-IR")}</p>
-        <p>{new Date(insertDate).toLocaleTimeString("fa-IR")}</p>
-        <NavLink to={`/News?NewsCategoryId=${newsCatregoryId}`} className="w-[108px] bg-deep-blue text-white h-[27px] rounded-[50px] ">{newsCatregoryName}</NavLink>
+        <div className="flex mt-10 max-w-9/10 text-right w-full">
+          <p className="text-lg font-iransans text-gray-700  break-all whitespace-pre-line">
+            {describe || googleDescribe}
+          </p>
+        </div>
+      </div>
+
+      <div className="relative w-2/10 h-[500px]">
+        <div className="absolute border-2 w-full h-full bg-deep-blue opacity-25 rounded-3xl "></div>
+        <div>
+          <h3 className="py-3">اخبار مرتبط</h3>
+          {similarNews.slice(0,3).map((news, index) => (
+            <div className="flex flex-col px-2 mb-3 w-full items-center" key={index}>
+              <div
+                className=" flex flex-row-reverse  relative w-full p-2 hover:scale-110 transition-all bg-white rounded-[29px] shadow-lg text-right cursor-pointer"
+                onClick={() => handleNavigation(news.id)}
+              >
+                <div className="shrink-0 ">
+                  {/* image */}
+                  <SmartImage
+                    src={news?.currentImageAddressTumb}
+                    fallback={fallbackNews}
+                    alt={news.title}
+                    className=" h-30 w-30  shadow-deep-blue shadow-lg  object-cover rounded-3xl"
+                  />
+                </div>
+
+                <div className=" flex  justify-center items-center flex-row-reverse  text-right px-2 ">
+                  <h3 className="font-bold h-17 overflow-clip font-peyda text-2xl break-all px-2 text-gray-600">
+                    {news.title}
+                  </h3>
+  
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
