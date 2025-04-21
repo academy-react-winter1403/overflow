@@ -1,13 +1,13 @@
 import React from "react";
 import cardImg from "../../assets/common/cardImg.png";
 import clock from "../../assets/common/clock.png";
-function Card({ item, index, handleNavigation }) {
+function Card({ item, index, handleNavigation,className="" }) {
   const courseDuration = item?.lastUpdate;
 
   return (
-    <div className=" pt-15">
+    <div className={`${className} pt-15`}>
       <div
-        className="relative  bg-white rounded-[29px] shadow-lg w-96 h-140 px-6 text-right cursor-pointer"
+        className="relative bg-white rounded-[29px] shadow-lg w-96 h-140 px-6 text-right cursor-pointer"
         key={index}
         onClick={() => handleNavigation(item.courseId)}
       >
