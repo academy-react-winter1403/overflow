@@ -37,9 +37,10 @@ const CommentSection = ({ CourseId, data }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-semibold mb-4">Post a Comment for a Course</h2>
+    <div className="w-7/11 p-4 bg-white shadow-md rounded-lg  flex flex-col justify-end">
+       <h5 className=" text-right text-3xl font-bold text-deep-blue mb-5">نظرات</h5>
       <Formik
+      className=""
         initialValues={{
           courseId: CourseId || '',  // Set the courseId to the prop value
           title: '',
@@ -55,8 +56,8 @@ const CommentSection = ({ CourseId, data }) => {
         onSubmit={handleSubmit}
       >
         {() => (
-          <Form className="space-y-4">
-            <div>
+          <Form className="space-y-4 flex flex-col justify-end ">
+            {/* <div className="opacity-0 visited:hidden">
               <label htmlFor="courseId" className="block text-sm font-medium text-gray-700">
                 Course ID
               </label>
@@ -71,17 +72,15 @@ const CommentSection = ({ CourseId, data }) => {
                 component="div"
                 className="text-red-500 text-sm mt-1"
               />
-            </div>
+            </div> */}
 
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-gray-700">
-                Title
-              </label>
               <Field
                 type="text"
                 id="title"
                 name="title"
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                placeholder="موضوع"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-right"
               />
               <ErrorMessage
                 name="title"
@@ -91,15 +90,13 @@ const CommentSection = ({ CourseId, data }) => {
             </div>
 
             <div>
-              <label htmlFor="describe" className="block text-sm font-medium text-gray-700">
-                Description
-              </label>
               <Field
                 as="textarea"
                 id="describe"
                 name="describe"
                 rows="4"
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                placeholder="نظر خود را بنویسید"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-right"
               />
               <ErrorMessage
                 name="describe"
@@ -110,9 +107,9 @@ const CommentSection = ({ CourseId, data }) => {
 
             <button
               type="submit"
-              className="w-full py-2 bg-indigo-600 text-black font-semibold rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+              className="w-2/10 p-2 bg-deep-blue text-white font-semibold rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 "
             >
-              Submit Comment
+            ارسال نظر
             </button>
           </Form>
         )}
