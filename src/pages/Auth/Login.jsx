@@ -42,28 +42,29 @@ const Loginlevel1 = () => {
   };
 
   return (
-    <div className="flex flex-wrap w-10/10 h-170 bg-white rounded-[30px] mt-10 mb-10">
-
-      <div className="w-5/10 h-138 mt-15">
-        <img src={signin} alt="signin" />
-      </div>
-
-      <div className="w-5/10 h-138 mt-15">
-
-        <div className="flex justify-end pr-9">
-          <img
-            src={academylogo}
-            alt="logo"
-            className="w-[83px] h-[63px] mt-[33px] mr-[50px]"
-          />
-        </div>
-
-        <div className="text-center text-[40px] mt-[-70px] mr-[-30px]">آکادمی سپهر</div>
-
-        <div className="flex flex-wrap item-center mt-2 pl-20">
-          <div className="text-[30px] mt-[20px] ml-[330px]">ورود</div>
-        </div>
-
+  <div className="flex flex-wrap w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10">
+        <div className="w-10/10 flex-wrap flex justify-center gap-20">
+          <div className="w-4/10 h-138 mt-15 ml-10">
+            <img className="h-120 w-8/10" src={signin} />
+          </div>
+  
+          <div className="w-4/10 h-138 mt-15">
+            <div className="flex justify-end pr-9">
+              <img
+                src={academylogo}
+                alt="logo"
+                className="w-[83px] h-[63px] mt-[33px] mr-[50px]"
+              />
+            </div>
+  
+            <div className="text-center text-[40px] mt-[-70px] mr-[-30px]">آکادمی سپهر</div>
+  
+            <div className="flex flex-wrap item-center mt-2 pl-20">
+              <div className="text-[30px] mt-[20px] ml-[330px]">ورود</div>
+              <div className="w-[300px] text-end text-[20px] mt-[10px] ml-[125px]">رمز خود را فراموش کردید؟
+          <a className=" text-[15px] w-[90px] mt-[-25px] ml-[40px]"> بازیابی</a>
+          </div>
+            </div>
         <Formik
           initialValues={{ user: "", password: "" }}
           validationSchema={validationSchema}
@@ -95,15 +96,11 @@ const Loginlevel1 = () => {
             </Form>
           )}
         </Formik>
-
-        <div className="text-[14px] mt-[20px] ml-[160px] text-start">
-          <label>
-            قوانین را مطالعه کرده و با شرایط موافقم
-            <input type="checkbox" required className="ml-2" />
-          </label>
         </div>
-      </div>
-    </div>
+  
+  <div className="text-[14px] mt-[20px] ml-[160px] text-start">قوانین و شرایط</div>
+</div>
+</div>
   );
 };
 
