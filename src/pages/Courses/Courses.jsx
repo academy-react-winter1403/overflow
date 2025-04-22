@@ -11,11 +11,9 @@ import { useSelector } from "react-redux";
 import { getItem } from "../../core/services/common/storage.services";
 
 const Courses = () => {
-
   const usetoken = getItem("token");
 
-
-  const { id } = useParams(); 
+  const { id } = useParams();
   console.log("Course ID:", id);
 
   const [courseData, setCourseData] = useState(null);
@@ -38,36 +36,36 @@ const Courses = () => {
   useEffect(() => {
     if (id) {
       getCourseDetails();
-      console.log("token course :",usetoken)
+      console.log("token course :", usetoken);
     }
   }, [id]);
 
   if (isLoading) {
-    return <div className="loading-spinner">Loading...</div>; 
+    return <div className="loading-spinner">Loading...</div>;
   }
 
   if (error) {
-    return <div className="text-red-600">{error}</div>; 
+    return <div className="text-red-600">{error}</div>;
   }
 
   return (
-    <div className="flex justify-center items-center align flex-col relative mt-10 mb-10 w-9/10 m-auto font-kalameh">
+    <div className="font-kalameh relative m-auto mt-10 mb-10 flex w-9/10 flex-col items-center justify-center">
       <Top data={courseData} />
 
-      <div className="flex flex-row-reverse w-10/10">
+      <div className="flex w-10/10 flex-row-reverse">
         <About data={courseData} />
 
-        <div className="flex justify-center flex-col items-center gap-10 mt-10 w-5/10">
+        <div className="mt-10 flex w-5/10 flex-col items-center justify-center gap-10">
           <Masters data={courseData} />
           <Coursesmap data={courseData} />
         </div>
       </div>
 
-                      {/* comments */}
+      {/* comments */}
 
-      <div className="flex flex-col w-10/10 mt-10 gap-10 items-end ">
+      <div className="mt-10 flex w-10/10 flex-col items-end gap-10">
         <CommentSection CourseId={id} data={courseData} />
-        <Commentdiv courseId={id} /> 
+        <Commentdiv courseId={id} />
       </div>
     </div>
   );
