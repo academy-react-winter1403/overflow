@@ -55,19 +55,19 @@ const Registerlvl3 = () => {
 
   return (
     
-    <div className="flex flex-wrap  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 ">
+    <div className="flex flex-row  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 font-kalameh max-2xl:w-7/10 max-xl:w-6/10 max-xl:m-auto transition-all duration-300">
 
-      <div className="w-10/10 flex-wrap flex justify-center gap-20">
+      <div className=" w-10/10 flex-row flex justify-center gap-20 transition-all duration-300">
 
-        <div className="w-4/10 h-138 mt-15">
-          <img className="h-120 " src={signin}  />
+        <div className="w-4/10 h-138 mt-15 ml-10  max-xl:w-0">
+          <img className="h-120 w-8/10 " src={signin}  />
         </div>
 
-        <div className="w-4/10 h-138 mt-15 ">
+        <div className="w-4/10 h-138 mt-25  gap-5 flex flex-col max-xl:justify-center max-xl:w-9/10 transition-all duration-300">
 
-          <div className="w-10/10 flex flex-row flex-wrap gap-2 justify-end pr-20">
+          <div className="w-10/10 flex flex-row flex-wrap gap-2 justify-end pr-20 ">
 
-            <p className="w-5/10 h-full text-center text-[40px] "> آکادمی سپهر</p>
+            <p className="w-5/10 h-full text-center text-4xl "> آکادمی سپهر</p>
             <img
             src={academylogo}
             alt="logo"
@@ -75,11 +75,8 @@ const Registerlvl3 = () => {
             />
         </div>
 
-
-
-        <div className="flex flex-wrap item-center mt-2 pl-20 ">
-          <h2 className=""></h2>
-          <p className="text-[30px] mt-[20px] ml-[330px] "> ثبت نام</p>
+        <div className="flex flex-row justify-end  w-10/10 pt-5">
+          <p className=" w-5/10 text-4xl "> ثبت نام</p>
         </div>
 
         <Formik
@@ -93,7 +90,7 @@ const Registerlvl3 = () => {
                 type="text"
                 name="phone"
                 placeholder="شماره تماس"
-                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end"
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10"
               />
               <ErrorMessage name="phone" component="div" className="error" />
 
@@ -101,7 +98,7 @@ const Registerlvl3 = () => {
                 type="text"
                 name="gmail"
                 placeholder="ایمیل"
-                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end"
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10"
               />
               <ErrorMessage name="gmail" component="div" className="error" />
 
@@ -109,13 +106,13 @@ const Registerlvl3 = () => {
                 type="password"
                 name="password"
                 placeholder="رمز عبور"
-                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end"
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10"
               />
               <ErrorMessage name="password" component="div" className="error" />
 
               <button
                 type="submit"
-                className="w-8/11 h-12 outline-none border-none rounded-[5px] text-center bg-sky-800">ادامه</button>
+                className="w-8/11 h-12 outline-none border-none rounded-[5px] text-center bg-sky-800 max-xl:w-10/10">ادامه</button>
             </Form>
           )}
         </Formik>

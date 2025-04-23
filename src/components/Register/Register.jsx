@@ -38,32 +38,38 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-wrap  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10">
+    <div className="flex flex-row  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 font-kalameh max-2xl:w-7/10 max-xl:w-6/10 max-xl:m-auto transition-all duration-300">
 
-    <div className=" w-10/10 flex-wrap flex justify-center gap-20">
-    <div className="w-4/10 h-138 mt-15 ml-10 ">
+    <div className=" w-10/10 flex-row flex justify-center gap-20 transition-all duration-300">
+    
+    <div className="w-4/10 h-138 mt-15 ml-10  max-xl:w-0">
         <img className="h-120 w-8/10" src={signin} />
         
       </div>
 
-      <div className="w-4/10 h-138 mt-15 ">
+      <div className="w-4/10 h-138 mt-25  gap-5 flex flex-col max-xl:justify-center max-xl:w-9/10 transition-all duration-300">
 
-        <div className="flex justify-end  pr-9">
-          <img
-            src={academylogo}
-            alt="logo"
-            className="w-[83px] h-[63px] mt-[33px] mr-[50px]"
-          />
+        <div className=" flex flex-row-reverse justify-start pr-22 gap-10 ">
+          
+        <div className="">
+          <img src={academylogo} alt="logo"/>
         </div>
 
-        <div className="text-center text-[40px] mt-[-70px] mr-[-30px] "> آکادمی سپهر</div>
+        <div className="text-4xl max-md:text-2xl"> آکادمی سپهر</div>
         
-        <div className="flex flex-wrap item-center mt-2 pl-20 ">
+        </div>
 
-          <div className="text-[30px] mt-[20px] ml-[330px] "> ثبت نام</div>
-          <div className="w-[300px] text-end text-[20px] mt-[10px] ml-[125px]">حساب کاربری دارید؟
-          <a className=" text-[15px] w-[90px] mt-[-25px] ml-[40px]"> وارد شوید.</a>
+        <div className="flex flex-col gap-5 justify-start items-end pr-22  ">
+
+          <div className="text-4xl"> ثبت نام</div>
           </div>
+
+          <div className=" flex flex-row-reverse w-10/10 pr-22">
+              
+            <div className="text-2xl">حساب کاربری دارید؟          </div>
+            <a href="/login" className="mt-1"> وارد شوید.</a>
+
+
 
         </div>
 
@@ -79,12 +85,12 @@ const Register = () => {
                 type="text"
                 name="phone"
                 placeholder="شماره تماس"
-                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end "
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10"
               />
               <ErrorMessage name="phone" component="div" className="error" />
               <button
                 type="submit"
-                className="w-8/11 h-12 text-center bg-[#436E8E] text-black py-2 rounded">ادامه</button>
+                className="w-8/11 h-12 text-center bg-[#436E8E] text-black py-2 rounded max-xl:w-10/10">ادامه</button>
             </Form>
 
           )}
