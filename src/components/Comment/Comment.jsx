@@ -1,99 +1,96 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import user from "../../assets/Header/user.png";
-
-import {
-  GetComment,
-  Likecommnet,
-  DisLikecommnet,
-  Getreply,
-  Sendreply,
-} from "../../core/services/api/GetCourses/Comment.js";
+import ReplyComment from "./ReplyComment.jsx";
+import {useCourseLikecommnet ,useNewsLikecommnet } from "../../core/services/api/GetCourses/Comment.js";
 import Like from "../../assets/Coursesimage/like.png";
 import disLike from "../../assets/Coursesimage/dislike.png";
-import { getItem } from "../../core/services/common/storage.services.js";
 
-const Comment = ({ commentData, id, commentsCount }) => {
-  const [Openreply, setOpenreply] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false); // State to manage button text
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+const Comment = ({ commentData ,type}) => {
+  
+  // Handel News Comment Like and Dislike
+  const newsLikecommnets = useNewsLikecommnet();
+  const handelLikeNews = (id, state) => {
+    newsLikecommnets.mutate({ id, state });
+  };
 
-  console.log("commentData", commentData);
+    // Handel Course Comment Like and Dislike
+const courseLikecommnets = useCourseLikecommnet();
+const handelLikeCourse = (id, state) => {
+  
+  courseLikecommnets.mutate({ id, state });
+};
+const handelLike = (id, state) => {
+  if (type === "Course") {
+    const courseState = state === "true" ? "Like" : "DissLike";
+    handelLikeCourse(id, courseState);
+  } else if (type === "News") {
+    handelLikeNews(id, state);
+  }
+};
+
+  useEffect(() => {
+    console.log(commentData);
+  }
+  , []);
 
   return (
-    <div className=" w-full">
-      <span>Comments:</span>
-      <div className="text-gray-500 font-normal ">
-        {isLoading ? (
-          <p>Loading comments...</p>
-        ) : error ? (
-          <p>{error}</p>
-        ) : commentData.length > 0 ? (
-          commentData.map((comment) => (
+    <div className="w-full">
+      <h3 className="text-deep-blue m-4 text-2xl font-bold">Comments:</h3>
+      <div className="font-normal text-gray-500">
+        {commentData.length > 0 ? (
+          commentData?.map((comment) => (
             <div
-              className="relative p-2 mb-5 bg-white/55  rounded-2xl min-h-45"
+              className="relative mb-5 min-h-45 rounded-2xl bg-white/55 p-2"
               key={comment.id}
             >
-              <div className=" flex flex-row-reverse relative justify-between ">
-                <div className="space-y-3 py-2 h-full w-24">
+              <div className="relative flex flex-row-reverse justify-between">
+                <div className="h-full w-24 space-y-3 py-2">
                   <img
-                    className="bg-gray-500 rounded-full"
+                    className="rounded-full bg-gray-500"
                     src={comment.pictureAddress || user}
                     alt="Author"
                   />
                   <p>{comment.author || "کاربر"}</p>
-
-                  <div></div>
                 </div>
 
-                <div className="text-right p-2 m-3 grow-5 ">
-                  <p className="font-bold text-lg">{comment.title}</p>
+                <div className="m-3 grow-5 p-2 text-right">
+                  <p className="text-lg font-bold">{comment.title}</p>
                   <p>{comment.describe}</p>
                 </div>
 
                 <p className="absolute top-2 left-3">
-                  {new Date(comment.inserDate).toLocaleDateString("fa-IR")}
+                  {new Date(comment.inserDate||comment.insertDate).toLocaleDateString("fa-IR")}
                 </p>
               </div>
 
               <div className="relative mx-3 flex items-center justify-between">
-                <div className="flex gap-3 ">
-                  <button className="flex p-1 bg-deep-blue/25 rounded-xl cursor-pointer hover:bg-deep-blue/55 hover:scale-110 transition-all">
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => handelLike(comment.id, "true")}
+                    className="bg-deep-blue/25 hover:bg-deep-blue/55 flex cursor-pointer rounded-xl p-1 transition-all hover:scale-110"
+                  >
                     <img src={Like} alt="Like" className="inline-block" />
-                    <p>{comment.likeCount > 0 ? comment.likeCount : ""}</p>
+                    <p className="p-1">
+                      {comment.likeCount > 0 ? comment.likeCount : ""}
+                    </p>
                   </button>
-                  <button className="flex p-1 bg-deep-blue/25 rounded-xl cursor-pointer hover:bg-deep-blue/55 hover:scale-110 transition-all">
+                  <button
+                    onClick={() => handelLike(comment.id, "false")}
+                    className="bg-deep-blue/25 hover:bg-deep-blue/55 flex cursor-pointer rounded-xl p-1 transition-all hover:scale-110"
+                  >
                     <img src={disLike} alt="Dislike" />
-                    <p>
+                    <p className="p-1">
+                      {comment.dissLikeCount > 0 ? comment.dissLikeCount : ""}
                       {comment.disslikeCount > 0 ? comment.disslikeCount : ""}
+
                     </p>
                   </button>
                 </div>
-                <div className=" bg-gray-100 rounded-xl p-2  ">
-                  <div >
-                    <button className="bg-deep-blue/10 pb-1 hover:text-black px-2 rounded-xl cursor-pointer">
-                      ثبت پاسخ
-                    </button>
-                    <textarea placeholder="Write your reply here..."></textarea>
-                  </div>
-                </div>
+
+                <>
+                  <ReplyComment commentId={comment.id} />
+                </>
               </div>
-              {/* {Openreply && (
-                <div>
-                  <div>
-                    <textarea placeholder="Write your reply here..."></textarea>
-                    <button className="">Submit Reply</button>
-                  </div>
-                </div>
-              )}
-
-              <div>
-                <button className="">
-                  {isExpanded ? "مشاهده کمتر" : "مشاهده بیشتر"}
-                </button>
-
-                <button className="">{isExpanded ? " کمتر" : " بیشتر"}</button>
-              </div> */}
             </div>
           ))
         ) : (

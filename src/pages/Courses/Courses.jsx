@@ -7,50 +7,42 @@ import { Commentdiv } from "../../components/coursesPage/Commentdiv";
 import { useParams } from "react-router";
 import { getApi } from "../../core/services/api/getApi";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { getItem } from "../../core/services/common/storage.services";
+import Comment from "../../components/Comment/Comment";
+import { useGetCourseComment } from "../../core/services/api/GetCourses/Comment";
 
 const Courses = () => {
-
   const usetoken = getItem("token");
 
-
-  const { id } = useParams(); 
+  const { id } = useParams();
   console.log("Course ID:", id);
 
   const [courseData, setCourseData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { data: commentsData, isLoading, error } = useGetCourseComment(id);
 
   const getCourseDetails = async () => {
-    try {
-      const response = await getApi(`/Home/GetCourseDetails?CourseId=${id}`);
-      // console.log("Course details fetched:", response);
-      setCourseData(response);
-    } catch (err) {
-      console.error("Error fetching course details:", err.message);
-      setError("Failed to load course details.");
-    } finally {
-      setIsLoading(false);
-    }
+    const response = await getApi(`/Home/GetCourseDetails?CourseId=${id}`);
+    // console.log("Course details fetched:", response);
+    setCourseData(response);
   };
 
   useEffect(() => {
     if (id) {
       getCourseDetails();
-      console.log("token course :",usetoken)
+      // console.log("token course :", usetoken);
     }
   }, [id]);
 
   if (isLoading) {
-    return <div className="loading-spinner">Loading...</div>; 
+    return <div className="loading-spinner">Loading...</div>;
   }
 
   if (error) {
-    return <div className="text-red-600">{error}</div>; 
+    return <div className="text-red-600">{error}</div>;
   }
 
   return (
+<<<<<<< HEAD
     <div className="flex justify-center items-center align flex-col relative mt-10 mb-10 w-9/10 m-auto font-kalameh transition-all duration-300">
       <Top data={courseData} />
 
@@ -58,17 +50,28 @@ const Courses = () => {
         <About data={courseData} />
 
         <div className="flex justify-center flex-col items-center gap-10 mt-10 w-5/10 max-lg:hidden transition-all duration-300">
+=======
+    <div className="font-kalameh relative m-auto mt-10 mb-10 flex w-9/10 flex-col items-center justify-center">
+      <Top data={courseData} />
+
+      <div className="flex w-10/10 flex-row-reverse">
+        <About data={courseData} />
+
+        <div className="mt-10 flex w-5/10 flex-col items-center justify-center gap-10">
+>>>>>>> 73bdaa5cabcc374f93553aff8f6f04d8f563a75c
           <Masters data={courseData} />
           <Coursesmap data={courseData} />
         </div>
       </div>
 
-                      {/* comments */}
+      {/* comments */}
 
-      <div className="flex flex-col w-10/10 mt-10 gap-10 items-end ">
+      {/* <div className="mt-10 flex w-10/10 flex-col items-end gap-10">
         <CommentSection CourseId={id} data={courseData} />
-        <Commentdiv courseId={id} /> 
-      </div>
+        <Commentdiv courseId={id} />
+      </div> */}
+
+      <Comment commentData={commentsData} type={"Course"} />
     </div>
   );
 };

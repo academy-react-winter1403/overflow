@@ -20,15 +20,15 @@ function Hero() {
 
         {/* right section */}
         <div className=" w-full flex-shrink-2 flex text-right flex-col justify-start items-end md:w-1/2  space-y-6">
-          <h1 className=" text-[59px]  font-black font-peyda  text-deep-blue dark:text-white">
+          <h1 className=" text-[59px] tracking-widest font-black font-peyda  text-deep-blue dark:text-white">
             دنبال چی می‌گردی؟
           </h1>
-          <p className="text-gray-500 font-vazir text-2xl dark:text-gray-300">
+          <p className="text-gray-500 font-vazir tracking-widest text-2xl dark:text-gray-300">
             ... دیگه وقتشه یه تکونی به خودت بدی
           </p>
 
           {/* Search Input */}
-          <div className=" flex flex-row-reverse w-6/7 max-w-[590px] bg-white justify-between p-2 items-center gap-4 border-2 border-deep-blue rounded-3xl ">
+          <div className=" flex flex-row-reverse w-6/7 tracking-widest max-w-[590px] bg-white justify-between p-2 items-center gap-4 border-2 border-deep-blue rounded-3xl ">
             <input
               type="text"
               placeholder="...تو فقط اسم ببر"

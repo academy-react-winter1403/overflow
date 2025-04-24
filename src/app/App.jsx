@@ -1,4 +1,3 @@
-import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Landing from "../pages/Landing/Landing";
 import Layout from "../pages/Layout/Layout";

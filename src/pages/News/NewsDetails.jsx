@@ -4,6 +4,8 @@ import { getApi } from "../../core/services/api/getApi";
 import SmartImage from "../../components/Common/SmartImage";
 import fallbackNews from "../../assets/News/newspaper.png";
 import Comment from "../../components/Comment/Comment";
+import { useQuery } from "@tanstack/react-query";
+
 const NewsDetails = () => {
   const [newsData, setNewsData] = useState(null);
   const [similarNews, setSimilarNews] = useState([]);
@@ -12,33 +14,38 @@ const NewsDetails = () => {
   const { id } = useParams(); // Get the news ID from URL
   const URL = `/News/${id}`;
   const navigate = useNavigate();
+
+  // useQuery
+  const { data: response } = useQuery({
+    queryKey: ["newscomments", id],
+    queryFn: () => getApi(URL),
+  });
+
   useEffect(() => {
-    const getNewsDetails = async () => {
-      const response = await getApi(URL);
+    if (response) {
       setNewsData(response.detailsNewsDto);
       setNewsComment(response.commentDtos);
-    };
-
-    getNewsDetails();
-  }, [id]);
+    }
+  }, [response]);
 
   useEffect(() => {
     if (newsData) {
       const { newsCatregoryId } = newsData;
       const getSimilarNews = async () => {
         const similarNewsData = await getApi(
-          `/News/GetNewsWithCategory/${newsCatregoryId}`
+          `/News/GetNewsWithCategory/${newsCatregoryId}`,
         );
-        setSimilarNews(similarNewsData);
+        setSimilarNews(similarNewsData.filter((news) => news.id !== id));
+        // console.log("cm news", newsComment);
       };
 
       getSimilarNews();
     }
-  }, [newsData]); // Add newsData as a dependency
+  }, [newsData, id, newsComment]); // Add all necessary dependencies
 
   if (!newsData) {
     return (
-      <div className="flex items-center justify-center w-full h-64">
+      <div className="flex h-64 w-full items-center justify-center">
         در حال بارگذاری...
       </div>
     );
@@ -46,7 +53,7 @@ const NewsDetails = () => {
 
   const handleNavigation = (id) => {
     console.log(id);
-    navigate(`NewsDetails/${id}`);
+    navigate(`/News/NewsDetails/${id}`);
   };
 
   const {
@@ -68,22 +75,22 @@ const NewsDetails = () => {
 
   return (
     <>
-      <div className="font-kalameh text-gray-700 font-semibold flex gap-10 justify-center px-6 py-8">
-        <div className="flex-col flex items-center  max-w-6/10">
-          <div className=" flex flex-col items-center  w-full space-y-6 lg:space-y-0">
-            <div className="mb-8 relative flex justify-center w-3/3 h-[500px]">
-              <div className=" absolute rounded-2xl w-full h-full bg-deep-blue opacity-25"></div>
+      <div className="font-kalameh flex justify-center gap-10 px-6 py-8 font-semibold text-gray-700">
+        <div className="flex max-w-6/10 flex-col items-center">
+          <div className="flex w-full flex-col items-center space-y-6 lg:space-y-0">
+            <div className="relative mb-8 flex h-[500px] w-3/3 justify-center">
+              <div className="bg-deep-blue absolute h-full w-full rounded-2xl opacity-25"></div>
               <SmartImage
                 src={currentImageAddress || currentImageAddressTumb}
                 fallback={fallbackNews}
-                className=" w-full h-full  object-contain rounded-2xl shadow-lg shadow-deep-blue z-10 "
+                className="shadow-deep-blue z-10 h-full w-full rounded-2xl object-contain shadow-lg"
               />
             </div>
-            <div className="flex items-center justify-between w-full">
-              <p className="text-deep-blue  break-all text-sm">
+            <div className="flex w-full items-center justify-between">
+              <p className="text-deep-blue text-sm break-all">
                 {addUserFullName}
               </p>
-              <div className="flex items-center space-x-4 ">
+              <div className="flex items-center space-x-4">
                 <p className="text-xs text-gray-400">
                   {new Date(insertDate).toLocaleDateString("fa-IR")}
                 </p>
@@ -92,61 +99,61 @@ const NewsDetails = () => {
                 </p>
                 <NavLink
                   to={`/News?NewsCategoryId=${newsCatregoryId}`}
-                  className="text-deep-blue bg-gray-200 px-4 py-2 rounded-full hover:scale-105 transition"
+                  className="text-deep-blue rounded-full bg-gray-200 px-4 py-2 transition hover:scale-105"
                 >
                   {newsCatregoryName}
                 </NavLink>
               </div>
             </div>
-            <header className="text-right text-gray-700 w-full p-8">
-              <h1 className="text-3xl lg:text-4xl  break-all font-bold mb-4 ">
+            <header className="w-full p-8 text-right text-gray-700">
+              <h1 className="mb-4 text-3xl font-bold break-all lg:text-4xl">
                 {title || googleTitle}
               </h1>
               {miniDescribe && (
-                <p className="mb-4 text-lg text-gray-600  break-all">
+                <p className="mb-4 text-lg break-all text-gray-600">
                   {miniDescribe}
                 </p>
               )}
             </header>
           </div>
 
-          <div className="flex mt-10 max-w-9/10 text-right w-full">
-            <p className="text-lg font-iransans text-gray-700  break-all whitespace-pre-line">
+          <div className="mt-10 flex w-full max-w-9/10 text-right">
+            <p className="font-iransans text-lg break-all whitespace-pre-line text-gray-700">
               {describe || googleDescribe}
             </p>
           </div>
           <Comment
             commentData={newsComment}
-            id={id}
             commentsCount={commentsCount}
+            type={"News"}
           ></Comment>
         </div>
 
-        <div className=" relative rounded-3xl shadow-lg shadow-deep-blue w-2/10 h-[500px]">
-          <div className="absolute  w-full h-full bg-deep-blue opacity-25 rounded-3xl"></div>
+        <div className="shadow-deep-blue relative h-[500px] w-2/10 rounded-3xl shadow-lg">
+          <div className="bg-deep-blue absolute h-full w-full rounded-3xl opacity-25"></div>
           <div>
             <h3 className="py-3">اخبار مرتبط</h3>
             {similarNews.slice(0, 3).map((news, index) => (
               <div
-                className="flex flex-col  px-2 mb-3 w-full items-center"
+                className="mb-3 flex w-full flex-col items-center px-2"
                 key={index}
               >
                 <div
-                  className=" flex flex-row-reverse  relative w-full p-2 hover:scale-110 transition-all bg-white rounded-[29px] shadow-lg text-right cursor-pointer"
+                  className="relative flex w-full cursor-pointer flex-row-reverse rounded-[29px] bg-white p-2 text-right shadow-lg transition-all hover:scale-110"
                   onClick={() => handleNavigation(news.id)}
                 >
-                  <div className="shrink-0 ">
+                  <div className="shrink-0">
                     {/* image */}
                     <SmartImage
                       src={news?.currentImageAddressTumb}
                       fallback={fallbackNews}
                       alt={news.title}
-                      className=" h-30 w-30  shadow-deep-blue shadow-lg  object-cover rounded-3xl"
+                      className="shadow-deep-blue h-30 w-30 rounded-3xl object-cover shadow-lg"
                     />
                   </div>
 
-                  <div className=" flex  justify-center items-center flex-row-reverse  text-right px-2 ">
-                    <h3 className="font-bold h-17 overflow-clip font-peyda text-2xl break-all px-2 text-gray-600">
+                  <div className="flex flex-row-reverse items-center justify-center px-2 text-right">
+                    <h3 className="font-peyda h-17 overflow-clip px-2 text-2xl font-bold break-all text-gray-600">
                       {news.title}
                     </h3>
                   </div>

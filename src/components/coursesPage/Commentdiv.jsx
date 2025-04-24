@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { GetComment, Likecommnet, DisLikecommnet,Getreply, Sendreply } from "../../core/services/api/GetCourses/Comment.js";
+import { GetComment, Likecommnet,Getreply, Sendreply } from "../../core/services/api/GetCourses/Comment.js";
 
 import Like from '../../assets/Coursesimage/like.png';
 import disLike from '../../assets/Coursesimage/dislike.png';

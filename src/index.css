@@ -2,6 +2,9 @@
 @import url("/src/assets/common/font/font.css");
 
 :root {
+  max-width:1920px;
+  margin: 0 auto;
+  text-align: center;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -14,7 +17,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    background-color: #eceff4e7
 }
+.dark {
+  background-color: #172136;
+  color: #f7fafc;
+}
+
 @theme {
   --color-deep-blue: #436e8e;
 }
