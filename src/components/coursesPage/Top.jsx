@@ -31,7 +31,8 @@ const Top = ({ data }) => {
         <img
           src={courseData.imageAddress || productimg}
           alt="Course Banner"
-          className="rounded-2xl"
+
+          className="rounded-2xl w-10/10 h-75"
         />
       </div>
 
