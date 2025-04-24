@@ -36,12 +36,12 @@ const Panel = () => {
         navigate(`Courses/${id}`); 
       };
     return (  
-        <div className="flex flex-row-reverse flex-wrap w-9/10 border-2 bg-gray-100 ml-20">  
+        <div className="flex flex-row-reverse flex-wrap w-9/10  ml-20 font-kalameh">  
             {/* right panel */}  
-            <div className="w-3/10 bg-white h-180 rounded-2xl">  
+            <div className="w-3/11 bg-white h-180 rounded-2xl  max-sm:w-3/10">  
                 <div className='flex items-end flex-row-reverse w-10/10 h-20 pr-9'>  
                     <img className='w-2/10' src={logo} alt="Logo" />  
-                    <span className='text-deep-blue text-2xl font-bold mr-5'>آکادمی سپهر</span>  
+                    <span className='text-deep-blue text-2xl font-bold mr-5 max-sm:text-xs max-sm:font-bold'>آکادمی سپهر</span>  
                 </div>  
 
                 <div className='flex flex-col items-end w-10/10 h-100 mt-10'>  
@@ -60,22 +60,19 @@ const Panel = () => {
                 </div>  
             </div>  
 
-            <div className='flex flex-row-reverse flex-wrap w-7/10 border-2'>  
+            <div className='flex flex-row-reverse flex-wrap w-7/10 '>  
                 {/* top side */}  
                 <div className='flex flex-row-reverse w-10/10 text-3xl h-15 pt-5'>  
-                    <div className='flex flex-row-reverse w-6/10 pr-5'>  
+                    <div className='flex flex-row-reverse w-6/10 pr-5 max-lg:w-10/10 max-sm:text-2xl'>  
                         آرمان غنی زاده عزیز؛ خوش اومدی 🙌  
-                    </div>  
-                    <div className='pl-2 flex flex-row w-3/10 gap-2.5 mr-21'>  
-                        {/* <img src={userprofile} alt="User Profile" />  
-                        <img src={moon} alt="Night Mode" />   */}
-                    </div>  
+                    </div>   
                 </div>  
 
-                <div className='flex flex-row-reverse flex-wrap w-10/10 h-auto justify-center gap-8 mt-10 border-4 border-sky-800'>  
+                <div className='flex flex-row-reverse flex-wrap w-10/10 h-auto justify-center gap-8 mt-10 max-sm:overflow-auto max-sm:h-150 max-lg:h-150 max-lg:overflow-auto '>  
                     {/* map over newCoursesData */}  
                     {newCoursesData.map((course, index) => (  
                         <Card
+                        
                         item={course}
                         index={index}
                         handleNavigation={handleNavigation}
