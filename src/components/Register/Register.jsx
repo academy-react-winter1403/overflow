@@ -3,7 +3,6 @@ import * as Yup from "yup";
 import { SendVerifyMessage } from "../../core/services/api/Register/RegisterPages.js";
 import { setItem } from "../../core/services/common/storage.services";
 import { useNavigate } from "react-router-dom";
-import '../../app/App.css';
 import signin from '../../assets/register/Image 6.png';
 import academylogo from '../../assets/register/ac-Logo.png';
 

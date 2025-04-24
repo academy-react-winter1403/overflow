@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import user from "../../assets/Header/user.png";
 import moon from "../../assets/Header/moon.png";
+import sun from "../../assets/Header/sun.png";
 import {Loginlevel1} from "../Auth/Login.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleDarkMode } from "../../redux/darkModeSlice";
@@ -78,17 +79,16 @@ if (!isDarkMode) {
 
       <div className="mt-14 ml-32 flex flex-row-reverse gap-3 items-center">
        
-        {/* moon */}
+        {/* Dark Mode Toggle */}
         <div onClick={handelToggleDarkMode} 
-        className="bg-deep-blue cursor-pointer flex justify-center items-center rounded-full w-12 h-12 ">
-         <div>
+          className="bg-deep-blue cursor-pointer flex justify-center items-center rounded-full w-12 h-12 ">
+          <div>
             <img
-              src={moon}
-              alt="moon"
+              src={isDarkMode ? sun : moon}
+              alt={isDarkMode ? "sun" : "moon"}
               className="w-8 h-8 scale-130 hover:scale-150 transition-transform duration-200"
             />
-          
-         </div>
+          </div>
         </div>
         {/* User Icon */}
         <Link to={"/Login"} >
