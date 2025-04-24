@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import Card from "../Common/Card";
 import { getApi } from "../../core/services/api/getApi";
 function BestSellers() {
@@ -24,7 +24,7 @@ function BestSellers() {
   };
 
   return (
-    <div className="z-10 text-center py-48">
+    <div className="relative z-10 text-center py-48">
       <h2 className="text-6xl font-peyda font-black text-deep-blue mb-13">
         پرفروش‌ترین دوره‌ها
       </h2>
@@ -37,9 +37,12 @@ function BestSellers() {
         />
         ))}
       </div>
-      <a href="#" className="inline-block mt-6 text-blue-500 hover:underline">
-        مشاهده همه
-      </a>
+      <div className="z-10 w-full pl-20 pt-10 text-left">
+        <NavLink to={"/AllCourses"}
+         className="font-vazir self-start text-2xl font-bold text-gray-700 hover:cursor-pointer">
+          مشاهده همه
+        </NavLink>
+      </div>
     </div>
   );
 }

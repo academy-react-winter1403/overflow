@@ -34,10 +34,10 @@ const InfoCard = ({ items }) => {
           key={index}
           className="flex flex-col items-center font-vazir text-[26px] font-bold justify-center"
         >
-          <span className="text-gray-400">
+          <span className="text-gray-400 dark:text-gray-200">
             {Number(stat.value).toLocaleString("fa-IR")}
           </span>
-          <span className="text-gray-600">{stat.label}</span>
+          <span className="text-gray-600 dark:text-gray-200">{stat.label}</span>
         </div>
       ))}
     </div>
