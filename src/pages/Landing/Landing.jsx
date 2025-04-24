@@ -4,7 +4,7 @@ import Footer from '../Layout/Footer';
 function Landing() {
   return (
     <>
-      <div className=" gap-8 flex flex-col  text-black dark:bg-gray-900 dark:text-white duration-200 align-center ">
+      <div className=" gap-8 flex flex-col  text-black  dark:text-white duration-200 align-center ">
         <Hero/>
         <NewCourses />
         <News />

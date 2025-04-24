@@ -7,7 +7,7 @@ function Card({ item, index, handleNavigation, className = "" }) {
   return (
     <div className={`${className} pt-15`}>
       <div
-        className="relative h-140 w-96 cursor-pointer rounded-[29px] bg-white px-6 text-right shadow-lg"
+        className="relative h-140 w-96 cursor-pointer rounded-[29px] bg-white dark:bg-gray-400/95 px-6 text-right shadow-lg"
         key={index}
         onClick={() => handleNavigation(item.courseId)}
       >
@@ -25,16 +25,16 @@ function Card({ item, index, handleNavigation, className = "" }) {
 
         {/* Description */}
         <div className="text-right overflow-ellipsis">
-          <h3 className="font-peyda mb-2 text-2xl font-bold text-gray-600">
+          <h3 className="font-peyda mb-2 text-2xl font-bold dark:text-gray-100  text-gray-600">
             {item.title}
           </h3>
           <div className="relative mb-4 h-[160px] w-full pt-1">
-            <h5 className="font-vazir text-[20px] font-semibold break-all text-ellipsis text-gray-400">
+            <h5 className="font-vazir text-[20px] font-semibold break-all text-ellipsis dark:text-gray-200  text-gray-400">
               {item.describe}
             </h5>
           </div>
           <div className="mb-4 h-1/9 items-center border-b-3 border-gray-300 pb-7 text-right">
-            <div className="text-deep-blue font-vazir text-lg font-semibold">{`${item.teacherName} ●`}</div>
+            <div className="text-blue-600 font-vazir text-lg font-semibold">{`${item.teacherName} ●`}</div>
           </div>
 
           <div className="font-kalameh-num flex flex-row-reverse justify-between">

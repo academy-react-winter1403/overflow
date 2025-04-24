@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import url("/src/assets/common/font/font.css");
-
+@custom-variant dark (&:where(.dark, .dark *));
 :root {
   max-width:1920px;
   margin: 0 auto;
