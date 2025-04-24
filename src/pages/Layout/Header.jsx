@@ -24,7 +24,7 @@ if (!isDarkMode) {
   return (
     <div
       className={`flex flex-row-reverse justify-between items-center px-6 py-4 ${
-        isDarkMode ? "bg-gray-800 text-white" : ""
+        isDarkMode ? "bg-[#1b263ddb] text-white" : ""
       } text-black`}
     >
       <div className="z-10 mt-14 mr-25 gap-11 flex items-center text-gray-400 text-[22px] font-kalameh font-bold flex-row-reverse ">

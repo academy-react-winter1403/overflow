@@ -3,8 +3,8 @@ import telegram from "../../assets/landing/telegram.png";
 import instagram from "../../assets/landing/instagram.png";
 function Footer() {
   return (
-    <div className="relative bg-gray-100 flex gap-3 font-vazir font-bold text-gray-600 py- ">
-      <div className="container mx-auto h-[382px]  flex gap-3 justify-between">
+    <div className="relative rounded-2xl bg-gray-100/50 flex gap-3 font-vazir font-bold text-gray-600 py- ">
+      <div className="container  items-center mx-auto h-[382px]  flex gap-3 justify-between">
         <div className=" w-1/3 max-w-[494px] text-right  ">
           <div className=" bg-white p-10 rounded-[30px] shadow-md">
             <h3 className="mb-4 font-black text-[26px]">به ما بپیوندید</h3>
@@ -48,7 +48,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className='absolute bottom-5 right-38  bg-gray-100 flex justify-center gap-3 py-4'>
+      <div className='absolute bottom-5 right-38  flex justify-center gap-3 py-4'>
         <img className='w-10 h-8' src={telegram} alt="" />
         <img src={instagram} alt="" />
       </div>
