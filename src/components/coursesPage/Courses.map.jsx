@@ -27,7 +27,7 @@ const Coursesmap = ({ data }) => {
   console.log("courseData", courseData);
 
   return (
-    <div className="rounded-4xl bg-white w-9/10 h-5/10 mr-13 overflow-auto">
+    <div className="rounded-4xl bg-white w-9/10 h-5/10 mr-13 overflow-auto transition-all duration-300">
       <div className="flex text-right flex-col h-auto">
         <span className="mt-3 mr-6 text-deep-blue font-bold text-2xl">دوره های مشابه</span>
         <div className="flex flex-row flex-wrap justify-end">

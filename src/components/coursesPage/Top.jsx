@@ -22,7 +22,7 @@ const Top = ({ data }) => {
   }, []);
 
   return (
-    <div className="flex flex-row-reverse items-center bg-gray-900 rounded-2xl flex-wrap w-10/10 h-auto ">
+    <div className="flex flex-row-reverse items-center bg-gray-900 rounded-2xl flex-wrap w-10/10 h-auto border-2 border-green-500 transition-all duration-300">
       <div className='flex flex-col items-end w-5/10 h-50 mr-10 '>
         <h2 className="text-amber-50 text-3xl">
           {courseData.title}
@@ -32,29 +32,29 @@ const Top = ({ data }) => {
         </p>
       </div>
 
-      <div className="text-amber-50 shadow-2xl shadow-amber-50 rounded-2xl w-3/10 h-4/10 mt-10 mr-45">
+      <div className="text-amber-50 shadow-2xl shadow-amber-50 rounded-2xl w-3/10 h-4/10 mt-10 mr-45 max-xl:mr-20">
         <img
           src={courseData.imageAddress || productimg}
           alt="Course Banner"
-          className="rounded-2xl w-10/10 h-75"
+          className="rounded-2xl w-10/10 h-75 max-xl:h-50 max-lg:h-40 transition-all duration-300"
         />
       </div>
 
-      <div className="flex items-center justify-between w-6/10 mr-10 mb-5 pl-45">
-        <span className="text-amber-50 font-bold text-2xl text-left"> {courseData.cost} T </span>
-        <div className="text-amber-50 font-bold text-2xl bg-deep-blue rounded-3xl px-6 py-3 text-center">
+      <div className="flex items-center justify-between w-6/10 mr-10 mb-5 pl-45  max-lg:flex-row max-lg:gap-30 max-lg:w-8/10 transition-all duration-300">
+        <span className="text-amber-50 font-bold text-2xl text-left max-lg:text-sm"> {courseData.cost} T </span>
+        <div className="text-amber-50 font-bold text-2xl bg-deep-blue rounded-3xl px-6 py-3 text-center max-lg:text-sm">
           <Link to='/'>خرید نقدی دوره</Link>
         </div>
       </div>
 
-      <div className=' flex flex-row w-5/10 justify-end pr-12 mb-5 gap-15'>
+      <div className=' flex flex-row w-5/10 justify-end pr-12 mb-5 gap-15 max-xl:w-10/10'>
 
         <div className='text-white  flex flex-row-reverse gap-2 '>
           <img src={commentcount} />
           {courseData.commentCount}
         </div>
 
-        <div className='flex flex-row-reverse text-white gap-2'>
+        <div className='flex flex-row-reverse text-white gap-2 w-50 max-xl:w-2/10'>
           <img src={clock} />
           {courseData.courseStatusName}
         </div>         

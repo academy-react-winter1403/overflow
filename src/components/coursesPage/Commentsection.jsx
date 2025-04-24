@@ -37,7 +37,7 @@ const CommentSection = ({ CourseId, data }) => {
   };
 
   return (
-    <div className="w-7/11 p-4 bg-white shadow-md rounded-lg  flex flex-col justify-end">
+    <div className="w-7/11 p-4 bg-white shadow-md rounded-lg  flex flex-col justify-end transition-all duration-300 max-lg:w-10/10">
        <h5 className=" text-right text-3xl font-bold text-deep-blue mb-5">نظرات</h5>
       <Formik
       className=""

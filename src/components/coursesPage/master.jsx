@@ -9,7 +9,7 @@ const Masters = ({data}) => {
 const courseData = data || {};
 
   return (
-    <div className="rounded-4xl  bg-white w-9/10 h-7/15  mr-12" >
+    <div className="rounded-4xl  bg-white w-9/10 h-7/15  mr-12 transition-all duration-300" >
           <div className="flex text-right flex-col h-[320px] border-sky-900">
 
             {/* Profile */}

@@ -141,10 +141,10 @@ const handleReply = async (commentId, courseId) => {
   }, [id]);
 
   return (
-    <div className="rounded-4xl bg-white w-7/11 h-88">
+    <div className="rounded-4xl bg-white w-7/11 h-88 max-lg:w-10/10 transition-all duration-300">
       <div className="border-t-2 rounded-4xl border-deep-blue">
         <span className="top-4 right-84 text-deep-blue font-bold text-2xl">Comments:</span>
-        <div className="overflow-y-auto h-80 flex flex-col gap-5 ">
+        <div className="overflow-y-auto h-80 flex flex-col gap-5">
           {isLoading ? (
             <p className="text-gray-600">Loading comments...</p>
           ) : error ? (
@@ -160,28 +160,28 @@ const handleReply = async (commentId, courseId) => {
                       <div className="flex flex-row gap-5 pb-5">
                         <button
                           onClick={() => handleLike(comment.id)}
-                          className="text-2xl flex flex-row items-center justify-center w-3/10 bg-gray-300 rounded-3xl"
+                          className="text-2xl flex flex-row items-center justify-center w-3/10 bg-gray-300 rounded-3xl max-lg:w-4/10 "
                         >
-                          <img src={Like} alt="Like" />
-                          <p>{comment.likeCount}</p>
+                          <img className="max-lg:w-7 " src={Like} alt="Like" />
+                          <p className="max-lg:hidden">{comment.likeCount}</p>
                         </button>
                         <button
                           onClick={() => handleDislike(comment.id)}
-                          className="text-2xl flex flex-row items-center justify-center bg-gray-300 rounded-3xl w-3/10"
+                          className="text-2xl flex flex-row items-center justify-center bg-gray-300 rounded-3xl w-3/10 max-lg:w-4/10"
                         >
-                          <img src={disLike} alt="Dislike" />
-                          <p>{comment.disslikeCount}</p>
+                          <img className="max-lg:w-7 max-lg:mt-2" src={disLike} alt="Dislike" />
+                          <p className="max-lg:hidden">{comment.disslikeCount}</p>
                         </button>
                       </div>
                     </div>
-                    <div className="flex flex-col w-8/10 justify-end h-full gap-2">
+                    <div className="flex flex-col w-8/10 justify-end h-full gap-2 max-lg:w-7/10 ">
                       <p className="pr-5 text-2xl font-bold">{comment.title}</p>
                       <p className="flex flex-row justify-end pr-5 text-2xl">{comment.author}</p>
                       <p className="text-gray-600 h-20 pr-5 pt-3 text-right">{comment.describe}</p>
                     </div>
                     <div className="w-1/10 flex flex-col h-full">
-                      <img className="w-full h-7/10 rounded-full" src={comment.pictureAddress} alt="Author" />
-                      <div className="h-6/10"></div>
+                      <img className="w-full h-7/10 rounded-full max-lg:h-5/10" src={comment.pictureAddress} alt="Author" />
+                      <div className="h-6/10 max-lg:h-8/10"></div>
                     </div>
                   </div>
 
@@ -206,7 +206,7 @@ const handleReply = async (commentId, courseId) => {
                       <div className="gap-3 flex flex-row h-10/10">
                         <button
                           onClick={openreply}
-                          className="mt-1 mb-1 border w-1/10 h-7/10 rounded-3xl bg-deep-blue text-white font-bold transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-700"
+                          className="mt-1 mb-1 border w-1/10 h-7/10 rounded-3xl bg-deep-blue text-white font-bold transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-700 max-lg:text-sm"
                         >
                           {isExpanded ? "مشاهده کمتر" : "مشاهده بیشتر"}
                         </button> 

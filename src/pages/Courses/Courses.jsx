@@ -51,13 +51,13 @@ const Courses = () => {
   }
 
   return (
-    <div className="flex justify-center items-center align flex-col relative mt-10 mb-10 w-9/10 m-auto font-kalameh">
+    <div className="flex justify-center items-center align flex-col relative mt-10 mb-10 w-9/10 m-auto font-kalameh transition-all duration-300">
       <Top data={courseData} />
 
-      <div className="flex flex-row-reverse w-10/10">
+      <div className="flex flex-row-reverse w-10/10 transition-all duration-300 border-2 border-green-500 max-lg:justify-center">
         <About data={courseData} />
 
-        <div className="flex justify-center flex-col items-center gap-10 mt-10 w-5/10">
+        <div className="flex justify-center flex-col items-center gap-10 mt-10 w-5/10 max-lg:hidden transition-all duration-300">
           <Masters data={courseData} />
           <Coursesmap data={courseData} />
         </div>
