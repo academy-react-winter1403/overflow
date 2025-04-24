@@ -84,7 +84,7 @@ function NewsPage() {
         <div className="border-b-4 border-gray-600 w-full"></div>
       </div>
       {/* News List */}
-      <div className="grid grid-cols-3 max-sm:grid-cols-2 max-md:grid-cols-3 gap-6">
+      <div className="flex flex-wrap justify-center items-center gap-6">
         {newsList.map((news) => (
           <NewsCard
             handleNavigation={handleNavigation}

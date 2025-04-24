@@ -76,7 +76,7 @@ const NewsDetails = () => {
   return (
     <>
       <div className="font-kalameh flex justify-center gap-10 px-6 py-8  font-semibold text-gray-700 dark:text-gray-300">
-        <div className={`flex ${similarNews.length==0? "max-w-8/10" : "max-w-6/10"} max-md:max-w-9/10 flex-col items-center`}>
+        <div className={`flex ${similarNews.length==0? "max-w-8/10" : "max-w-6/10"} max-md: flex-col items-center`}>
           <div className="flex w-full flex-col items-center space-y-6 lg:space-y-0">
             <div className="relative mb-8 flex h-[500px] w-3/3 justify-center">
               <div className="bg-deep-blue/25 absolute h-full w-full rounded-2xl dark:bg-gray-700"></div>
