@@ -3,13 +3,23 @@ import { Link, NavLink } from "react-router-dom";
 import user from "../../assets/Header/user.png";
 import moon from "../../assets/Header/moon.png";
 import {Loginlevel1} from "../Auth/Login.jsx";
-function Header() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+import { useDispatch, useSelector } from "react-redux";
+import { toggleDarkMode } from "../../redux/darkModeSlice";
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    // Toggle dark mode in your app here (e.g., set a class or use context)
-  };
+
+function Header() {
+const isDarkMode=useSelector((state)=>state.darkMode.isDarkMode)
+const dispatch=useDispatch();
+const handelToggleDarkMode=()=>{
+dispatch(toggleDarkMode());
+if (!isDarkMode) {
+  document.documentElement.classList.add("dark");  // Adds 'dark' class if dark mode is not active
+} else {
+  document.documentElement.classList.remove("dark");  // Removes 'dark' class if dark mode is active
+}
+
+}
+  
 
   return (
     <div
@@ -69,7 +79,7 @@ function Header() {
       <div className="mt-14 ml-32 flex flex-row-reverse gap-3 items-center">
        
         {/* moon */}
-        <div onClick={toggleDarkMode} 
+        <div onClick={handelToggleDarkMode} 
         className="bg-deep-blue cursor-pointer flex justify-center items-center rounded-full w-12 h-12 ">
          <div>
             <img

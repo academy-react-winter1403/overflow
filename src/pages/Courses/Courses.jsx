@@ -7,8 +7,9 @@ import { Commentdiv } from "../../components/coursesPage/Commentdiv";
 import { useParams } from "react-router";
 import { getApi } from "../../core/services/api/getApi";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { getItem } from "../../core/services/common/storage.services";
+import Comment from "../../components/Comment/Comment";
+import { useGetCourseComment } from "../../core/services/api/GetCourses/Comment";
 
 const Courses = () => {
   const usetoken = getItem("token");
@@ -17,26 +18,18 @@ const Courses = () => {
   console.log("Course ID:", id);
 
   const [courseData, setCourseData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { data: commentsData, isLoading, error } = useGetCourseComment(id);
 
   const getCourseDetails = async () => {
-    try {
-      const response = await getApi(`/Home/GetCourseDetails?CourseId=${id}`);
-      // console.log("Course details fetched:", response);
-      setCourseData(response);
-    } catch (err) {
-      console.error("Error fetching course details:", err.message);
-      setError("Failed to load course details.");
-    } finally {
-      setIsLoading(false);
-    }
+    const response = await getApi(`/Home/GetCourseDetails?CourseId=${id}`);
+    // console.log("Course details fetched:", response);
+    setCourseData(response);
   };
 
   useEffect(() => {
     if (id) {
       getCourseDetails();
-      console.log("token course :", usetoken);
+      // console.log("token course :", usetoken);
     }
   }, [id]);
 
@@ -63,10 +56,12 @@ const Courses = () => {
 
       {/* comments */}
 
-      <div className="mt-10 flex w-10/10 flex-col items-end gap-10">
+      {/* <div className="mt-10 flex w-10/10 flex-col items-end gap-10">
         <CommentSection CourseId={id} data={courseData} />
         <Commentdiv courseId={id} />
-      </div>
+      </div> */}
+
+      <Comment commentData={commentsData} type={"Course"} />
     </div>
   );
 };

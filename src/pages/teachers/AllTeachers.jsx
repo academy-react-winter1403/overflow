@@ -12,7 +12,7 @@ const AllTeacers = () => {
     try {
       const response = await getApi("/Home/GetTeachers");
       setTeacherData(response);
-      console.log(response);
+      // console.log(response);
     } catch (err) {
       console.error("Error fetching teacher details:", err.message);
       setError("Failed to load teacher details.");

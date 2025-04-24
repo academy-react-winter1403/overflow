@@ -26,7 +26,7 @@ const AllCourse = () => {
       "courseFilterDtos",
     );
 
-    console.log("api response", response);
+    // console.log("api response", response);
 
     setNewCoursesData(response);
   };

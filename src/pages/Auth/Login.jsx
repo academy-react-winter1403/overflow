@@ -24,7 +24,7 @@ const Loginlevel1 = () => {
         rememberMe: true,
       };
 
-      console.log(loginDataForSend);
+      // console.log(loginDataForSend);
 
       const response = await Sendloginrequest(loginDataForSend);
 

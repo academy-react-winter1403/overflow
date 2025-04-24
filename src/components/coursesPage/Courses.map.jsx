@@ -17,14 +17,14 @@ const Coursesmap = ({ data }) => {
     try {
       const response = await getApi(URL, "courseFilterDtos");
       setNewCoursesData(response);
-      console.log("NewCoursemap :", response);
+      // console.log("NewCoursemap :", response);
     } catch (error) {
       console.error("Error fetching courses data:", error);
     }
 
   };
 
-  console.log("courseData", courseData);
+  // console.log("courseData", courseData);
 
   return (
     <div className="rounded-4xl bg-white w-9/10 h-5/10 mr-13 overflow-auto">

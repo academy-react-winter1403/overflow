@@ -56,7 +56,7 @@ function NewsPage() {
   };
   //Handel navigation
   const handleNavigation = (id) => {
-    console.log(id)
+    // console.log(id)
     navigate(`NewsDetails/${id}`); 
   };
   // Handle Search Change

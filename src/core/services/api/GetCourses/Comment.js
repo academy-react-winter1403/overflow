@@ -1,150 +1,175 @@
-import { getItem } from '../../common/storage.services.js';
-import http from '../../interceptor/index.js';
-
-const GetComment = async (id) => {
-
-  if (!id) {
-    console.error("Invalid ID provided to GetComment.");
-    return false; 
-  }
-
-  try {
-
-    const response = await http.get(`/Course/GetCourseCommnets/${id}`); 
-    
-    console.log("Full API response:", response);
-
-
-    return response || []; 
-  } catch (error) {
-    console.error(`Error fetching comments for Course ID ${id}:`, error.message || error);
-    return false; 
-  }
-};
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { getItem } from "../../common/storage.services.js";
+import http from "../../interceptor/index.js";
+import { use } from "react";
 
 const PostComment = async (commentData) => {
   try {
-    const token = getItem("token"); 
+    const token = getItem("token");
 
     if (!token) {
       throw new Error("Authentication token is missing. Please log in.");
     }
 
-    const response = await http.post('/Course/AddCommentCourse', commentData);
+    const response = await http.post("/Course/AddCommentCourse", commentData);
 
     console.log("Response Data:", commentData);
 
     return response.data;
   } catch (error) {
-    console.error("Error in PostComment:", error.message || error.response?.data || "Unknown error");
-
+    console.error(
+      "Error in PostComment:",
+      error.message || error.response?.data || "Unknown error",
+    );
 
     console.log("Error Response:", error.response?.data);
 
-    return false; 
-  }
-};
-
-const Likecommnet = async (commentId) => {
-  try {
-    
-    const token = getItem("token");
-    if (!token) {
-      throw new Error("Authentication token is missing. Please log in.");
-    }
-    console.log("Token:", token);
-
-    
-    const response = await http.post(
-      `/Course/AddCourseCommentLike?CourseCommandId=${commentId}`,
- 
-    );
-
-    console.log("Raw response:", response);
-
-   
-    if (!response || !response) {
-      throw new Error("API response is undefined or missing required fields.");
-    }
-
-    return response; 
-  } catch (error) {
-    console.error("Error submitting like:", error);
-    throw error;
-  }
-};
-
-
-const DisLikecommnet = async (commentId) => {
-  try {
-
-    const response = await http.post(
-      `/Course/AddCourseCommentDissLike?CourseCommandId=${commentId}`
-    );
-
-    console.log("Raw response:", response);
-
-    if (!response || !response) {
-      throw new Error("API response is undefined or missing required fields.");
-    }
-
-    return response;
-  } catch (error) {
-    console.error("Error submitting like:", error);
-    throw error;
+    return false;
   }
 };
 
 const Getreply = async (CourseId, CommentId) => {
   try {
-
     if (!CourseId || !CommentId) {
       throw new Error("CourseId or CommentId is missing or invalid.");
     }
 
-    console.log("Fetching replies for:", { CourseId, CommentId });
+    // console.log("Fetching replies for:", { CourseId, CommentId });
 
+    const reply = await http.get(
+      `/Course/GetCourseReplyCommnets/${CourseId}/${CommentId}`,
+    );
 
-    const reply = await http.get(`/Course/GetCourseReplyCommnets/${CourseId}/${CommentId}`);
+    // console.log("Data from reply API:", reply);
 
-    console.log("Data from reply API:", reply);
-
-    return reply; 
+    return reply;
   } catch (error) {
-    console.error("Error fetching reply:", error.response?.data || error.message);
+    console.error(
+      "Error fetching reply:",
+      error.response?.data || error.message,
+    );
 
     if (error.response) {
       console.log("Response Data:", error.response.data);
     }
 
-    throw error; 
+    throw error;
   }
 };
 
 const Sendreply = async (replydata) => {
   try {
+    const reply = await http.post(`/Course/AddReplyCourseComment`, replydata);
 
-    const reply = await http.post(`/Course/AddReplyCourseComment`,replydata);
+    // console.log("Data from reply API:", reply);
 
-    console.log("Data from reply API:", reply);
-
-    return reply; 
+    return reply;
   } catch (error) {
-    console.error("Error fetching reply:", error.response?.data || error.message);
+    console.error(
+      "Error fetching reply:",
+      error.response?.data || error.message,
+    );
 
     if (error.response) {
       console.log("Response Data:", error.response.data);
     }
 
-    throw error; 
+    throw error;
   }
 };
 
+const GetComment = async (id) => {
+  const response = await http.get(`/Course/GetCourseCommnets/${id}`);
 
-export { 
-        GetComment,
-        PostComment,
-        Likecommnet,
-        DisLikecommnet,
-        Getreply,
-        Sendreply };
+  // console.log("GetComment response:", response);
+  // console.log("get cm ID:", id);
+
+  return response || [];
+};
+
+export const useGetCourseComment = (id) => {
+  return useQuery({
+    queryKey: ["coursecomments", id],
+    queryFn: () => GetComment(id),
+  });
+};
+
+// News Comment and Like
+const NewsLikecommnet = async (commentId, state) => {
+  const token = getItem("token");
+  if (!token) {
+    throw new Error("Please log in.");
+  }
+
+  // Log the received values to ensure they are correct
+  // console.log("Comment ID:", commentId, "State:", state);
+
+  const response = await http.post(
+    `/News/CommentLike/${commentId}?LikeType=${state}`, // URL should correctly include state
+  );
+
+  // console.log("Raw response:", response);
+
+  if (!response || !response) {
+    throw new Error("API response is undefined or missing required fields.");
+  }
+
+  return response;
+};
+
+export const useNewsLikecommnet = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ id, state }) => NewsLikecommnet(id, state),
+    onSuccess: () => {
+      // Invalidate query for comments
+      queryClient.invalidateQueries(["newscomments"]);
+    },
+  });
+};
+
+const Likecommnet = async (commentId,state) => {
+  const token = getItem("token");
+  if (!token) {
+    throw new Error("Authentication token is missing. Please log in.");
+  }
+  const response = await http.post(
+    `/Course/AddCourseComment${state}?CourseCommandId=${commentId}`,
+  );
+  return response;
+};
+
+// const DisLikecommnet = async (commentId) => {
+//   const token = getItem("token");
+//   if (!token) {
+//     throw new Error("Authentication token is missing. Please log in.");
+//   }
+//   const response = await http.post(
+//     `/Course/AddCourseCommentDissLike?CourseCommandId=${commentId}`,
+//   );
+
+//   // console.log("Raw response:", response);
+
+//   return response;
+// };
+
+export const useCourseLikecommnet = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ id, state }) => Likecommnet(id, state),
+    onSuccess: () => {
+      // Invalidate query for comments
+      queryClient.invalidateQueries(["coursecomments"]);
+    },
+  });
+};
+export {
+  NewsLikecommnet,
+  GetComment,
+  PostComment,
+  Likecommnet,
+  Getreply,
+  Sendreply,
+};

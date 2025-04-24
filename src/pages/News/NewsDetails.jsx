@@ -4,6 +4,8 @@ import { getApi } from "../../core/services/api/getApi";
 import SmartImage from "../../components/Common/SmartImage";
 import fallbackNews from "../../assets/News/newspaper.png";
 import Comment from "../../components/Comment/Comment";
+import { useQuery } from "@tanstack/react-query";
+
 const NewsDetails = () => {
   const [newsData, setNewsData] = useState(null);
   const [similarNews, setSimilarNews] = useState([]);
@@ -12,15 +14,19 @@ const NewsDetails = () => {
   const { id } = useParams(); // Get the news ID from URL
   const URL = `/News/${id}`;
   const navigate = useNavigate();
+
+  // useQuery
+  const { data: response } = useQuery({
+    queryKey: ["newscomments", id],
+    queryFn: () => getApi(URL),
+  });
+
   useEffect(() => {
-    const getNewsDetails = async () => {
-      const response = await getApi(URL);
+    if (response) {
       setNewsData(response.detailsNewsDto);
       setNewsComment(response.commentDtos);
-    };
-
-    getNewsDetails();
-  }, [id]);
+    }
+  }, [response]);
 
   useEffect(() => {
     if (newsData) {
@@ -29,12 +35,13 @@ const NewsDetails = () => {
         const similarNewsData = await getApi(
           `/News/GetNewsWithCategory/${newsCatregoryId}`,
         );
-        setSimilarNews(similarNewsData.filter((news) => news.id != id));
+        setSimilarNews(similarNewsData.filter((news) => news.id !== id));
+        // console.log("cm news", newsComment);
       };
 
       getSimilarNews();
     }
-  }, [newsData]); // Add newsData as a dependency
+  }, [newsData, id, newsComment]); // Add all necessary dependencies
 
   if (!newsData) {
     return (
@@ -117,8 +124,8 @@ const NewsDetails = () => {
           </div>
           <Comment
             commentData={newsComment}
-            id={id}
             commentsCount={commentsCount}
+            type={"News"}
           ></Comment>
         </div>
 
