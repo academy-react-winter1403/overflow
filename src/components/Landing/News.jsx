@@ -62,7 +62,7 @@ function News() {
                 key={index}
                 style={{ transform: `translateY(-${newsSlider * 469}px)` }}
 
-                className="z-10  mt-11 mr-16 transition-all duration-300"
+                className="z-10 hover:scale-102 hover:shadow-2xl shadow-deep-blue mt-11 mr-16 transition-all duration-300"
               >
                 <Link to={`/News/NewsDetails/${newsItem.id}`}>
                 <div className="flex h-99 w-264 flex-col gap-6 rounded-sm bg-white dark:bg-deep-blue/55  px-11 py-8 text-right shadow-[0px_5px_27.5px_rgba(0,0,0,0.16)] md:flex-row-reverse">

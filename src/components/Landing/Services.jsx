@@ -98,7 +98,7 @@ function Services() {
           {servicesData.map((service) => (
             <div className="z-10 mt-11 mr-16" key={service.id}>
               <div
-                className="transition-all duration-300 flex h-95 w-241 flex-col gap-6 rounded-sm dark:bg-deep-blue/55  bg-white px-11 py-8 text-right shadow-[0px_5px_27.5px_rgba(0,0,0,0.16)] md:flex-row-reverse"
+                className="transition-all duration-300  hover:scale-102 hover:shadow-2xl hover:shadow-deep-blue flex h-95 w-241 flex-col gap-6 rounded-sm dark:bg-deep-blue/55  bg-white px-11 py-8 text-right shadow-[0px_5px_27.5px_rgba(0,0,0,0.16)] md:flex-row-reverse"
                 style={{ transform: `translateY(-${serviceSlider * 448}px)` }}
               >
                 {/* Image */}
