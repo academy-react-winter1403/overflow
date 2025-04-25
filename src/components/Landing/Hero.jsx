@@ -19,10 +19,11 @@ function Hero() {
   const URLCourse = `/Home/GetCoursesWithPagination?Query=${courseQuery}`;
 
   const handleSearchChange = (e) => {
-    const value = e.target.value; 
+    const value = e.target.value;
 
-    if(value!== "") {
-    setSearchTerm(value);}
+    if (value !== "") {
+      setSearchTerm(value);
+    }
     if (timer) {
       clearTimeout(timer);
     }
@@ -48,29 +49,31 @@ function Hero() {
 
   return (
     <section className="relative px-30 py-16">
+      {/* set onFocus */}
+      {isSearchFocused && (
+        <div
+          onClick={() => setIsSearchFocused(false)} // Expand on focus
+          className="absolute top-0 left-0 z-20 h-screen w-screen transition-all duration-300"
+        ></div>
+      )}{" "}
       {/* Background Shape */}
       <img
         src={bgShape}
         alt="Background Shape"
         className="absolute top-0 -right-20 z-0 h-[1099px] w-[1099px] opacity-98"
       />
-      {/* Blur Effect */}
-      {/* {isSearchFocused && (
-        <div className="absolute inset-0 left-0 z-20 h-screen w-screen bg-black/30 backdrop-blur-sm"></div>
-      )} */}
-
       <div className="relative z-20 flex w-full items-center justify-between">
         {/* Hero Image Section */}
         <img
           src={HeroImg}
           alt="آموزش"
-          className={`h-auto w-full max-w-[900px] flex-shrink-3 ${
+          className={`h-auto w-full max-w-[900px] flex-shrink-3 max-xl:hidden ${
             isSearchFocused ? "opacity-20" : ""
           }`}
         />
 
         {/* Right Section */}
-        <div className="flex w-full flex-shrink-2 flex-col items-end justify-start space-y-6 text-right md:w-1/2">
+        <div className="flex w-full flex-shrink-2 flex-col items-end justify-start space-y-6 text-right max-xl:mx-auto max-xl:items-center">
           <h1
             className={`font-peyda text-deep-blue text-[59px] font-black tracking-widest dark:text-gray-200 ${
               isSearchFocused ? "opacity-20" : ""
@@ -88,19 +91,18 @@ function Hero() {
 
           {/* Search Input */}
           <div
-            className={` ring-deep-blue z-50 flex flex-col gap-10 rounded-3xl  bg-white p-2 tracking-widest ring-2 transition-all duration-300 dark:bg-gray-700 hover:scale-105 hover:shadow-2xl ${
-              isSearchFocused ? "absolute w-full p-4" : "w-6/7 max-w-[590px]"
+            className={`ring-deep-blue z-50 flex flex-col gap-10 rounded-3xl bg-white p-2 tracking-widest ring-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl max-xl:w-full dark:bg-gray-700 ${
+              isSearchFocused ? "absolute w-9/10 p-4" : "w-6/7 max-w-[590px]"
             }`}
+            onClick={() => setIsSearchFocused(true)} // Expand on focus
           >
             <div className="flex flex-row-reverse items-center justify-between gap-4">
               <input
-                onFocus={() => setIsSearchFocused(true)} // Expand on focus
-                onBlur={() => setIsSearchFocused(false)} // Collapse on blur
                 onChange={handleSearchChange}
                 value={searchTerm}
                 type="text"
                 placeholder="...تو فقط اسم ببر"
-                className="border-b-2 font-vazir z-50 h-[55px] w-full rounded-full border-none px-6 text-right text-[21px] font-bold text-gray-500 focus:outline-none dark:text-gray-200"
+                className="font-vazir z-50 h-[55px] w-full rounded-full border-b-2 border-none px-6 text-right text-[21px] font-bold text-gray-500 focus:outline-none dark:text-gray-200"
               />
               <button className="bg-deep-blue h-[53px] w-[55px] flex-shrink-0 rounded-2xl text-white">
                 <img
@@ -110,32 +112,33 @@ function Hero() {
               </button>
             </div>
 
-             {/* Search Results */}
-             {isSearchFocused && (
-              <div className=" border-t-2 max-h-screen overflow-y-auto rounded-lg bg-white p-6 shadow-lg dark:bg-gray-800">
-                
-                <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {newsData.map((item, index) => (
-                    <NewsCard
-                      key={index}
-                      item={item}
-                      handleNavigation={(id) =>
-                        console.log(`Navigate to news ${id}`)
-                      }
-                    />
-                  ))}
-                  {courseData.map((item, index) => (
-                    <Card
-                      key={index}
-                      item={item}
-                      handleNavigation={(id) =>
-                        console.log(`Navigate to course ${id}`)
-                      }
-                    />
-                  ))}
+            {/* Search Results */}
+            {isSearchFocused && (
+              <div className="max-h-screen overflow-y-auto rounded-lg border-t-2 bg-white p-6 shadow-lg dark:bg-gray-800">
+                <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
+                  {newsData &&
+                    newsData?.map((item, index) => (
+                      <NewsCard
+                        key={index}
+                        item={item}
+                        handleNavigation={(id) =>
+                          console.log(`Navigate to news ${id}`)
+                        }
+                      />
+                    ))}
+                  {courseData &&
+                    courseData?.map((item, index) => (
+                      <Card
+                        key={index}
+                        item={item}
+                        handleNavigation={(id) =>
+                          console.log(`Navigate to course ${id}`)
+                        }
+                      />
+                    ))}
                 </div>
               </div>
-              )}
+            )}
           </div>
           {/* Description */}
           <h1
@@ -146,7 +149,7 @@ function Hero() {
             آکادمی سپهر
           </h1>
           <p
-            className={`font-iransans -mt-2 text-right text-2xl text-[#a7a7a7] dark:text-gray-200 ${
+            className={`font-iransans -mt-2 text-right text-2xl text-[#a7a7a7] max-md:hidden dark:text-gray-200 ${
               isSearchFocused ? "opacity-20" : ""
             }`}
           >

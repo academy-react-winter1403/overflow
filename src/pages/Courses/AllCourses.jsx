@@ -45,9 +45,7 @@ const AllCourse = () => {
     setActiveSort(sortingCol);
   };
 
-  const handleNavigation = (id) => {
-    navigate(`Courses/${id}`);
-  };
+  
 
   return (
     <div className="m-auto flex w-9/10 flex-wrap justify-center bg-gray-50">
@@ -111,7 +109,6 @@ const AllCourse = () => {
             <Card
               item={item}
               index={index}
-              handleNavigation={handleNavigation}
               key={index}
             />
           ))}

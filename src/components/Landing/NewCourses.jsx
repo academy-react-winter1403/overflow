@@ -28,8 +28,8 @@ function NewCourses() {
     <div className="flex self-center flex-col max-w-[1641px] z-10  text-center my-24 py-8">
       <h2 className="text-5xl font-peyda font-black text-[#267dff] mb-13">جدید ترین دوره ها</h2>
 
-      <div className="flex justify-between gap-6">
-        {newCoursesData&&newCoursesData.map((item, index) => (
+      <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-4">
+      {newCoursesData&&newCoursesData.map((item, index) => (
 
           <Card
             item={item}

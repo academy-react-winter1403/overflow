@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import cardImg from "../../assets/common/cardImg.png";
 import clock from "../../assets/common/clock.png";
 function Card({ item, index, handleNavigation, className = "" }) {
@@ -6,6 +7,7 @@ function Card({ item, index, handleNavigation, className = "" }) {
 
   return (
     <div className={`${className} pt-15`}>
+      <Link to={`/AllCourses/Courses/${item.courseId}`}> >
       <div
         className="relative h-140 w-96 cursor-pointer rounded-[29px] bg-white px-6 text-right shadow-lg transition-all max-2xl:h-126 max-2xl:w-80 max-lg:w-100 max-md:w-80 dark:bg-gray-400/95 hover:scale-105 hover:shadow-xl"
         key={index}
@@ -59,6 +61,7 @@ function Card({ item, index, handleNavigation, className = "" }) {
           </div>
         </div>
       </div>
+      </Link>
     </div>
   );
 }

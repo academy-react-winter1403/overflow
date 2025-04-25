@@ -49,7 +49,7 @@ function News() {
           className="absolute -top-10 -left-65 h-[774px] w-[809px] opacity-98"
         />
       </div>
-      <h2 className="dark:text-gray-200  font-peyda text-deep-blue relative z-10 mb-14 text-5xl font-black">
+      <h2 className="dark:text-gray-200 max-xl:hidden font-peyda text-deep-blue relative z-10 mb-14 text-5xl font-black">
         آخرین اخبار
       </h2>
       <section className="overflow-hidden relative z-10 flex justify-center">

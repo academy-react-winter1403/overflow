@@ -2,14 +2,15 @@ import React from "react";
 import fallbackNews from "../../assets/News/newspaper.png";
 import clock from "../../assets/common/clock.png";
 import SmartImage from "./SmartImage";
+import { Link } from "react-router-dom";
 
-function NewsCard({ item, index, handleNavigation }) {
+function NewsCard({ item, index, }) {
   return (
    <div className=" pt-15">
+    <Link to={`/News/NewsDetails/${item.id}`}>
      <div
       className="relative bg-white dark:bg-gray-400/95 rounded-[29px] shadow-lg w-96 max-2xl:w-80 max-lg:w-100 max-md:w-80 h-140 px-6 text-right cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
       key={index}
-      onClick={() => handleNavigation(item.id)}
     >
       <div className="relative h-[200px]">
        {/* image */}
@@ -38,6 +39,7 @@ function NewsCard({ item, index, handleNavigation }) {
         </div>
       </div>
     </div>
+    </Link>
    </div>
   );
 }
