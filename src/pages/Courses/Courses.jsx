@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { getApi } from "../../core/services/api/getApi";
 import { useEffect, useState } from "react";
 import { useGetCourseComment } from "../../core/services/api/GetCourses/Comment";
+import SendNewComment from "../../components/Comment/SendNewComment";
 
 const Courses = () => {
   const { id } = useParams();
@@ -33,11 +34,15 @@ const Courses = () => {
   }
 
   if (error) {
-    return <div className="text-red-600">Oops! {error.message || "Something went wrong."}</div>;
+    return (
+      <div className="text-red-600">
+        Oops! {error.message || "Something went wrong."}
+      </div>
+    );
   }
 
   return (
-    <div className="relative m-auto mt-10 mb-10 flex w-9/10 flex-col items-center font-kalameh">
+    <div className="font-kalameh relative m-auto mt-10 mb-10 flex w-9/10 flex-col items-center">
       {/* Top Section */}
       <Top data={courseData} />
 
@@ -45,11 +50,12 @@ const Courses = () => {
       <div className="mt-10 flex w-full flex-row-reverse transition-all duration-300 max-lg:justify-center">
         <About data={courseData} />
 
-        <div className="max-lg:hidden mt-10 w-1/2 flex flex-col items-center gap-10  transition-all duration-300">
+        <div className="mt-10 flex w-1/2 flex-col items-center gap-10 transition-all duration-300 max-lg:hidden">
           <Masters data={courseData} />
           <Coursesmap data={courseData} />
         </div>
       </div>
+      <SendNewComment id={id} />
 
       {/* Comments Section */}
       <Comment commentData={commentsData} type={"Course"} />

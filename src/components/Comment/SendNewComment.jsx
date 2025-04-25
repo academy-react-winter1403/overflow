@@ -1,54 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import http from "../../core/services/interceptor"; // Assuming you are using an interceptor for http requests
 
-const CommentSection = ({ CourseId, data }) => {
+function SendNewComment({ id }) {
+  const [focusedCommentId, setFocusedCommentId] = useState(null); // Track focused comment by ID
+const CourseId = id; // Assuming id is the course ID
+  const handleFocus = (id) => {
+    setFocusedCommentId(id); // Set the focused comment ID
+  };
+
+  const handleBlur = () => {
+    setFocusedCommentId(null); // Reset focused comment when blur
+  };
+
   const handleSubmit = async (values) => {
     const { courseId, title, describe } = values;
 
     const formData = new FormData();
-    formData.append("CourseId", courseId);
+    formData.append("CourseId", id);
     formData.append("Title", title);
     formData.append("Describe", describe);
 
-    // Log FormData entries
-    for (let [key, value] of formData.entries()) {
-      console.log(`${key}: ${value}`);
-    }
-
     try {
-      // Make the API request
       const responseData = await http.post(
         "/Course/AddCommentCourse",
         formData,
       );
 
-      // Log the response data
-      console.log(responseData);
-
-      if (responseData.data.success) {
+      if (responseData.success) {
         alert("Comment posted successfully!");
       } else {
         alert("Failed to post comment");
       }
 
-      return responseData.data;
+      return responseData;
     } catch (error) {
-      // Handle error if the API request fails
       alert(
         "Error: " +
-          (error.response ? error.response.data.message : error.message),
+          (error.response ? error.response.message : error.message),
       );
     }
   };
 
   return (
-    <div className="flex w-7/11 flex-col justify-end rounded-lg bg-white p-4 shadow-md transition-all duration-300 max-lg:w-10/10">
-      <h5 className="text-deep-blue mb-5 text-right text-3xl font-bold">
-        نظرات
-      </h5>
+    <div
+      className={`dark:bg-deep-blue/75 mt-10 h-auto max-w-2/3 min-w-1/2 rounded-xl bg-white p-2 dark:text-amber-50 ${
+        focusedCommentId === id ? "w-full" : "w-1/2"
+      } transition-all duration-300`}
+    >
       <Formik
-        className=""
         initialValues={{
           courseId: CourseId || "", // Set the courseId to the prop value
           title: "",
@@ -56,55 +56,49 @@ const CommentSection = ({ CourseId, data }) => {
         }}
         validate={(values) => {
           const errors = {};
-          if (!values.courseId) errors.courseId = "Course ID is required";
           if (!values.title) errors.title = "Title is required";
           if (!values.describe) errors.describe = "Description is required";
           return errors;
         }}
         onSubmit={handleSubmit}
       >
-        {() => (
-          <Form className="flex flex-col justify-end space-y-4">
-            {/* <div className="opacity-0 visited:hidden">
-              <label htmlFor="courseId" className="block text-sm font-medium text-gray-700">
-                Course ID
-              </label>
+        {({ isSubmitting }) => (
+          <Form className="rounded-lg bg-gray-50">
+            {/* Title Field */}
+            <div className="mb-4">
               <Field
-                type="text"
-                id="courseId"
-                name="courseId"
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-              />
-              <ErrorMessage
-                name="courseId"
-                component="div"
-                className="text-red-500 text-sm mt-1"
-              />
-            </div> */}
-
-            <div>
-              <Field
+                onFocus={() => handleFocus(id)} // On focus, set focused comment
+                onBlur={handleBlur}
                 type="text"
                 id="title"
                 name="title"
                 placeholder="موضوع"
-                className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2 text-right shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                style={{ outline: "none", resize: "none" }} // Add this inline style to remove the focus outline
+                className={`bg-deep-blue/10 w-full rounded-lg px-4 pl-2 text-right ${
+                  focusedCommentId === id ? "h-10 w-full" : "h-10 w-1/2"
+                } transition-all duration-300`}
               />
               <ErrorMessage
                 name="title"
                 component="div"
-                className="mt-1 text-sm text-red-500"
+                className="mt-1 text-right text-sm text-red-500"
               />
             </div>
 
-            <div>
+            {/* Description Field */}
+            <div className="mb-4">
               <Field
+                onFocus={() => handleFocus(id)} // On focus, set focused comment
+                onBlur={handleBlur}
                 as="textarea"
                 id="describe"
                 name="describe"
                 rows="4"
                 placeholder="نظر خود را بنویسید"
-                className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2 text-right shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                style={{ outline: "none", resize: "none" }} // Add this inline style to remove the focus outline
+                className={`w-full bg-gray-50 px-8 pl-2 text-right ${
+                  focusedCommentId === id ? "h-40 w-full" : "h-10 w-1/2"
+                } transition-all duration-300`}
               />
               <ErrorMessage
                 name="describe"
@@ -113,9 +107,11 @@ const CommentSection = ({ CourseId, data }) => {
               />
             </div>
 
+            {/* Submit Button */}
             <button
               type="submit"
               className="bg-deep-blue focus:ring-opacity-50 w-2/10 rounded-md p-2 font-semibold text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              disabled={isSubmitting}
             >
               ارسال نظر
             </button>
@@ -124,6 +120,6 @@ const CommentSection = ({ CourseId, data }) => {
       </Formik>
     </div>
   );
-};
+}
 
-export { CommentSection };
+export default SendNewComment;
