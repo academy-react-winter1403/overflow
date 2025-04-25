@@ -4,6 +4,7 @@ import { setItem } from "../../core/services/common/storage.services";
 import { Register } from "../../core/services/api/Register/RegisterPages.js"; 
 import signin from '../../assets/register/Image 6.png';
 import academylogo from '../../assets/register/ac-Logo.png';
+import { useNavigate } from "react-router";
 
 const validationSchema = Yup.object({
   phone: Yup.string()
@@ -18,6 +19,8 @@ const validationSchema = Yup.object({
 });
 
 const Registerlvl3 = () => {
+
+  const navigate = useNavigate();
   
   const handleSubmit = async ({ phone, gmail, password }) => {
     try {
@@ -37,6 +40,7 @@ const Registerlvl3 = () => {
       
       if (response) {
         console.log("Payload successfully sent:", response);
+        navigate('/login');
       } else {
         console.log("Failed to send payload.");
       }
@@ -54,7 +58,7 @@ const Registerlvl3 = () => {
 
   return (
     
-    <div className="flex flex-row  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 font-kalameh max-2xl:w-7/10 max-xl:w-6/10 max-xl:m-auto transition-all duration-300">
+    <div className="flex flex-row  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 font-kalameh max-2xl:w-7/10 max-xl:w-6/10 max-xl:m-auto transition-all duration-300 dark:bg-gray-800">
 
       <div className=" w-10/10 flex-row flex justify-center gap-20 transition-all duration-300">
 
@@ -84,12 +88,12 @@ const Registerlvl3 = () => {
           onSubmit={handleSubmit}
         >
           {() => (
-            <Form className=" flex flex-col items-end mt-10 gap-2.5 pr-22 mx-auto w-10/10 h-auto ">
+            <Form className=" flex flex-col items-end mt-10 gap-2.5 pr-22 mx-auto w-10/10 h-auto dark:text-black">
               <Field
                 type="text"
                 name="phone"
                 placeholder="شماره تماس"
-                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10"
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 " 
               />
               <ErrorMessage name="phone" component="div" className="error" />
 

@@ -91,7 +91,7 @@ if (!isDarkMode) {
           </div>
         </div>
         {/* User Icon */}
-        <Link to={"/Login"} >
+        <Link to={"/panel"} >
         <div className="bg-deep-blue cursor-pointer flex justify-center items-center rounded-full w-12 h-12 ">
          <div>
             <img

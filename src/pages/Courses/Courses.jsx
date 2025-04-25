@@ -42,7 +42,7 @@ const Courses = () => {
   }
 
   return (
-    <div className="font-kalameh relative m-auto mt-10 mb-10 flex w-9/10 flex-col items-center">
+    <div className="font-kalameh relative m-auto mt-10 mb-10 flex w-9/10 flex-col items-center ">
       {/* Top Section */}
       <Top data={courseData} />
 

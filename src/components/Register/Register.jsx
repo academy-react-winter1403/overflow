@@ -37,11 +37,11 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-row  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 font-kalameh max-2xl:w-7/10 max-xl:w-6/10 max-xl:m-auto transition-all duration-300">
+    <div className="flex flex-row  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 font-kalameh max-2xl:w-7/10 max-xl:w-6/10 max-xl:m-auto transition-all duration-300 dark:bg-gray-500">
 
     <div className=" w-10/10 flex-row flex justify-center gap-20 transition-all duration-300">
     
-    <div className="w-4/10 h-138 mt-15 ml-10  max-xl:w-0">
+    <div className="w-4/10 h-138 mt-15 ml-10  max-xl:w-0 ">
         <img className="h-120 w-8/10" src={signin} />
         
       </div>
@@ -84,7 +84,7 @@ const Register = () => {
                 type="text"
                 name="phone"
                 placeholder="شماره تماس"
-                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10"
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 dark:text-black"
               />
               <ErrorMessage name="phone" component="div" className="error" />
               <button

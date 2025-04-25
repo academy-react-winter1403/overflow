@@ -44,7 +44,7 @@ const CourseId = id; // Assuming id is the course ID
 
   return (
     <div
-      className={`dark:bg-deep-blue/75 mt-10 h-auto max-w-2/3 min-w-1/2 rounded-xl bg-white p-2 dark:text-amber-50 ${
+      className={`dark:bg-deep-blue/75 mt-10 h-auto max-w-2/3 min-w-1/2 rounded-xl bg-white p-2 dark:text-amber-50  ${
         focusedCommentId === id ? "w-full" : "w-1/2"
       } transition-all duration-300`}
     >
@@ -63,9 +63,9 @@ const CourseId = id; // Assuming id is the course ID
         onSubmit={handleSubmit}
       >
         {({ isSubmitting }) => (
-          <Form className="rounded-lg bg-gray-50">
+          <Form className="rounded-lg bg-gray-50 ">
             {/* Title Field */}
-            <div className="mb-4">
+            <div className="mb-4 dark:bg-gray-800">
               <Field
                 onFocus={() => handleFocus(id)} // On focus, set focused comment
                 onBlur={handleBlur}
@@ -86,7 +86,7 @@ const CourseId = id; // Assuming id is the course ID
             </div>
 
             {/* Description Field */}
-            <div className="mb-4">
+            <div className="mb-4 ">
               <Field
                 onFocus={() => handleFocus(id)} // On focus, set focused comment
                 onBlur={handleBlur}
@@ -96,7 +96,7 @@ const CourseId = id; // Assuming id is the course ID
                 rows="4"
                 placeholder="نظر خود را بنویسید"
                 style={{ outline: "none", resize: "none" }} // Add this inline style to remove the focus outline
-                className={`w-full bg-gray-50 px-8 pl-2 text-right ${
+                className={`dark:bg-gray-800 w-full bg-gray-50 px-8 pl-2 text-right ${
                   focusedCommentId === id ? "h-40 w-full" : "h-10 w-1/2"
                 } transition-all duration-300`}
               />

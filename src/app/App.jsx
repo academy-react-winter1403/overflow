@@ -14,6 +14,8 @@ import { Loginlevel1 } from "../pages/Auth/Login.jsx";
 import { Resetpasswordlevel1 } from "../pages/Auth/ForgetPassStep1.jsx";
 import { Resetpasswordlevel2 } from "../pages/Auth/ForgetPassStep2.jsx";
 import { Idk } from "../components/Ep/Idk.jsx";
+import { GetMyCoursesReserve } from "../components/Panel/GetMyCoursesReserve.jsx";
+import { Dashboard } from "../components/Panel/Dashboard.jsx";
 
 
 function App() {
@@ -81,6 +83,7 @@ function App() {
           path:'/sendyourthing',
           element:<Idk /> 
         }
+        ,           
       ],
     },
   ];

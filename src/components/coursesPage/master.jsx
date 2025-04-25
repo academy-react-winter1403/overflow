@@ -9,7 +9,7 @@ const Masters = ({data}) => {
 const courseData = data || {};
 
   return (
-    <div className="rounded-4xl  bg-white w-9/10 h-7/15  mr-12 transition-all duration-300" >
+    <div className="rounded-4xl  bg-white w-9/10 h-7/15  mr-12 transition-all duration-300 dark:bg-gray-800" >
           <div className="flex text-right flex-col h-[320px] border-sky-900">
 
             {/* Profile */}
@@ -18,10 +18,10 @@ const courseData = data || {};
                 <img className=' w-3/20 h-15/20 mt-2 ml-2 mr-5 ' src={profile} />
 
                 <div className='w-8/10'>
-                  <h2 className='text-deep-blue font-bold text-2xl w-full h-2/10 mt-2 '>
+                  <h2 className='text-deep-blue font-bold text-2xl w-full h-2/10 mt-2 dark:text-white'>
                     {courseData.teacherName}
                   </h2>
-                  <p className=" text-xs b w-full mt-3">مدرس دوره</p>
+                  <p className=" text-xs b w-full mt-3 dark:text-white">مدرس دوره</p>
                 </div>
 
             </div>
