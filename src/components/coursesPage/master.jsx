@@ -13,9 +13,9 @@ const courseData = data || {};
           <div className="flex text-right flex-col h-[320px] border-sky-900">
 
             {/* Profile */}
-            <div className='w-full h-3/10 flex flex-row-reverse justify-center'>
+            <div className='w-full h-3/10 flex flex-row-reverse justify-center '>
 
-                <img className=' w-3/20 h-12/20 mt-2 ml-2 mr-5' src={profile} />
+                <img className=' w-3/20 h-15/20 mt-2 ml-2 mr-5 ' src={profile} />
 
                 <div className='w-8/10'>
                   <h2 className='text-deep-blue font-bold text-2xl w-full h-2/10 mt-2 '>
