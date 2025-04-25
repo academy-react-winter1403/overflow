@@ -16,6 +16,7 @@ import { Resetpasswordlevel2 } from "../pages/Auth/ForgetPassStep2.jsx";
 import { Idk } from "../components/Ep/Idk.jsx";
 import { GetMyCoursesReserve } from "../components/Panel/GetMyCoursesReserve.jsx";
 import { Dashboard } from "../components/Panel/Dashboard.jsx";
+import { Personalinfo } from "../components/Panel/personalinfo.jsx";
 
 
 function App() {
@@ -71,19 +72,23 @@ function App() {
           element: <AllTeacers />,
         },
         {
-          path : "/rest1",
-          element:<Resetpasswordlevel1/>
+          path: "/rest1",
+          element: <Resetpasswordlevel1 />
         },
         {
-          path : "/rest2/:code",
-          element : <Resetpasswordlevel2/>
+          path: "/rest2/:code",
+          element: <Resetpasswordlevel2 />
         }
         ,
         {
-          path:'/sendyourthing',
-          element:<Idk /> 
+          path: '/sendyourthing',
+          element: <Idk />
+        }, {
+          path: '/panelpersoninfo',
+          element: <Personalinfo />
         }
-        ,           
+
+        ,
       ],
     },
   ];
