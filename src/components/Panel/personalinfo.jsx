@@ -6,6 +6,7 @@ import ticket from '../../assets/userpanel/Path 30.png';
 import profileIcon from '../../assets/userpanel/Path 31.png';
 import exit from '../../assets/userpanel/Path 32.png';
 import { Getprofile } from '../../core/services/api/userpanelapi/panelapis';
+import { Link } from 'react-router';
 
 const Personalinfo = () => {
     const [profile, setProfile] = useState(null);
@@ -26,7 +27,7 @@ const Personalinfo = () => {
 
     return (
         <div className="flex flex-row-reverse flex-wrap w-9/10 ml-20 font-kalameh">
-            {/* Sidebar */}
+
             <div className="w-3/11 bg-white h-180 rounded-2xl max-sm:w-3/10">
                 <div className='flex items-end flex-row-reverse w-full h-20 pr-9'>
                     <img className='w-2/10' src={logo} alt="Logo" />
@@ -50,17 +51,17 @@ const Personalinfo = () => {
                 </div>
             </div>
 
-            {/* Main Content */}
+
             <div className='flex flex-row-reverse flex-wrap w-7/10'>
                 <div className='flex flex-row-reverse flex-wrap w-full h-auto justify-center max-sm:overflow-auto max-sm:h-150 max-lg:h-150 max-lg:overflow-auto'>
                     <div className='bg-white w-10/11 rounded-2xl shadow-lg p-6'>
                         <div className='w-9/10 m-auto mt-10 flex flex-wrap justify-between gap-4'>
-                            
-                            {/* Default Data with API Data */}
+
+
                             <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4 flex items-center justify-end text-right bg-gray-50 text-sm font-medium text-gray-700 shadow-sm'>
                                 نام و نام خانوادگی: {profile?.fName || 'وارد نشده'} {profile?.lName || 'وارد نشده'}
                             </div>
-                            
+
                             <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4 flex items-center justify-end text-right bg-gray-50 text-sm font-medium text-gray-700 shadow-sm'>
                                 شماره همراه: {profile?.phoneNumber || 'وارد نشده'}
                             </div>
@@ -108,8 +109,15 @@ const Personalinfo = () => {
                             </div>
 
                         </div>
+                        <Link to="/panelpersoninfoedit">
+                            <div className="w-3/11 h-12 text-center bg-[#436E8E] text-gray-200 text-[35px] leading-3 p-7 m-auto mt-15 shadow-sm rounded-xl">
+                                ویرایش
+                            </div>
+                        </Link>
                     </div>
+
                 </div>
+
             </div>
         </div>
     );

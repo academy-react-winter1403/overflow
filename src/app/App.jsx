@@ -17,6 +17,7 @@ import { Idk } from "../components/Ep/Idk.jsx";
 import { GetMyCoursesReserve } from "../components/Panel/GetMyCoursesReserve.jsx";
 import { Dashboard } from "../components/Panel/Dashboard.jsx";
 import { Personalinfo } from "../components/Panel/personalinfo.jsx";
+import { Personalinfoedit } from "../components/Panel/personalinfoedit.jsx";
 
 
 function App() {
@@ -86,7 +87,10 @@ function App() {
         }, {
           path: '/panelpersoninfo',
           element: <Personalinfo />
-        }
+        }, {
+          path: '/panelpersoninfoedit',
+          element: <Personalinfoedit />
+        },
 
         ,
       ],

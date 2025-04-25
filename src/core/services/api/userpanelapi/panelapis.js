@@ -1,6 +1,7 @@
 import { getItem } from "../../common/storage.services.js";
 import http from "../../interceptor/index.js";
 
+// تابع برای گرفتن داده‌های رزرو شده کاربر
 const Getmyreserveapi = async () => {
 
     const token = getItem("token");
@@ -24,6 +25,7 @@ const Getmyreserveapi = async () => {
     }
 };
 
+// تابع برای گرفتن پروفایل کاربر
 const Getprofile = async () => {
 
     const token = getItem("token");
@@ -33,7 +35,7 @@ const Getprofile = async () => {
     }
     try {
         const response = await http.get('/SharePanel/GetProfileInfo');
-        console.log('Response from get proflie info:', response);
+        console.log('Response from get profile info:', response);
         return response;
     } catch (error) {
         if (error.response) {
@@ -47,5 +49,36 @@ const Getprofile = async () => {
     }
 };
 
+// تابع برای آپدیت کردن پروفایل کاربر
+const UpdateProfileInfo = async (profileData) => {
+    try {
+        const response = await http.put(
+            '/SharePanel/UpdateProfileInfo', 
+            {
+                LName: profileData.lName,
+                FName: profileData.fName,
+                UserAbout: profileData.userAbout,
+                LinkdinProfile: profileData.linkdinProfile,
+                TelegramLink: profileData.telegramLink,
+                ReceiveMessageEvent: profileData.receiveMessageEvent,
+                HomeAdderess: profileData.homeAdderess,
+                NationalCode: profileData.nationalCode,
+                Gender: profileData.gender,
+                BirthDay: profileData.birthDay,  // مطمئن شوید که تاریخ به فرمت درست است
+                Latitude: profileData.latitude,
+                Longitude: profileData.longitude
+            }
+        );
+        
+        if (response.status === 200) {
+            return response.data; // در صورت موفقیت، داده‌ها را برمی‌گرداند
+        } else {
+            throw new Error('Failed to update profile');
+        }
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        throw error; // برای مدیریت خطا در سایر بخش‌ها
+    }
+};
 
-export {Getmyreserveapi,Getprofile}
+export { Getmyreserveapi, Getprofile, UpdateProfileInfo };
