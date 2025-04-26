@@ -63,8 +63,11 @@ const Courses = () => {
         </div>
       </div>
 
-      <Addlikeforcourse />
-      <SendNewComment id={id} />
+        <div className=" pt-10 flex flex-col border w-10/10 items-end">
+          
+          <Addlikeforcourse />
+          <SendNewComment id={id} />
+        </div>
 
       {/* Comments Section */}
       <Comment commentData={commentsData} type={"Course"} />
