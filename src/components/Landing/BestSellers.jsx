@@ -30,7 +30,7 @@ function BestSellers() {
 
       {/* Grid Layout for Cards */}
       <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-4">
-        {coursesData.map((item, index) => (
+        {coursesData&&coursesData.map((item, index) => (
           <Card
             item={item}
             index={index}

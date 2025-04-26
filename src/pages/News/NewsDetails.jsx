@@ -134,7 +134,7 @@ const NewsDetails = () => {
             <div className="bg-deep-blue/25 absolute h-full w-full rounded-3xl dark:bg-gray-700"></div>
             <div>
               <h3 className="py-3 dark:text-gray-300">اخبار مرتبط</h3>
-              {similarNews.slice(0, 3).map((news, index) => (
+              {similarNews&&similarNews.slice(0, 3).map((news, index) => (
                 <div
                   className="mb-3 flex w-full flex-col items-center px-2"
                   key={index}

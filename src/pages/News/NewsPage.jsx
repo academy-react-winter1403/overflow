@@ -85,7 +85,7 @@ function NewsPage() {
       </div>
       {/* News List */}
       <div className="flex flex-wrap justify-center items-center gap-6">
-        {newsList.map((news) => (
+        {newsList&&newsList.map((news) => (
           <NewsCard
             handleNavigation={handleNavigation}
             item={news}

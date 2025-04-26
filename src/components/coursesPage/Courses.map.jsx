@@ -31,7 +31,7 @@ const Coursesmap = ({ data }) => {
       <div className="flex text-right flex-col h-auto">
         <span className="mt-3 mr-6 text-deep-blue font-bold text-2xl dark:text-white">دوره های مشابه</span>
         <div className="flex flex-row flex-wrap justify-end">
-          {newCoursesData.map((course, index) => (
+          {newCoursesData&&newCoursesData.map((course, index) => (
             <div
               key={index}
               className="flex flex-row-reverse border border-gray-300 mt-5 mr-5 rounded-3xl h-13 w-9/10"

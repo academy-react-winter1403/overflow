@@ -95,7 +95,7 @@ function Services() {
         <div className="relative flex h-119 w-264 flex-col items-center space-y-6">
           <div className="absolute top-16 -left-1 h-95 w-241 rounded-sm dark:bg-deep-blue/55 bg-white opacity-80 shadow-[0px_5px_27.5px_rgba(0,0,0,0.16)]"></div>
 
-          {servicesData.map((service) => (
+          {servicesData&&servicesData.map((service) => (
             <div className="z-10 mt-11 mr-16" key={service.id}>
               <div
                 className="transition-all duration-300  hover:scale-102 hover:shadow-2xl hover:shadow-deep-blue flex h-95 w-241 flex-col gap-6 rounded-sm dark:bg-deep-blue/55  bg-white px-11 py-8 text-right shadow-[0px_5px_27.5px_rgba(0,0,0,0.16)] md:flex-row-reverse"

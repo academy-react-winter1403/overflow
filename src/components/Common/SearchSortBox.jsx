@@ -115,7 +115,7 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
             >
               {isFilterOpen && (
                 <ul className="flex flex-col  overflow-y-autoscroll custom-scrollbar max-w-80 overflow-x-hidden max-h-60 items-center text-3xl font-kalameh font-black text-gray-500">
-                  {filterData?.map((item) => (
+                  {filterData&&filterData?.map((item) => (
                     <li
                       key={item.id}
                       className=" py-3 rounded-2xl  hover:bg-gray-200 cursor-pointer hover:scale-115 hover:text-black hover:shadow-xl"
