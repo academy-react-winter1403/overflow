@@ -9,7 +9,7 @@ const Addlikeforcourse = () => {
     const [rating, setRating] = useState(0) // Initial value
  
   return (
-    <div className="bg-white flex flex-row-reverse text-3xl font-bold font-kalameh gap-95 items-center w-7/14 rounded-2xl h-20 pr-5">
+    <div className="bg-white flex flex-row-reverse text-3xl font-bold font-kalameh gap-95 items-center w-7/14 rounded-2xl h-20 pr-5 dark:bg-gray-700 max-lg:w-10/10 transition-all duration-300 ">
 
         <div className='flex flex-row-reverse gap-5 items-center' >
             <p>امتیاز</p>
@@ -18,7 +18,7 @@ const Addlikeforcourse = () => {
 
         <div className=' flex flex-row gap-5 '>
 
-            <div className=' flex flex-row text-2xl items-center'>
+            <div className=' flex flex-row text-2xl items-center '>
                 <img className='w-10 h-10 ' src={like}/>
                 <span>0</span>
             </div>

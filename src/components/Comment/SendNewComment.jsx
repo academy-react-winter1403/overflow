@@ -44,7 +44,7 @@ const CourseId = id; // Assuming id is the course ID
 
   return (
     <div
-      className={`dark:bg-deep-blue/75 mt-10 h-auto max-w-2/3 min-w-1/2 rounded-xl bg-white p-2 dark:text-amber-50  ${
+      className={`dark:bg-deep-blue/75 mt-10 h-auto max-w-2/3 min-w-1/2 rounded-xl bg-white p-2 dark:text-amber-50 max-lg:w-10/10  ${
         focusedCommentId === id ? "w-full" : "w-1/2"
       } transition-all duration-300`}
     >
