@@ -43,7 +43,7 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
   return (
     <>
       {/* Search */}
-      <div className="flex flex-row-reverse items-center my-6 mb-17 h-20 rounded-3xl bg-white">
+      <div className="flex flex-row-reverse items-center my-6 mb-17 h-20 rounded-3xl bg-white dark:bg-gray-400/95">
         <input
           type="text"
           placeholder="جستجو"
