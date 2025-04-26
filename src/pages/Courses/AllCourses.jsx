@@ -3,10 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Card from "../../components/Common/Card";
 import { getApi } from "../../core/services/api/getApi";
 
-
 const AllCourse = () => {
   const [newCoursesData, setNewCoursesData] = useState([]);
-  const [searchText, setSearchText] = useState("");
 
   const [filters, setFilters] = useState({
     PageNumber: 1,
@@ -15,13 +13,16 @@ const AllCourse = () => {
     SortType: "DESC",
     CostDown: 0,
     CostUp: 50000000,
+    Query: undefined
   });
 
   const getNewCoursesData = async () => {
     const queryParams = new URLSearchParams();
 
     for (const key in filters) {
-      queryParams.append(key, filters[key] ?? "");
+      if (filters[key] !== undefined) {
+        queryParams.append(key, filters[key] ?? "");
+      }
     }
 
     const response = await getApi(
@@ -45,58 +46,59 @@ const AllCourse = () => {
     }));
   };
 
-  const filteredCourses = newCoursesData.filter((course) =>
-    [course.title, course.teacherName, course.technologyList]
-      .join(" ")
-      .toLowerCase()
-      .includes(searchText.toLowerCase())
-  );
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setFilters((prev) => ({
+      ...prev,
+      Query: value.trim() === "" ? undefined : value,  
+      PageNumber: 1,
+    }));
+
+  };
 
   return (
     <div className="m-auto flex w-9/10 flex-wrap justify-center">
+      {/* Header */}
       <div className="mt-14 mb-14 h-16 w-full rounded-lg bg-white text-right text-3xl leading-14 dark:bg-gray-400/95">
         دوره ها
       </div>
 
-
+      {/* Sorting and Search */}
       <div className="font-kalameh flex h-18 w-full justify-center rounded-lg bg-white text-4xl font-black text-gray-700 dark:bg-gray-400/95">
         <div
           onClick={() => handleSorting("cost", "ASC")}
-          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${
-            filters.SortingCol === "cost" && filters.SortType === "ASC"
-              ? "font-bold text-blue-500"
-              : "text-gray-600"
-          }`}
+          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "cost" && filters.SortType === "ASC"
+            ? "font-bold text-blue-500"
+            : "text-gray-600"
+            }`}
         >
           ارزان ترین
         </div>
         <div
           onClick={() => handleSorting("cost", "DESC")}
-          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${
-            filters.SortingCol === "cost" && filters.SortType === "DESC"
-              ? "font-bold text-blue-500"
-              : "text-gray-600"
-          }`}
+          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "cost" && filters.SortType === "DESC"
+            ? "font-bold text-blue-500"
+            : "text-gray-600"
+            }`}
         >
           گران ترین
         </div>
         <div
           onClick={() => handleSorting("currentRegistrants")}
-          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${
-            filters.SortingCol === "currentRegistrants"
-              ? "font-bold text-blue-500"
-              : "text-gray-600"
-          }`}
+          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "currentRegistrants"
+            ? "font-bold text-blue-500"
+            : "text-gray-600"
+            }`}
         >
           پرفروش ترین
         </div>
         <div
           onClick={() => handleSorting("lastUpdate")}
-          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${
-            filters.SortingCol === "lastUpdate"
-              ? "font-bold text-blue-500"
-              : "text-gray-600"
-          }`}
+          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "lastUpdate"
+            ? "font-bold text-blue-500"
+            : "text-gray-600"
+            }`}
         >
           جدیدترین
         </div>
@@ -108,63 +110,74 @@ const AllCourse = () => {
           className="h-18 w-[20%] text-right px-3"
           type="text"
           placeholder="جستجو..."
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
+          value={filters.Query}
+          onChange={handleSearchChange}
         />
       </div>
 
-
+      {/* Course Cards */}
       <div className="flex w-full justify-center">
         <div className="mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4 pt-30">
-          {filteredCourses.map((item, index) => (
+          {newCoursesData.map((item, index) => (
             <Card item={item} index={index} key={index} />
           ))}
+
+          {/* Load More Button */}
+          <div
+            onClick={() =>
+              setFilters((prev) => ({
+                ...prev,
+                RowsOfPage: prev.RowsOfPage * 2,
+              }))
+            }
+            className="text-amber-50 font-bold w-full h-12 text-2xl bg-deep-blue rounded-3xl px-6 py-3 text-center cursor-pointer max-lg:text-sm"
+          >
+            <div>بارگیری بیشتر</div>
+          </div>
         </div>
 
-
+        {/* Sidebar Filters */}
         <div className="h-70 w-[25%] justify-items-center rounded-md mt-22 bg-white dark:bg-gray-400/95 p-4">
           <div className="mb-6 text-right text-xl text-blue-900">فیلتر ها</div>
-          {/* <div className="mt-4 h-10 w-8/10 rounded-md border-2 border-gray-300"></div>
-          <div className="mt-4 h-10 w-8/10 rounded-md border-2 border-gray-300"></div>
-          <div className="mt-4 h-10 w-8/10 rounded-md border-2 border-gray-300"></div> */}
+
           <div className="mt-4 mb-11 h-34 w-8/10 rounded-md ">
-          <div className="mb-6">
-            <label className="block mb-2 text-right text-lg font-bold">محدوده قیمت:</label>
+            <div className="mb-6">
+              <label className="block mb-2 text-right text-lg font-bold">
+                محدوده قیمت:
+              </label>
 
-            <div className="flex justify-between text-sm text-gray-800 mb-2">
-              <span>حداقل: {Number(filters.CostDown).toLocaleString()} تومان</span>
-              <span>حداکثر: {Number(filters.CostUp).toLocaleString()} تومان</span>
+              <div className="flex justify-between text-sm text-gray-800 mb-2">
+                <span>حداقل: {Number(filters.CostDown).toLocaleString()} تومان</span>
+                <span>حداکثر: {Number(filters.CostUp).toLocaleString()} تومان</span>
+              </div>
+
+              <input
+                type="range"
+                min="0"
+                max="50000000"
+                step="100000"
+                value={filters.CostDown}
+                onChange={(e) => {
+                  const val = Math.min(Number(e.target.value), filters.CostUp);
+                  setFilters((prev) => ({ ...prev, CostDown: val }));
+                }}
+                className="w-full accent-blue-600"
+              />
+
+              <input
+                type="range"
+                min="0"
+                max="50000000"
+                step="100000"
+                value={filters.CostUp}
+                onChange={(e) => {
+                  const val = Math.max(Number(e.target.value), filters.CostDown);
+                  setFilters((prev) => ({ ...prev, CostUp: val }));
+                }}
+                className="mt-2 w-full accent-blue-500"
+              />
             </div>
-
-            <input
-              type="range"
-              min="0"
-              max="50000000"
-              step="100000"
-              value={filters.CostDown}
-              onChange={(e) => {
-                const val = Math.min(Number(e.target.value), filters.CostUp);
-                setFilters((prev) => ({ ...prev, CostDown: val }));
-              }}
-              className="w-full accent-blue-600"
-            />
-
-            <input
-              type="range"
-              min="0"
-              max="50000000"
-              step="100000"
-              value={filters.CostUp}
-              onChange={(e) => {
-                const val = Math.max(Number(e.target.value), filters.CostDown);
-                setFilters((prev) => ({ ...prev, CostUp: val }));
-              }}
-              className="mt-2 w-full accent-blue-500"
-            />
           </div>
-          </div>
-          
-          
         </div>
       </div>
     </div>
