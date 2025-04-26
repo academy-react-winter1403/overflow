@@ -6,9 +6,10 @@ import sun from "../../assets/Header/sun.png";
 import {Loginlevel1} from "../Auth/Login.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleDarkMode } from "../../redux/darkModeSlice";
-
+import { getItem } from "../../core/services/common/storage.services.js";
 
 function Header() {
+   const token =getItem("token")
 const isDarkMode=useSelector((state)=>state.darkMode.isDarkMode)
 const dispatch=useDispatch();
 const handelToggleDarkMode=()=>{
@@ -52,7 +53,7 @@ if (!isDarkMode) {
           دوره ها
         </NavLink>
         <NavLink
-          to={"/Register-2"}
+          to={"/teachers"}
           className={({ isActive }) =>
             isActive ? "text-gray-500" : " hover:text-black"
           }
@@ -68,7 +69,7 @@ if (!isDarkMode) {
           اخبار
         </NavLink>
         <NavLink
-          to={"/Courses/0ed74730-9012-ef11-b6c2-f4b229435c5d"}
+          to={"/sendyourthing"}
           className={({ isActive }) =>
             isActive ? "text-gray-500" : " hover:text-black"
           }
@@ -90,7 +91,7 @@ if (!isDarkMode) {
             />
           </div>
         </div>
-        {/* User Icon */}
+        
         <Link to={"/panel"} >
         <div className="bg-deep-blue cursor-pointer flex justify-center items-center rounded-full w-12 h-12 ">
          <div>
