@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Card from "../../components/Common/Card";
 import { getApi } from "../../core/services/api/getApi";
 
+
 const AllCourse = () => {
   const [newCoursesData, setNewCoursesData] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -61,7 +62,7 @@ const AllCourse = () => {
       <div className="font-kalameh flex h-18 w-full justify-center rounded-lg bg-white text-4xl font-black text-gray-700 dark:bg-gray-400/95">
         <div
           onClick={() => handleSorting("cost", "ASC")}
-          className={`h-full w-[15%] cursor-pointer text-center text-3xl leading-14 ${
+          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${
             filters.SortingCol === "cost" && filters.SortType === "ASC"
               ? "font-bold text-blue-500"
               : "text-gray-600"
@@ -71,7 +72,7 @@ const AllCourse = () => {
         </div>
         <div
           onClick={() => handleSorting("cost", "DESC")}
-          className={`h-full w-[15%] cursor-pointer text-center text-3xl leading-14 ${
+          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${
             filters.SortingCol === "cost" && filters.SortType === "DESC"
               ? "font-bold text-blue-500"
               : "text-gray-600"
@@ -81,7 +82,7 @@ const AllCourse = () => {
         </div>
         <div
           onClick={() => handleSorting("currentRegistrants")}
-          className={`h-full w-[15%] cursor-pointer text-center text-3xl leading-14 ${
+          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${
             filters.SortingCol === "currentRegistrants"
               ? "font-bold text-blue-500"
               : "text-gray-600"
@@ -91,7 +92,7 @@ const AllCourse = () => {
         </div>
         <div
           onClick={() => handleSorting("lastUpdate")}
-          className={`h-full w-[15%] cursor-pointer text-center text-3xl leading-14 ${
+          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${
             filters.SortingCol === "lastUpdate"
               ? "font-bold text-blue-500"
               : "text-gray-600"
@@ -99,7 +100,7 @@ const AllCourse = () => {
         >
           جدیدترین
         </div>
-        <div className="m-auto h-[80%] w-[15%] border-l-2 border-gray-300 text-center text-3xl leading-10">
+        <div className="m-auto h-[80%] font-Kalameh w-[15%] border-l-2 border-gray-300 text-center text-3xl leading-10">
           مرتب سازی
         </div>
         <div className="h-full w-[5%] "></div>

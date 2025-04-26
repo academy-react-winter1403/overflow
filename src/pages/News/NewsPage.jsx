@@ -69,7 +69,7 @@ function NewsPage() {
   };
 
   return (
-    <div className="container text-gray-600 mx-auto px-4 py-10">
+    <div className="container text-gray-600 mx-auto px-4 py-10 ">
       <SearchSortBox
         setSort={handleSortChange}
         setSearch={handelSearch}
