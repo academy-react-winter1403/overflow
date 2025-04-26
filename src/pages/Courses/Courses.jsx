@@ -45,13 +45,9 @@ const Courses = () => {
   return (
     <div className="font-kalameh relative m-auto mt-10 mb-10 flex w-9/10 flex-col items-center ">
       {/* Top Section */}
-        <div className="flex flex-col gap-10">
 
         <Top data={courseData} />
 
-       
-
-        </div>
 
       {/* About and Masters Section */}
       <div className="mt-10 flex w-full flex-row-reverse transition-all duration-300 max-lg:justify-center">
@@ -63,7 +59,7 @@ const Courses = () => {
         </div>
       </div>
 
-        <div className=" pt-10 flex flex-col border w-10/10 items-end">
+        <div className=" pt-10 flex flex-col  w-10/10 items-end">
           
           <Addlikeforcourse />
           <SendNewComment id={id} />

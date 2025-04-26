@@ -7,7 +7,7 @@ const About = ({data}) => {
 
   return (
     
-<div className="flex flex-col gap-[30px] items-start mt-11 w-9/10 h-175 rounded-2xl bg-white p-10 transition-all duration-300 max-lg:w-10/10 dark:bg-gray-800">
+<div className="flex flex-col gap-[30px] items-start mt-11 w-9/10 h-175 rounded-2xl bg-white p-10 transition-all duration-300 max-lg:w-10/10 dark:bg-gray-700">
   <h1 className="text-deep-blue font-bold text-3xl self-end">توضیحات</h1>
 
   <p className="text-right w-full leading-7">{courseData.describe}</p>

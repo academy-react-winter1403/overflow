@@ -20,7 +20,7 @@ const Top = ({ data }) => {
   }, []);
 
   return (
-    <div className="flex flex-row-reverse items-center bg-gray-900 rounded-2xl flex-wrap w-10/10 h-auto  transition-all duration-300">
+    <div className="flex flex-row-reverse items-center bg-gray-800 rounded-2xl flex-wrap w-10/10 h-auto  transition-all duration-300 max-lg:pt-5">
       <div className="flex flex-col items-end w-5/10 h-50 mr-10">
         <h2 className="text-amber-50 text-3xl">{courseData.title}</h2>
         <p className="text-amber-50 text-xs text-right w-10/10 h-8/10 mt-10">

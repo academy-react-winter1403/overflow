@@ -44,13 +44,13 @@ const Dashboard = () => {
                 <div className="flex flex-row w-5/10 h-60  max-xl:w-6/10">
                     <div className="flex flex-row-reverse bg-white w-10/10 justify-center items-center gap-10 dark:bg-gray-700">
                         <div className="flex flex-row w-4/10 h-30 shadow-[5px_5px_10px_1px_gray] rounded-2xl">
-                            <div className="w-3/10 h-6/10 rounded-[50px] mt-[-35px] ml-5 bg-deep-blue flex justify-center items-center">
+                            <div className="w-3/10 h-6/10 rounded-[50px] mt-[-35px] ml-5 bg-deep-blue flex justify-center items-center max-lg:w-15 max-lg:h-15">
                                 <img src={frame2} alt="Frame 2" />
                             </div>
                         </div>
 
                         <div className="flex flex-row w-4/10 h-30 shadow-[5px_5px_10px_1px_gray] rounded-2xl">
-                            <div className="w-3/10 h-6/10 rounded-[50px] mt-[-35px] ml-5 bg-deep-blue flex justify-center items-center">
+                            <div className="w-3/10 h-6/10 rounded-[50px] mt-[-35px] ml-5 bg-deep-blue flex justify-center items-center max-lg:w-15 max-lg:h-15">
                                 <img src={frame1} alt="Frame 1" />
                             </div>
                         </div>
