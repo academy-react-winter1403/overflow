@@ -92,7 +92,7 @@ const Panel = () => {
                       />
                     ))}   */}
 
-                    <GetMyCoursesReserve />
+                    {/* <GetMyCoursesReserve /> */}
 
                     <Dashboard />
                 </div>  

@@ -34,7 +34,7 @@ const Dashboard = () => {
     return (
         <div className="gap-10 w-10/10 h-full flex flex-col bg-white mr-5 rounded-2xl transition-all duration-300 dark:bg-gray-700">
             <div className="flex flex-row-reverse transition-all duration-300 ">
-                <div className="flex flex-row w-5/10 h-60 border max-xl:w-6/10">
+                <div className="flex flex-row w-5/10 h-60  max-xl:w-6/10">
                     <div className="flex flex-row-reverse bg-white w-10/10 justify-center items-center gap-10">
                         <div className="flex flex-row w-4/10 h-30 shadow-[5px_5px_10px_1px_gray] rounded-2xl">
                             <div className="w-3/10 h-6/10 rounded-[50px] mt-[-35px] ml-5 bg-deep-blue flex justify-center items-center">
@@ -50,7 +50,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-row-reverse justify-center w-5/10 h-60 bg-white transition-all duration-300 max-xl:w-4/10 border ">
+                <div className="flex flex-row-reverse justify-center w-5/10 h-60 bg-white transition-all duration-300 max-xl:w-4/10  ">
                     <span className="w-5/10 pt-20 font-bold max-xl:hidden">برای شرکت در دوره ها باید حداقل ٪ ۸۰ از پروفایل خود را تکمیل کنید.</span>
                     <div className="flex flex-row w-5/10 mt-10 h-40 max-xl:w-4-10 max-xl:h-30">
                         <CircularProgressbar value={percentage} text={`${percentage}%`} />
@@ -74,7 +74,7 @@ const Dashboard = () => {
                                 <img className="ml-5 w-25 h-20 max-lg:mb-2 max-lg:w-20 transition-all duration-300" src={courseimg} alt="Course" />
                             </div>
 
-                            <div className="flex flex-col w-5/10 text-right gap-10 pr-5 border max-xl:gap-3 transition-all duration-300 max-lg:text-sm max-lg:w-6/10">
+                            <div className="flex flex-col w-5/10 text-right gap-10 pr-5  max-xl:gap-3 transition-all duration-300 max-lg:text-sm max-lg:w-6/10">
                                 <p>آموزش کامل کار با Figma</p>
                                 <Link to="/allcourses/Courses/:id" className="text-blue- flex flex-row gap-5 justify-end max-lg:hidden">
                                     مشاهده دوره
