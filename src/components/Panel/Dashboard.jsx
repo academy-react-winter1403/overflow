@@ -5,13 +5,15 @@ import courseimg from '../../assets/userpanel/word.png';
 
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
 import { Getprofile } from '../../core/services/api/userpanelapi/panelapis';
 import { ExistingCourseMap } from './existingcoursemap';
 // import { getApi } from '../../core/services/api/getApi';
 
 const Dashboard = () => {
+
+    const navigate = useNavigate();
 
     const [profile, setProfile] = useState(null); 
 
@@ -27,6 +29,11 @@ const Dashboard = () => {
         }
     };
 
+        const handleNavigation = (id) => {
+            console.log(id)
+            navigate(`AllCourses/Courses/${id}`); 
+          };
+    
     useEffect(() => {
         profileInfo();
     }, []);
@@ -35,7 +42,7 @@ const Dashboard = () => {
         <div className="gap-10 w-10/10 h-full flex flex-col bg-white mr-5 rounded-2xl transition-all duration-300 dark:bg-gray-700">
             <div className="flex flex-row-reverse transition-all duration-300 ">
                 <div className="flex flex-row w-5/10 h-60  max-xl:w-6/10">
-                    <div className="flex flex-row-reverse bg-white w-10/10 justify-center items-center gap-10">
+                    <div className="flex flex-row-reverse bg-white w-10/10 justify-center items-center gap-10 dark:bg-gray-700">
                         <div className="flex flex-row w-4/10 h-30 shadow-[5px_5px_10px_1px_gray] rounded-2xl">
                             <div className="w-3/10 h-6/10 rounded-[50px] mt-[-35px] ml-5 bg-deep-blue flex justify-center items-center">
                                 <img src={frame2} alt="Frame 2" />
@@ -50,7 +57,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-row-reverse justify-center w-5/10 h-60 bg-white transition-all duration-300 max-xl:w-4/10  ">
+                <div className="flex flex-row-reverse justify-center w-5/10 h-60 bg-white transition-all duration-300 max-xl:w-4/10  dark:bg-gray-700">
                     <span className="w-5/10 pt-20 font-bold max-xl:hidden">برای شرکت در دوره ها باید حداقل ٪ ۸۰ از پروفایل خود را تکمیل کنید.</span>
                     <div className="flex flex-row w-5/10 mt-10 h-40 max-xl:w-4-10 max-xl:h-30">
                         <CircularProgressbar value={percentage} text={`${percentage}%`} />
@@ -62,13 +69,14 @@ const Dashboard = () => {
                 <div className="flex flex-col gap-5 w-5/10 h-full">
                     <span className="flex flex-row-reverse text-2xl font-bold pt-2 pr-10 max-lg:text-sm transition-all duration-300">دوره های در حال برگزاری</span>
 
-                    <ExistingCourseMap />
+                    <ExistingCourseMap  handleNavigation={handleNavigation}/>
+
                 </div>
 
                 <div className="flex flex-col gap-5 w-5/10 h-full transition-all duration-300">
                     <span className="flex flex-row-reverse text-2xl font-bold pt-2 pr-10 transition-all duration-300 max-lg:text-sm"> دوره های پیشنهادی </span>
                     <div className="flex flex-row justify-center">
-                        <div className="flex flex-row items-center bg-gray-100 rounded-2xl w-9/10 h-25 transition-all duration-300">
+                        <div className="flex flex-row items-center bg-gray-100 rounded-2xl w-9/10 h-25 transition-all duration-300 dark:bg-gray-700 dark:border dark:border-white">
                             <div className="flex flex-row-reverse items-end gap-5 w-5/10 max-lg:gap-2">
                                 <p className="text-gray-100 max-xl:heddin max-xl:w-5 max-lg:w-0">چهارشنبه ها . ۱۷:۳۰</p>
                                 <img className="ml-5 w-25 h-20 max-lg:mb-2 max-lg:w-20 transition-all duration-300" src={courseimg} alt="Course" />

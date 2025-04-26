@@ -29,7 +29,7 @@ if (!isDarkMode) {
         isDarkMode ? "bg-[#1b263ddb] text-white" : ""
       } text-black`}
     >
-      <div className="z-10 mt-14 mr-25 gap-11 flex items-center text-gray-400 text-[22px] font-kalameh font-bold flex-row-reverse ">
+      <div className="z-10 mt-14 mr-25 gap-11 flex items-center text-gray-400 text-[22px] font-kalameh font-bold flex-row-reverse max-lg:text-sm">
         {/* Logo */}
         <div className="mb-1 relative w-7  shrink-0 h-7 hover:scale-110 transition-transform">
           <div className="bg-deep-blue opacity-95 z-2 rounded-[6px] rotate-45 -skew-20 w-full h-full absolute"></div>

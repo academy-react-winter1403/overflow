@@ -3,7 +3,10 @@ import { getApi } from '../../core/services/api/getApi';
 import teach from '../../assets/userpanel/tech.png';
 import courseimg from '../../assets/userpanel/word.png';
 
+
 const ExistingCourseMap = () => {
+
+
     const URL = "/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=2&SortingCol=lastUpdate";
     const [newCoursesData, setNewCoursesData] = useState([]);
 
@@ -25,7 +28,7 @@ const ExistingCourseMap = () => {
         <div className="flex flex-col gap-5">
             {newCoursesData.map((course, index) => (
                 <div key={index} className="flex flex-row justify-center">
-                    <div className="flex flex-row items-center bg-gray-100 rounded-2xl w-9/10 h-25 ">
+                    <div className="flex flex-row items-center bg-gray-100 rounded-2xl w-9/10 h-25 dark:bg-gray-700 dark:border dark:border-white">
                         <div className="flex flex-row-reverse justify-end items-end gap-5 w-5/10 ">
                            
                             <p className="text-orange-400 max-xl:hidden">{course.lastUpdate.slice(0,10) || "چهارشنبه ها . ۱۷:۳۰"}</p>

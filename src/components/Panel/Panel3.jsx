@@ -17,7 +17,7 @@ import { GetMyCoursesReserve } from './GetMyCoursesReserve';
 import { Dashboard } from './Dashboard';
 import { getItem } from '../../core/services/common/storage.services';
 
-const Panel = () => {
+const Panel3 = () => {
     const navigate = useNavigate();
     const token = (getItem("token"))
     console.log(token)
@@ -53,7 +53,6 @@ const Panel = () => {
                     <img className='w-2/10' src={logo} alt="Logo" />  
                     <span className='text-deep-blue text-2xl font-bold mr-5 max-sm:text-xs max-sm:font-bold'>آکادمی سپهر</span>  
                 </div>  
-
                 <div className="flex flex-col items-end w-10/10 h-100 mt-10">
                 
                     <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
@@ -99,7 +98,7 @@ const Panel = () => {
 
                 <div className='flex flex-row-reverse flex-wrap w-10/10 h-155 justify-center gap-8 mt-10 max-sm:overflow-auto max-sm:h-150 max-lg:h-150 max-lg:overflow-auto'>  
                     {/* map over newCoursesData */}  
-                    {/* {newCoursesData.map((course, index) => (  
+                    {newCoursesData.map((course, index) => (  
                         <Card
                         
                         item={course}
@@ -107,11 +106,11 @@ const Panel = () => {
                         handleNavigation={handleNavigation}
                         key={index}
                       />
-                    ))}   */}
+                    ))}  
 
                     {/* <GetMyCoursesReserve /> */}
 
-                    <Dashboard />
+                    {/* <Dashboard /> */}
                 </div>  
                 
             </div>  
@@ -119,4 +118,4 @@ const Panel = () => {
     );  
 };  
 
-export { Panel };  
+export { Panel3 };  

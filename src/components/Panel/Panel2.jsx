@@ -17,7 +17,7 @@ import { GetMyCoursesReserve } from './GetMyCoursesReserve';
 import { Dashboard } from './Dashboard';
 import { getItem } from '../../core/services/common/storage.services';
 
-const Panel = () => {
+const Panel2 = () => {
     const navigate = useNavigate();
     const token = (getItem("token"))
     console.log(token)
@@ -109,9 +109,9 @@ const Panel = () => {
                       />
                     ))}   */}
 
-                    {/* <GetMyCoursesReserve /> */}
+                    <GetMyCoursesReserve />
 
-                    <Dashboard />
+                    {/* <Dashboard /> */}
                 </div>  
                 
             </div>  
@@ -119,4 +119,4 @@ const Panel = () => {
     );  
 };  
 
-export { Panel };  
+export { Panel2 };  

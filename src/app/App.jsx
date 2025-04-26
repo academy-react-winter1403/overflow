@@ -18,6 +18,8 @@ import { GetMyCoursesReserve } from "../components/Panel/GetMyCoursesReserve.jsx
 import { Dashboard } from "../components/Panel/Dashboard.jsx";
 import { Personalinfo } from "../components/Panel/personalinfo.jsx";
 import { Personalinfoedit } from "../components/Panel/personalinfoedit.jsx";
+import { Panel2 } from "../components/Panel/Panel2.jsx";
+import { Panel3 } from "../components/Panel/Panel3.jsx";
 
 
 function App() {
@@ -87,11 +89,14 @@ function App() {
         }, {
           path: '/panelpersoninfo',
           element: <Personalinfo />
-        }, {
-          path: '/panelpersoninfoedit',
-          element: <Personalinfoedit />
         },
-
+        {
+          path:"/panel/coursereserve",
+          element:<Panel2 />
+        }   ,     {
+          path:"/panel/mycourse",
+          element:<Panel3 />
+        }  
         ,
       ],
     },
