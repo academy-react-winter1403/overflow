@@ -48,23 +48,23 @@ const Panel = () => {
 
                 <div className="flex flex-col items-end w-10/10 h-100 mt-10">
                 
-                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer">
+                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
                         <img className="w-1/10" src={home} alt="داشبورد" />
                         <span className="mr-5 text-gray-500 dark:text-white">داشبورد</span>
                     </div>
-                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer">
+                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
                       <img className="w-1/10" src={courses} alt="دوره های من" />
                       <span className="mr-5 text-gray-500 dark:text-white">دوره های من</span>
                     </div>
-                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer">
+                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
                       <img className="w-1/10" src={ticket} alt="دوره های رزرو شده" />
                       <span className="mr-5 text-gray-500 dark:text-white">دوره های رزرو شده</span>
                     </div>
-                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer">
+                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
                       <img className="w-1/10" src={profile} alt="جزییات حساب" />
                       <span className="mr-5 text-gray-500 dark:text-white">جزییات حساب</span>
                     </div>
-                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer">
+                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
                       <img className="w-1/10" src={exit} alt="خروج" />
                       <span className="mr-5 text-gray-500 dark:text-white">خروج</span>
                     </div>
@@ -92,7 +92,7 @@ const Panel = () => {
                       />
                     ))}   */}
 
-                    {/* <GetMyCoursesReserve /> */}
+                    <GetMyCoursesReserve />
 
                     <Dashboard />
                 </div>  

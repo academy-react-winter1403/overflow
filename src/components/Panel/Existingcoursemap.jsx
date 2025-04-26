@@ -25,16 +25,16 @@ const ExistingCourseMap = () => {
         <div className="flex flex-col gap-5">
             {newCoursesData.map((course, index) => (
                 <div key={index} className="flex flex-row justify-center">
-                    <div className="flex flex-row items-center bg-gray-100 rounded-2xl w-9/10 h-25">
+                    <div className="flex flex-row items-center bg-gray-100 rounded-2xl w-9/10 h-25 ">
                         <div className="flex flex-row-reverse justify-end items-end gap-5 w-5/10 ">
                            
-                            <p className="text-orange-400">{course.lastUpdate.slice(0,10) || "چهارشنبه ها . ۱۷:۳۰"}</p>
-                            <img className="ml-5 w-25 h-20 rounded-2xl" src={course.tumbImageAddress || courseimg} alt="Course" />
+                            <p className="text-orange-400 max-xl:hidden">{course.lastUpdate.slice(0,10) || "چهارشنبه ها . ۱۷:۳۰"}</p>
+                            <img className="ml-5 w-25 h-20 rounded-2xl max-lg:w-20 transition-all duration-300" src={course.tumbImageAddress || courseimg} alt="Course" />
                         </div>
-                        <div className="flex flex-col w-5/10 text-right gap-10 pr-5">
+                        <div className="flex flex-col w-5/10 text-right gap-10 pr-5 border max-xl:w-6/10 max-xl:gap-3 transition-all duration-300 max-lg:text-sm max-lg:w-4/10">
                            
                             <p>{course.title || "آموزش Tailwind css"}</p>
-                            <div className="flex flex-row gap-5 justify-end">
+                            <div className="flex flex-row gap-5 justify-end max-lg:hidden">
                                 {course.teacherName || "مهدی اصغری"}
                                 <img className="w-5 h-5" src={teach} alt="Teacher" />
                             </div>

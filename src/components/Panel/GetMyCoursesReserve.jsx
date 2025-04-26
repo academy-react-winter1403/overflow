@@ -31,15 +31,15 @@ const GetMyCoursesReserve = () => {
             <p>وضعیت</p>
         </div>
 
-        <div className="bg-gray-200 rounded-2xl w-9/10 h-20 mt-5 flex flex-row-reverse justify-start pr-5 gap-2 items-center m-auto">
+        <div className="bg-gray-200 rounded-2xl w-9/10 h-20 mt-5 flex flex-row-reverse justify-start pr-5 gap-2 items-center m-auto dark:bg-gray-500">
             
             <img className='w-15 h-15 ' src={profile} />
             
-            <div className='w-2/10 border-2 h-full'></div>
-            <div className='w-2/10 border-2 h-full'></div>
-            <div className='w-2/10 border-2 h-full'></div>
-            <div className='w-2/10 border-2 h-full'></div>
-            <div className='w-2/10 border-2 h-full'></div>
+            <div className='w-2/10 -2 h-full'></div>
+            <div className='w-2/10 -2 h-full'></div>
+            <div className='w-2/10 -2 h-full'></div>
+            <div className='w-2/10 -2 h-full'></div>
+            <div className='w-2/10 -2 h-full'></div>
 
         </div>
         
