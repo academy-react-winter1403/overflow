@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import cardImg from "../../assets/common/cardImg.png";
 import clock from "../../assets/common/clock.png";
 import like from '../../assets/Coursesimage/like.png'
+import dislike from '../../assets/Coursesimage/dislike.png'
 function Card({ item, index, handleNavigation, className = "" }) {
   const courseDuration = item?.lastUpdate;
 
@@ -36,10 +37,17 @@ function Card({ item, index, handleNavigation, className = "" }) {
               {item.describe}
             </h5>
           </div>
-          <div className="border gap-40 flex flex-row-reverse mb-4 h-1/9 items-center border-b-3 border-gray-300 pb-7 text-right max-lg:hidden">
-            <div className="font-vazir text-lg font-semibold text-blue-600">{`${item.teacherName} ●`}</div>
-            <div>
-              <img src={like} />
+          <div className=" w-10/10  flex flex-row-reverse mb-4 h-1/9 items-center border-b-3 border-gray-300 pb-7 text-right max-lg:hidden">
+            <div className="w-5/10 font-vazir text-lg font-semibold text-blue-600">{`${item.teacherName} ●`}</div>
+            <div className="w-5/10 flex flex-row">
+             <div className="flex flex-row items-center">
+                <img src={like} />
+                <span>0</span>
+             </div>
+             <div className="flex flex-row items-center">
+             <img src={dislike} />
+              <span>0</span>
+             </div>
             </div>
           </div>
 
