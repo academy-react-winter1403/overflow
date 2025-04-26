@@ -10,7 +10,7 @@ const AllCourse = () => {
 
   const [filters, setFilters] = useState({
     PageNumber: 1,
-    RowsOfPage: 10,
+    RowsOfPage: 20,
     SortingCol: "lastUpdate",
     SortType: "DESC",
     CostDown: 0,

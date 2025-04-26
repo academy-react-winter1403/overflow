@@ -1,7 +1,7 @@
 import { getItem } from "../../common/storage.services.js";
 import http from "../../interceptor/index.js";
 
-// تابع برای گرفتن داده‌های رزرو شده کاربر
+
 const Getmyreserveapi = async () => {
 
     const token = getItem("token");
@@ -10,7 +10,7 @@ const Getmyreserveapi = async () => {
       throw new Error("Authentication token is missing. Please log in.");
     }
     try {
-        const response = await http.get('/SharePanel/GetMyCoursesReserve');
+        const response = await http.get('/SharePanel/GetMyFavoriteCourses');
         console.log('Response from get reserve:', response);
         return response;
     } catch (error) {
@@ -25,7 +25,6 @@ const Getmyreserveapi = async () => {
     }
 };
 
-// تابع برای گرفتن پروفایل کاربر
 const Getprofile = async () => {
 
     const token = getItem("token");
