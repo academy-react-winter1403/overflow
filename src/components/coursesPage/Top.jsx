@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Fixed import for Link
 import productimg from "../../assets/Coursesimage/product-img.png";
-import commentcount from "../../assets/Coursesimage/Symbol(1).png";
-import clock from "../../assets/Coursesimage/Vector.png";
-import eye from "../../assets/Coursesimage/eye 1.png";
-import calender from "../../assets/Coursesimage/List → Item.png";
+import commentcount from "../../assets/Coursesimage/comment.png";
+import clock from "../../assets/techers/clock.png";
+import eye from "../../assets/Coursesimage/eye.png";
+import calender from "../../assets/Coursesimage/cal.png";
 // import { toJalaali } from 'jalaali-js';
 
 const Top = ({ data }) => {
@@ -46,7 +46,7 @@ const Top = ({ data }) => {
       </div>
 
       <div className="flex flex-row w-5/10 justify-end pr-12 mb-5 gap-15 max-xl:w-10/10">
-        <div className="text-white flex flex-row-reverse gap-2">
+        <div className="text-white flex flex-row-reverse gap-2 h-6">
           <img src={commentcount} alt="Comment Count" />
           {courseData.commentCount}
         </div>
@@ -56,12 +56,12 @@ const Top = ({ data }) => {
           {courseData.courseStatusName}
         </div>
 
-        <div className="flex flex-row-reverse gap-2 text-white">
+        <div className="flex flex-row-reverse gap-2 text-white h-6">
           <img className="rounded-[50px]" src={eye} alt="Eye Icon" />
           {courseData.capacity}
         </div>
 
-        <div className="flex flex-row-reverse gap-2 text-white">
+        <div className="flex flex-row-reverse gap-2 text-white h-6">
           <img src={calender} alt="Calendar Icon" />
           {courseData?.insertDate && <p>{courseData?.insertDate.slice(0, 10)}</p>}
         </div>
