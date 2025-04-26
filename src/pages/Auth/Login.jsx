@@ -34,9 +34,8 @@ const Loginlevel1 = () => {
         alert("ورود موفقیت‌آمیز بود");
         setItem("token", response.token);
         dispatch(handletoken(response.token));
-        if (token == "") {
-          alert(" اظلاعات غلط است ");
-        } else { navigate("/") }
+
+ navigate("/") 
 
         console.log(response.token)
       } else {
