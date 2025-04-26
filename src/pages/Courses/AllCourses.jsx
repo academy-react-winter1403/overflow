@@ -122,12 +122,12 @@ const AllCourse = () => {
         </div>
 
 
-        <div className="h-70 w-[25%] justify-items-center rounded-md mt-20 bg-white dark:bg-gray-400/95 p-4">
+        <div className="h-70 w-[25%] justify-items-center rounded-md mt-22 bg-white dark:bg-gray-400/95 p-4">
           <div className="mb-6 text-right text-xl text-blue-900">فیلتر ها</div>
           {/* <div className="mt-4 h-10 w-8/10 rounded-md border-2 border-gray-300"></div>
           <div className="mt-4 h-10 w-8/10 rounded-md border-2 border-gray-300"></div>
           <div className="mt-4 h-10 w-8/10 rounded-md border-2 border-gray-300"></div> */}
-          <div className="mt-4 mb-11 h-34 w-8/10 rounded-md border-2 border-gray-300">
+          <div className="mt-4 mb-11 h-34 w-8/10 rounded-md ">
           <div className="mb-6">
             <label className="block mb-2 text-right text-lg font-bold">محدوده قیمت:</label>
 
