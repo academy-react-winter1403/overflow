@@ -78,7 +78,9 @@ const Panel3 = () => {
                     </div>
                     <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
                       <img className="w-1/10" src={profile} alt="جزییات حساب" />
+                      <Link to='/panelpersoninfo'>
                       <span className="mr-5 text-gray-500 dark:text-white">جزییات حساب</span>
+                      </Link>
                     </div>
                     <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
                       <img className="w-1/10" src={exit} alt="خروج" />
@@ -111,6 +113,8 @@ const Panel3 = () => {
                     {/* <GetMyCoursesReserve /> */}
 
                     {/* <Dashboard /> */}
+
+                    {/* <Personalinfo /> */}
                 </div>  
                 
             </div>  

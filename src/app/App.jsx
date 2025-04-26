@@ -91,6 +91,13 @@ function App() {
           element: <Personalinfo />
         },
         {
+
+          path:'/panelpersoninfoedit',
+          element:<Personalinfoedit />
+
+        }
+        ,
+        {
           path:"/panel/coursereserve",
           element:<Panel2 />
         }   ,     {
