@@ -35,7 +35,7 @@ const Comment = ({ postId }) => {
   return (
     <div>
       <h3>Comments:</h3>
-      {comments.map((comment) => (
+      {comments&&comments.map((comment) => (
         <div key={comment.id}>
           <p>{comment.author}</p>
           <p>{comment.text}</p>

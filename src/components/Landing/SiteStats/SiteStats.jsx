@@ -29,7 +29,7 @@ const InfoCard = ({ items }) => {
       />
 
       {/* Stats rendering */}
-      {stats.map((stat, index) => (
+      {stats&&stats.map((stat, index) => (
         <div
           key={index}
           className="flex flex-col items-center font-vazir text-[26px] font-bold justify-center"
