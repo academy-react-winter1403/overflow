@@ -92,11 +92,7 @@ const Panel3 = () => {
 
             <div className='flex flex-row-reverse flex-wrap w-7/10 '>  
                 {/* top side */}  
-                <div className='flex flex-row-reverse w-10/10 text-3xl h-15 pt-5'>  
-                    <div className='flex flex-row-reverse w-6/10 pr-5 max-lg:w-10/10 max-sm:text-2xl'>  
-                            خوش اومدی 🙌  
-                    </div>   
-                </div>  
+ 
 
                 <div className='flex flex-row-reverse flex-wrap w-10/10 h-155 justify-center gap-8 mt-10 max-sm:overflow-auto max-sm:h-150 max-lg:h-150 max-lg:overflow-auto'>  
                     {/* map over newCoursesData */}  

@@ -42,11 +42,11 @@ function Card({ item, index, handleNavigation, className = "" }) {
             <div className="w-5/10 flex flex-row">
              <div className="flex flex-row items-center">
                 <img src={like} />
-                <span>0</span>
+                <span>{item.likeCount}</span>
              </div>
              <div className="flex flex-row items-center">
              <img src={dislike} />
-              <span>0</span>
+              <span>{item.dissLikeCount}</span>
              </div>
             </div>
           </div>

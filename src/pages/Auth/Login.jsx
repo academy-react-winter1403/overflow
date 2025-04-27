@@ -67,7 +67,7 @@ const Loginlevel1 = () => {
           <div className="flex flex-wrap item-center mt-2 pl-20">
             <div className="text-[30px] mt-[20px] ml-[330px]">ورود</div>
             <div className="w-[300px] text-end text-[20px] mt-[10px] ml-[125px]">رمز خود را فراموش کردید؟
-              <a className=" text-[15px] w-[90px] mt-[-25px] ml-[40px]"> بازیابی</a>
+              <a href="/rest1" className=" text-[15px] w-[90px] mt-[-25px] ml-[40px]"> بازیابی</a>
             </div>
           </div>
           <Formik
