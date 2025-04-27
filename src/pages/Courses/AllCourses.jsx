@@ -8,7 +8,7 @@ const AllCourse = () => {
 
   const [filters, setFilters] = useState({
     PageNumber: 1,
-    RowsOfPage: 20,
+    RowsOfPage: 21,
     SortingCol: "lastUpdate",
     SortType: "DESC",
     CostDown: 0,
@@ -51,7 +51,7 @@ const AllCourse = () => {
     const value = e.target.value;
     setFilters((prev) => ({
       ...prev,
-      Query: value.trim() === "" ? undefined : value,  
+      Query: value.trim() === "" ? undefined : value,
       PageNumber: 1,
     }));
 
@@ -59,12 +59,11 @@ const AllCourse = () => {
 
   return (
     <div className="m-auto flex w-9/10 flex-wrap justify-center">
-      {/* Header */}
+
       <div className="mt-14 mb-14 h-16 w-full rounded-lg bg-white text-right text-3xl leading-14 dark:bg-gray-400/95">
         دوره ها
       </div>
 
-      {/* Sorting and Search */}
       <div className="font-kalameh flex h-18 w-full justify-center rounded-lg bg-white text-4xl font-black text-gray-700 dark:bg-gray-400/95">
         <div
           onClick={() => handleSorting("cost", "ASC")}
@@ -109,20 +108,19 @@ const AllCourse = () => {
         <input
           className="h-18 w-[20%] text-right px-3"
           type="text"
-          placeholder="جستجو..."
+          placeholder="...جستجو"
           value={filters.Query}
           onChange={handleSearchChange}
         />
       </div>
 
-      {/* Course Cards */}
       <div className="flex w-full justify-center">
         <div className="mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4 pt-30">
           {newCoursesData.map((item, index) => (
             <Card item={item} index={index} key={index} />
           ))}
 
-          {/* Load More Button */}
+
           <div
             onClick={() =>
               setFilters((prev) => ({
@@ -130,13 +128,12 @@ const AllCourse = () => {
                 RowsOfPage: prev.RowsOfPage * 2,
               }))
             }
-            className="text-amber-50 font-bold w-full h-12 text-2xl bg-deep-blue rounded-3xl px-6 py-3 text-center cursor-pointer max-lg:text-sm"
+            className="text-amber-50 font-bold w-full h-14 mt=5 mb-5 text-2xl bg-deep-blue rounded-2xl px-6 py-3 text-center cursor-pointer max-lg:text-sm"
           >
             <div>بارگیری بیشتر</div>
           </div>
         </div>
 
-        {/* Sidebar Filters */}
         <div className="h-70 w-[25%] justify-items-center rounded-md mt-22 bg-white dark:bg-gray-400/95 p-4">
           <div className="mb-6 text-right text-xl text-blue-900">فیلتر ها</div>
 
@@ -161,7 +158,7 @@ const AllCourse = () => {
                   const val = Math.min(Number(e.target.value), filters.CostUp);
                   setFilters((prev) => ({ ...prev, CostDown: val }));
                 }}
-                className="w-full accent-blue-600"
+                className="w-9/10  accent-blue-600"
               />
 
               <input
@@ -174,7 +171,7 @@ const AllCourse = () => {
                   const val = Math.max(Number(e.target.value), filters.CostDown);
                   setFilters((prev) => ({ ...prev, CostUp: val }));
                 }}
-                className="mt-2 w-full accent-blue-500"
+                className="mt-2 w-9/10 accent-blue-500"
               />
             </div>
           </div>

@@ -27,7 +27,7 @@ const AllTeacers = () => {
 
   return (
     <div className="w-9/10 h-200 m-auto relative">
-      <div className="w-full h-20  mt-5 font-Kalameh text-4xl text-[#475466] text-right ">
+      <div className="w-full h-20  mt-5 font-Kalameh text-4xl text-[#475466] text-right dark:text-white ">
         اساتید
       </div>
       <div className="w-full h-21 mb-18 text-right bg-white  rounded-3xl dark:bg-gray-400/95 "> 
