@@ -10,8 +10,10 @@ const Getmyreserveapi = async () => {
       throw new Error("Authentication token is missing. Please log in.");
     }
     try {
-        const response = await http.get('/SharePanel/GetMyFavoriteCourses');
+
+        const response = await http.get('/SharePanel/GetMyFavoriteNews');
         console.log('Response from get reserve:', response);
+        
         return response;
     } catch (error) {
         if (error.response) {
