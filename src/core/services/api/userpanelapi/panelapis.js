@@ -11,7 +11,7 @@ const Getmyreserveapi = async () => {
     }
     try {
 
-        const response = await http.get('/SharePanel/GetMyFavoriteNews');
+        const response = await http.get('/SharePanel/GetMyCoursesReserve');
         console.log('Response from get reserve:', response);
         
         return response;
