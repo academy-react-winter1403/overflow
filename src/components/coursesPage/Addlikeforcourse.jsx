@@ -4,7 +4,7 @@ import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
 import { useEffect, useState } from 'react';
-import { Addlikecourse } from '../../core/services/api/GetCourses/Comment';
+import { Adddislikecourse, Addlikecourse } from '../../core/services/api/GetCourses/Comment';
 
 const Addlikeforcourse = ({data}) => {
     console.log("courseid:::::::::;",data)
@@ -22,13 +22,10 @@ const Addlikeforcourse = ({data}) => {
     
     const dislikecourse = async () => {
 
-        const respone = await Addlikecourse(data);
+        const respone = await Adddislikecourse(data);
 
         setdislike(respone);
     }
-
-
-  
     
   return (
     <div className="bg-white flex flex-row-reverse text-3xl font-bold font-kalameh gap-95 items-center w-7/14 rounded-2xl h-20 pr-5 dark:bg-gray-700 max-lg:w-10/10 transition-all duration-300 ">
@@ -46,10 +43,10 @@ const Addlikeforcourse = ({data}) => {
                 
                 
             </button>
-            <div className='flex flex-row items-center text-2xl'>
+            <button className='flex flex-row items-center text-2xl' onClick={dislikecourse}>
                 <img  className='w-10 h-10 '  src={Dislike}/>
-                <button onSubmit={() => dislikecourse}></button>
-            </div>
+                
+            </button>
 
         </div>
     </div>

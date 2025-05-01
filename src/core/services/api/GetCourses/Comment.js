@@ -193,7 +193,7 @@ const Adddislikecourse = async (CourseId) =>{
   }
 
   try {
-    const respone = await http.post(`/Course/AddCourseDisLike?CourseId=${CourseId}`);
+    const respone = await http.post(`/Course/AddCourseDissLike?CourseId=${CourseId}`);
     
     return respone;
 
