@@ -5,7 +5,6 @@ import { Courses } from "../pages/Courses/Courses.jsx";
 import { Register } from "../components/Register/Register.jsx";
 import { Registerlvl3 } from "../components/Register/Registerlvl3.jsx";
 import { Registerlvl2 } from "../components/Register/Registerlvl2.jsx";
-import { Panel } from "../components/Panel/Panel.jsx";
 import { AllCourse } from "../pages/Courses/AllCourses.jsx";
 import NewsPage from "../pages/News/NewsPage.jsx";
 import NewsDetails from "../pages/News/NewsDetails.jsx";
@@ -22,7 +21,7 @@ import { Panel2 } from "../components/Panel/Panel2.jsx";
 import { Panel3 } from "../components/Panel/Panel3.jsx";
 import { Fave } from "../components/Panel/fave.jsx";
 import { Favenews } from "../components/Panel/Favenews.jsx";
-
+import PanelLayout from "../pages/Panel/PanelLayout.jsx";
 
 function App() {
   const publicRoutes = [
@@ -57,7 +56,40 @@ function App() {
         },
         {
           path: "/Panel",
-          element: <Panel />,
+          element: <PanelLayout />,
+          children: [
+            {
+            
+              path: "/Panel",
+              element: <Dashboard />,
+              index: true,
+            },
+            {
+            
+              path: "coursereserve",
+              element: <Panel2 />,
+            },
+            {
+              path: "mycourse",
+              element: <Panel3 />,
+            },
+            {
+              path: "favecourse",
+              element: <Fave />,
+            },
+            {
+              path: "favenews",
+              element: <Favenews />,
+            },
+            {
+              path: "panelpersoninfo",
+              element: <Personalinfo />,
+            },
+            {
+              path: "panelpersoninfoedit",
+              element: <Personalinfoedit />,
+            },
+          ],
         },
         {
           path: "/allcourses",
@@ -78,43 +110,17 @@ function App() {
         },
         {
           path: "/rest1",
-          element: <Resetpasswordlevel1 />
+          element: <Resetpasswordlevel1 />,
         },
         {
           path: "/rest2/:code",
-          element: <Resetpasswordlevel2 />
-        }
-        ,
-        {
-          path: '/sendyourthing',
-          element: <Idk />
-        }, {
-          path: '/panelpersoninfo',
-          element: <Personalinfo />
+          element: <Resetpasswordlevel2 />,
         },
         {
-
-          path:'/panelpersoninfoedit',
-          element:<Personalinfoedit />
-
-        }
-        ,
-        {
-          path:"/panel/coursereserve",
-          element:<Panel2 />
-        }   ,     {
-          path:"/panel/mycourse",
-          element:<Panel3 />
-        }  
-        ,{
-          path:'/panel/favecourse',
-          element:<Fave />
-        }
-        ,
-        {
-          path:'/panel/favenews',
-          element:<Favenews />
-        }
+          path: "/sendyourthing",
+          element: <Idk />,
+        },
+    
       ],
     },
   ];

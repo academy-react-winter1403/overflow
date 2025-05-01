@@ -79,50 +79,6 @@ const Personalinfoedit = () => {
 
     return (
         <div className="flex flex-row-reverse flex-wrap w-9/10 ml-20 font-kalameh">
-
-<div className="w-3/11 bg-white h-180 rounded-2xl  max-sm:w-3/10 dark:bg-gray-800 ">  
-                <div className='flex items-end flex-row-reverse w-10/10 h-20 pr-9'>  
-                    <img className='w-2/10' src={logo} alt="Logo" />  
-                    <span className='text-deep-blue text-2xl font-bold mr-5 max-sm:text-xs max-sm:font-bold'>آکادمی سپهر</span>  
-                </div>  
-
-                <div className="flex flex-col items-end w-10/10 h-100 mt-10">
-                
-                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
-                    <img className="w-1/10" src={home} alt="داشبورد" />
-
-                        <Link to='/Panel'>
-                        <span className="mr-5 text-gray-500 dark:text-white">داشبورد</span>
-                        </Link>
-
-                    </div>
-                    
-                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
-                      <img className="w-1/10" src={courses} alt="دوره های من" />
-                      <Link to='/panel/mycourse'>
-                      <span className="mr-5 text-gray-500 dark:text-white">دوره های من</span>
-                      </Link>
-                    </div>
-                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
-                      <img className="w-1/10" src={ticket} alt="دوره های رزرو شده" />
-                      <Link to='/panel/coursereserve'>
-                      <span className="mr-5 text-gray-500 dark:text-white">دوره های رزرو شده</span>
-                      </Link>
-                    </div>
-                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
-                      <img className="w-1/10" src={profileIcon} alt="جزییات حساب" />
-                      <Link to='/panelpersoninfo'>
-                      <span className="mr-5 text-gray-500 dark:text-white">جزییات حساب</span>
-                      </Link>
-                    </div>
-                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
-                      <img className="w-1/10" src={exit} alt="خروج" />
-                      <span className="mr-5 text-gray-500 dark:text-white">خروج</span>
-                    </div>
-                </div>
-
-            </div>
-
             <div className='flex flex-row-reverse flex-wrap w-7/10'>
                 <div className='flex flex-row-reverse flex-wrap w-full h-auto justify-center max-sm:overflow-auto max-sm:h-150 max-lg:h-150 max-lg:overflow-auto '>
                     <div className='bg-white w-10/11 rounded-2xl shadow-lg p-6 dark:bg-gray-700 '>
