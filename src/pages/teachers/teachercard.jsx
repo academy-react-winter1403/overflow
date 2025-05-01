@@ -7,7 +7,8 @@ const Techerscard = ({ item }) => {
             <div className="w-6/10 flex relative">
                 <div className="relative w-29/30 float-left rounded-3xl bg-white h-1/1 dark:bg-gray-400/95">
                     <div className="h-9/10 mt-4 ml-7 w-7/15">
-                        <div className="w-full text-4xl font-peyda text-gray-700 font-black mt-2 h-4/20 truncate ... dir-rtl text-right ">
+                        <div dir="rtl"
+                        className="w-full text-4xl font-peyda text-gray-700 font-black mt-2 h-4/20 truncate dir-rtl  text-right ">
                             {item.fullName}
                         </div>
                         <div className="w-full h-5/20 font-iransans text-2xl text-[#a7a7a7] text-right dark:text-white">
