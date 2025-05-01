@@ -34,12 +34,12 @@ const Panel3 = () => {
         navigate(`Courses/${id}`); 
       };
     return (  
-        <div className="flex flex-row-reverse flex-wrap w-9/10 ml-20 font-kalameh">
-            <div className='flex flex-row-reverse flex-wrap w-7/10 '>  
+        <div className="flex flex-row-reverse flex-wrap w-10/10  font-kalameh">
+            <div className='flex flex-row-reverse flex-wrap w-10/10 '>  
                 {/* top side */}  
  
 
-                <div className='flex flex-row-reverse flex-wrap w-10/10 h-155 justify-center gap-8 mt-10 max-sm:overflow-auto max-sm:h-150 max-lg:h-150 max-lg:overflow-auto'>  
+                <div className='flex flex-row-reverse flex-wrap w-10/10 h-155 justify-center gap-8 mt-10 max-sm:overflow-auto max-sm:h-150 max-lg:h-150 max-lg:overflow-auto '>  
                     {/* map over newCoursesData */}  
                     {newCoursesData.length > 0 ? (                    
                         newCoursesData.map((course, index) => (  
@@ -51,7 +51,7 @@ const Panel3 = () => {
                         key={index}
                       />
                     )) ) : (
-                        <p className="text-center text-3xl mt-10 font-iransans">دوره ای وجود ندارد</p>
+                        <p className="text-center text-3xl m-auto font-iransans ">دوره ای وجود ندارد</p>
                     )}
 
                     {/* <GetMyCoursesReserve /> */}
