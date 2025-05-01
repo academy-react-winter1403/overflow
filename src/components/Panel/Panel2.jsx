@@ -12,11 +12,12 @@ import DOT from '../../assets/userpanel/Ellipse 2.PNG';
 import clock from '../../assets/userpanel/clock.png';  
 import { getApi } from '../../core/services/api/getApi';
 import Card from '../Common/Card';
-import { Link, useNavigate } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import { GetMyCoursesReserve } from './GetMyCoursesReserve';
 import { Dashboard } from './Dashboard';
 import { getItem } from '../../core/services/common/storage.services';
-
+import fave from '../../assets/userpanel/fave.png'
+import favenews from '../../assets/userpanel/favenews.png'
 const Panel2 = () => {
     const navigate = useNavigate();
     const token = (getItem("token"))
@@ -55,38 +56,85 @@ const Panel2 = () => {
                 </div>  
 
                 <div className="flex flex-col items-end w-10/10 h-100 mt-10">
-                
-                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
-                    <img className="w-1/10" src={home} alt="داشبورد" />
 
-                        <Link to='/Panel'>
-                        <span className="mr-5 text-gray-500 dark:text-white">داشبورد</span>
-                        </Link>
+                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
+                        <img className="w-1/10" src={home} alt="داشبورد" />
+
+                        <NavLink to='/Panel'
+                        className={({ isActive }) => 
+                        isActive ? 'font-bold text-3xl':'text-gray-500'}
+                        >
+                            <span className="mr-5 text-gray-500 dark:text-white">داشبورد</span>
+                        </NavLink>
 
                     </div>
-                    
+
                     <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
-                      <img className="w-1/10" src={courses} alt="دوره های من" />
-                      <Link to='/panel/mycourse'>
-                      <span className="mr-5 text-gray-500 dark:text-white">دوره های من</span>
-                      </Link>
+                        <img className="w-1/10" src={courses} alt="دوره های من" />
+
+                        <NavLink to='/panel/mycourse'
+                        className={({isActive}) => 
+                        isActive ? 'font-bold text-3xl':'text-gray-500'}
+                        >
+
+                            <span className="mr-5 text-gray-500 dark:text-white">دوره های من</span>
+                        </NavLink>
+
                     </div>
+
                     <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
-                      <img className="w-1/10" src={ticket} alt="دوره های رزرو شده" />
-                      <Link to='/panel/coursereserve'>
-                      <span className="mr-5 text-gray-500 dark:text-white">دوره های رزرو شده</span>
-                      </Link>
-                    </div>
+                        <img className="w-1/10" src={ticket} alt="دوره های رزرو شده" />
+
+                        <NavLink to='/panel/coursereserve'
+                         className={({isActive}) => 
+                        isActive ? 'font-bold text-3xl':'text-gray-500'}
+                        >
+                            <span className="mr-5 text-gray-500 dark:text-white">دوره های رزرو شده</span>
+                        </NavLink>
+
+                    </div>    
+
                     <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
-                      <img className="w-1/10" src={profile} alt="جزییات حساب" />
-                      <Link to='/panelpersoninfo'>
-                      <span className="mr-5 text-gray-500 dark:text-white">جزییات حساب</span>
-                      </Link>
-                    </div>
+                        <img className="w-1/10" src={fave} alt=" دوره های مورد علاقه  " />
+
+                        <NavLink to='/panel/favecourse'
+                        className={({isActive}) => 
+                        isActive ? 'font-bold text-3xl':''}
+                        >
+                            <span className="mr-5 text-gray-500 dark:text-white">دوره های مورد علاقه</span>
+                        </NavLink>
+                        
+                    </div>      
+
                     <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
-                      <img className="w-1/10" src={exit} alt="خروج" />
-                      <span className="mr-5 text-gray-500 dark:text-white">خروج</span>
+                        <img className="w-1/10" src={favenews} alt="اخبار مورد علاقه " />
+
+                        <NavLink to='/panel/Favenews'
+                        className={({isActive}) => 
+                        isActive ? 'font-bold text-3xl':''}>
+                            <span className="mr-5 text-gray-500 dark:text-white"> اخبار مورد علاقه  </span>
+                        </NavLink>
+
                     </div>
+
+                    <div className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
+                        <img className="w-1/10" src={profile} alt="جزییات حساب" />
+
+                        <NavLink to='/panelpersoninfo'
+                        className={({isActive}) => 
+                        isActive ? 'font-bold text-3xl':''}>
+                            <span className="mr-5 text-gray-500 dark:text-white">جزییات حساب</span>
+                        </NavLink>
+                    </div>
+
+                    <button
+                        // onClick={logout}
+                        className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm bg-transparent border-none"
+                    >
+                        <img className="w-1/10" src={exit} alt="خروج" />
+                        <span className="mr-5 text-gray-500 dark:text-white">خروج</span>
+                    </button>
+
                 </div>
 
             </div>  

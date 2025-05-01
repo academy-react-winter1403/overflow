@@ -20,6 +20,8 @@ import { Personalinfo } from "../components/Panel/personalinfo.jsx";
 import { Personalinfoedit } from "../components/Panel/personalinfoedit.jsx";
 import { Panel2 } from "../components/Panel/Panel2.jsx";
 import { Panel3 } from "../components/Panel/Panel3.jsx";
+import { Fave } from "../components/Panel/fave.jsx";
+import { Favenews } from "../components/Panel/Favenews.jsx";
 
 
 function App() {
@@ -104,7 +106,15 @@ function App() {
           path:"/panel/mycourse",
           element:<Panel3 />
         }  
+        ,{
+          path:'/panel/favecourse',
+          element:<Fave />
+        }
         ,
+        {
+          path:'/panel/favenews',
+          element:<Favenews />
+        }
       ],
     },
   ];

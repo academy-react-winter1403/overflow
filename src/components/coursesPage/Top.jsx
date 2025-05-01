@@ -1,35 +1,53 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Fixed import for Link
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import productimg from "../../assets/Coursesimage/product-img.png";
 import commentcount from "../../assets/Coursesimage/comment.png";
 import clock from "../../assets/techers/clock.png";
 import eye from "../../assets/Coursesimage/eye.png";
 import calender from "../../assets/Coursesimage/cal.png";
-// import { toJalaali } from 'jalaali-js';
+import SmartImage from "../Common/SmartImage";
+import { Addreserve } from "../../core/services/api/GetCourses/reserveapi";
+
+
+const formatToPersianToman = (priceInRial) => {
+  const priceInToman = priceInRial / 1; // Convert Rial to Toman
+  return new Intl.NumberFormat("fa-IR", {
+    style: "decimal",
+  }).format(priceInToman) + " تومان"; // Add "تومان" suffix
+};
+
 
 const Top = ({ data }) => {
   const courseData = data || {};
-  const [currentDate, setCurrentDate] = useState("");
+  const [addreserve, setaddreserve] = useState([]);
 
-  useEffect(() => {
-    // Uncomment and modify if using Jalaali dates
-    // const today = new Date();
-    // const jalaaliDate = toJalaali(today.getFullYear(), today.getMonth() + 1, today.getDate());
-    // const formattedDate = `${jalaaliDate.jy}/${jalaaliDate.jm}/${jalaaliDate.jd}`;
-    // setCurrentDate(formattedDate);
-  }, []);
+  const postreserve = async () => {
+    try {
+      const response = await Addreserve();
+      console.log("Reserve Response:", response);
+      setaddreserve(response);
+    } catch (error) {
+      console.error("Error reserving course:", error);
+    }
+  };
 
   return (
-    <div className="flex flex-row-reverse items-center bg-gray-800 rounded-2xl flex-wrap w-10/10 h-auto  transition-all duration-300 max-lg:pt-5">
+    <div className="flex flex-row-reverse items-center bg-gray-800 rounded-2xl flex-wrap w-10/10 h-auto transition-all duration-300 max-lg:pt-5">
       <div className="flex flex-col items-end w-5/10 h-50 mr-10">
         <h2 className="text-amber-50 text-3xl">{courseData.title}</h2>
         <p className="text-amber-50 text-xs text-right w-10/10 h-8/10 mt-10">
           {courseData.describe}
         </p>
+        <button
+          onClick={postreserve}
+          className="text-amber-50 font-bold text-2xl bg-deep-blue rounded-3xl px-6 py-3 text-center max-lg:text-sm"
+        >
+          رزرو دوره
+        </button>
       </div>
 
       <div className="text-amber-50 shadow-2xl shadow-amber-50 rounded-2xl w-3/10 h-4/10 mt-10 mr-45 max-xl:mr-20">
-        <img
+        <SmartImage
           src={courseData.imageAddress || productimg}
           alt="Course Banner"
           className="rounded-2xl w-10/10 h-75 max-xl:h-50 max-lg:h-40 transition-all duration-300"
@@ -38,7 +56,7 @@ const Top = ({ data }) => {
 
       <div className="flex items-center justify-between w-6/10 mr-10 mb-5 pl-45 max-lg:flex-row max-lg:gap-30 max-lg:w-8/10 transition-all duration-300">
         <span className="text-amber-50 font-bold text-2xl text-left max-lg:text-sm">
-          {courseData.cost} T
+          {formatToPersianToman(courseData.cost)}
         </span>
         <div className="text-amber-50 font-bold text-2xl bg-deep-blue rounded-3xl px-6 py-3 text-center max-lg:text-sm">
           <Link to="/">خرید نقدی دوره</Link>

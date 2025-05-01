@@ -82,4 +82,46 @@ const UpdateProfileInfo = async (profileData) => {
     }
 };
 
-export { Getmyreserveapi, Getprofile, UpdateProfileInfo };
+const favecourse = async () =>{
+
+    try {
+        const respone = await http.get('/SharePanel/GetMyFavoriteCourses');
+
+        return respone;
+    
+    } catch (error) {
+        console.log('error from get fave :', error);
+    }
+}
+
+const favecoursenew = async () =>{
+
+    try {
+        const respone = await http.get('/SharePanel/GetMyFavoriteNews');
+
+        return respone;
+    
+    } catch (error) {
+        console.log('error from get news :', error);
+    }
+}
+
+const Getmycourse = async () =>{
+
+    try {
+        const respone = await http.get('/SharePanel/GetMyCourses?PageNumber=1&RowsOfPage=5&SortingCol=DESC&SortType=LastUpdate&Query=');
+
+        return respone;
+    
+    } catch (error) {
+        console.log('error from get news :', error);
+    }
+}
+
+export { 
+    Getmyreserveapi, 
+    Getprofile, 
+    UpdateProfileInfo, 
+    favecourse, 
+    favecoursenew,
+    Getmycourse };

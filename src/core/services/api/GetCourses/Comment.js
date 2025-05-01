@@ -165,6 +165,45 @@ export const useCourseLikecommnet = () => {
     },
   });
 };
+
+const Addlikecourse = async (CourseId) => {
+  try {
+
+    if (!CourseId) {
+      throw new Error("CourseId is required and must be valid");
+    }
+
+    
+    const response = await http.post(`/Course/AddCourseLike?CourseId=${CourseId}`)
+
+    return response;
+  } catch (error) {
+    
+    console.error("Error liking course:", error.response?.data || error.message);
+
+    
+    throw error;
+  }
+};
+
+const Adddislikecourse = async (CourseId) =>{
+
+  if (!CourseId) {
+    throw new Error("CourseId is required and must be valid");
+  }
+
+  try {
+    const respone = await http.post(`/Course/AddCourseDisLike?CourseId=${CourseId}`);
+    
+    return respone;
+
+  } catch (error) {
+
+    console.log('dislike course :',error)
+
+    throw error;
+}
+}
 export {
   NewsLikecommnet,
   GetComment,
@@ -172,4 +211,6 @@ export {
   Likecommnet,
   Getreply,
   Sendreply,
+  Addlikecourse,
+  Adddislikecourse
 };
