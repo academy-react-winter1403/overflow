@@ -28,10 +28,7 @@ const Addlikeforcourse = ({data}) => {
     }
 
 
-    useEffect(() => {
-        likecourse();
-        dislikecourse();
-    }, [])
+  
     
   return (
     <div className="bg-white flex flex-row-reverse text-3xl font-bold font-kalameh gap-95 items-center w-7/14 rounded-2xl h-20 pr-5 dark:bg-gray-700 max-lg:w-10/10 transition-all duration-300 ">
@@ -43,11 +40,12 @@ const Addlikeforcourse = ({data}) => {
 
         <div className=' flex flex-row gap-5 '>
 
-            <div className=' flex flex-row text-2xl items-center '>
+            <button onClick={likecourse}
+            className=' flex flex-row text-2xl items-center '>
                 <img className='w-10 h-10 ' src={Like}/>
-                <button
-                onSubmit={() => likecourse}></button>
-            </div>
+                
+                
+            </button>
             <div className='flex flex-row items-center text-2xl'>
                 <img  className='w-10 h-10 '  src={Dislike}/>
                 <button onSubmit={() => dislikecourse}></button>
