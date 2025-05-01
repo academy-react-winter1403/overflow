@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import productimg from '../../assets/Coursesimage/product-img.png';
 import { getApi } from '../../core/services/api/getApi';
+import SmartImage from '../Common/SmartImage';
 
 const Coursesmap = ({ data }) => {
   const courseData = data || {};
@@ -36,7 +37,8 @@ const Coursesmap = ({ data }) => {
               key={index}
               className="flex flex-row-reverse border border-gray-300 mt-5 mr-5 rounded-3xl h-13 w-9/10"
             >
-              <img className="w-18 rounded-3xl m-2" src={course.tumbImageAddress || productimg} alt={`Course ${index + 1}`} />
+              <SmartImage className="w-18 rounded-3xl m-2"  src={course.tumbImageAddress || productimg} alt={`Course ${index + 1}`}/>
+              {/* <img className="w-18 rounded-3xl m-2"  src={course.tumbImageAddress || productimg} alt={`Course ${index + 1}`} /> */}
               <p className="mt-3">{course.title || "No title available"}</p>
             </div>
           ))}

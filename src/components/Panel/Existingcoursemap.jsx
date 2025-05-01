@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getApi } from '../../core/services/api/getApi';
 import teach from '../../assets/userpanel/tech.png';
 import courseimg from '../../assets/userpanel/word.png';
+import SmartImage from '../Common/SmartImage';
 
 
 const ExistingCourseMap = () => {
@@ -32,7 +33,7 @@ const ExistingCourseMap = () => {
                         <div className="flex flex-row-reverse justify-end items-end gap-5 w-5/10 ">
                            
                             <p className="text-orange-400 max-xl:hidden">{course.lastUpdate.slice(0,10) || "چهارشنبه ها . ۱۷:۳۰"}</p>
-                            <img className="ml-5 w-25 h-20 rounded-2xl max-lg:w-20 transition-all duration-300" src={course.tumbImageAddress || courseimg} alt="Course" />
+                            <SmartImage className="ml-5 w-25 h-20 rounded-2xl max-lg:w-20 transition-all duration-300" src={course.tumbImageAddress || courseimg} alt="Course" />
                         </div>
                         <div className="flex flex-col w-5/10 text-right gap-10 pr-5  max-xl:w-6/10 max-xl:gap-3 transition-all duration-300 max-lg:text-sm max-lg:w-4/10">
                            

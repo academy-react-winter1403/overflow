@@ -30,7 +30,7 @@ const Comment = ({ commentData, type }) => {
   };
 
   useEffect(() => {
-    console.log(commentData);
+    // console.log(commentData);
   }, []);
 
   return (

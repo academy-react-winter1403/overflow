@@ -8,7 +8,6 @@ import { getItem } from "../../core/services/common/storage.services.js";
 
 const Commentdiv = ({ courseId }) => {
 
-  console.log("couseid::::::::::::::::::::::::",courseId);
   const [comments, setComments] = useState([]);
   const [Openreply, setOpenreply] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false); // State to manage button text
