@@ -53,35 +53,33 @@ const Getprofile = async () => {
 // تابع برای آپدیت کردن پروفایل کاربر
 const UpdateProfileInfo = async (profileData) => {
     try {
-        const response = await http.put(
-            '/SharePanel/UpdateProfileInfo', 
-            {
-                LName: profileData.lName,
-                FName: profileData.fName,
-                UserAbout: profileData.userAbout,
-                LinkdinProfile: profileData.linkdinProfile,
-                TelegramLink: profileData.telegramLink,
-                ReceiveMessageEvent: profileData.receiveMessageEvent,
-                HomeAdderess: profileData.homeAdderess,
-                NationalCode: profileData.nationalCode,
-                Gender: profileData.gender,
-                BirthDay: profileData.birthDay,  // مطمئن شوید که تاریخ به فرمت درست است
-                Latitude: profileData.latitude,
-                Longitude: profileData.longitude
-            }
-        );
-        
-        if (response.status === 200) {
-            return response.data; // در صورت موفقیت، داده‌ها را برمی‌گرداند
-        } else {
-            throw new Error('Failed to update profile');
-        }
+      const response = await http.put('/SharePanel/UpdateProfileInfo', {
+        LName: profileData.lName,
+        FName: profileData.fName,
+        UserAbout: profileData.userAbout,
+        LinkdinProfile: profileData.linkdinProfile,
+        TelegramLink: profileData.telegramLink,
+        ReceiveMessageEvent: profileData.receiveMessageEvent,
+        HomeAdderess: profileData.homeAdderess,
+        NationalCode: profileData.nationalCode,
+        Gender: profileData.gender,
+        BirthDay: profileData.birthDay,
+        Latitude: profileData.latitude,
+        Longitude: profileData.longitude
+      });
+  
+      if (response.status === 200) {
+        return response.data;
+      } else {
+        throw new Error('Failed to update profile');
+      }
+  
     } catch (error) {
-        console.error('Error updating profile:', error);
-        throw error; // برای مدیریت خطا در سایر بخش‌ها
+      console.error('Error updating profile:', error);
+      throw error; 
     }
-};
-
+  };
+  
 const favecourse = async () =>{
 
     try {

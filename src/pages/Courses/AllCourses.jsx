@@ -64,7 +64,7 @@ const AllCourse = () => {
         دوره ها
       </div>
 
-      <div className="font-kalameh flex h-18 w-full justify-center rounded-lg bg-white text-4xl font-black text-gray-700 dark:bg-gray-400/95">
+      <div className="font-kalameh flex h-18 w-full justify-center rounded-lg bg-white text-4xl font-black text-gray-700 dark:bg-gray-400/95 max-xl:gap-4 ">
         <div
           onClick={() => handleSorting("cost", "ASC")}
           className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "cost" && filters.SortType === "ASC"
@@ -94,28 +94,29 @@ const AllCourse = () => {
         </div>
         <div
           onClick={() => handleSorting("lastUpdate")}
-          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "lastUpdate"
+          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl  leading-14 ${filters.SortingCol === "lastUpdate"
             ? "font-bold text-blue-500"
             : "text-gray-600"
             }`}
         >
           جدیدترین
         </div>
-        <div className="m-auto h-[80%] font-Kalameh w-[15%] border-l-2 border-gray-300 text-center text-3xl leading-10">
+        <div className="m-auto h-[80%] font-Kalameh w-[15%] border-l-2 border-gray-300 text-center text-3xl leading-10 max-xl:hidden ">
           مرتب سازی
         </div>
-        <div className="h-full w-[5%] "></div>
+        <div className="h-full w-[5%]   max-xl:hidden"></div>
         <input
-          className="h-18 w-[20%] text-right px-3"
+          className="h-18 w-[20%] text-right px-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:rounded-md focus:w-[25%] focus:gray-blue-500 focus:bg-gray-100 focus:border-gray-500 focus:placeholder-blue-500 max-xl:hidden "
           type="text"
           placeholder="...جستجو"
           value={filters.Query}
           onChange={handleSearchChange}
         />
+
       </div>
 
-      <div className="flex w-full justify-center">
-        <div className="mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4 pt-30">
+      <div className="flex w-full justify-center  max-xl:flex-row  max-xl:flex-wrap ">
+        <div className="mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4 pt-30 max-xl:w-1/1 ">
           {newCoursesData.map((item, index) => (
             <Card item={item} index={index} key={index} />
           ))}
@@ -134,18 +135,18 @@ const AllCourse = () => {
           </div>
         </div>
 
-        <div className="h-70 w-[25%] justify-items-center rounded-md mt-22 bg-white dark:bg-gray-400/95 p-4">
-          <div className="mb-6 text-right text-xl text-blue-900">فیلتر ها</div>
+        <div className="h-75 w-[25%] justify-items-center rounded-md mt-22 bg-white dark:bg-gray-400/95 p-4 max-xl:w-1/2 ">
+          <div className="mb-6 text-right font-peyda text-3xl  w-8/10 text-right text-blue-900">فیلتر ها</div>
 
-          <div className="mt-4 mb-11 h-34 w-8/10 rounded-md m-auto">
+          <div className="mt-4 mb-11 h-34 w-8/10 border-2 border-gray-400/50 rounded-md m-auto">
             <div className="mb-6">
               <label className="block mb-2 text-right text-lg font-bold">
-                محدوده قیمت:
+
               </label>
 
-              <div className="flex justify-between text-sm text-gray-800 mb-2">
-                <span>حداقل: {Number(filters.CostDown).toLocaleString()} تومان</span>
-                <span>حداکثر: {Number(filters.CostUp).toLocaleString()} تومان</span>
+              <div className="flex bor justify-center font-vazir text-gray-500 text-xl mt-5 mb-2">
+                <span>تا  {Number(filters.CostUp).toLocaleString()} تومان</span>
+                <span> از   {Number(filters.CostDown).toLocaleString()} </span>
               </div>
 
               <input

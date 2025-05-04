@@ -1,224 +1,130 @@
-import React, { useEffect, useState } from 'react';
-import logo from '../../assets/userpanel/Logo.png';
-import home from '../../assets/userpanel/home.png';
-import courses from '../../assets/userpanel/Path 29.png';
-import ticket from '../../assets/userpanel/Path 30.png';
-import profileIcon from '../../assets/userpanel/Path 31.png';
-import exit from '../../assets/userpanel/Path 32.png';
-import { Getprofile, UpdateProfileInfo } from '../../core/services/api/userpanelapi/panelapis'; // فرض می‌کنیم این API برای آپدیت هست
-import { Link, useNavigate } from 'react-router';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UpdateProfileInfo } from '../../core/services/api/userpanelapi/panelapis';
 
+// کامپوننت برای ویرایش اطلاعات شخصی
 const Personalinfoedit = () => {
-    const [profile, setProfile] = useState(null);
-    const [formData, setFormData] = useState({
-        fName: '',
-        lName: '',
-        userAbout: '',
-        linkdinProfile: '',
-        telegramLink: '',
-        receiveMessageEvent: false,
-        homeAdderess: '',
-        nationalCode: '',
-        gender: false,
-        birthDay: '',
-        latitude: '',
-        longitude: ''
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    fName: '',
+    lName: '',
+    userAbout: '',
+    linkdinProfile: '',
+    telegramLink: '',
+    receiveMessageEvent: false,
+    homeAdderess: '',
+    nationalCode: '',
+    gender: true,
+    birthDay: '', // باید به فرمت DateTime ارسال شود
+    latitude: '',
+    longitude: ''
+  });
+
+  // مدیریت تغییرات در ورودی‌ها
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value
     });
+  };
+
+  // ارسال اطلاعات فرم
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     
-    const navigate = useNavigate();
+    // تبدیل تاریخ تولد به فرمت DateTime
+    const formattedBirthDay = new Date(formData.birthDay).toISOString(); // تبدیل به فرمت DateTime
 
-
-    const profileInfo = async () => {
-        try {
-            const response = await Getprofile();
-            setProfile(response);
-            setFormData({
-                fName: response.fName || '',
-                lName: response.lName || '',
-                userAbout: response.userAbout || '',
-                linkdinProfile: response.linkdinProfile || '',
-                telegramLink: response.telegramLink || '',
-                receiveMessageEvent: response.receiveMessageEvent || false,
-                homeAdderess: response.homeAdderess || '',
-                nationalCode: response.nationalCode || '',
-                gender: response.gender || false,
-                birthDay: response.birthDay || '',
-                latitude: response.latitude || '',
-                longitude: response.longitude || ''
-            });
-        } catch (error) {
-            console.log('Error from profileInfo:', error);
-        }
+    const finalData = {
+      ...formData,
+      gender: formData.gender === 'true' || formData.gender === true,
+      birthDay: formattedBirthDay // فرمت تاریخ تولد تغییر یافته
     };
 
-    useEffect(() => {
-        profileInfo();
-    }, []);
+    try {
+      const response = await UpdateProfileInfo(finalData);
+      console.log('Profile updated successfully:', response);
+      navigate('/profile'); // بعد از موفقیت به صفحه پروفایل برو
+    } catch (error) {
+      console.log('Error updating profile:', error.response?.data || error);
+    }
+  };
 
+  return (
+    <div className="flex flex-row-reverse flex-wrap w-full h-auto justify-center max-sm:overflow-auto max-sm:h-150 max-lg:h-150 max-lg:overflow-auto">
+      <div className="bg-white w-10/11 rounded-2xl shadow-lg p-6 dark:bg-gray-700">
+        <form onSubmit={handleSubmit} className="w-9/10 m-auto mt-10 flex flex-wrap justify-between gap-4">
 
-    const handleInputChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setFormData({
-            ...formData,
-            [name]: type === 'checkbox' ? checked : value
-        });
-    };
+          {/* فیلدها */}
+          <FormField label="نام" name="fName" value={formData.fName} onChange={handleInputChange} />
+          <FormField label="نام خانوادگی" name="lName" value={formData.lName} onChange={handleInputChange} />
+          <FormTextArea label="درباره من" name="userAbout" value={formData.userAbout} onChange={handleInputChange} />
+          <FormField label="لینکدین" name="linkdinProfile" value={formData.linkdinProfile} onChange={handleInputChange} />
+          <FormField label="تلگرام" name="telegramLink" value={formData.telegramLink} onChange={handleInputChange} />
+          <FormField label="آدرس منزل" name="homeAdderess" value={formData.homeAdderess} onChange={handleInputChange} />
+          <FormField label="کد ملی" name="nationalCode" value={formData.nationalCode} onChange={handleInputChange} />
 
+          {/* انتخاب جنسیت */}
+          <div className="w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4">
+            <label className="block text-sm font-medium text-gray-700 mb-2 dark:text-white">جنسیت</label>
+            <select
+              name="gender"
+              value={formData.gender}
+              onChange={handleInputChange}
+              className="w-full p-2 border rounded-xl text-gray-700 dark:border dark:border-white"
+            >
+              <option value={true}>مرد</option>
+              <option value={false}>زن</option>
+            </select>
+          </div>
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await UpdateProfileInfo(formData);
-            console.log("Profile updated successfully:", response);
+          {/* فیلد تاریخ تولد */}
+          <FormField label="تاریخ تولد" name="birthDay" type="date" value={formData.birthDay} onChange={handleInputChange} />
+          
+          {/* فیلدهای جغرافیایی */}
+          <FormField label="عرض جغرافیایی" name="latitude" value={formData.latitude} onChange={handleInputChange} />
+          <FormField label="طول جغرافیایی" name="longitude" value={formData.longitude} onChange={handleInputChange} />
 
-            navigate('/profile');
-        } catch (error) {
-            console.log("Error updating profile:", error);
-        }
-    };
+          {/* دکمه ارسال */}
+          <div className="w-full flex justify-center mt-6">
+            <button type="submit" className="w-1/2 p-3 bg-blue-500 text-white rounded-xl shadow-lg">
+              ارسال
+            </button>
+          </div>
 
-    return (
-        <div className="flex flex-row-reverse flex-wrap w-9/10 ml-20 font-kalameh">
-            <div className='flex flex-row-reverse flex-wrap w-7/10'>
-                <div className='flex flex-row-reverse flex-wrap w-full h-auto justify-center max-sm:overflow-auto max-sm:h-150 max-lg:h-150 max-lg:overflow-auto '>
-                    <div className='bg-white w-10/11 rounded-2xl shadow-lg p-6 dark:bg-gray-700 '>
-                        <form onSubmit={handleSubmit} className='w-9/10 m-auto mt-10 flex flex-wrap justify-between gap-4 '>
-                            
-
-                            <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4 '>
-                                <label className='block text-sm font-medium text-gray-700 mb-2 dark:text-white ' >نام</label>
-                                <input 
-                                    type="text" 
-                                    name="fName" 
-                                    value={formData.fName} 
-                                    onChange={handleInputChange} 
-                                    className="w-full p-2 border rounded-xl text-gray-700 dark:border dark:border-white"
-                                />
-                            </div>
-                            
-                            <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4 '>
-                                <label className='block text-sm font-medium text-gray-700 mb-2 dark:text-white'>نام خانوادگی</label>
-                                <input 
-                                    type="text" 
-                                    name="lName" 
-                                    value={formData.lName} 
-                                    onChange={handleInputChange} 
-                                    className="w-full p-2 border rounded-xl text-gray-700 dark:border dark:border-white"
-                                />
-                            </div>
-
-                            <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4'>
-                                <label className='block text-sm font-medium text-gray-700 mb-2 dark:text-white'>درباره من</label>
-                                <textarea 
-                                    name="userAbout" 
-                                    value={formData.userAbout} 
-                                    onChange={handleInputChange} 
-                                    className="w-full p-2 border rounded-xl text-gray-700 dark:border dark:border-white"
-                                />
-                            </div>
-
-                            <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4'>
-                                <label className='block text-sm font-medium text-gray-700 mb-2 dark:text-white'>لینکدین</label>
-                                <input 
-                                    type="text" 
-                                    name="linkdinProfile" 
-                                    value={formData.linkdinProfile} 
-                                    onChange={handleInputChange} 
-                                    className="w-full p-2 border rounded-xl text-gray-700 dark:border dark:border-white"
-                                />
-                            </div>
-
-                            <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4'>
-                                <label className='block text-sm font-medium text-gray-700 mb-2 dark:text-white '>تلگرام</label>
-                                <input 
-                                    type="text" 
-                                    name="telegramLink" 
-                                    value={formData.telegramLink} 
-                                    onChange={handleInputChange} 
-                                    className="w-full p-2 border rounded-xl text-gray-700 dark:border dark:border-white"
-                                />
-                            </div>
-
-
-                            <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4'>
-                                <label className='block text-sm font-medium text-gray-700 mb-2 dark:text-white'>آدرس منزل</label>
-                                <input 
-                                    type="text" 
-                                    name="homeAdderess" 
-                                    value={formData.homeAdderess} 
-                                    onChange={handleInputChange} 
-                                    className="w-full p-2 border rounded-xl text-gray-700 dark:border dark:border-white"
-                                />
-                            </div>
-
-                            <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4'>
-                                <label className='block text-sm font-medium text-gray-700 mb-2 dark:text-white'>کد ملی</label>
-                                <input 
-                                    type="text" 
-                                    name="nationalCode" 
-                                    value={formData.nationalCode} 
-                                    onChange={handleInputChange} 
-                                    className="w-full p-2 border rounded-xl text-gray-700 dark:border dark:border-white"
-                                />
-                            </div>
-
-                            <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4'>
-                                <label className='block text-sm font-medium text-gray-700 mb-2 dark:text-white'>جنسیت</label>
-                                <select 
-                                    name="gender" 
-                                    value={formData.gender} 
-                                    onChange={handleInputChange} 
-                                    className="w-full p-2 border rounded-xl text-gray-700 dark:border dark:border-white"
-                                >
-                                    <option value={true}>مرد</option>
-                                    <option value={false}>زن</option>
-                                </select>
-                            </div>
-
-                            <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4'>
-                                <label className='block text-sm font-medium text-gray-700 mb-2 dark:text-white'>تاریخ تولد</label>
-                                <input 
-                                    type="date" 
-                                    name="birthDay" 
-                                    value={formData.birthDay} 
-                                    onChange={handleInputChange} 
-                                    className="w-full p-2 border rounded-xl text-gray-700 dark:border dark:border-white"
-                                />
-                            </div>
-
-                            <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4'>
-                                <label className='block text-sm font-medium text-gray-700 mb-2 dark:text-white'>عرض جغرافیایی</label>
-                                <input 
-                                    type="text" 
-                                    name="latitude" 
-                                    value={formData.latitude} 
-                                    onChange={handleInputChange} 
-                                    className="w-full p-2 border rounded-xl text-gray-700 dark:border dark:border-white"
-                                />
-                            </div>
-
-                            <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4'>
-                                <label className='block text-sm font-medium text-gray-700 mb-2 dark:text-white'>طول جغرافیایی</label>
-                                <input 
-                                    type="text" 
-                                    name="longitude" 
-                                    value={formData.longitude} 
-                                    onChange={handleInputChange} 
-                                    className="w-full p-2 border rounded-xl text-gray-700 dark:border dark:border-white"
-                                />
-                            </div>
-
-                            <div className='w-full flex justify-center mt-6'>
-                                <button type="submit" className="w-1/2 p-3 bg-blue-500 text-white rounded-xl shadow-lg">
-                                    ارسال
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+        </form>
+      </div>
+    </div>
+  );
 };
+
+// کامپوننت برای فیلدهای ورودی
+const FormField = ({ label, name, value, onChange, type = 'text' }) => (
+  <div className="w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4">
+    <label className="block text-sm font-medium text-gray-700 mb-2 dark:text-white">{label}</label>
+    <input
+      type={type}
+      name={name}
+      value={value}
+      onChange={onChange}
+      className="w-full p-2 border rounded-xl text-gray-700 dark:border dark:border-white"
+    />
+  </div>
+);
+
+// کامپوننت برای فیلدهای متن
+const FormTextArea = ({ label, name, value, onChange }) => (
+  <div className="w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4">
+    <label className="block text-sm font-medium text-gray-700 mb-2 dark:text-white">{label}</label>
+    <textarea
+      name={name}
+      value={value}
+      onChange={onChange}
+      className="w-full p-2 border rounded-xl text-gray-700 dark:border dark:border-white"
+    />
+  </div>
+);
 
 export { Personalinfoedit };

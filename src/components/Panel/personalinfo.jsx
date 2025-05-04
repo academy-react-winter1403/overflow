@@ -26,8 +26,8 @@ const Personalinfo = () => {
     }, []);
 
     return (
-        <div className="flex flex-row-reverse flex-wrap w-9/10 ml-20 font-kalameh">
-            <div className='flex flex-row-reverse flex-wrap w-7/10'>
+
+            <div className='flex flex-row-reverse flex-wrap m-auto mt-6 w-9/10'>
                 <div className='flex flex-row-reverse flex-wrap w-full h-auto justify-center max-sm:overflow-auto max-sm:h-150 max-lg:h-150 max-lg:overflow-auto'>
                     <div className='bg-white w-10/11 rounded-2xl shadow-lg p-6 dark:bg-gray-400/95'>
                         <div className='w-9/10 m-auto mt-10 flex flex-wrap justify-between gap-4'>
@@ -84,7 +84,7 @@ const Personalinfo = () => {
                             </div>
 
                         </div>
-                        <Link to="/panelpersoninfoedit">
+                        <Link to="/panel/panelpersoninfoedit">
                             <div className="w-3/11 h-12 text-center bg-[#436E8E] text-gray-200 text-[35px] leading-0 p-7 m-auto mt-15 shadow-sm rounded-xl">
                                 ویرایش
                             </div>
@@ -94,7 +94,7 @@ const Personalinfo = () => {
                 </div>
 
             </div>
-        </div>
+
     );
 };
 
