@@ -1,25 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../../assets/userpanel/Logo.png';
-import home from '../../assets/userpanel/home.png';
-import courses from '../../assets/userpanel/Path 29.png';
-import ticket from '../../assets/userpanel/Path 30.png';
-import profileIcon from '../../assets/userpanel/Path 31.png';
-import exit from '../../assets/userpanel/Path 32.png';
 import { Getprofile } from '../../core/services/api/userpanelapi/panelapis';
 import { Link } from 'react-router';
-import { useNavigate } from 'react-router';
-import { getItem } from '../../core/services/common/storage.services';
+
 
 
 
 const Personalinfo = () => {
-    const navigate = useNavigate();
-    const token = (getItem("token"))
-    console.log(token)
-  
-    if (token == "") {
-        navigate("/Register-1")
-    } 
+
+
     const [profile, setProfile] = useState(null);
 
     const profileInfo = async () => {
@@ -45,7 +33,7 @@ const Personalinfo = () => {
 
 
                             <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4 flex items-center justify-end text-right bg-gray-50 text-sm  text-gray-700 shadow-sm  dark:bg-gray-300/95'>
-                                نام و نام خانوادگی: {profile?.fName || 'وارد نشده'} {profile?.lName || 'وارد نشده'}
+                                نام و نام خانوادگی: {profile?.fName || 'وارد نشده'} 
                             </div>
 
                             <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4 flex items-center justify-end text-right bg-gray-50 text-sm font-medium text-gray-700 shadow-sm  dark:bg-gray-300/95'>
