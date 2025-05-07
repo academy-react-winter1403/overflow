@@ -7,7 +7,7 @@ import { Getmycourse } from '../../core/services/api/userpanelapi/panelapis';
 
 const Panel3 = () => {
     const navigate = useNavigate();
-    const token = getItem("token");
+
 
     const [newCoursesData, setNewCoursesData] = useState([]);
 
@@ -26,9 +26,7 @@ const Panel3 = () => {
 
 
     useEffect(() => {
-        if (!token) {
-            navigate("/Register-1");
-        }
+
         getNewCoursesData();
     }, []);
 

@@ -10,10 +10,18 @@ import { useEffect, useState } from 'react';
 import { Getprofile } from '../../core/services/api/userpanelapi/panelapis';
 import { ExistingCourseMap } from './existingcoursemap';
 // import { getApi } from '../../core/services/api/getApi';
+import { getItem } from '../../core/services/common/storage.services';
 
 const Dashboard = () => {
-
     const navigate = useNavigate();
+    const token = getItem("token"); 
+    
+    useEffect(() => {
+        if (!token) {
+            navigate("/Register-1");
+        }
+    }, [navigate, token]); 
+
 
     const [profile, setProfile] = useState(null); 
 

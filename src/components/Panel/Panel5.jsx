@@ -84,7 +84,7 @@ const Personalinfo = () => {
                             </div>
 
                         </div>
-                        <Link to="panel/panelpersoninfoedit">
+                        <Link to="/panelpersoninfoedit">
                             <div className="w-3/11 h-12 text-center bg-[#436E8E] text-gray-200 text-[35px] leading-0 p-7 m-auto mt-15 shadow-sm rounded-xl">
                                 ویرایش
                             </div>

@@ -8,8 +8,14 @@ import profile from '../../assets/userpanel/Path 31.png';
 import exit from '../../assets/userpanel/Path 32.png';  
 import fave from '../../assets/userpanel/fave.png';
 import favenews from '../../assets/userpanel/favenews.png';
-
+import { setItem } from '../../core/services/common/storage.services';
+import { useNavigate } from 'react-router-dom';
 function SidePanel() {
+  const navigate = useNavigate();
+  const logout =() =>{
+  setItem("token","");
+    navigate("/login")
+  }
   return (
     <div className=" bg-white h-180 rounded-2xl  dark:bg-gray-800">
       <div className='flex items-end flex-row-reverse w-10/10 h-20 pr-9'>
@@ -34,7 +40,7 @@ function SidePanel() {
           </div>
         ))}
 
-        <button className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm bg-transparent border-none">
+        <button onClick={logout} className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm bg-transparent border-none">
           <img className="w-1/10" src={exit} alt="خروج" />
           <span className="mr-5 text-gray-500 dark:text-white">خروج</span>
         </button>

@@ -23,12 +23,7 @@ import { Fave } from './fave';
 import { Favenews } from './Favenews';
 const Panel3 = () => {
     const navigate = useNavigate();
-    const token = (getItem("token"))
-    console.log(token)
 
-    if (token == "") {
-        navigate("/Register-1")
-    }  
     const URL = "/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=4&SortingCol=lastUpdate";  
     const [newCoursesData, setNewCoursesData] = useState([]);  
 
