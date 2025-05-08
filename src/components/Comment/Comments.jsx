@@ -9,6 +9,7 @@ import {
   UseGetReply,
   useNewsLikecommnet,
 } from "../../core/services/api/GetCourses/Comment.js";
+import SmartImage from "../Common/SmartImage.jsx";
 
 function Comments({ comment, type, index }) {
   // Handel News Comment Like and Dislike
@@ -41,11 +42,12 @@ function Comments({ comment, type, index }) {
   return (
     <div className="mb-5">
       <div className="relative mr-10 flex flex-row-reverse rounded-2xl border-r-2 border-deep-blue bg-white/55 p-2 dark:bg-gray-800">
-        <div className="absolute -top-3 -right-10 z-30 h-full w-18 space-y-3 py-2">
-          <img
-            className="rounded-full bg-gray-500 dark:bg-gray-600"
+        <div className="absolute -top-3 -right-10 z-30 h-18 w-18 space-y-3 py-2">
+          <SmartImage
+            className="rounded-full bg-gray-500 h-18 dark:bg-gray-600"
             src={comment.pictureAddress || user}
             alt="Author"
+            fallback={user}
           />
         </div>
         <div className="mr-10 h-full w-full">
