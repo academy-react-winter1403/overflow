@@ -9,6 +9,7 @@ import exit from '../../assets/userpanel/Path 32.png';
 import fave from '../../assets/userpanel/fave.png';
 import secur from '../../assets/userpanel/security.png'
 import comm from '../../assets/userpanel/commets-removebg-preview.png'
+import commnews from '../../assets/userpanel/9189092.png'
 import favenews from '../../assets/userpanel/favenews.png';
 import { setItem } from '../../core/services/common/storage.services';
 import { useNavigate } from 'react-router-dom';
@@ -34,7 +35,7 @@ function SidePanel() {
           { icon: favenews, to: '/panel/Favenews', label: 'اخبار مورد علاقه' },
           { icon: secur, to: '/panel/security', label: 'امنیت' },
           { icon: comm, to: '/panel/Mycomment', label: 'نظرات من' },
-          { icon: comm, to: '/panel/Mynewscomment', label: ' نظرات خبری' },
+          { icon: commnews, to: '/panel/Mynewscomment', label: ' نظرات خبری' },
           { icon: profile, to: '/panel/panelpersoninfo', label: 'جزییات حساب' }
         ].map((item, idx) => (
           <div key={idx} className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 hover:text-3xl transition-all duration-300 cursor-pointer max-lg:text-sm">
