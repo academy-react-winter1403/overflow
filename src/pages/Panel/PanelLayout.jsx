@@ -15,7 +15,7 @@ function PanelLayout() {
         }
     }, [navigate, token]);  
   return (
-    <div className="font-kalameh ml-20 flex w-9/10 flex-row-reverse rounded-2xl justify-between mt-10">
+    <div className="font-kalameh ml-20 flex w-9/10 flex-row-reverse rounded-2xl justify-center gap-10 mt-10 ">
       <div className="w-3/12 min-w-50 ">
         <SidePanel />
       </div>

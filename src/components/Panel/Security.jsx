@@ -30,7 +30,7 @@ const Security = () => {
   return (
 <div className="flex flex-col md:flex-row-reverse justify-center items-center md:items-start pt-6 space-y-8 md:space-y-0 md:space-x-10 bg-gray-50 dark:bg-gray-800 min-h-[76vh] font-kalameh rounded-2xl">      
     {/* Labels */}
-      <div className="flex flex-col w-full md:w-1/2 gap-4 text-lg md:text-xl font-semibold text-gray-700 dark:text-gray-200  ml-5">
+      <div className="flex flex-col w-full md:w-1/2 gap-4 text-lg md:text-xl font-semibold text-gray-700 dark:text-gray-200  ml-5  max-md:w-8/10">
         <div className="p-4 bg-gray-200 dark:bg-gray-700 rounded-xl shadow hover:bg-gray-300 dark:hover:bg-gray-600 transition">
           آدرس پایه
         </div>
@@ -49,7 +49,7 @@ const Security = () => {
       </div>
 
       {/* Data Values */}
-      <div className="flex flex-col w-full md:w-1/2 gap-4 text-lg md:text-xl items-center ml-5">
+      <div className="flex flex-col w-full md:w-1/2 gap-4 text-lg md:text-xl items-center ml-5 max-md:w-8/10">
         <div className="w-full p-4 bg-white dark:bg-gray-900 rounded-xl shadow flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition">
           {baseAddress}
         </div>

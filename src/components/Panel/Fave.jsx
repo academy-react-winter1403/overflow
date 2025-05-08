@@ -24,11 +24,11 @@ const Fave = () => {
         <div className="w-full flex flex-col h-full font-kalameh font-bold text-2xl  pt-10">
 
             
-            <div className="border-b-4 border-deep-blue flex flex-row-reverse justify-center gap-20 pr-10">
+<div className="border-b-4 border-deep-blue flex flex-row-reverse justify-center gap-20 pr-10 max-md:gap-8 max-md:text-xl max-md:justify-start">
                 <p>نام دوره</p>
                 <p>مدرس دوره</p>
                 <p>تاریخ شروع</p>
-                <p>قیمت (تومان)</p>
+                <p className="max-md:hidden">قیمت (تومان)</p>
                 <p>وضعیت</p>
             </div>
 
