@@ -54,7 +54,7 @@ const Sendreply = async (replydata) => {
 const GetComment = async (id) => {
   const response = await http.get(`/Course/GetCourseCommnets/${id}`);
 
-  // console.log("GetComment response:", response);
+  console.log("in vlg GetComment response:", response);
   // console.log("get cm ID:", id);
 
   return response || [];
@@ -64,6 +64,7 @@ export const useGetCourseComment = (id) => {
   return useQuery({
     queryKey: ["coursecomments", id],
     queryFn: () => GetComment(id),
+
   });
 };
 
