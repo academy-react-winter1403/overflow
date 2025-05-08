@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../../assets/userpanel/Logo.png';
-import home from '../../assets/userpanel/home.png';
-import courses from '../../assets/userpanel/Path 29.png';
-import ticket from '../../assets/userpanel/Path 30.png';
-import profileIcon from '../../assets/userpanel/Path 31.png';
-import exit from '../../assets/userpanel/Path 32.png';
 import { Getprofile } from '../../core/services/api/userpanelapi/panelapis';
 import { Link } from 'react-router';
 
+
+
+
 const Personalinfo = () => {
+
+
     const [profile, setProfile] = useState(null);
 
     const profileInfo = async () => {
@@ -26,15 +25,15 @@ const Personalinfo = () => {
     }, []);
 
     return (
-        <div className="flex flex-row-reverse flex-wrap w-9/10 ml-20 font-kalameh">
-            <div className='flex flex-row-reverse flex-wrap w-7/10'>
+
+            <div className='flex flex-row-reverse flex-wrap m-auto mt-6 w-9/10'>
                 <div className='flex flex-row-reverse flex-wrap w-full h-auto justify-center max-sm:overflow-auto max-sm:h-150 max-lg:h-150 max-lg:overflow-auto'>
                     <div className='bg-white w-10/11 rounded-2xl shadow-lg p-6 dark:bg-gray-400/95'>
-                        <div className='w-9/10 m-auto mt-10 flex flex-wrap justify-between gap-4'>
+                        <div className='w-9/10 m-auto mt-10 flex flex-wrap justify-between gap-4 font-vazir'>
 
 
-                            <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4 flex items-center justify-end text-right bg-gray-50 text-sm font-medium text-gray-700 shadow-sm  dark:bg-gray-300/95'>
-                                نام و نام خانوادگی: {profile?.fName || 'وارد نشده'} {profile?.lName || 'وارد نشده'}
+                            <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4 flex items-center justify-end text-right bg-gray-50 text-sm  text-gray-700 shadow-sm  dark:bg-gray-300/95'>
+                                نام و نام خانوادگی: {profile?.fName || 'وارد نشده'} 
                             </div>
 
                             <div className='w-[48%] min-h-16 border-2 border-gray-300 rounded-xl p-4 flex items-center justify-end text-right bg-gray-50 text-sm font-medium text-gray-700 shadow-sm  dark:bg-gray-300/95'>
@@ -84,8 +83,8 @@ const Personalinfo = () => {
                             </div>
 
                         </div>
-                        <Link to="/panelpersoninfoedit">
-                            <div className="w-3/11 h-12 text-center bg-[#436E8E] text-gray-200 text-[35px] leading-0 p-7 m-auto mt-15 shadow-sm rounded-xl">
+                        <Link to="/panel/panelpersoninfoedit">
+                            <div className="w-3/11 h-12 text-center bg-[#436E8E]  hover:bg-blue-800 text-gray-200 text-[20px] leading-0 p-7 m-auto mt-15 font-vazir shadow-sm rounded-xl">
                                 ویرایش
                             </div>
                         </Link>
@@ -94,7 +93,7 @@ const Personalinfo = () => {
                 </div>
 
             </div>
-        </div>
+
     );
 };
 

@@ -21,7 +21,7 @@ const Fave = () => {
 
     return (
 
-        <div className="w-full flex flex-col h-full font-kalameh font-bold text-2xl border pt-10">
+        <div className="w-full flex flex-col h-full font-kalameh font-bold text-2xl  pt-10">
 
             
             <div className="border-b-4 border-deep-blue flex flex-row-reverse justify-center gap-20 pr-10">

@@ -22,6 +22,10 @@ import { Panel3 } from "../components/Panel/Panel3.jsx";
 import { Fave } from "../components/Panel/fave.jsx";
 import { Favenews } from "../components/Panel/Favenews.jsx";
 import PanelLayout from "../pages/Panel/PanelLayout.jsx";
+import { Security } from "../components/Panel/Security.jsx";
+import { Mycomment } from "../core/services/api/userpanelapi/panelapis.js";
+import { Mysetcomment } from "../components/Panel/Mycomment.jsx";
+import { Mynewssetcomment } from "../components/Panel/Mynewscomment.jsx";
 
 function App() {
   const publicRoutes = [
@@ -89,6 +93,18 @@ function App() {
               path: "panelpersoninfoedit",
               element: <Personalinfoedit />,
             },
+            {
+              path:'security',
+              element:<Security />
+            }, 
+            {
+              path:'Mycomment',
+              element:<Mysetcomment />
+            },
+             {
+              path:'Mynewscomment',
+              element:<Mynewssetcomment />
+            }
           ],
         },
         {

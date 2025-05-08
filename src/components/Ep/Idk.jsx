@@ -8,27 +8,27 @@ import { Form } from 'react-router'
 
 const Idk = () => {
   return (
-    <div className=" flex flex-col w-10/10 h-150 relative">
+    <div className=" flex flex-col w-10/10 h-150 relative ">
 
         <img className=' absolute left-[-450px]' src={leftimg}/>
         <img className=' absolute left-380 top-100' src={Locationicon}/>
         <img className=' absolute left-348 top-130' src={line}/>
 
-        <div className=' flex flex-col w-5/10 h-150 m-auto justify-center items-center z-20'>
+        <div className=' flex flex-col w-5/10 h-150 m-auto justify-center items-center z-20 '>
 
             
             <div className='text-deep-blue text-4xl font-bold h-15 w-5/10 ml-110 mb-5'>انتقادها و پیشنهادات</div>
 
-            <div className='flex flex-row w-8/10 h-100 rounded-4xl bg-white'>
+            <div className='flex flex-row w-8/10 h-100 rounded-4xl bg-white '>
                 <Formik initialValues={{gmail:""}}>
 
-                    <Form className="flex flex-col w-10/10 gap-5 rounded-4xl bg-white pt-15">
+                    <Form className="flex flex-col w-10/10 gap-5 rounded-4xl bg-white pt-15 ">
 
                         <Field 
                         type="text"
                         name="gmail"
                         placeholder=" ایمل"
-                        className=" w-8/10 h-15 rounded-3xl text-right pr-5 ml-[-50px] bg-white outline-0 border-2 border-gray-300"
+                        className=" w-8/10 h-15 rounded-3xl text-right pr-5 ml-[-50px] bg-white outline-0 border-2 border-gray-300 "
                         />     
                         
                         <Field 

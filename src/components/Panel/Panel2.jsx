@@ -20,12 +20,7 @@ import fave from '../../assets/userpanel/fave.png'
 import favenews from '../../assets/userpanel/favenews.png'
 const Panel2 = () => {
     const navigate = useNavigate();
-    const token = (getItem("token"))
-    console.log(token)
 
-    if (token == "") {
-        navigate("/Register-1")
-    }  
     const URL = "/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=4&SortingCol=lastUpdate";  
     const [newCoursesData, setNewCoursesData] = useState([]);  
 
