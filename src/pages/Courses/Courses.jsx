@@ -2,13 +2,13 @@ import { About } from "../../components/coursesPage/About";
 import { Masters } from "../../components/coursesPage/master";
 import { Top } from "../../components/coursesPage/top";
 import { Coursesmap } from "../../components/coursesPage/Courses.map";
-import Comment from "../../components/Comment/Comment";
 import { useParams } from "react-router-dom";
 import { getApi } from "../../core/services/api/getApi";
 import { useEffect, useState } from "react";
 import { useGetCourseComment } from "../../core/services/api/GetCourses/Comment";
 import SendNewComment from "../../components/Comment/SendNewComment";
 import { Addlikeforcourse } from "../../components/coursesPage/Addlikeforcourse";
+import CommentSection from "../../components/Comment/CommentSection";
 
 const Courses = () => {
   const { id } = useParams();
@@ -66,7 +66,7 @@ const Courses = () => {
         </div>
 
       {/* Comments Section */}
-      <Comment commentData={commentsData} type={"Course"} />
+      <CommentSection commentData={commentsData} type={"Course"} />
     </div>
   );
 };
