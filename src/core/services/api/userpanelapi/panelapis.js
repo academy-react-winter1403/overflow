@@ -116,10 +116,51 @@ const Getmycourse = async () =>{
     }
 }
 
+const Getsecurityinfo = async () => {
+
+    try {
+
+        const respone = await http.get('/SharePanel/GetSecurityInfo');
+
+        return respone;
+
+    } catch (error) {
+        console.log('error from security :',error)
+    }
+}
+
+
+const Mycomment = async () => {
+
+    try {
+        const respone = await http.get('/SharePanel/GetMyCoursesComments');
+
+        return respone;
+
+    } catch (error) {
+        console.log('error from getmycomment :',error);
+    }
+}
+
+const Mynewscomment = async () => {
+
+    try {
+        const respone = await http.get('/SharePanel/GetMyNewsComments');
+
+        return respone;
+
+    } catch (error) {
+        console.log('error from getmycomment :',error);
+    }
+}
+
 export { 
     Getmyreserveapi, 
     Getprofile, 
     UpdateProfileInfo, 
     favecourse, 
     favecoursenew,
-    Getmycourse };
+    Getmycourse,
+    Getsecurityinfo,
+    Mycomment,
+    Mynewscomment };

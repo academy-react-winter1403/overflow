@@ -23,14 +23,6 @@ const Favenews = () => {
 
         <div className="w-full flex flex-col h-full font-kalameh font-bold text-2xl pt-10">
 
-            
-            <div className="border-b-4 border-deep-blue flex flex-row-reverse justify-center gap-20 pr-10">
-                <p>نام دوره</p>
-                <p>مدرس دوره</p>
-                <p>تاریخ شروع</p>
-                <p>قیمت (تومان)</p>
-                <p>وضعیت</p>
-            </div>
 
             {favenews.length > 0 ? (
                 favenews.map((reserve, index) => (
@@ -47,7 +39,7 @@ const Favenews = () => {
                     </div>
                 ))
             ) : (
-                <p className="text-center mt-10">دوره ای وجود ندارد</p> // Corrected JSX element syntax
+                <p className="text-center mt-10"> اخباری یافت نشد  </p> // Corrected JSX element syntax
             )}
         </div>
     );
