@@ -1,11 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
-import { VerifyMessage } from "../../core/services/api/(step2)verifymessage";
+import { VerifyMessage } from "../../core/services/api/Register/RegisterPages.js";
 import { useNavigate } from "react-router-dom"; 
 import signin from '../../assets/register/Image 6.png';
 import academylogo from '../../assets/register/ac-Logo.png';
 
 const Registerlvl2 = () => {
+  
   const navigate = useNavigate();
 
   const handleSubmit = async (values) => {
@@ -37,7 +38,7 @@ const Registerlvl2 = () => {
         alert("<<<Payload successfully sent>>>");
         console.log("Payload successfully sent:", response.data);
 
-        navigate("/step3"); // Redirect to the next step
+        navigate("/Register-3"); // Redirect to the next step
       } else {
         console.error("Failed to send payload.");
       }
@@ -47,50 +48,66 @@ const Registerlvl2 = () => {
   };
 
   return (
-    <div className="flex flex-wrap justify-center w-[1136px] h-[679px] bg-white rounded-[30px] ">
-      <div className="w-[540px] h-[550px] mt-[60px]">
-        <img src={signin}/>
-      </div>
-      <div className="w-[540px] h-[550px] mt-[60px] ">
+    <div className="flex flex-row  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 font-kalameh max-2xl:w-7/10 max-xl:w-6/10 max-xl:m-auto transition-all duration-300 dark:bg-gray-800">
 
-        <div className="flex justify-end">
+      <div className="w-10/10 flex-row flex justify-center gap-20 transition-all duration-300">
+
+      <div className="w-4/10 h-138 mt-15 ml-10  max-xl:w-0">
+        <img className="h-120 w-8/10" src={signin}/>
+      </div>
+      
+      <div className="w-5/10 h-138 mt-25  gap-5 flex flex-col max-xl:justify-center max-xl:w-9/10 transition-all duration-300  ">
+
+        <div className="flex flex-row-reverse w-10/10 justify-start pr-22 gap-5 ">
           <img
             src={academylogo}
             alt="logo"
-            className="w-[83px] h-[63px] mt-[33px] mr-[50px]"
+            className=""
           />
+          
+        <div className="text-4xl max-md:text-2xl"> آکادمی سپهر</div>
         </div>
-        <div className="text-center text-[40px] mt-[-70px] mr-[-30px] "> آکادمی سپهر</div>
-        <div className="flex flex-wrap justify-center mt-2 ">
-          <div className="text-[30px] mt-[20px] ml-[330px] "> ثبت نام</div>
-          <div className="w-[300px] text-end text-[20px] mt-[10px] ml-[125px]">کد ارسال شده را وارد کنید</div>
+
+
+        <div className="flex flex-col items-end pr-22 gap-5 ">
+
+          <div className=" text-4xl"> ثبت نام</div>
+          <div className="text-2xl">کد ارسال شده را وارد کنید</div>
+
         </div>
+
         <Formik
           initialValues={{ verifyCode: "" }}
           onSubmit={handleSubmit}
         >
           {() => (
-            <Form className="flex flex-col items-center space-y-4">
+
+            <Form className="flex flex-col items-end mt-10 gap-2.5 pr-22 mx-auto w-10/10 h-auto font-kalameh ">
               <Field
                 type="text"
                 name="verifyCode"
                 placeholder="کد تایید"
-                className="w-80 h-12  rounded bg-gray-200 text-center mt-[30px] ml-[100px]"
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 dark:text-black"
               />
               <ErrorMessage name="verifyCode" component="div" className="text-red-500 text-sm" />
               <button
                 type="submit"
-                className="w-80 h-12 bg-blue-600 text-black rounded text-lg  ml-[100px]">تایید و ثبت نام</button>
+                className="w-8/11 h-12 text-center bg-[#436E8E] text-black py-2 rounded max-xl:w-10/10">تایید و ثبت نام</button>
             </Form>
           )}
         </Formik>
 
-        <div className="mt-8 text-sm ml-[160px]">
+        <div className="mt-8 text-sm ">
+
           <label>قوانین را مطالعه کرده و با شرایط موافقم{" "}
             <input type="checkbox" required />
           </label>
+          
         </div>
       </div>
+
+      </div>
+
     </div>
   );
 };

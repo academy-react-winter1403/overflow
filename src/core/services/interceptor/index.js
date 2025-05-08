@@ -1,11 +1,11 @@
 import axios from "axios";
- 
- const baseURL ="https://classapi.sepehracademy.ir/api";
+import { getItem } from "../common/storage.services";
 
-console.log("Base URL:", baseURL); 
+const baseURL = import.meta.env.VITE_BASE_URL;
 
 const instance = axios.create({
-  baseURL: baseURL, 
+  baseURL: baseURL,
+  
 });
 
 const onSuccess = (response) => {
@@ -25,7 +25,10 @@ const onError = (err) => {
 instance.interceptors.response.use(onSuccess, onError);
 
 instance.interceptors.request.use((opt) => {
-  opt.headers["MessageTest"] = "Hello world!";
+  const token = getItem("token");
+  console.log(token);
+  opt.headers.Authorization = "Bearer " + token;
+
   return opt;
 });
 

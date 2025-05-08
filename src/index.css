@@ -1,25 +1,58 @@
 @import "tailwindcss";
+@import url("/src/assets/common/font/font.css");
+@custom-variant dark (&:where(.dark, .dark *));
 :root {
+  max-width:1920px;
+  margin: 0 auto;
+  text-align: center;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #f3f4f6;
+  overflow-x: hidden;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    background-color: #eceff4e7
+}
+.dark {
+  background-color: #172136;
+  color: #f7fafc;
 }
 
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+@theme {
+  --color-deep-blue: #436e8e;
+}
+@theme {
+  --font-iransans: "IRANSans", sans-serif;
+  --font-kalameh: "Kalameh", sans-serif;
+  --font-peyda: "Peyda", sans-serif;
+  --font-vazir: "Vazir", sans-serif;
+  --font-kalameh-num: "KalamehNumber", sans-serif;
+}
+/* Hide scrollbar but allow scrolling */
+.custom-scrollbar {
+  overflow-y: scroll; /* Enable scrolling */
 }
 
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0px; /* Remove scrollbar width */
+  height: 0px; /* Remove scrollbar height for horizontal scroll */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent; /* Hide the scrollbar thumb */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Hide the scrollbar track */
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none; /* For Internet Explorer */
+  scrollbar-width: none; /* For Firefox */
+}

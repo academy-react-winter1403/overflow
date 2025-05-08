@@ -1,10 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { setItem } from "../../core/services/common/storage.services";
-import '../../app/App.css';
-import { Register } from "../../core/services/api/(step3)register"; 
+import { Register } from "../../core/services/api/Register/RegisterPages.js"; 
 import signin from '../../assets/register/Image 6.png';
 import academylogo from '../../assets/register/ac-Logo.png';
+import { useNavigate } from "react-router";
 
 const validationSchema = Yup.object({
   phone: Yup.string()
@@ -19,6 +19,8 @@ const validationSchema = Yup.object({
 });
 
 const Registerlvl3 = () => {
+
+  const navigate = useNavigate();
   
   const handleSubmit = async ({ phone, gmail, password }) => {
     try {
@@ -38,6 +40,7 @@ const Registerlvl3 = () => {
       
       if (response) {
         console.log("Payload successfully sent:", response);
+        navigate('/login');
       } else {
         console.log("Failed to send payload.");
       }
@@ -54,23 +57,30 @@ const Registerlvl3 = () => {
   };
 
   return (
-    <div className="flex flex-wrap justify-center w-[1136px] h-[679px] bg-white rounded-[30px] ">
-    <div className="w-[540px] h-[550px] mt-[60px]">
-      <img src={signin}  />
-    </div>
-    <div className="w-[540px] h-[550px] mt-[60px] ">
+    
+    <div className="flex flex-row  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 font-kalameh max-2xl:w-7/10 max-xl:w-6/10 max-xl:m-auto transition-all duration-300 dark:bg-gray-800">
 
-      <div className="flex justify-end">
-        <img
-          src={academylogo}
-          alt="logo"
-          className="w-[83px] h-[63px] mt-[33px] mr-[50px]"
-        />
-      </div>
-      <div className="text-center text-[40px] mt-[-70px] mr-[-30px] "> آکادمی سپهر</div>
-      <div className="flex flex-wrap justify-center mt-2 ">
-        <div className="text-[30px] mt-[20px] ml-[330px] "> ثبت نام</div>
-      </div>
+      <div className=" w-10/10 flex-row flex justify-center gap-20 transition-all duration-300">
+
+        <div className="w-4/10 h-138 mt-15 ml-10  max-xl:w-0">
+          <img className="h-120 w-8/10 " src={signin}  />
+        </div>
+
+        <div className="w-4/10 h-138 mt-25  gap-5 flex flex-col max-xl:justify-center max-xl:w-9/10 transition-all duration-300">
+
+          <div className="w-10/10 flex flex-row flex-wrap gap-2 justify-end pr-20 ">
+
+            <p className="w-5/10 h-full text-center text-4xl "> آکادمی سپهر</p>
+            <img
+            src={academylogo}
+            alt="logo"
+            className="w-2/10 h-full"
+            />
+        </div>
+
+        <div className="flex flex-row justify-end  w-10/10 pt-5">
+          <p className=" w-5/10 text-4xl "> ثبت نام</p>
+        </div>
 
         <Formik
           initialValues={{ phone: "", gmail: "", password: "" }}
@@ -78,12 +88,12 @@ const Registerlvl3 = () => {
           onSubmit={handleSubmit}
         >
           {() => (
-            <Form className=" flex flex-col justify-center mt-[15px] mx-auto w-[350px] gap-[10px] ml-[160px]">
+            <Form className=" flex flex-col items-end mt-10 gap-2.5 pr-22 mx-auto w-10/10 h-auto dark:text-black">
               <Field
                 type="text"
                 name="phone"
                 placeholder="شماره تماس"
-                className="w-[327px] h-[50px] bg-gray-200 outline-none border-none rounded-[5px] text-end pr-[10px]"
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 " 
               />
               <ErrorMessage name="phone" component="div" className="error" />
 
@@ -91,7 +101,7 @@ const Registerlvl3 = () => {
                 type="text"
                 name="gmail"
                 placeholder="ایمیل"
-                className="w-[327px] h-[50px] bg-gray-200 outline-none border-none rounded-[5px] text-end pr-[10px]"
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10"
               />
               <ErrorMessage name="gmail" component="div" className="error" />
 
@@ -99,18 +109,20 @@ const Registerlvl3 = () => {
                 type="password"
                 name="password"
                 placeholder="رمز عبور"
-                className="w-[327px] h-[50px] bg-gray-200 outline-none border-none rounded-[5px] text-end pr-[10px]"
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10"
               />
               <ErrorMessage name="password" component="div" className="error" />
 
               <button
                 type="submit"
-                className="w-[327px] text-center bg-[#436E8E] text-black py-2 rounded">ادامه</button>
+                className="w-8/11 h-12 outline-none border-none rounded-[5px] text-center bg-sky-800 max-xl:w-10/10">ادامه</button>
             </Form>
           )}
         </Formik>
         <div className="text-[14px] mt-[20px] ml-[160px] text-start">قوانین و شرایط</div>
-      </div>
+        </div>
+        </div>
+
     </div>
   );
 };

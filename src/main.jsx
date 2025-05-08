@@ -1,41 +1,19 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './app/App.jsx'
-import { createBrowserRouter, RouterProvider } from 'react-router'
-import { Register } from './components/Register/Register.jsx'
-import { Registerlvl2 } from './components/Register/Registerlvl2.jsx'
-import { Registerlvl3 } from './components/Register/Registerlvl3.jsx'
-import { Root } from './routes/Root.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./app/App.jsx";
+import { Provider } from "react-redux";
+import { RouterProvider, Routes } from "react-router-dom";
+import store from "./redux/redux.js";
+import {QueryClient , QueryClientProvider } from "@tanstack/react-query";
+const queryClient =new QueryClient();
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element:<Root />,
-    children: [
-      // {
-      //   index:true,
-      //   path:'/App',
-      //   element:<App />
-      // },
-      {
-        path:'/step1',
-        element:<Register />
-      },
-      {
-        path:'/step2',
-        element:<Registerlvl2 />
-      },
-      {
-        path:'/step3',
-        element:<Registerlvl3 />
-      }
-
-    ]
-  }
-])
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </QueryClientProvider>
   </StrictMode>,
-)
+);
