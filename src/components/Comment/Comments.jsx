@@ -6,6 +6,7 @@ import disLike from "../../assets/Coursesimage/dislike.png";
 
 import {
   useCourseLikecommnet,
+  useGetNewsReply,
   UseGetReply,
   useNewsLikecommnet,
 } from "../../core/services/api/GetCourses/Comment.js";
@@ -20,8 +21,16 @@ function Comments({ comment, type, index }) {
   const [commentId, setcommentId] = useState("");
   const [courseId, setCourseId] = useState("");
   const [isExpanded, setisExpanded] = useState(false);
-  // get reply of coments
+  // get reply of course coments
   const { data: replyData } = UseGetReply(courseId, commentId);
+
+  
+  const { data: newsReplyData } = useGetNewsReply(commentId);
+
+  // Pick the correct reply list based on the comment type
+  const replies = type === "Course" ? replyData : newsReplyData;
+
+
 
   // Handel Course Comment Like and Dislike
   const courseLikecommnets = useCourseLikecommnet();
@@ -107,14 +116,19 @@ function Comments({ comment, type, index }) {
             >
               {isExpanded
                 ? " پنهان کردن "
-                : ` نمایش ${comment.acceptReplysCount.toLocaleString("fa-IR")} پاسخ `}
+                : ` نمایش ${comment.acceptReplysCount?.toLocaleString("fa-IR") || comment.replyCount} پاسخ `}
             </button>
 
-            {isExpanded && replyData && replyData.length > 0
-              ? replyData.map((reply, index) => (
-                  <Comments comment={reply} type={"Course"} index={index} />
-                ))
-              : ""}
+            {isExpanded && replies && replies.length > 0 && (
+              replies.map((reply, index) => (
+                <Comments
+                  key={reply.id || index}
+                  comment={reply}
+                  type={type}
+                  index={index}
+                />
+              ))
+            )}
           </div>
         </div>
       </div>

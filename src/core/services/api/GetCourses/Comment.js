@@ -216,6 +216,29 @@ export const UseGetReply = (CourseId, CommentId) => {
     enabled: !!CourseId && !!CommentId, 
 
   })}
+const GetNewsReply = async (newsCommentId ) => {
+ 
+
+
+    const newsReply = await http.get(
+    `/News/GetRepliesComments?Id=${newsCommentId}`,
+    );
+
+    console.log("Data from reply API:", reply);
+
+    return newsReply;
+
+};
+export const useGetNewsReply = (newsCommentId) => {
+  return useQuery({
+    queryKey:["newsReply", newsCommentId],
+    queryFn: () => GetNewsReply(newsCommentId),
+    enabled: !!newsCommentId 
+
+  })}
+
+
+
 export {
   NewsLikecommnet,
   GetComment,
