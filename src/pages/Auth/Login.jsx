@@ -33,8 +33,12 @@ const Loginlevel1 = () => {
         alert("ورود موفقیت‌آمیز بود");
         setItem("token", response.token);
         dispatch(handletoken(response.token));
-
-        navigate("/")
+        if(response.message==="ارسال پیامک انجام شد."){
+          setItem("email",loginDataForSend.phoneOrGmail)
+          setItem("password",loginDataForSend.password)
+          navigate("/twostep")
+        }
+        // navigate("/")
 
         console.log(response.token)
       } else {

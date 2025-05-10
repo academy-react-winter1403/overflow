@@ -27,6 +27,7 @@ import { Mycomment } from "../core/services/api/userpanelapi/panelapis.js";
 import { Mysetcomment } from "../components/Panel/Mycomment.jsx";
 import { Mynewssetcomment } from "../components/Panel/Mynewscomment.jsx";
 import { Updatesecurity } from "../components/Panel/editsecurity.jsx";
+import { Loginlevel2 } from "../pages/Auth/twosteplogin.jsx";
 
 function App() {
   const publicRoutes = [
@@ -123,6 +124,11 @@ function App() {
         {
           path: "/login",
           element: <Loginlevel1 />,
+        },,
+
+        {
+          path: "/twostep",
+          element: <Loginlevel2 />,
         },
         {
           path: "teachers",

@@ -4,14 +4,13 @@ import { updatesecurityinfo } from "../../core/services/api/userpanelapi/panelap
 const Updatesecurity = () => {
     const [formData, setFormData] = useState({
         recoveryEmail: "",
-        twoStepAuth: "",
+        twoStepAuth: true,
         baseUrl: "http://localhost:5173/panel/security"
     });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // حتما دو مرحله‌ای رو به boolean تبدیل می‌کنیم
         const payload = {
             ...formData,
             twoStepAuth: formData.twoStepAuth === "true" ? true : false
