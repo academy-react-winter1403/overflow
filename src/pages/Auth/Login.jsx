@@ -26,7 +26,6 @@ const Loginlevel1 = () => {
         rememberMe: true,
       };
 
-      // console.log(loginDataForSend);
 
       const response = await Sendloginrequest(loginDataForSend);
 
@@ -35,7 +34,7 @@ const Loginlevel1 = () => {
         setItem("token", response.token);
         dispatch(handletoken(response.token));
 
- navigate("/") 
+        navigate("/")
 
         console.log(response.token)
       } else {
@@ -103,7 +102,6 @@ const Loginlevel1 = () => {
           </Formik>
         </div>
 
-        <div className="text-[14px] mt-[20px] ml-[160px] text-start">قوانین و شرایط</div>
       </div>
     </div>
   );

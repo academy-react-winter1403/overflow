@@ -117,7 +117,7 @@ const AllCourse = () => {
 
       <div className="flex w-full justify-center  max-xl:flex-row  max-xl:flex-wrap ">
         <div className="mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4 pt-30 max-xl:w-1/1 ">
-          {newCoursesData.map((item, index) => (
+          {newCoursesData?.map((item, index) => (
             <Card item={item} index={index} key={index} />
           ))}
 

@@ -45,7 +45,7 @@ const AllTeacers = () => {
       ) : error ? (
         <p className="text-center mt-10 text-red-500">{error}</p>
       ) : (
-        teacherData.map((item, index) => (
+        teacherData?.map((item, index) => (
           <Techerscard key={index} item={item} />
         ))
       )}
