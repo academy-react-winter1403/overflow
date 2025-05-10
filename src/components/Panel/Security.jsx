@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Getsecurityinfo } from "../../core/services/api/userpanelapi/panelapis"
+import { Link } from "react-router"
 
 const Security = () => {
   const [securityData, setSecurityData] = useState(null)
@@ -65,6 +66,9 @@ const Security = () => {
         <div className="w-full p-4 bg-white dark:bg-gray-900 rounded-xl shadow flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition">
           {nationalIDVerified ? 'تایید شد' : 'تایید نشده'}
         </div>
+        <Link to={"/panel/upadatesecurity"}>
+          {twoFactorEnabled ? "" : <div className="w-full p-4 bg-deep-blue text-white   dark:bg-gray-900 rounded-xl shadow flex items-center justify-center hover:bg-blue-800 dark:hover:bg-gray-700 transition"> فعال سازی</div>}
+        </Link>
       </div>
     </div>
   )

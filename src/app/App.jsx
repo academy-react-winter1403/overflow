@@ -26,6 +26,7 @@ import { Security } from "../components/Panel/Security.jsx";
 import { Mycomment } from "../core/services/api/userpanelapi/panelapis.js";
 import { Mysetcomment } from "../components/Panel/Mycomment.jsx";
 import { Mynewssetcomment } from "../components/Panel/Mynewscomment.jsx";
+import { Updatesecurity } from "../components/Panel/editsecurity.jsx";
 
 function App() {
   const publicRoutes = [
@@ -104,6 +105,9 @@ function App() {
              {
               path:'Mynewscomment',
               element:<Mynewssetcomment />
+            },{
+              path:"upadatesecurity"
+              ,element:<Updatesecurity/>
             }
           ],
         },
