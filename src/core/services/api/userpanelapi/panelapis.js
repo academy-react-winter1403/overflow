@@ -74,20 +74,9 @@ const updatesecurityinfo = async (securitydata) => {
 
 const UpdateProfileInfo = async (profileData) => {
     try {
-        const response = await http.put('/SharePanel/UpdateProfileInfo', {
-            LName: profileData.LName,
-            FName: profileData.FName,
-            UserAbout: profileData.UserAbout,
-            LinkdinProfile: profileData.LinkdinProfile,
-            TelegramLink: profileData.TelegramLink,
-            ReceiveMessageEvent: profileData.ReceiveMessageEvent,
-            HomeAdderess: profileData.HomeAdderess,
-            NationalCode: profileData.NationalCode,
-            Gender: profileData.Gender,
-            BirthDay: profileData.BirthDay,
-            Latitude: profileData.Latitude,
-            Longitude: profileData.Longitude
-        });
+        const response = await http.put('/SharePanel/UpdateProfileInfo', 
+           profileData
+        );
 
         if (response.status === 200) {
             return response.data;
