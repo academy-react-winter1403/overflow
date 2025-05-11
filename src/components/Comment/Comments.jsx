@@ -106,6 +106,8 @@ function Comments({ comment, type, index }) {
                 <SendReplyComment commentId={comment.id} />
               </>
             </div>
+            {(comment.acceptReplysCount > 0 || comment.replyCount > 0) && (
+
             <button
               onClick={() => {
                 setisExpanded((prev) => !prev);
@@ -117,7 +119,7 @@ function Comments({ comment, type, index }) {
               {isExpanded
                 ? " پنهان کردن "
                 : ` نمایش ${comment.acceptReplysCount?.toLocaleString("fa-IR") || comment.replyCount} پاسخ `}
-            </button>
+            </button> )}
 
             {isExpanded && replies && replies.length > 0 && (
               replies.map((reply, index) => (

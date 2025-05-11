@@ -5,7 +5,7 @@ import search from "../../assets/landing/search.png";
 import { getApi } from "../../core/services/api/getApi";
 import Card from "../Common/Card";
 import NewsCard from "../Common/NewsCard";
-
+import ResultCard from "../Common/ResultCard";
 function Hero() {
   const [timer, setTimer] = useState(null);
   const [newsQuery, setNewsQuery] = useState("");
@@ -21,9 +21,7 @@ function Hero() {
   const handleSearchChange = (e) => {
     const value = e.target.value;
 
-    if (value !== "") {
-      setSearchTerm(value);
-    }
+    setSearchTerm(value);
     if (timer) {
       clearTimeout(timer);
     }
@@ -43,8 +41,9 @@ function Hero() {
   };
 
   useEffect(() => {
-    getSearchData();
-    console.log("set newsData for search", newsData);
+    if (searchTerm !== "") {
+      getSearchData();
+    }
   }, [newsQuery]);
 
   return (
@@ -114,28 +113,43 @@ function Hero() {
 
             {/* Search Results */}
             {isSearchFocused && (
-              <div className="max-h-screen overflow-y-auto rounded-lg border-t-2 bg-white p-6 shadow-lg dark:bg-gray-800">
-                <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
-                  {newsData &&
-                    newsData?.map((item, index) => (
-                      <NewsCard
-                        key={index}
-                        item={item}
-                        handleNavigation={(id) =>
-                          console.log(`Navigate to news ${id}`)
-                        }
-                      />
-                    ))}
-                  {courseData &&
-                    courseData?.map((item, index) => (
-                      <Card
-                        key={index}
-                        item={item}
-                        handleNavigation={(id) =>
-                          console.log(`Navigate to course ${id}`)
-                        }
-                      />
-                    ))}
+              <div className="p-+-+ max-h-screen overflow-y-auto rounded-lg border-t-2 bg-white shadow-lg dark:bg-gray-800">
+                {/* <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3"> */}
+                <div className="flex gap-4 max-lg:flex-col">
+                  {newsData.length > 0 && (
+                    <div className="flex w-full flex-col items-center gap-4">
+                      <h1 className="font-peyda border-deep-blue text-deep-blue w-full border-b-2 text-center text-[30px] font-black tracking-widest shadow-2xl dark:text-gray-200">
+                        اخبار
+                      </h1>
+                      {newsData?.map((item, index) => (
+                        <ResultCard
+                          type="news"
+                          key={index}
+                          item={item}
+                          handleNavigation={(id) =>
+                            console.log(`Navigate to news ${id}`)
+                          }
+                        />
+                      ))}
+                    </div>
+                  )}
+
+                  {courseData.length > 0 && (
+                    <div className="flex w-full flex-col items-center gap-4">
+                      <h1 className="font-peyda border-deep-blue text-deep-blue w-full border-b-2 text-center text-[30px] font-black tracking-widest shadow-2xl dark:text-gray-200">
+                        دوره‌ها
+                      </h1>
+                      {courseData?.map((item, index) => (
+                        <ResultCard
+                          key={index}
+                          item={item}
+                          handleNavigation={(id) =>
+                            console.log(`Navigate to course ${id}`)
+                          }
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             )}
