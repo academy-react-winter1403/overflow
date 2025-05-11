@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router';
 import http from '../../interceptor';
 
 const Sendloginrequest = async (logininfo) => {
@@ -19,10 +20,10 @@ const Sendloginrequest = async (logininfo) => {
 }
 const Twostep = async (logininfo,code) => {
   try {
-  const response = await http.post(`/Sign/LoginTwoStep?VerifyCode=${code}`, logininfo);
+  const response = await http.post(`/Sign/LoginTwoStep?VrifyCode=${code}`, logininfo);
 
     console.log("login responsee",response);
-
+    Navigate("/")
     return response;
   } catch (error) {
 

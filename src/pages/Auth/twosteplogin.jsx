@@ -28,7 +28,7 @@ const Loginlevel2 = () => {
         };
         const verifycode = values.verify;
         
-        // اینجا درست شد
+
         console.log("Sending to API:", loginDataForSend, verifycode);
 
         const response = await Twostep(loginDataForSend, verifycode);
@@ -37,10 +37,8 @@ const Loginlevel2 = () => {
             alert("ورود موفقیت‌آمیز بود");
             setItem("token", response.token);
             dispatch(handletoken(response.token));
-            if (response.message === "ارسال پیامک انجام شد.") {
-                navigate("/");
-            }
             console.log(response.token);
+            navigate("/")
         } else {
             console.error("Failed");
         }
@@ -69,7 +67,7 @@ const Loginlevel2 = () => {
                     <div className="text-center text-[40px] mt-[-70px] mr-[-30px]">آکادمی سپهر</div>
 
                     <div className="flex flex-wrap item-center mt-2 pl-20">
-                        <div className="text-[30px] mt-[20px] ml-[330px]">ورود</div>
+                        <div className="text-[30px] mt-[20px] ml-[280px]">کد ارسال شد</div>
                         <div className="w-[300px] text-end text-[20px] mt-[10px] ml-[125px]">
                             رمز خود را فراموش کردید؟
                             <a href="/rest1" className=" text-[15px] w-[90px] mt-[-25px] ml-[40px]"> بازیابی</a>
@@ -92,7 +90,7 @@ const Loginlevel2 = () => {
                                 />
                                 <ErrorMessage name="verify" component="div" className="text-red-500 text-sm pr-2" />
 
-                                <button type="submit" className="w-8/11 h-12 text-center bg-[#436E8E] text-black py-2 rounded">
+                                <button type="submit" className="w-8/11 h-12 text-center bg-[#436E8E] text-black text-white py-2 rounded">
                                     تایید و ورود
                                 </button>
 
