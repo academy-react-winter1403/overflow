@@ -3,8 +3,8 @@ import { useParams, NavLink, useNavigate } from "react-router-dom";
 import { getApi } from "../../core/services/api/getApi";
 import SmartImage from "../../components/Common/SmartImage";
 import fallbackNews from "../../assets/News/newspaper.png";
-import Comment from "../../components/Comment/Comment";
 import { useQuery } from "@tanstack/react-query";
+import CommentSection from "../../components/Comment/CommentSection";
 
 const NewsDetails = () => {
   const [newsData, setNewsData] = useState(null);
@@ -122,11 +122,11 @@ const NewsDetails = () => {
               {describe || googleDescribe}
             </p>
           </div>
-          <Comment
+          <CommentSection
             commentData={newsComment}
             commentsCount={commentsCount}
             type={"News"}
-          ></Comment>
+          ></CommentSection>
         </div>
 
         {similarNews.length > 0 ? (

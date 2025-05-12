@@ -1,7 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getItem } from "../../common/storage.services.js";
 import http from "../../interceptor/index.js";
-import { use } from "react";
 
 const PostComment = async (commentData) => {
   try {
@@ -28,34 +27,8 @@ const PostComment = async (commentData) => {
   }
 };
 
-const Getreply = async (CourseId, CommentId) => {
-  try {
-    if (!CourseId || !CommentId) {
-      throw new Error("CourseId or CommentId is missing or invalid.");
-    }
 
-    // console.log("Fetching replies for:", { CourseId, CommentId });
 
-    const reply = await http.get(
-      `/Course/GetCourseReplyCommnets/${CourseId}/${CommentId}`,
-    );
-
-    // console.log("Data from reply API:", reply);
-
-    return reply;
-  } catch (error) {
-    console.error(
-      "Error fetching reply:",
-      error.response?.data || error.message,
-    );
-
-    if (error.response) {
-      console.log("Response Data:", error.response.data);
-    }
-
-    throw error;
-  }
-};
 
 const Sendreply = async (replydata) => {
   try {
@@ -81,7 +54,7 @@ const Sendreply = async (replydata) => {
 const GetComment = async (id) => {
   const response = await http.get(`/Course/GetCourseCommnets/${id}`);
 
-  // console.log("GetComment response:", response);
+  console.log("in vlg GetComment response:", response);
   // console.log("get cm ID:", id);
 
   return response || [];
@@ -91,8 +64,10 @@ export const useGetCourseComment = (id) => {
   return useQuery({
     queryKey: ["coursecomments", id],
     queryFn: () => GetComment(id),
+
   });
 };
+
 
 // News Comment and Like
 const NewsLikecommnet = async (commentId, state) => {
@@ -166,6 +141,7 @@ export const useCourseLikecommnet = () => {
   });
 };
 
+
 const Addlikecourse = async (CourseId) => {
   try {
 
@@ -204,6 +180,65 @@ const Adddislikecourse = async (CourseId) =>{
     throw error;
 }
 }
+
+
+const Getreply = async (CourseId, CommentId) => {
+  try {
+    if (!CourseId || !CommentId) {
+      throw new Error("CourseId or CommentId is missing or invalid.");
+    }
+
+
+    const reply = await http.get(
+      `/Course/GetCourseReplyCommnets/${CourseId}/${CommentId}`,
+    );
+
+    console.log("Data from reply API:", reply);
+
+    return reply;
+  } catch (error) {
+    console.error(
+      "Error fetching reply:",
+      error.response?.data || error.message,
+    );
+
+    if (error.response) {
+      console.log("Response Data:", error.response.data);
+    }
+
+    throw error;
+  }
+};
+export const UseGetReply = (CourseId, CommentId) => {
+  return useQuery({
+    queryKey:["reply", CourseId, CommentId],
+    queryFn: () => Getreply(CourseId, CommentId),
+    enabled: !!CourseId && !!CommentId, 
+
+  })}
+const GetNewsReply = async (newsCommentId ) => {
+ 
+
+
+    const newsReply = await http.get(
+    `/News/GetRepliesComments?Id=${newsCommentId}`,
+    );
+
+    console.log("Data from reply API:", reply);
+
+    return newsReply;
+
+};
+export const useGetNewsReply = (newsCommentId) => {
+  return useQuery({
+    queryKey:["newsReply", newsCommentId],
+    queryFn: () => GetNewsReply(newsCommentId),
+    enabled: !!newsCommentId 
+
+  })}
+
+
+
 export {
   NewsLikecommnet,
   GetComment,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function ReplyComment({commentId}) {
+function SendReplyComment({commentId}) {
   const [focusedCommentId, setFocusedCommentId] = useState(null); // Track focused comment by ID
   const handleFocus = (commentId) => {
     setFocusedCommentId(commentId); // Set the focused comment ID
@@ -34,4 +34,4 @@ function ReplyComment({commentId}) {
   );
 }
 
-export default ReplyComment;
+export default SendReplyComment;
