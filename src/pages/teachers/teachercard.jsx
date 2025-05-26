@@ -3,15 +3,15 @@ import star from "../../assets/techers/starr.png"
 import clock from "../../assets/techers/clock.png"
 const Techerscard = ({ item }) => {
     return (
-        <div className="relative h-85 w-9/12 flex justify-center mt-10 m-auto">
-            <div className="w-6/10 flex relative">
-                <div className="relative w-29/30 float-left rounded-3xl bg-white h-1/1 dark:bg-gray-400/95">
+        <div className="relative h-85 w-10/10 flex justify-center mt-10 m-auto hover:scale-105 transition-transform duration-300">
+            <div className="w-10/10 flex relative ">
+                <div className="relative w-10/10 h-70 float-left rounded-3xl bg-white dark:bg-gray-400/95 ">
                     <div className="h-9/10 mt-4 ml-7 w-7/15">
                         <div dir="rtl"
                         className="w-full text-4xl font-peyda text-gray-700 font-black mt-2 h-4/20 truncate dir-rtl  text-right ">
                             {item.fullName}
                         </div>
-                        <div className="w-full h-5/20 font-iransans text-2xl text-[#a7a7a7] text-right dark:text-white">
+                        <div className="w-full h-6/20 font-iransans text-xs text-[#a7a7a7] text-right dark:text-white ">
                             {item.linkdinProfileLink}
                         </div>
                         <div className="w-full h-5/20 flex flex-wrap row justify-center gap-2">
@@ -33,7 +33,7 @@ const Techerscard = ({ item }) => {
                         </div>
                     </div>
                 </div>
-                <img src={item.pictureAddress} className="absolute shadow-lg rounded-3xl float-right w-3/7  h-10/11 top-1/20 right-0"/>
+                <img src={item.pictureAddress} className="absolute shadow-[1px 1px 10px 1px black] rounded-3xl float-right w-3/7 h-60 top-1/20 right-[-17px]"/>
             </div>
         </div>
     );
