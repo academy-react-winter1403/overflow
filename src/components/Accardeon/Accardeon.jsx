@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Getteacherid } from "../../core/services/api/filterapi/teacerid";
 
-const FilterAccordion = () => {
+const FilterAccordion = (setFilters) => {
   const [openSection, setOpenSection] = useState(null);
   const [teacher, setTeacher] = useState([]);
   const [selectedTeachers, setSelectedTeachers] = useState({});
@@ -21,6 +21,10 @@ const FilterAccordion = () => {
 
   const handleCheckboxChange = (event, id) => {
     console.log(":",id)
+      setFilters((prev) => ({
+    ...prev,
+    teacherid: id,
+     }));
     event.stopPropagation();
     setSelectedTeachers((prev) => ({
       ...prev,

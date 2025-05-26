@@ -20,6 +20,7 @@ const [filters, setFilters] = useState({
   Query: undefined,
   PageNumber: 1,
   RowsOfPage: 12, 
+  TeacherId:"",
 });
 
 const getNewCoursesData = async () => {
@@ -35,7 +36,7 @@ const getNewCoursesData = async () => {
   queryParams.append("page", filters.PageNumber);
 
   // courses?pageNumber=1&instructor=1&type=2&TechCount=1&ListTech=2&level=1&CostDown=0&CostUp=375000000&Query=ad
-  const response = await getApi(`/Home/GetCoursesWithPagination?${queryParams.toString()}`, "courseFilterDtos");
+  const response = await getApi(`/Home/GetCoursesWithPagination?${queryParams.toString()}&TeacherId=${filters.TeacherId}`, "courseFilterDtos");
   setNewCoursesData(response);
 };
 
@@ -180,7 +181,7 @@ const handlePageChange = (newPage) => {
               />
 
                   {/* teachersname */}
-              <FilterAccordion />
+              <FilterAccordion setFilters={setFilters}/>
 
                   {/* skills level */}
               <FilterAccordionforskills />
