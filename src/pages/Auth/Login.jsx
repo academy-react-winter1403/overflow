@@ -8,6 +8,10 @@ import academylogo from '../../assets/register/ac-Logo.png';
 import { handletoken } from "../../redux/token";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const Loginlevel1 = () => {
 
   const navigate = useNavigate();
@@ -26,19 +30,21 @@ const Loginlevel1 = () => {
         rememberMe: true,
       };
 
-
-      const response = await Sendloginrequest(loginDataForSend);
+    const response = await Sendloginrequest(loginDataForSend);
 
       if (response) {
-        alert("ورود موفقیت‌آمیز بود");
+        toast.success("ورود موفقیت‌آمیز بود");
         setItem("token", response.token);
+        setTimeout(() => {
+          navigate("/panel")
+        }, 2000);
         dispatch(handletoken(response.token));
         if(response.message==="ارسال پیامک انجام شد."){
           setItem("email",loginDataForSend.phoneOrGmail)
           setItem("password",loginDataForSend.password)
           navigate("/twostep")
         }
-        // navigate("/")
+
 
         console.log(response.token)
       } else {
@@ -97,8 +103,9 @@ const Loginlevel1 = () => {
                 />
                 <ErrorMessage name="password" component="div" className="text-red-500 text-sm pr-2" />
 
-                <button type="submit" className="w-8/11 h-12 text-center bg-[#436E8E] text-black py-2 rounded">
+                <button onClick={Sendloginrequest} type="submit" className="w-8/11 h-12 text-center bg-[#436E8E] text-black py-2 rounded">
                   تایید و ورود
+                  <ToastContainer />
                 </button>
 
               </Form>

@@ -1,5 +1,5 @@
 import React, {  useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate,  } from "react-router-dom";
 import { getApi } from "../../core/services/api/getApi";
 import SmallCard from "../Common/SmallCard.jsx";
 
@@ -27,7 +27,7 @@ function CourseCategories() {
 
   return (
     <div className="max-w-[1641px] z-10 flex flex-col mx-auto py-8 mb-80">
-      <h2 className="text-5xl font-peyda font-black text-deep-blue mb-28"> دسته بندی </h2>
+      <h2 className="text-5xl font-peyda font-black text-deep-blue mb-28">  پر طرفدارترین ها </h2>
 
       <div className="flex flex-wrap justify-center gap-12">
         {newCoursesData&&newCoursesData.slice(0,4).map((item, index) => (
@@ -40,7 +40,7 @@ function CourseCategories() {
         ))}
       </div>
 
-      <a href="#" className="inline-block mt-6 text-blue-500 hover:underline">مشاهده همه</a>
+      <a href="#" className="flex flex-row justify-start font-bold mt-6 text-blue-500 hover:underline ">مشاهده همه</a>
     </div>
   );
 }

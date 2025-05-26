@@ -1,31 +1,58 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+// import React, { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import productimg from "../../assets/Coursesimage/product-img.png";
 import commentcount from "../../assets/Coursesimage/comment.png";
-import clock from "../../assets/techers/clock.png";
+import likecount from "../../assets/Coursesimage/likecount.png";
+import dislikecount from "../../assets/Coursesimage/dislikecount.png";
 import eye from "../../assets/Coursesimage/eye.png";
 import calender from "../../assets/Coursesimage/cal.png";
 import SmartImage from "../Common/SmartImage";
-import { Addreserve } from "../../core/services/api/GetCourses/reserveapi";
+import { Addreserve } from "../../core/services/api/GetCourses/Reserveapi";
+import addtofave from'../../assets/Coursesimage/add-removebg-preview.png'
+import { Addtofave } from "../../core/services/api/GetCourses/addtofave";
+// import { Addreserve } from "../../core/services/api/GetCourses/reserveapi";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-
-const formatToPersianToman = (priceInRial) => {
-  const priceInToman = priceInRial / 1; // Convert Rial to Toman
+const formatToPersianToman = (priceInRial,) => {
+  const priceInToman = priceInRial / 1; 
   return new Intl.NumberFormat("fa-IR", {
     style: "decimal",
-  }).format(priceInToman) + " تومان"; // Add "تومان" suffix
+  }).format(priceInToman) + " تومان"; 
 };
 
 
-const Top = ({ data }) => {
+const Top = ({ data,id}) => {
   const courseData = data || {};
-  const [addreserve, setaddreserve] = useState([]);
 
   const postreserve = async () => {
+
     try {
-      const response = await Addreserve();
+
+      const response = await Addreserve(id);
+
       console.log("Reserve Response:", response);
-      setaddreserve(response);
+
+      if (response){
+        toast.success("  این دوره برای شما رزور شد");
+        Navigate(`/AllCourses/Courses/${id}`)
+      }
+      
+    } catch (error) {
+      console.error("Error reserving course:", error);
+    }
+
+  };  
+  const addtofavorite = async () => {
+
+    try {
+      const response = await Addtofave(id);
+      if (response){
+        toast.success("   به علاقمندی ها اضافه شد    ");
+        Navigate(`/AllCourses/Courses/${id}`)
+      }
+      console.log("Reserve Response:", response);
+      
     } catch (error) {
       console.error("Error reserving course:", error);
     }
@@ -39,10 +66,11 @@ const Top = ({ data }) => {
           {courseData.describe}
         </p>
         <button
-          onClick={postreserve}
+          onClick={() => postreserve(id)}
           className="text-amber-50 font-bold text-2xl bg-deep-blue rounded-3xl px-6 py-3 text-center max-lg:text-sm"
         >
           رزرو دوره
+          <ToastContainer />
         </button>
       </div>
 
@@ -54,7 +82,7 @@ const Top = ({ data }) => {
         />
       </div>
 
-      <div className="flex items-center justify-between w-6/10 mr-10 mb-5 pl-45 max-lg:flex-row max-lg:gap-30 max-lg:w-8/10 transition-all duration-300">
+      <div className="flex items-center justify-between w-6/10 mr-10 mb-5 pl-45 max-lg:flex-row max-lg:gap-30 max-lg:w-8/10 transition-all duration-300 ">
         <span className="text-amber-50 font-bold text-2xl text-left max-lg:text-sm">
           {formatToPersianToman(courseData.cost)}
         </span>
@@ -63,15 +91,25 @@ const Top = ({ data }) => {
         </div>
       </div>
 
-      <div className="flex flex-row w-5/10 justify-end pr-12 mb-5 gap-15 max-xl:w-10/10">
+      <div className="flex flex-row w-5/10 justify-end pr-12 mb-5 gap-15 max-xl:w-10/10 ">
+
+        <button onClick={() => addtofavorite()} className="w-8 h-8">
+          <img src={addtofave} />
+          <ToastContainer />
+        </button>
+
         <div className="text-white flex flex-row-reverse gap-2 h-6">
-          <img src={commentcount} alt="Comment Count" />
-          {courseData.commentCount}
+          <img className=" w-7 h-7 " src={commentcount} alt="Comment Count" />
+          <div className="mt-1">{courseData.commentCount}</div>
         </div>
 
-        <div className="flex flex-row-reverse text-white gap-2 w-50 max-xl:w-2/10">
-          <img src={clock} alt="Clock Icon" />
-          {courseData.courseStatusName}
+        <div className="flex flex-row-reverse text-white gap-2 w-10 max-xl:w-2/10 items-center ">
+          <img className="w-8 h-8 mt-[-10px]" src={likecount} alt="Clock Icon" />
+          <div className="">{courseData.likeCount}</div>
+        </div>       
+         <div className="flex flex-row-reverse text-white gap-2 w-10 max-xl:w-2/10 items-center ">
+          <img className="w-7 h-7 mb-1" src={dislikecount} alt="Clock Icon" />
+          <div className="mb-2">{courseData.dissLikeCount}</div>
         </div>
 
         <div className="flex flex-row-reverse gap-2 text-white h-6">

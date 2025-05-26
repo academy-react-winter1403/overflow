@@ -1,5 +1,5 @@
 import React, {  useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate,  } from "react-router-dom";
 import { getApi } from "../../core/services/api/getApi";
 import Card from "../Common/Card";
 function NewCourses() {
@@ -26,7 +26,7 @@ function NewCourses() {
 
   return (
     <div className="flex self-center flex-col max-w-[1641px] z-10  text-center my-24 py-8  ">
-      <h2 className="text-5xl font-peyda font-black text-[#267dff] mb-13">جدید ترین دوره ها</h2>
+      <h2 className="text-5xl font-peyda font-black text-deep-blue mb-13">جدید ترین دوره ها</h2>
 
       <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-4  max-lg:flex max-lg:flex-row max-lg:flex-wrap max-lg:justify-center">
       {newCoursesData&&newCoursesData.map((item, index) => (
@@ -40,7 +40,7 @@ function NewCourses() {
         ))}
       </div>
 
-      <a href="#" className="inline-block mt-6 text-blue-500 hover:underline">مشاهده همه</a>
+      <Link to="/AllCourses" className="font-bold mt-6 text-blue-500 hover:underline  flex flex-row justify-start">مشاهده همه</Link>
     </div>
   );
 }

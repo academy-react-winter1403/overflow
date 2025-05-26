@@ -4,11 +4,12 @@ import map from '../../assets/ep/map.png'
 import line from '../../assets/ep/Path 22.png'
 import { Field, Formik } from 'formik'
 import { Form } from 'react-router'
+import Footer from '../../pages/Layout/Footer'
 
 
 const Idk = () => {
   return (
-    <div className=" flex flex-col w-10/10 h-150 relative ">
+    <div className=" flex flex-col w-10/10 h-150 relative  mt-20 ">
 
         <img className=' absolute left-[-450px]' src={leftimg}/>
         <img className=' absolute left-380 top-100' src={Locationicon}/>
@@ -46,12 +47,13 @@ const Idk = () => {
 
         </div>
 
-        <div className='w-7/10 gap-10  m-auto mt-110 z-20 flex flex-col'>
+        <div className='w-7/10 gap-10  m-auto mt-50 z-20 flex flex-col'>
             <p className='text-deep-blue text-4xl font-bold m-auto text-right'>یه سر بیا پیشمون</p>
             <img src={map} />
             <span className='text-center  mb-150 text-deep-blue text-2xl font-bold'>ما در شهرستان ساری بلوار خزر و پژوهشگاه دکتر بحرالعلومی منتظر حضور گرم شما دوستان عزیزمون هستیم</span>
         </div>
 
+        <Footer />
     </div>
   )
 }

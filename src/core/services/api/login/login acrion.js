@@ -1,12 +1,13 @@
 import { Navigate } from 'react-router';
 import http from '../../interceptor';
+import {  setItemGeneric } from '../../common/storage.services';
 
 const Sendloginrequest = async (logininfo) => {
   try {
   const response = await http.post('/Sign/Login', logininfo);
-
+    
     console.log("login responsee",response);
-
+    setItemGeneric("id",response.id)
     return response;
   } catch (error) {
 
@@ -19,6 +20,7 @@ const Sendloginrequest = async (logininfo) => {
   }
 }
 const Twostep = async (logininfo,code) => {
+
   try {
   const response = await http.post(`/Sign/LoginTwoStep?VrifyCode=${code}`, logininfo);
 

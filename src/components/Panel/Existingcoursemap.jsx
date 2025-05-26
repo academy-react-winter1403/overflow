@@ -15,7 +15,7 @@ const ExistingCourseMap = () => {
         try {
             const response = await getApi(URL, "courseFilterDtos");
             setNewCoursesData(response); 
-            console.log("NewCourse:", response);
+            // console.log("NewCourse:", response);
         } catch (error) {
             console.error("Error fetching courses:", error);
         }
@@ -26,10 +26,10 @@ const ExistingCourseMap = () => {
     }, []);
 
     return (
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 ">
             {newCoursesData&&newCoursesData.map((course, index) => (
                 <div key={index} className="flex flex-row justify-center">
-                    <div className="flex flex-row items-center bg-gray-100 rounded-2xl w-9/10 h-25 dark:bg-gray-700 dark:border dark:border-white">
+                    <div className="flex flex-row items-center bg-gray-100 rounded-2xl w-9/10 h-25 dark:bg-gray-700 dark:border dark:border-white hover:scale-105 transition-transform duration-300 ">
                         <div className="flex flex-row-reverse justify-end items-end gap-5 w-5/10 ">
                            
                             <p className="text-orange-400 max-xl:hidden">{course.lastUpdate.slice(0,10) || "چهارشنبه ها . ۱۷:۳۰"}</p>

@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Card from "../../components/Common/Card";
 import { getApi } from "../../core/services/api/getApi";
+import searchicon from '../../assets/Coursesimage/icons8-search-40.png'
+import FilterAccordion from "../../components/Accardeon/Accardeon";
+import FilterAccordionforskills from "../../components/Accardeon/Accardeonforskils";
+import FilterAccordionforType from "../../components/Accardeon/Accardeonfortype";
+
+
 
 const AllCourse = () => {
   const [newCoursesData, setNewCoursesData] = useState([]);
@@ -13,7 +19,10 @@ const AllCourse = () => {
     SortType: "DESC",
     CostDown: 0,
     CostUp: 50000000,
-    Query: undefined
+    Query: undefined,
+      // courseLevelId:1,
+      // CourseTypeId:1,
+      // TeacherId:0
   });
 
   const getNewCoursesData = async () => {
@@ -60,14 +69,14 @@ const AllCourse = () => {
   return (
     <div className="m-auto flex w-9/10 flex-wrap justify-center">
 
-      <div className="mt-14 mb-14 h-16 w-full rounded-lg bg-white text-right text-3xl leading-14 dark:bg-gray-400/95">
+      <div className="mt-14 mb-14 h-16 w-full rounded-lg font-iransans font-bold text-right text-4xl leading-14 dark:bg-gray-400/95">
         دوره ها
       </div>
 
-      <div className="font-kalameh flex h-18 w-full justify-center rounded-lg bg-white text-4xl font-black text-gray-700 dark:bg-gray-400/95 max-xl:gap-4 ">
+      <div className="pr-13 font-iransans flex  h-18 w-full justify-center rounded-lg  text-4xl font-black text-gray-700 dark:bg-gray-400/95 max-xl:gap-4  ">
         <div
           onClick={() => handleSorting("cost", "ASC")}
-          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "cost" && filters.SortType === "ASC"
+          className={` ml-100 h-full w-[10%] font-iransans cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "cost" && filters.SortType === "ASC"
             ? "font-bold text-blue-500"
             : "text-gray-600"
             }`}
@@ -76,7 +85,7 @@ const AllCourse = () => {
         </div>
         <div
           onClick={() => handleSorting("cost", "DESC")}
-          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "cost" && filters.SortType === "DESC"
+          className={`h-full w-[10%] font-iransans cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "cost" && filters.SortType === "DESC"
             ? "font-bold text-blue-500"
             : "text-gray-600"
             }`}
@@ -85,7 +94,7 @@ const AllCourse = () => {
         </div>
         <div
           onClick={() => handleSorting("currentRegistrants")}
-          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "currentRegistrants"
+          className={`h-full w-[10%] Kalameh cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "currentRegistrants"
             ? "font-bold text-blue-500"
             : "text-gray-600"
             }`}
@@ -94,24 +103,27 @@ const AllCourse = () => {
         </div>
         <div
           onClick={() => handleSorting("lastUpdate")}
-          className={`h-full w-[15%] Kalameh cursor-pointer text-center text-3xl  leading-14 ${filters.SortingCol === "lastUpdate"
+          className={`h-full w-[10%] Kalameh cursor-pointer text-center text-3xl leading-14  ${filters.SortingCol === "lastUpdate"
             ? "font-bold text-blue-500"
             : "text-gray-600"
             }`}
         >
           جدیدترین
         </div>
-        <div className="m-auto h-[80%] font-Kalameh w-[15%] border-l-2 border-gray-300 text-center text-3xl leading-10 max-xl:hidden ">
+        <div className=" m-auto h-[80%] font-Kalameh w-[10%] border-l-2 border-gray-300 text-center text-3xl leading-10 max-xl:hidden mr-20">
           مرتب سازی
         </div>
-        <div className="h-full w-[5%]   max-xl:hidden"></div>
-        <input
-          className="h-18 w-[20%] text-right px-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:rounded-md focus:w-[25%] focus:gray-blue-500 focus:bg-gray-100 focus:border-gray-500 focus:placeholder-blue-500 max-xl:hidden "
+
+        <div className="relative flex flex-row-reverse  w-2/10 ">
+          <input
+          className=" mt-2 mr-2 bg-gray-100 h-14 w-9/10 text-right border pr-5 font-iransans rounded-[10px] text-xl "
           type="text"
           placeholder="...جستجو"
           value={filters.Query}
           onChange={handleSearchChange}
         />
+        <img className="w-9 h-9 relative mr-[-50px] mt-4" src={searchicon} />
+        </div>
 
       </div>
 
@@ -135,10 +147,10 @@ const AllCourse = () => {
           </div>
         </div>
 
-        <div className="h-75 w-[25%] justify-items-center rounded-md mt-22 bg-white dark:bg-gray-400/95 p-4 max-xl:w-1/2 ">
-          <div className="mb-6 text-right font-peyda text-3xl  w-8/10 text-right text-blue-900">فیلتر ها</div>
+        <div className="h-75 w-[25%] justify-items-center rounded-md mt-22 dark:bg-gray-400/95 p-4 max-xl:w-1/2 ">
+          {/* <div className="mb-6 text-right font-iransans p-2 text-3xl  w-8/10 text-right text-deep-blue bg-white rounded-[10px]">فیلتر ها</div> */}
 
-          <div className="mt-4 mb-11 h-34 w-8/10 border-2 border-gray-400/50 rounded-md m-auto">
+          <div className="mt-4 mb-11 h-34 w-8/10 border-2 border-gray-400/50 rounded-md m-auto bg-white">
             <div className="mb-6">
               <label className="block mb-2 text-right text-lg font-bold">
 
@@ -174,6 +186,16 @@ const AllCourse = () => {
                 }}
                 className="mt-2 w-9/10 accent-blue-500"
               />
+
+                  {/* teachersname */}
+              <FilterAccordion />
+
+                  {/* skills level */}
+              <FilterAccordionforskills />
+
+                  {/* course type */}
+
+               <FilterAccordionforType />   
             </div>
           </div>
         </div>

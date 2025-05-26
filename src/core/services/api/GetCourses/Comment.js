@@ -1,6 +1,8 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getItem } from "../../common/storage.services.js";
 import http from "../../interceptor/index.js";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PostComment = async (commentData) => {
   try {
@@ -135,7 +137,7 @@ export const useCourseLikecommnet = () => {
   return useMutation({
     mutationFn: ({ id, state }) => Likecommnet(id, state),
     onSuccess: () => {
-      // Invalidate query for comments
+      // toast.success("   دمت گرم   ");
       queryClient.invalidateQueries(["coursecomments"]);
     },
   });

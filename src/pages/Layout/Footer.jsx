@@ -1,6 +1,12 @@
-import React from 'react';
-import telegram from "../../assets/landing/telegram.png";
-import instagram from "../../assets/landing/instagram.png";
+import instagram from "../../assets/landing/footer/instagram.png";
+import facebook from "../../assets/landing/footer/facebook.png";
+import whatsapp from "../../assets/landing/footer/whatsapp.png";
+import twitter from "../../assets/landing/footer/twitter.png";
+import youtube from "../../assets/landing/footer/youtube.png";
+import googleplay from "../../assets/landing/footer/googleplay.png";
+import appstore from "../../assets/landing/footer/appstore.png";
+
+
 function Footer() {
   return (
     <div className="relative rounded-2xl dark:text-gray-200 bg-gray-100/50 flex gap-3 font-vazir font-bold text-gray-600 py- ">
@@ -16,42 +22,46 @@ function Footer() {
         </div>
 
         <div className="footer-links norder-amber-700  w-2/3 flex justify-end gap-38">
+          <div className="links-section  flex flex-col gap-5 ">
+            <h4 className="text-4xl  font-semibold mb-4 flex flex-row justify-end "> در تماس باشید </h4>
+            <ul className="text-gray-600 dark:text-gray-200 text-[20px] py-2 space-y-2 ">
+              <li className='text-right'> با ما در تماس باشید تا بتوانید هر چه سریعتر مشکلاتتان را حل کنید  </li>
+            </ul>
+              <div className='flex flex-row gap-10 justify-end hover:cursor-pointer '>
+                <img src={instagram} alt="" />
+                <img src={facebook} alt="" />
+                <img src={whatsapp} alt="" />
+                <img src={twitter} alt="" />
+                <img src={youtube} alt="" />
+              </div>
+              <div className=" flex flex-row justify-start ">
+                <img className="w-60 h-20 hover:cursor-pointer " src={googleplay} alt="" />
+                <img className="w-60 h-20 hover:cursor-pointer " src={appstore} alt="" />
+              </div>
+          </div>
           <div className="links-section">
-            <h4 className="text-4xl  font-semibold mb-4">لینک های مرتبط</h4>
-            <ul className="text-gray-600 dark:text-gray-200 text-[20px] py-2 space-y-2">
-              <li>لینک های مرتبط</li>
-              <li>لینک های مرتبط</li>
-              <li>لینک های مرتبط</li>
-              <li>لینک های مرتبط</li>
-              <li>لینک های مرتبط</li>
+          <h4 className="text-4xl  font-semibold mb-4"> شرکت ما </h4>
+          <ul className="text-gray-600 dark:text-gray-200 text-[20px] py-2 space-y-2">
+              <li> با ما تماس بگیرید </li>
+              <li> معلم شوید </li>
+              <li> وبلاگ </li>
+              <li> مربی </li>
+              <li> مناسبت ها </li>
             </ul>
           </div>
           <div className="links-section">
-          <h4 className="text-4xl  font-semibold mb-4">لینک های مرتبط</h4>
-          <ul className="text-gray-600 dark:text-gray-200 text-[20px] py-2 space-y-2">
-              <li>لینک های مرتبط</li>
-              <li>لینک های مرتبط</li>
-              <li>لینک های مرتبط</li>
-              <li>لینک های مرتبط</li>
-              <li>لینک های مرتبط</li>
-            </ul>
-          </div>
-          <div className="links-section">
-          <h4 className="text-4xl  font-semibold mb-4">لینک های مرتبط</h4>
-          <ul className="text-gray-600 dark:text-gray-200 text-[20px] py-2 space-y-2">
-              <li>لینک های مرتبط</li>
-              <li>لینک های مرتبط</li>
-              <li>لینک های مرتبط</li>
-              <li>لینک های مرتبط</li>
-              <li>لینک های مرتبط</li>
+          <h4 className="text-4xl  font-semibold mb-4">لینک ها </h4>
+          <ul className="text-gray-600 dark:text-gray-200 text-[20px] py-2 space-y-2 hover:cursor-pointer">
+              <li> ارزش های ما </li>
+              <li> هیت مشاورین ما </li>
+              <li> شرکای ما </li>
+              <li> شریک شدن </li>
+              <li>  future learn   </li>
             </ul>
           </div>
         </div>
       </div>
-      <div className='absolute bottom-5 right-38  flex justify-center gap-3 py-4'>
-        <img className='w-10 h-8' src={telegram} alt="" />
-        <img src={instagram} alt="" />
-      </div>
+
     </div>
   );
 }

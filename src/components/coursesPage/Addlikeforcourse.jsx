@@ -4,6 +4,9 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { useEffect, useState } from "react";
 import { Addlikecourse, Adddislikecourse } from "../../core/services/api/GetCourses/Comment";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Navigate } from "react-router";
 
 const Addlikeforcourse = ({ data }) => {
   console.log("courseid:::::::::;", data);
@@ -13,12 +16,24 @@ const Addlikeforcourse = ({ data }) => {
 
   const likecourse = async () => {
     const response = await Addlikecourse(data);
+
+        if (response){
+          toast.success(" شما دوره را لایک کردید ");
+          Navigate(`AllCourses/Courses/e6a4b34e-c88f-ef11-b6e6-82fc07f68400${data}`)
+        }
+
     console.log("Like response:", response);
     setLike(response);
   };
 
   const dislikecourse = async () => {
-    const response = await Adddislikecourse(data); // Correct API call
+    const response = await Adddislikecourse(data); 
+
+            if (response){
+          toast.success(" شما دوره را دیسلایک کردید");
+          Navigate(`AllCourses/Courses/e6a4b34e-c88f-ef11-b6e6-82fc07f68400${data}`)
+        }
+
     console.log("Dislike response:", response);
     setDislike(response);
   };
@@ -32,10 +47,12 @@ const Addlikeforcourse = ({ data }) => {
 
       <div className="flex flex-row gap-5">
         <button onClick={likecourse} className="flex flex-row items-center text-2xl">
+          <ToastContainer />
           <img className="h-10 w-10" src={Like} />
         </button>
         
         <button onClick={dislikecourse} className="flex flex-row items-center text-2xl">
+          <ToastContainer />
           <img className="h-10 w-10" src={Dislike} />
         </button>
       </div>

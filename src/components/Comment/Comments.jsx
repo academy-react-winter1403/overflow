@@ -3,7 +3,8 @@ import user from "../../assets/Header/user.png";
 import SendReplyComment from "./SendReplyComment.jsx";
 import Like from "../../assets/Coursesimage/like.png";
 import disLike from "../../assets/Coursesimage/dislike.png";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   useCourseLikecommnet,
   useGetNewsReply,
@@ -46,6 +47,8 @@ function Comments({ comment, type, index }) {
     } else if (type === "News") {
       handelLikeNews(id, state);
     }
+
+
   };
 
   return (
@@ -85,6 +88,7 @@ function Comments({ comment, type, index }) {
                   onClick={() => handelLike(comment.id, "true")}
                   className="bg-deep-blue/25 hover:bg-deep-blue/55 flex cursor-pointer rounded-xl p-1 transition-all hover:scale-110 dark:bg-gray-700"
                 >
+                  {/* <ToastContainer /> */}
                   <img src={Like} alt="Like" className="inline-block" />
                   <p className="p-1 dark:text-gray-300">
                     {comment.likeCount > 0 ? comment.likeCount : ""}

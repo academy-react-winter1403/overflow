@@ -43,12 +43,12 @@ const GetMyCoursesReserve = () => {
                         key={index}
                         className="bg-gray-200 rounded-2xl w-11/12 h-20 mt-5 flex flex-row-reverse justify-start pr-5 gap-2 items-center m-auto dark:bg-gray-500"
                     >
-                        <img className="w-15 h-15" src={profile} alt="Course profile" />
-                        <div className="w-2/10 h-full">{reserve.courseName || "No Name"}</div>
-                        <div className="w-2/10 h-full">{reserve.teacherName || "No Teacher"}</div>
-                        <div className="w-2/10 h-full">{reserve.startDate || "No Date"}</div>
-                        <div className="w-2/10 h-full">{reserve.price || "No Price"}</div>
-                        <div className="w-2/10 h-full">{reserve.status || "No Status"}</div>
+                        <img className=" w-15 h-15" src={profile} alt="Course profile" />
+                        <div className="pt-5 w-2/10 h-full">{reserve.courseName || "No Name"}</div>
+                        <div className="pt-5 w-2/10 h-full">{reserve.teacherName || "No Teacher"}</div>
+                        <div className="pt-5 w-2/10 h-full">{reserve.startDate || "No Date"}</div>
+                        <div className="pt-5 w-2/10 h-full">{reserve.price || "No Price"}</div>
+                        <div className="pt-5 w-2/10 h-full">{reserve.status || "No Status"}</div>
                     </div>
                 ))
             ) : (

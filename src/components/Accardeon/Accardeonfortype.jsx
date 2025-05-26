@@ -1,0 +1,71 @@
+import { useEffect, useState } from "react";
+import { Gettype } from "../../core/services/api/filterapi/coursetype";
+
+const FilterAccordionforType = () => {
+  const [openSection, setOpenSection] = useState(null);
+  const [Type, setType] = useState([]);
+  const [selectedTypes, setSelectedTypes] = useState({});
+
+  const getTypeInfo = async () => {
+    const response = await Gettype();
+    setType(response.flat());
+    // console.log(response);
+  };
+
+  useEffect(() => {
+    getTypeInfo();
+  }, []);
+
+  const toggleSection = (section) => {
+    setOpenSection((prev) => (prev === section ? null : section));
+  };
+
+  const handleCheckboxChange = (event, index) => {
+    event.stopPropagation();
+    setSelectedTypes((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
+  return (
+    <div className="space-y-2" dir="rtl"> {/* Set right-to-left direction */}
+      {/* Category Filter */}
+      <div className="border border-gray-200 rounded-lg p-4 mt-10 bg-white text-right">
+        <div
+          className="cursor-pointer flex justify-between items-center text-2xl font-iransans"
+          onClick={() => toggleSection("category")}
+        >
+          <h3 className="font-medium text-gray-900">نحوه برگزاری</h3>
+          <span className="text-gray-500">{openSection === "category" ? "−" : "+"}</span>
+        </div>
+
+        {/* Smooth expanding transition */}
+        <div
+          className={`overflow-hidden transition-all duration-300 ${
+            openSection === "category" ? "max-h-[500px] opacity-100 scale-100" : "max-h-0 opacity-0 scale-95"
+          }`}
+        >
+          <div className="mt-3 space-y-2">
+            {Type.map((item, index) => (
+              <label
+                key={index}
+                className="flex items-center space-x-2 flex-row hover:pr-3 transition-all duration-300 ease-in-out"
+              >
+                <input
+                  type="checkbox"
+                  className="rounded text-blue-500 ml-2 transition-all duration-300 ease-in-out transform hover:scale-105"
+                  checked={selectedTypes[index] || false}
+                  onChange={(event) => handleCheckboxChange(event, index)}
+                />
+                <span className="font-iransans font-bold">{item.typeName}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FilterAccordionforType;

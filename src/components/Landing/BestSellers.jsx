@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import Card from "../Common/Card";
 import { getApi } from "../../core/services/api/getApi";
 
@@ -24,7 +24,7 @@ function BestSellers() {
 
   return (
     <div className="z-10 my-24 flex max-w-[1641px] flex-col self-center py-8 text-center">
-      <h2 className="font-peyda mb-13 text-5xl font-black text-[#267dff]">
+      <h2 className="font-peyda mb-13 text-5xl font-black text-deep-blue">
         پرفروش‌ترین دوره‌ها
       </h2>
 
@@ -40,9 +40,9 @@ function BestSellers() {
         ))}
       </div>
 
-      <a href="#" className="mt-6 inline-block text-blue-500 hover:underline">
+      <Link to="/AllCourses" className=" font-bold mt-6 flex flex-row justify-start text-blue-500 hover:underline">
         مشاهده همه
-      </a>
+      </Link>
     </div>
   );
 }

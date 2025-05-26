@@ -13,7 +13,7 @@ const Getmyreserveapi = async () => {
     try {
 
         const response = await http.get('/SharePanel/GetMyCoursesReserve');
-        console.log('Response from get reserve:', response);
+        // console.log('Response from get reserve:', response);
 
         return response;
     } catch (error) {
@@ -37,7 +37,7 @@ const Getprofile = async () => {
     }
     try {
         const response = await http.get('/SharePanel/GetProfileInfo');
-        console.log('Response from get profile info:', response);
+        // console.log('Response from get profile info:', response);
         return response;
     } catch (error) {
         if (error.response) {

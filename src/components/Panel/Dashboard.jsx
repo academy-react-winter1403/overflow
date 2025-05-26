@@ -11,10 +11,13 @@ import { Getprofile } from '../../core/services/api/userpanelapi/panelapis';
 import { ExistingCourseMap } from './existingcoursemap';
 // import { getApi } from '../../core/services/api/getApi';
 import { getItem } from '../../core/services/common/storage.services';
+import { getcoursecountApi, getnewscountApi } from '../../core/services/api/gettotal';
+
 
 const Dashboard = () => {
     const navigate = useNavigate();
     const token = getItem("token"); 
+    // const id = getItem("id"); 
     
     useEffect(() => {
         if (!token) {
@@ -24,10 +27,13 @@ const Dashboard = () => {
 
 
     const [profile, setProfile] = useState(null); 
+    const [Profileinfo, setProfileinfo] = useState(null); 
+    const [coursecount, setcoursecount] = useState(null); 
 
-    const percentage = profile?.profileCompletionPercentage || 60; 
+    const percentage = profile?.profileCompletionPercentage || 80; 
 
     const profileInfo = async () => {
+
         try {
             const response = await Getprofile();
             setProfile(response);
@@ -35,6 +41,40 @@ const Dashboard = () => {
         } catch (error) {
             console.log('Error from profileInfo:', error);
         }
+
+    };    
+    
+    const getInfo = async () => {
+
+        try {
+            const response = await getnewscountApi();
+
+            // getItem(id);
+
+            setProfileinfo(response.totalCount);
+
+            console.log("Profile info :", response);
+
+        } catch (error) {
+            console.log('Error from profileInfo:', error);
+        }
+
+    };   
+     const getcourseInfo = async () => {
+
+        try {
+            const response = await getcoursecountApi();
+
+            // getItem(id);
+
+            setcoursecount(response.totalCount);
+
+            console.log("Profile info :", response);
+
+        } catch (error) {
+            console.log('Error from profileInfo:', error);
+        }
+
     };
 
         const handleNavigation = (id) => {
@@ -44,6 +84,8 @@ const Dashboard = () => {
     
     useEffect(() => {
         profileInfo();
+        getInfo();
+        getcourseInfo();
     }, []);
 
     return (
@@ -67,14 +109,15 @@ const Dashboard = () => {
                                         <div className="w-3/10 h-6/10 rounded-[50px] mt-[-35px] ml-5 bg-deep-blue flex justify-center items-center max-lg:w-15 max-lg:h-15 ">
                                             <img src={frame2} alt="Frame 2" />
                                         </div>
-                                        <span className='text-center mt-9 mr-5 font-bold font-kalameh max-lg:text-xs '>هیچ دوره ای شرکت نکرده اید</span>
+                                        <span className='text-center mr-5 font-bold font-iransans max-lg:text-xs flex flex-row justify-end text-xl text-gray-500 mt-4'>
+                                             {Profileinfo}  {"اخبار مورد علاقه"} </span>
                                     </div>
 
                                     <div className="flex flex-col w-4/10 h-30 shadow-[5px_5px_10px_1px_gray] rounded-2xl  max-md:w-0/10 max-md:hidden">
                                         <div className="w-3/10 h-6/10 rounded-[50px] mt-[-35px] ml-5 bg-deep-blue flex justify-center items-center max-lg:w-15 max-lg:h-15">
                                             <img src={frame1} alt="Frame 1" />
                                         </div>
-                                        <span className='text-center mt-9 mr-5 font-bold font-kalameh max-lg:text-xs '>هیچ دوره ای شرکت نکرده اید</span>
+                                        <span className='text-center mr-5 font-bold font-kalameh max-lg:text-xs flex flex-row justify-end text-xl text-gray-500 mt-4 font-iransans'>  {coursecount} کورس های موردعلاقه  </span>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +140,7 @@ const Dashboard = () => {
 
                             <div className="flex flex-col gap-5 w-5/10 h-full transition-all duration-300">
                                 <span className="flex flex-row-reverse text-2xl font-bold pt-2 pr-10 transition-all duration-300 max-lg:text-sm"> دوره های پیشنهادی </span>
-                                <div className="flex flex-row justify-center">
+                                <div className="flex flex-row justify-center hover:scale-105 transition-transform duration-300 ">
                                     <div className="flex flex-row items-center bg-gray-100 rounded-2xl w-9/10 h-25 transition-all duration-300 dark:bg-gray-700 dark:border dark:border-white">
                                         <div className="flex flex-row-reverse items-end gap-5 w-5/10 max-lg:gap-2">
                                             <p className="text-gray-100 max-xl:heddin max-xl:w-5 max-lg:w-0">چهارشنبه ها . ۱۷:۳۰</p>
