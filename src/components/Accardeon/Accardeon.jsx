@@ -19,12 +19,12 @@ const FilterAccordion = () => {
     setOpenSection((prev) => (prev === section ? null : section));
   };
 
-  const handleCheckboxChange = (event, index) => {
-    console.log(event)
+  const handleCheckboxChange = (event, id) => {
+    console.log(":",id)
     event.stopPropagation();
     setSelectedTeachers((prev) => ({
       ...prev,
-      [index]: !prev[index],
+      [id]: !prev[id],
     }));
   };
 
@@ -53,10 +53,10 @@ const FilterAccordion = () => {
                 className="flex items-center space-x-2 flex-row hover:pr-3 transition-all duration-300 ease-in-out"
               >
                 <input
-                  type="checkbox"
+                  type="radio"
                   className="rounded text-blue-500 transition-all duration-300 ease-in-out transform hover:scale-105"
                   checked={selectedTeachers[index] || false}
-                  onChange={(event) => handleCheckboxChange(event, index)}
+                  onChange={(event) => handleCheckboxChange(event, item.teacherId)}
                 />
                 <span className="font-iransans pr-2 font-bold">{item.fullName}</span>
               </label>

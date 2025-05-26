@@ -4,7 +4,7 @@ const darkModeSlice = createSlice({
     
   name: "darkMode",
   initialState: {
-    isDarkMode: false, // Default to light mode
+    isDarkMode: false, 
   },
   reducers: {
     toggleDarkMode: (state) => {
