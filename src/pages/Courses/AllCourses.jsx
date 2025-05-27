@@ -12,6 +12,7 @@ const AllCourse = () => {
   const [newCoursesData, setNewCoursesData] = useState([]);
   
 
+
 const [filters, setFilters] = useState({
   SortingCol: "lastUpdate",
   SortType: "DESC",
@@ -22,7 +23,11 @@ const [filters, setFilters] = useState({
   RowsOfPage: 12, 
   TeacherId:"",
 });
+// useEffect(() => {
+//   console.log("this filter",filters)
 
+  
+// }, [filters])
 const getNewCoursesData = async () => {
   const queryParams = new URLSearchParams();
 
