@@ -89,7 +89,7 @@ const Registerlvl2 = () => {
                 placeholder="کد تایید"
                 className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 dark:text-black"
               />
-              <ErrorMessage name="verifyCode" component="div" className="text-red-500 text-sm" />
+              <ErrorMessage name="verifyCode" component="div" className="text-red-500 text-sm pr-2" />
               <button
                 type="submit"
                 className="w-8/11 h-12 text-center bg-[#436E8E] text-black py-2 rounded max-xl:w-10/10">تایید و ثبت نام</button>
@@ -97,13 +97,7 @@ const Registerlvl2 = () => {
           )}
         </Formik>
 
-        <div className="mt-8 text-sm ">
 
-          <label>قوانین را مطالعه کرده و با شرایط موافقم{" "}
-            <input type="checkbox" required />
-          </label>
-          
-        </div>
       </div>
 
       </div>

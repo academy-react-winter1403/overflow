@@ -86,7 +86,7 @@ const Register = () => {
                 placeholder="شماره تماس"
                 className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 dark:text-black"
               />
-              <ErrorMessage name="phone" component="div" className="error" />
+              <ErrorMessage name="phone" component="div" className="text-red-500 text-sm pr-2" />
               <button
                 type="submit"
                 className="w-8/11 h-12 text-center bg-[#436E8E] text-black py-2 rounded max-xl:w-10/10">ادامه</button>
@@ -94,7 +94,7 @@ const Register = () => {
 
           )}
         </Formik>
-        <div className="text-[14px] mt-[20px] ml-[160px] text-start">قوانین و شرایط</div>
+
       </div>
     </div>
 

@@ -2,17 +2,17 @@ import Like from "../../assets/Coursesimage/like.png";
 import Dislike from "../../assets/Coursesimage/dislike.png";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Addlikecourse, Adddislikecourse } from "../../core/services/api/GetCourses/Comment";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Navigate } from "react-router";
 
 const Addlikeforcourse = ({ data }) => {
-  console.log("courseid:::::::::;", data);
+  // console.log("courseid:::::::::;", data);
   const [rating, setRating] = useState(0);
-  const [like, setLike] = useState([]);
-  const [dislike, setDislike] = useState([]);
+  // const [like, setLike] = useState([]);
+  // const [dislike, setDislike] = useState([]);
 
   const likecourse = async () => {
     const response = await Addlikecourse(data);
@@ -23,7 +23,7 @@ const Addlikeforcourse = ({ data }) => {
         }
 
     console.log("Like response:", response);
-    setLike(response);
+    // setLike(response);
   };
 
   const dislikecourse = async () => {
@@ -35,7 +35,7 @@ const Addlikeforcourse = ({ data }) => {
         }
 
     console.log("Dislike response:", response);
-    setDislike(response);
+    // setDislike(response);
   };
 
   return (

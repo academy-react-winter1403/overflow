@@ -109,7 +109,7 @@ const Dashboard = () => {
                                         <div className="w-3/10 h-6/10 rounded-[50px] mt-[-35px] ml-5 bg-deep-blue flex justify-center items-center max-lg:w-15 max-lg:h-15 ">
                                             <img src={frame2} alt="Frame 2" />
                                         </div>
-                                        <span className='text-center mr-5 font-bold font-iransans max-lg:text-xs flex flex-row justify-end text-xl text-gray-500 mt-4'>
+                                        <span className='text-center mr-5 font-bold font-iransans max-lg:text-xs flex flex-row justify-end text-xl text-gray-500 mt-4 dark:text-white'>
                                              {Profileinfo}  {"اخبار مورد علاقه"} </span>
                                     </div>
 
@@ -117,7 +117,8 @@ const Dashboard = () => {
                                         <div className="w-3/10 h-6/10 rounded-[50px] mt-[-35px] ml-5 bg-deep-blue flex justify-center items-center max-lg:w-15 max-lg:h-15">
                                             <img src={frame1} alt="Frame 1" />
                                         </div>
-                                        <span className='text-center mr-5 font-bold font-kalameh max-lg:text-xs flex flex-row justify-end text-xl text-gray-500 mt-4 font-iransans'>  {coursecount} کورس های موردعلاقه  </span>
+                                        <span className='text-center mr-5 font-bold  max-lg:text-xs flex flex-row justify-end text-xl text-gray-500 mt-4 font-iransans dark:text-white'>  
+                                            {coursecount} کورس های موردعلاقه  </span>
                                     </div>
                                 </div>
                             </div>

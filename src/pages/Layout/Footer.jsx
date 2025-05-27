@@ -41,7 +41,7 @@ function Footer() {
           </div>
           <div className="links-section">
           <h4 className="text-4xl  font-semibold mb-4"> شرکت ما </h4>
-          <ul className="text-gray-600 dark:text-gray-200 text-[20px] py-2 space-y-2">
+          <ul className="text-gray-600 dark:text-gray-200 text-[20px] py-2 space-y-2 text-right">
               <li> با ما تماس بگیرید </li>
               <li> معلم شوید </li>
               <li> وبلاگ </li>
@@ -51,7 +51,7 @@ function Footer() {
           </div>
           <div className="links-section">
           <h4 className="text-4xl  font-semibold mb-4">لینک ها </h4>
-          <ul className="text-gray-600 dark:text-gray-200 text-[20px] py-2 space-y-2 hover:cursor-pointer">
+          <ul className="text-gray-600 dark:text-gray-200 text-[20px] py-2 space-y-2 hover:cursor-pointer text-right">
               <li> ارزش های ما </li>
               <li> هیت مشاورین ما </li>
               <li> شرکای ما </li>

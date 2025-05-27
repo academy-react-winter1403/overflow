@@ -9,8 +9,8 @@ const Mynewssetcomment = () => {
   const getMycomment = async () => {
     try {
       const response = await Mycomment();
-      console.log('API response:', response); 
-      setComment(response);
+
+      setComment(response.myCommentsDtos);
     } catch (err) {
       console.error('Error fetching comment:', err);
       setError('Failed to load comments.');

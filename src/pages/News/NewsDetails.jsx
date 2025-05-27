@@ -5,6 +5,11 @@ import SmartImage from "../../components/Common/SmartImage";
 import fallbackNews from "../../assets/News/newspaper.png";
 import { useQuery } from "@tanstack/react-query";
 import CommentSection from "../../components/Comment/CommentSection";
+import addtofave from '../../assets/Coursesimage/icons8-add-to-favorites-482.png'
+import { Addnewstofave } from "../../core/services/api/news/Addnewsfavorite";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const NewsDetails = () => {
   const [newsData, setNewsData] = useState(null);
@@ -14,6 +19,19 @@ const NewsDetails = () => {
   const { id } = useParams(); // Get the news ID from URL
   const URL = `/News/${id}`;
   const navigate = useNavigate();
+
+  const favoritenews = async () =>{
+
+    const response = await Addnewstofave(id);
+
+    console.log('from nwesfave :',response);
+
+    if (response){
+      toast.success(" به مورد علاقه ها اضافه شد");
+    }    
+
+  }
+
 
   // useQuery
   const { data: response } = useQuery({
@@ -66,8 +84,8 @@ const NewsDetails = () => {
     currentImageAddressTumb,
     addUserFullName,
     commentsCount,
-    currentLikeCount,
-    currentDissLikeCount,
+    // currentLikeCount,
+    // currentDissLikeCount,
     newsCatregoryName,
     newsCatregoryId,
     insertDate,
@@ -86,10 +104,18 @@ const NewsDetails = () => {
                 className="shadow-deep-blue z-10 h-full w-full rounded-2xl object-contain shadow-lg"
               />
             </div>
-            <div className="flex w-full items-center justify-between">
-              <p className="text-deep-blue text-sm break-all dark:text-gray-400">
-                {addUserFullName}
-              </p>
+            <div className="flex w-full items-center justify-between ">
+              <div className="flex gap-4">
+                <p className="text-deep-blue text-sm break-all pt-3 dark:text-gray-400">
+                  {addUserFullName}
+                </p>
+
+                <button onClick={() => favoritenews()}>
+                  <img className="hover:cursor-pointer " src={addtofave} />
+                  <ToastContainer />
+                </button>
+
+              </div>
               <div className="flex items-center space-x-4">
                 <p className="text-xs text-gray-400 dark:text-gray-500">
                   {new Date(insertDate).toLocaleDateString("fa-IR")}
@@ -113,7 +139,9 @@ const NewsDetails = () => {
                 <p className="mb-4 text-lg break-all text-gray-600 dark:text-gray-400">
                   {miniDescribe}
                 </p>
+                
               )}
+
             </header>
           </div>
 

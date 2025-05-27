@@ -7,7 +7,7 @@ import signin from '../../assets/register/Image 6.png';
 import academylogo from '../../assets/register/ac-Logo.png';
 import { handletoken } from "../../redux/token";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -26,7 +26,7 @@ const Loginlevel1 = () => {
     try {
       const loginDataForSend = {
         phoneOrGmail: values.user,
-        password: values.password,
+        password: values.password, 
         rememberMe: true,
       };
 
@@ -91,7 +91,7 @@ const Loginlevel1 = () => {
                   type="text"
                   name="user"
                   placeholder="ایمیل یا شماره موبایل"
-                  className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end"
+                  className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end "
                 />
                 <ErrorMessage name="user" component="div" className="text-red-500 text-sm pr-2" />
 
@@ -107,7 +107,7 @@ const Loginlevel1 = () => {
                   تایید و ورود
                   <ToastContainer />
                 </button>
-
+                <Link className=" w-95 text-left"  to="/Register-1"><p className="font-bold pt-5 text-blue-500 border-b-2 w-20">ثبت نام کنید</p></Link>
               </Form>
             )}
           </Formik>

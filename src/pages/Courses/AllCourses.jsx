@@ -128,7 +128,7 @@ const handlePageChange = (newPage) => {
 
         <div className="relative flex flex-row-reverse  w-2/10 ">
           <input
-          className=" mt-2 mr-2 bg-gray-100 h-14 w-9/10 text-right border pr-5 font-iransans rounded-[10px] text-xl "
+          className=" mt-2 mr-2 bg-gray-100 h-14 w-9/10 text-right border pr-5 font-iransans rounded-[10px] text-xl dark:bg-gray-300"
           type="text"
           placeholder="...جستجو"
           value={filters.Query}

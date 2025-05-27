@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { getApi } from '../../core/services/api/getApi';
+
 import Card from '../Common/Card';
-import { getItem } from '../../core/services/common/storage.services';
+
 import { Getmycourse } from '../../core/services/api/userpanelapi/panelapis';
 
 const Panel3 = () => {
@@ -14,8 +14,10 @@ const Panel3 = () => {
     const getNewCoursesData = async () => {
         try {
             const response = await Getmycourse();
-            if (Array.isArray(response)) {
-                setNewCoursesData(response);
+            if (Array.isArray(response.listOfMyCourses)) {
+
+                setNewCoursesData(response.listOfMyCourses);
+
             } else {
                 console.error("Unexpected response format:", response);
             }

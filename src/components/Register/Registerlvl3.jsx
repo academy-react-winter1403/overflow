@@ -95,7 +95,7 @@ const Registerlvl3 = () => {
                 placeholder="شماره تماس"
                 className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 " 
               />
-              <ErrorMessage name="phone" component="div" className="error" />
+              <ErrorMessage name="phone" component="div" className="text-red-500 text-sm pr-2" />
 
               <Field
                 type="text"
@@ -103,7 +103,7 @@ const Registerlvl3 = () => {
                 placeholder="ایمیل"
                 className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10"
               />
-              <ErrorMessage name="gmail" component="div" className="error" />
+              <ErrorMessage name="gmail" component="div" className="text-red-500 text-sm pr-2" />
 
               <Field
                 type="password"
@@ -111,7 +111,7 @@ const Registerlvl3 = () => {
                 placeholder="رمز عبور"
                 className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10"
               />
-              <ErrorMessage name="password" component="div" className="error" />
+              <ErrorMessage name="password" component="div" className="text-red-500 text-sm pr-2" />
 
               <button
                 type="submit"
@@ -119,7 +119,7 @@ const Registerlvl3 = () => {
             </Form>
           )}
         </Formik>
-        <div className="text-[14px] mt-[20px] ml-[160px] text-start">قوانین و شرایط</div>
+
         </div>
         </div>
 

@@ -23,20 +23,20 @@ const Idk = () => {
             <div className='flex flex-row w-8/10 h-100 rounded-4xl bg-white '>
                 <Formik initialValues={{gmail:""}}>
 
-                    <Form className="flex flex-col w-10/10 gap-5 rounded-4xl bg-white pt-15 ">
+                    <Form className="flex flex-col w-10/10 gap-5 rounded-4xl bg-white pt-15 dark:bg-gray-400">
 
                         <Field 
                         type="text"
                         name="gmail"
                         placeholder=" ایمل"
-                        className=" w-8/10 h-15 rounded-3xl text-right pr-5 ml-[-50px] bg-white outline-0 border-2 border-gray-300 "
+                        className=" w-8/10 h-15 rounded-3xl text-right pr-5 ml-[-50px] bg-white outline-0 border-2 border-gray-300 dark:text-white dark:bg-gray-800 dark:border-gray-400" 
                         />     
                         
                         <Field 
                         type="text"
                         name="text"
                         placeholder=" متن پیام"
-                        className=" w-8/10 h-50 rounded-3xl text-right pr-5 bg-white ml-50 outline-0 border-2 border-gray-300"
+                        className=" w-8/10 h-50 rounded-3xl text-right pr-5 bg-white ml-50 outline-0 border-2 border-gray-300 dark:text-white dark:bg-gray-800 dark:border-gray-400"
                         />
 
                     </Form>

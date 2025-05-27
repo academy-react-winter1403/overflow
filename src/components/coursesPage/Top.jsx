@@ -63,15 +63,8 @@ const Top = ({ data,id}) => {
       <div className="flex flex-col items-end w-5/10 h-50 mr-10">
         <h2 className="text-amber-50 text-3xl">{courseData.title}</h2>
         <p className="text-amber-50 text-xs text-right w-10/10 h-8/10 mt-10">
-          {courseData.describe}
+          {courseData.miniDescribe}
         </p>
-        <button
-          onClick={() => postreserve(id)}
-          className="text-amber-50 font-bold text-2xl bg-deep-blue rounded-3xl px-6 py-3 text-center max-lg:text-sm"
-        >
-          رزرو دوره
-          <ToastContainer />
-        </button>
       </div>
 
       <div className="text-amber-50 shadow-2xl shadow-amber-50 rounded-2xl w-3/10 h-4/10 mt-10 mr-45 max-xl:mr-20">
@@ -82,13 +75,23 @@ const Top = ({ data,id}) => {
         />
       </div>
 
-      <div className="flex items-center justify-between w-6/10 mr-10 mb-5 pl-45 max-lg:flex-row max-lg:gap-30 max-lg:w-8/10 transition-all duration-300 ">
+      <div className="flex items-center justify-between w-6/10 mr-10 mb-5 pl-45 max-lg:flex-row max-lg:gap-30 max-lg:w-8/10 transition-all duration-300">
         <span className="text-amber-50 font-bold text-2xl text-left max-lg:text-sm">
           {formatToPersianToman(courseData.cost)}
         </span>
-        <div className="text-amber-50 font-bold text-2xl bg-deep-blue rounded-3xl px-6 py-3 text-center max-lg:text-sm">
+       
+       <div className="w-5/10 flex  gap-10 justify-end">
+         {/* <div className="text-amber-50 font-bold text-2xl bg-deep-blue rounded-3xl px-6 py-3 text-center max-lg:text-sm">
           <Link to="/">خرید نقدی دوره</Link>
-        </div>
+        </div> */}
+        <button
+          onClick={() => postreserve(id)}
+          className="text-amber-50 font-bold text-2xl bg-deep-blue rounded-3xl px-6 py-3 text-center max-lg:text-sm"
+        >
+          رزرو دوره
+          <ToastContainer />
+        </button>
+       </div>
       </div>
 
       <div className="flex flex-row w-5/10 justify-end pr-12 mb-5 gap-15 max-xl:w-10/10 ">
