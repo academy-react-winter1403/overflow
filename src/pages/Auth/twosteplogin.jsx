@@ -90,7 +90,7 @@ const Loginlevel2 = () => {
                                 />
                                 <ErrorMessage name="verify" component="div" className="text-red-500 text-sm pr-2" />
 
-                                <button type="submit" className="w-8/11 h-12 text-center bg-[#436E8E] text-black text-white py-2 rounded">
+                                <button type="submit" className="w-8/11 h-12 text-center bg-[#436E8E]  text-white py-2 rounded">
                                     تایید و ورود
                                 </button>
 
