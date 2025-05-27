@@ -22,6 +22,8 @@ const [filters, setFilters] = useState({
   PageNumber: 1,
   RowsOfPage: 12, 
   TeacherId:"",
+  CourseTypeId:"",
+  courseLevelId:"",
 });
 // useEffect(() => {
 //   console.log("this filter",filters)
@@ -41,7 +43,7 @@ const getNewCoursesData = async () => {
   queryParams.append("page", filters.PageNumber);
 
   // courses?pageNumber=1&instructor=1&type=2&TechCount=1&ListTech=2&level=1&CostDown=0&CostUp=375000000&Query=ad
-  const response = await getApi(`/Home/GetCoursesWithPagination?${queryParams.toString()}&TeacherId=${filters.TeacherId}`, "courseFilterDtos");
+  const response = await getApi(`/Home/GetCoursesWithPagination?${queryParams.toString()}&TeacherId=${filters.TeacherId}&CourseTypeId=${filters.CourseTypeId}$courseLevelId=${filters.courseLevelId}`, "courseFilterDtos");
   setNewCoursesData(response);
 };
 
@@ -79,11 +81,11 @@ const handlePageChange = (newPage) => {
   return (
     <div className="m-auto flex w-9/10 flex-wrap justify-center ">
 
-      <div className="mt-14 mb-14 h-16 w-full rounded-lg font-iransans font-bold text-right text-4xl leading-14 dark:bg-gray-400/95">
+      <div className="mt-14 mb-14 h-16 w-full rounded-lg font-iransans font-bold text-right text-4xl leading-14  mr-5">
         دوره ها
       </div>
 
-      <div className="pr-13 font-iransans flex  h-18 w-full justify-center rounded-lg  text-4xl font-black text-gray-700 dark:bg-gray-400/95 max-xl:gap-4  ">
+      <div className="pr-13 font-iransans flex  h-18 w-full justify-center rounded-lg  text-4xl font-black text-gray-700 dark:bg-gray-400/95 max-xl:gap-4 bg-white ">
         <div
           onClick={() => handleSorting("cost", "ASC")}
           className={` ml-100 h-full w-[10%] font-iransans cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "cost" && filters.SortType === "ASC"
@@ -145,16 +147,16 @@ const handlePageChange = (newPage) => {
 
         </div>
 
-        <div className="h-75 w-[25%] justify-items-center rounded-md mt-22 dark:bg-gray-400/95 p-4 max-xl:w-1/2 ">
+        <div className="h-75 w-[25%] justify-items-center rounded-md mt-22  p-4 max-xl:w-1/2 ">
           {/* <div className="mb-6 text-right font-iransans p-2 text-3xl  w-8/10 text-right text-deep-blue bg-white rounded-[10px]">فیلتر ها</div> */}
 
-          <div className="mt-4 mb-11 h-34 w-8/10 border-2 border-gray-400/50 rounded-md m-auto bg-white">
+          <div className="mt-4 mb-11 h-34 w-8/10 border-2 border-gray-400/50 rounded-md m-auto bg-white dark:bg-gray-400 ">
             <div className="mb-6">
               <label className="block mb-2 text-right text-lg font-bold">
 
               </label>
 
-              <div className="flex bor justify-center font-vazir text-gray-500 text-xl mt-5 mb-2">
+              <div className="flex bor justify-center font-vazir text-gray-500 text-xl mt-5 mb-2 dark:text-black">
                 <span>تا  {Number(filters.CostUp).toLocaleString()} تومان</span>
                 <span> از   {Number(filters.CostDown).toLocaleString()} </span>
               </div>
@@ -189,11 +191,11 @@ const handlePageChange = (newPage) => {
               <FilterAccordion setFilters={setFilters}/>
 
                   {/* skills level */}
-              <FilterAccordionforskills />
+              <FilterAccordionforskills setFilters={setFilters}/>
 
                   {/* course type */}
 
-               <FilterAccordionforType />   
+               <FilterAccordionforType setFilters={setFilters}/>   
             </div>
           </div>
         </div>

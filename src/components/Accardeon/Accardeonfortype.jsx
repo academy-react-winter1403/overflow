@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Gettype } from "../../core/services/api/filterapi/coursetype";
 
-const FilterAccordionforType = () => {
+const FilterAccordionforType = ({setFilters}) => {
   const [openSection, setOpenSection] = useState(null);
   const [Type, setType] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState({});
@@ -20,18 +20,29 @@ const FilterAccordionforType = () => {
     setOpenSection((prev) => (prev === section ? null : section));
   };
 
-  const handleCheckboxChange = (event, index) => {
+  const handleCheckboxChange = (event, id) => {
     event.stopPropagation();
+         setFilters((prev) => ({
+      ...prev,
+      courseLevelId: id,
+    }));
     setSelectedTypes((prev) => ({
       ...prev,
-      [index]: !prev[index],
+      [id]: !prev[id],
     }));
   };
 
+    const clearFilters = () => {
+    setSelectedTypes({});
+    setFilters((prev) => ({
+      ...prev,
+      courseLevelId: null, 
+    }));
+  };
   return (
     <div className="space-y-2" dir="rtl"> {/* Set right-to-left direction */}
       {/* Category Filter */}
-      <div className="border border-gray-200 rounded-lg p-4 mt-10 bg-white text-right">
+      <div className="border border-gray-200 rounded-lg p-4 mt-10 bg-white text-right dark:bg-gray-400 dark:text-black">
         <div
           className="cursor-pointer flex justify-between items-center text-2xl font-iransans"
           onClick={() => toggleSection("category")}
@@ -53,7 +64,7 @@ const FilterAccordionforType = () => {
                 className="flex items-center space-x-2 flex-row hover:pr-3 transition-all duration-300 ease-in-out"
               >
                 <input
-                  type="checkbox"
+                  type="radio"
                   className="rounded text-blue-500 ml-2 transition-all duration-300 ease-in-out transform hover:scale-105"
                   checked={selectedTypes[index] || false}
                   onChange={(event) => handleCheckboxChange(event, index)}
@@ -62,6 +73,12 @@ const FilterAccordionforType = () => {
               </label>
             ))}
           </div>
+            <button
+            className="font-iransans font-bold mt-3 px-4 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-all duration-300 dark:text-black"
+            onClick={clearFilters}
+          >
+           فیلتر را پاک کنید
+          </button>
         </div>
       </div>
     </div>

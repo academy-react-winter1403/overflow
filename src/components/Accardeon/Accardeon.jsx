@@ -20,22 +20,28 @@ const FilterAccordion = ({ setFilters }) => {
   };
 
   const handleCheckboxChange = (event, id) => {
-    console.log(":", id);
     setFilters((prev) => ({
       ...prev,
       TeacherId: id,
     }));
-    event.stopPropagation();
+
     setSelectedTeachers((prev) => ({
-      ...prev,
       [id]: !prev[id],
+    }));
+  };
+
+  const clearFilters = () => {
+    setSelectedTeachers({});
+    setFilters((prev) => ({
+      ...prev,
+      TeacherId: null, // Resets the filter
     }));
   };
 
   return (
     <div className="space-y-2" dir="rtl">
       {/* Category Filter */}
-      <div className="mt-10 rounded-lg border border-gray-200 bg-white p-4">
+      <div className="mt-10 rounded-lg border border-gray-200 bg-white p-4 dark:bg-gray-400 dark:text-black">
         <div
           className="font-iransans flex cursor-pointer items-center justify-between text-2xl"
           onClick={() => toggleSection("category")}
@@ -55,18 +61,16 @@ const FilterAccordion = ({ setFilters }) => {
           }`}
         >
           <div className="mt-3 space-y-2">
-            {teacher.map((item, index) => (
+            {teacher.map((item) => (
               <label
-                key={index}
+                key={item.teacherId}
                 className="flex flex-row items-center space-x-2 transition-all duration-300 ease-in-out hover:pr-3"
               >
                 <input
                   type="radio"
-                  className="transform rounded text-blue-500 transition-all duration-300 ease-in-out hover:scale-105"
-                  checked={selectedTeachers[index] || false}
-                  onChange={(event) =>
-                    handleCheckboxChange(event, item.teacherId)
-                  }
+                  className="appearance-none h-5 w-5 border border-blue-500 rounded-full checked:bg-blue-500 transition-all duration-300 ease-in-out hover:scale-110 focus:bg-blue-300"
+                  checked={selectedTeachers[item.teacherId] || false}
+                  onChange={(event) => handleCheckboxChange(event, item.teacherId)}
                 />
                 <span className="font-iransans pr-2 font-bold">
                   {item.fullName}
@@ -74,6 +78,14 @@ const FilterAccordion = ({ setFilters }) => {
               </label>
             ))}
           </div>
+
+          {/* Clear Filter Button */}
+          <button
+            className="font-iransans font-bold mt-3 px-4 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-all duration-300 dark:text-black"
+            onClick={clearFilters}
+          >
+           فیلتر را پاک کنید
+          </button>
         </div>
       </div>
     </div>

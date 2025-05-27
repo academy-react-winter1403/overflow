@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Getskills } from "../../core/services/api/filterapi/skills";
 
-const FilterAccordionforskills = () => {
+const FilterAccordionforskills = ({setFilters}) => {
   const [openSection, setOpenSection] = useState(null);
   const [Skill, setSkill] = useState([]);
   const [selectedSkills, setSelectedSkills] = useState({});
@@ -20,18 +20,28 @@ const FilterAccordionforskills = () => {
     setOpenSection((prev) => (prev === section ? null : section));
   };
 
-  const handleCheckboxChange = (event, index) => {
-    event.stopPropagation();
+  const handleCheckboxChange = (event, id) => {
+    // event.stopPropagation();
+     setFilters((prev) => ({
+      ...prev,
+      CourseTypeId: id,
+    }));
     setSelectedSkills((prev) => ({
       ...prev,
-      [index]: !prev[index],
+      [id]: !prev[id],
     }));
   };
-
+  const clearFilters = () => {
+    setSelectedSkills({});
+    setFilters((prev) => ({
+      ...prev,
+      CourseTypeId: null, 
+    }));
+  };
   return (
     <div className="space-y-2" dir="rtl">
       {/* Skills Filter */}
-      <div className="border border-gray-200 rounded-lg p-4 mt-10 bg-white">
+      <div className="border border-gray-200 rounded-lg p-4 mt-10 bg-white dark:bg-gray-400 dark:text-black">
         <div
           className="cursor-pointer flex justify-between items-center text-2xl font-iransans"
           onClick={() => toggleSection("skills")}
@@ -53,15 +63,21 @@ const FilterAccordionforskills = () => {
                 className="flex items-center space-x-2 flex-row hover:pr-3 transition-all duration-300 ease-in-out"
               >
                 <input
-                  type="checkbox"
+                  type="Radio"
                   className="rounded text-blue-500 transition-all duration-300 ease-in-out transform hover:scale-105"
-                  checked={selectedSkills[index] || false}
+                  checked={selectedSkills[item.CourseTypeId] || false}
                   onChange={(event) => handleCheckboxChange(event, index)}
                 />
                 <span className="font-iransans pr-2 font-bold">{item.levelName}</span>
               </label>
             ))}
           </div>
+            <button
+            className="font-iransans font-bold mt-3 px-4 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-all duration-300 dark:text-black"
+            onClick={clearFilters}
+          >
+           فیلتر را پاک کنید
+          </button>
         </div>
       </div>
     </div>
