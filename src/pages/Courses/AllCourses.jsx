@@ -8,39 +8,44 @@ import FilterAccordionforskills from "../../components/Accardeon/Accardeonforski
 import FilterAccordionforType from "../../components/Accardeon/Accardeonfortype";
 
 
-
 const AllCourse = () => {
   const [newCoursesData, setNewCoursesData] = useState([]);
+  
 
-  const [filters, setFilters] = useState({
-    PageNumber: 1,
-    RowsOfPage: 21,
-    SortingCol: "lastUpdate",
-    SortType: "DESC",
-    CostDown: 0,
-    CostUp: 50000000,
-    Query: undefined,
-      // courseLevelId:1,
-      // CourseTypeId:1,
-      // TeacherId:0
-  });
+const [filters, setFilters] = useState({
+  SortingCol: "lastUpdate",
+  SortType: "DESC",
+  CostDown: 0,
+  CostUp: 50000000,
+  Query: undefined,
+  PageNumber: 1,
+  RowsOfPage: 12, 
+  TeacherId:"",
+});
 
-  const getNewCoursesData = async () => {
-    const queryParams = new URLSearchParams();
+const getNewCoursesData = async () => {
+  const queryParams = new URLSearchParams();
 
-    for (const key in filters) {
-      if (filters[key] !== undefined) {
-        queryParams.append(key, filters[key] ?? "");
-      }
+  for (const key in filters) {
+    if (filters[key] !== undefined) {
+      queryParams.append(key, filters[key] ?? "");
     }
+  }
 
-    const response = await getApi(
-      `/Home/GetCoursesWithPagination?${queryParams.toString()}`,
-      "courseFilterDtos"
-    );
+  queryParams.append("limit", 12);  
+  queryParams.append("page", filters.PageNumber);
 
-    setNewCoursesData(response);
-  };
+  // courses?pageNumber=1&instructor=1&type=2&TechCount=1&ListTech=2&level=1&CostDown=0&CostUp=375000000&Query=ad
+  const response = await getApi(`/Home/GetCoursesWithPagination?${queryParams.toString()}&TeacherId=${filters.TeacherId}`, "courseFilterDtos");
+  setNewCoursesData(response);
+};
+
+const handlePageChange = (newPage) => {
+  setFilters((prev) => ({
+    ...prev,
+    PageNumber: newPage,
+  }));
+};
 
   useEffect(() => {
     getNewCoursesData();
@@ -67,7 +72,7 @@ const AllCourse = () => {
   };
 
   return (
-    <div className="m-auto flex w-9/10 flex-wrap justify-center">
+    <div className="m-auto flex w-9/10 flex-wrap justify-center ">
 
       <div className="mt-14 mb-14 h-16 w-full rounded-lg font-iransans font-bold text-right text-4xl leading-14 dark:bg-gray-400/95">
         دوره ها
@@ -133,18 +138,6 @@ const AllCourse = () => {
             <Card item={item} index={index} key={index} />
           ))}
 
-
-          <div
-            onClick={() =>
-              setFilters((prev) => ({
-                ...prev,
-                RowsOfPage: prev.RowsOfPage * 2,
-              }))
-            }
-            className="text-amber-50 font-bold w-full h-14 mt=5 mb-5 text-2xl bg-deep-blue rounded-2xl px-6 py-3 text-center cursor-pointer max-lg:text-sm"
-          >
-            <div>بارگیری بیشتر</div>
-          </div>
         </div>
 
         <div className="h-75 w-[25%] justify-items-center rounded-md mt-22 dark:bg-gray-400/95 p-4 max-xl:w-1/2 ">
@@ -188,7 +181,7 @@ const AllCourse = () => {
               />
 
                   {/* teachersname */}
-              <FilterAccordion />
+              <FilterAccordion setFilters={setFilters}/>
 
                   {/* skills level */}
               <FilterAccordionforskills />
@@ -200,6 +193,41 @@ const AllCourse = () => {
           </div>
         </div>
       </div>
+
+                {/* pagination */}
+      <div className="flex justify-center items-center gap-4 mt-6 mb-10 w-full pr-110 font-iransans font-bold">
+        <button
+          className={`w-12 h-12 rounded-[50px] bg-deep-blue text-white hover:bg-blue-700 ${
+      filters.PageNumber === 1 ? "opacity-50 cursor-not-allowed" : ""
+    }`}
+    disabled={filters.PageNumber === 1}
+          onClick={() => handlePageChange(filters.PageNumber - 1)}
+        >
+          قبلی
+        </button>
+
+        {/* Number sequence as individual buttons */}
+        <div className="flex space-x-2">
+          {Array.from({ length: 10 }, (_, i) => i + 1).map((page) => (
+            <button
+              key={page}
+              className={`px-3 py-1 border border-gray-300 rounded-[50px] bg-white text-lg hover:bg-gray-100 
+                ${filters.PageNumber === page ? "bg-deep-blue text-white" : ""}`}
+              onClick={() => handlePageChange(page)}
+            >
+              {page}
+            </button>
+          ))}
+        </div>
+        
+        <button
+          className="w-12 h-12 rounded-[50px] bg-deep-blue text-white hover:bg-blue-700"
+          onClick={() => handlePageChange(filters.PageNumber + 1)}
+        >
+          بعدی
+        </button>
+            </div>
+
     </div>
   );
 };
