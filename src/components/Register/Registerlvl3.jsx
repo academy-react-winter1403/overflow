@@ -4,7 +4,7 @@ import { setItem } from "../../core/services/common/storage.services";
 import { Register } from "../../core/services/api/Register/RegisterPages.js"; 
 import signin from '../../assets/register/Image 6.png';
 import academylogo from '../../assets/register/ac-Logo.png';
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const validationSchema = Yup.object({
   phone: Yup.string()
@@ -58,7 +58,7 @@ const Registerlvl3 = () => {
 
   return (
     
-    <div className="flex flex-row  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 font-kalameh max-2xl:w-7/10 max-xl:w-6/10 max-xl:m-auto transition-all duration-300 dark:bg-gray-800">
+    <div className="flex flex-row  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 font-iransans max-2xl:w-7/10 max-xl:w-6/10 max-xl:m-auto transition-all duration-300 dark:bg-gray-800">
 
       <div className=" w-10/10 flex-row flex justify-center gap-20 transition-all duration-300">
 
@@ -70,7 +70,7 @@ const Registerlvl3 = () => {
 
           <div className="w-10/10 flex flex-row flex-wrap gap-2 justify-end pr-20 ">
 
-            <p className="w-5/10 h-full text-center text-4xl "> آکادمی سپهر</p>
+            <p className="w-5/10 h-full text-right text-4xl font-iransans pt-5 pr-3"> آکادمی سپهر</p>
             <img
             src={academylogo}
             alt="logo"
@@ -78,8 +78,8 @@ const Registerlvl3 = () => {
             />
         </div>
 
-        <div className="flex flex-row justify-end  w-10/10 pt-5">
-          <p className=" w-5/10 text-4xl "> ثبت نام</p>
+        <div className="flex flex-row justify-end  w-10/10 font-iransans ">
+          <p className=" w-5/10 text-4xl text-right  mr-22 "> ثبت نام</p>
         </div>
 
         <Formik
@@ -88,12 +88,12 @@ const Registerlvl3 = () => {
           onSubmit={handleSubmit}
         >
           {() => (
-            <Form className=" flex flex-col items-end mt-10 gap-2.5 pr-22 mx-auto w-10/10 h-auto dark:text-black">
+            <Form className=" flex flex-col items-end gap-5 pr-22 mx-auto w-10/10 h-auto dark:text-black">
               <Field
                 type="text"
                 name="phone"
                 placeholder="شماره تماس"
-                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 " 
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 pr-3" 
               />
               <ErrorMessage name="phone" component="div" className="text-red-500 text-sm pr-2" />
 
@@ -101,7 +101,7 @@ const Registerlvl3 = () => {
                 type="text"
                 name="gmail"
                 placeholder="ایمیل"
-                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10"
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 pr-3"
               />
               <ErrorMessage name="gmail" component="div" className="text-red-500 text-sm pr-2" />
 
@@ -109,17 +109,21 @@ const Registerlvl3 = () => {
                 type="password"
                 name="password"
                 placeholder="رمز عبور"
-                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10"
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 pr-3"
               />
               <ErrorMessage name="password" component="div" className="text-red-500 text-sm pr-2" />
 
               <button
                 type="submit"
-                className="w-8/11 h-12 outline-none border-none rounded-[5px] text-center bg-sky-800 max-xl:w-10/10">ادامه</button>
+                className="w-8/11 h-12 outline-none border-none rounded-[5px] text-white text-center bg-sky-800 max-xl:w-10/10">ادامه</button>
             </Form>
           )}
         </Formik>
-
+          <div className=" flex flex-row pl-35 ">
+            <Link to='/Register-1'>
+              <p className="text-blue-500 border-b-2 border-blue-500 w-30">  بازگشت به صفحه اول </p>
+            </Link>
+          </div>
         </div>
         </div>
 

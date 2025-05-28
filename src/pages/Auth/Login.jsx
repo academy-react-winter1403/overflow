@@ -56,42 +56,47 @@ const Loginlevel1 = () => {
   };
 
   return (
-    <div className="flex flex-wrap w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 dark:bg-gray-500">
+    <div className="flex flex-wrap w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 dark:bg-gray-500 font-iransans">
       <div className="w-10/10 flex-wrap flex justify-center gap-20">
         <div className="w-4/10 h-138 mt-15 ml-10">
           <img className="h-120 w-8/10" src={signin} />
         </div>
 
-        <div className="w-4/10 h-138 mt-15">
-          <div className="flex justify-end pr-9">
+        <div className="w-4/10 h-138 mt-15 ">
+
+         <div className=" flex flex-col items-end pr-22">
+
+           <div className="flex flex-row-reverse  gap-5">
             <img
               src={academylogo}
               alt="logo"
-              className="w-[83px] h-[63px] mt-[33px] mr-[50px]"
+              className=""
             />
+            
+          <div className="text-right text-4xl mt-5">آکادمی سپهر</div>
           </div>
 
-          <div className="text-center text-[40px] mt-[-70px] mr-[-30px]">آکادمی سپهر</div>
-
-          <div className="flex flex-wrap item-center mt-2 pl-20">
-            <div className="text-[30px] mt-[20px] ml-[330px]">ورود</div>
-            <div className="w-[300px] text-end text-[20px] mt-[10px] ml-[125px]">رمز خود را فراموش کردید؟
-              <a href="/rest1" className=" text-[15px] w-[90px] mt-[-25px] ml-[40px]"> بازیابی</a>
+          <div className="flex flex-col  mt-5 gap-3">
+            <div className="text-right  text-4xl ">ورود</div>
+            <div className=" text-right text-2xl">رمز خود را فراموش کردید؟
+              <a href="/rest1" className=" text-[20px] w-[90px] mt-[-25px] ml-[40px] text-blue-500 font-bold"> بازیابی</a>
             </div>
           </div>
+
+         </div>
           <Formik
             initialValues={{ user: "", password: "" }}
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
             {() => (
-              <Form className="flex flex-col items-end mt-10 gap-2.5 pr-22 mx-auto w-10/10 h-auto">
+              <Form className="flex flex-col items-end mt-10 gap-5 pr-22 mx-auto w-10/10 h-auto">
 
                 <Field
                   type="text"
                   name="user"
                   placeholder="ایمیل یا شماره موبایل"
-                  className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end "
+                  className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end pr-3 dark:text-black"
                 />
                 <ErrorMessage name="user" component="div" className="text-red-500 text-sm pr-2" />
 
@@ -99,11 +104,11 @@ const Loginlevel1 = () => {
                   type="password"
                   name="password"
                   placeholder="پسورد"
-                  className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end"
+                  className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end pr-3 dark:text-black"
                 />
                 <ErrorMessage name="password" component="div" className="text-red-500 text-sm pr-2" />
 
-                <button onClick={Sendloginrequest} type="submit" className="w-8/11 h-12 text-center bg-[#436E8E] text-black py-2 rounded">
+                <button onClick={Sendloginrequest} type="submit" className="w-8/11 h-12 text-center bg-[#436E8E] text-white font-bold py-2 rounded">
                   تایید و ورود
                   <ToastContainer />
                 </button>

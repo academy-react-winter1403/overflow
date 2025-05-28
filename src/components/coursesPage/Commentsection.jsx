@@ -82,7 +82,7 @@ const CommentSection = ({ CourseId, data }) => {
               />
             </div> */}
 
-            <div>
+            <div className="">
               <Field
                 type="text"
                 id="title"

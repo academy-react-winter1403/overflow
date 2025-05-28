@@ -54,7 +54,7 @@ const Register = () => {
           <img src={academylogo} alt="logo"/>
         </div>
 
-        <div className="text-4xl max-md:text-2xl"> آکادمی سپهر</div>
+        <div className="text-4xl max-md:text-2xl mt-3"> آکادمی سپهر</div>
         
         </div>
 
@@ -63,12 +63,10 @@ const Register = () => {
           <div className="text-4xl"> ثبت نام</div>
           </div>
 
-          <div className=" flex flex-row-reverse w-10/10 pr-22">
+          <div className=" flex flex-row-reverse w-10/10 pr-22 gap-2">
               
             <div className="text-2xl">حساب کاربری دارید؟          </div>
-            <a href="/login" className="mt-1"> وارد شوید.</a>
-
-
+            <a href="/login" className="mt-1 text-[18px] font-bold text-blue-500"> وارد شوید</a>
 
         </div>
 
@@ -79,12 +77,12 @@ const Register = () => {
         >
           {() => (
 
-            <Form className="flex flex-col items-end mt-10 gap-2.5 pr-22 mx-auto w-10/10 h-auto ">
+            <Form className="flex flex-col items-end mt-10 gap-5 pr-22 mx-auto w-10/10 h-auto ">
               <Field
                 type="text"
                 name="phone"
                 placeholder="شماره تماس"
-                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 dark:text-black"
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 dark:text-black pr-3"
               />
               <ErrorMessage name="phone" component="div" className="text-red-500 text-sm pr-2" />
               <button

@@ -6,7 +6,8 @@ import layout from '../../assets/Coursesimage/logout.png';
 
 const Masters = ({data}) => {
 
-const courseData = data || {};
+  const courseData = data || {};
+
 
   return (
     <div className="rounded-4xl  bg-white w-9/10 h-7/15  mr-12 transition-all duration-300 dark:bg-gray-700" >
@@ -41,7 +42,7 @@ const courseData = data || {};
 
             </div>
 
-            <Link to="/">
+            <Link to="/teachers">
               <div className='mt-5 w-7/10 ml-20 flex justify-center'>
               <div className="  text-xs">
                 مشاهده سایر آموزش های این استاد

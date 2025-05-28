@@ -22,8 +22,8 @@ function SidePanel() {
   return (
     <div className=" bg-white h-180 rounded-2xl  dark:bg-gray-800">
       <div className='flex items-end flex-row-reverse w-10/10 h-20 pr-9'>
-        <img className='w-2/10' src={logo} alt="Logo" />
-        <span className='text-deep-blue text-2xl font-bold mr-5 max-sm:text-xs max-sm:font-bold'>آکادمی سپهر</span>
+        <img className='w-2/10 ' src={logo} alt="Logo" />
+        <span className='text-deep-blue text-2xl font-bold mr-5 max-sm:text-xs max-sm:font-bold dark:text-white'>آکادمی سپهر</span>
       </div>
 
       <div className="flex flex-col items-end w-10/10 h-auto mt-10 font-iransans">
@@ -38,7 +38,7 @@ function SidePanel() {
           { icon: commnews, to: '/panel/Mynewscomment', label: ' نظرات خبری' },
           { icon: profile, to: '/panel/panelpersoninfo', label: 'جزییات حساب' }
         ].map((item, idx) => (
-          <div key={idx} className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 transition-all duration-300 cursor-pointer max-lg:text-sm">
+          <div key={idx} className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 transition-all duration-300 cursor-pointer max-lg:text-sm ease-in-out hover:scale-110">
             <img className="w-1/10" src={item.icon} alt={item.label} />
             <NavLink to={item.to} className={({ isActive }) => isActive ? 'font-bold  text-3xl' : 'text-gray-500'}>
               <span className="mr-5 text-gray-500 dark:text-white max-lg:text-sm ">{item.label}</span>
