@@ -1,165 +1,164 @@
-import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import {  useSearchParams } from "react-router-dom";
 import Card from "../../components/Common/Card";
-import { getApi } from "../../core/services/api/getApi";
-import searchicon from '../../assets/Coursesimage/icons8-search-40.png'
+import { useGetCourses } from "../../core/services/ReactQuery/useCourses";
+import searchicon from "../../assets/Coursesimage/icons8-search-40.png";
 import FilterAccordion from "../../components/Accardeon/Accardeon";
 import FilterAccordionforskills from "../../components/Accardeon/Accardeonforskils";
 import FilterAccordionforType from "../../components/Accardeon/Accardeonfortype";
 
-
 const AllCourse = () => {
-  const [newCoursesData, setNewCoursesData] = useState([]);
-  
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  const [urlParams, setUrlParams] = useState({
+    SortingCol: searchParams.get("SortingCol") || "lastUpdate",
+    SortType: searchParams.get("SortType") || "DESC",
+    CostDown: parseInt(searchParams.get("CostDown")) || 0,
+    CostUp: parseInt(searchParams.get("CostUp")) || 50000000,
+    Query: searchParams.get("Query") || "",
+    PageNumber: parseInt(searchParams.get("PageNumber")) || 1,
+    RowsOfPage: parseInt(searchParams.get("RowsOfPage")) || 12,
+    TeacherId: searchParams.get("TeacherId") || "",
+  });
 
-const [filters, setFilters] = useState({
-  SortingCol: "lastUpdate",
-  SortType: "DESC",
-  CostDown: 0,
-  CostUp: 50000000,
-  Query: undefined,
-  PageNumber: 1,
-  RowsOfPage: 12, 
-  TeacherId:"",
-  CourseTypeId:"",
-  courseLevelId:"",
-});
+  // Use React Query hook for data fetching
+  const {
+    data: newCoursesData = [],
+    isLoading,
+    error,
+  } = useGetCourses(urlParams);
 
-// useEffect(() => {
-//   console.log("this filter",filters)
-
-  
-// }, [filters])
-const getNewCoursesData = async () => {
-  const queryParams = new URLSearchParams();
-
-  for (const key in filters) {
-    if (filters[key] !== undefined) {
-      queryParams.append(key, filters[key] ?? "");
-    }
-  }
-
-  queryParams.append("limit", 12);  
-  queryParams.append("page", filters.PageNumber);
-
-  // courses?pageNumber=1&instructor=1&type=2&TechCount=1&ListTech=2&level=1&CostDown=0&CostUp=375000000&Query=ad
-  const response = await getApi(`/Home/GetCoursesWithPagination?${queryParams.toString()}&TeacherId=${filters.TeacherId}&CourseTypeId=${filters.CourseTypeId}$courseLevelId=${filters.courseLevelId}`, "courseFilterDtos");
-  setNewCoursesData(response);
-};
-
-const handlePageChange = (newPage) => {
-  setFilters((prev) => ({
-    ...prev,
-    PageNumber: newPage,
-  }));
-};
-
-  useEffect(() => {
-    getNewCoursesData();
-  }, [filters]);
+  const handlePageChange = (newPage) => {
+    const newParams = {
+      ...urlParams,
+      PageNumber: newPage,
+    };
+    setUrlParams(newParams);
+    setSearchParams(newParams);
+  };
 
   const handleSorting = (sortingCol, sortType = "DESC") => {
-    setFilters((prev) => ({
-      ...prev,
+    const newParams = {
+      ...urlParams,
       SortingCol: sortingCol,
       SortType: sortType,
       PageNumber: 1,
-    }));
+    };
+    setUrlParams(newParams);
+    setSearchParams(newParams);
   };
-
 
   const handleSearchChange = (e) => {
     const value = e.target.value;
-    setFilters((prev) => ({
-      ...prev,
-      Query: value.trim() === "" ? undefined : value,
+    const newParams = {
+      ...urlParams,
+      Query: value.trim() === "" ? "" : value,
       PageNumber: 1,
-    }));
-
+    };
+    setUrlParams(newParams);
+    setSearchParams(newParams);
   };
 
-  return (
-    <div className="m-auto flex w-9/10 flex-wrap justify-center ">
+  const handleCostChange = (type, value) => {
+    const newParams = {
+      ...urlParams,
+      [type]: value,
+      PageNumber: 1,
+    };
+    setUrlParams(newParams);
+    setSearchParams(newParams);
+  };
 
-      <div className="mt-14 mb-14 h-16 w-full rounded-lg font-iransans font-bold text-right text-4xl leading-14  mr-5">
+  if (isLoading) {
+    return <div className="p-4 text-center">Loading...</div>;
+  }
+
+  if (error) {
+    return (
+      <div className="p-4 text-center text-red-500">Error loading courses</div>
+    );
+  }
+
+  return (
+    <div className="m-auto flex w-9/10 flex-wrap justify-center">
+      <div className="font-iransans mt-14 mb-14 h-16 w-full rounded-lg text-right text-4xl leading-14 font-bold dark:bg-gray-400/95">
         دوره ها
       </div>
 
-      <div className="pr-13 font-iransans flex  h-18 w-full justify-center rounded-lg  text-4xl font-black text-gray-700 dark:bg-gray-400/95 max-xl:gap-4 bg-white ">
+      <div className="font-iransans flex h-18 w-full justify-center rounded-lg pr-13 text-4xl font-black text-gray-700 max-xl:gap-4 dark:bg-gray-400/95">
         <div
           onClick={() => handleSorting("cost", "ASC")}
-          className={` ml-100 h-full w-[10%] font-iransans cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "cost" && filters.SortType === "ASC"
-            ? "font-bold text-blue-500"
-            : "text-gray-600"
-            }`}
+          className={`font-iransans ml-100 h-full w-[10%] cursor-pointer text-center text-3xl leading-14 ${
+            urlParams.SortingCol === "cost" && urlParams.SortType === "ASC"
+              ? "font-bold text-blue-500"
+              : "text-gray-600"
+          }`}
         >
           ارزان ترین
         </div>
         <div
           onClick={() => handleSorting("cost", "DESC")}
-          className={`h-full w-[10%] font-iransans cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "cost" && filters.SortType === "DESC"
-            ? "font-bold text-blue-500"
-            : "text-gray-600"
-            }`}
+          className={`font-iransans h-full w-[10%] cursor-pointer text-center text-3xl leading-14 ${
+            urlParams.SortingCol === "cost" && urlParams.SortType === "DESC"
+              ? "font-bold text-blue-500"
+              : "text-gray-600"
+          }`}
         >
           گران ترین
         </div>
         <div
           onClick={() => handleSorting("currentRegistrants")}
-          className={`h-full w-[10%] Kalameh cursor-pointer text-center text-3xl leading-14 ${filters.SortingCol === "currentRegistrants"
-            ? "font-bold text-blue-500"
-            : "text-gray-600"
-            }`}
+          className={`Kalameh h-full w-[10%] cursor-pointer text-center text-3xl leading-14 ${
+            urlParams.SortingCol === "currentRegistrants"
+              ? "font-bold text-blue-500"
+              : "text-gray-600"
+          }`}
         >
           پرفروش ترین
         </div>
         <div
           onClick={() => handleSorting("lastUpdate")}
-          className={`h-full w-[10%] Kalameh cursor-pointer text-center text-3xl leading-14  ${filters.SortingCol === "lastUpdate"
-            ? "font-bold text-blue-500"
-            : "text-gray-600"
-            }`}
+          className={`Kalameh h-full w-[10%] cursor-pointer text-center text-3xl leading-14 ${
+            urlParams.SortingCol === "lastUpdate"
+              ? "font-bold text-blue-500"
+              : "text-gray-600"
+          }`}
         >
           جدیدترین
         </div>
-        <div className=" m-auto h-[80%] font-Kalameh w-[10%] border-l-2 border-gray-300 text-center text-3xl leading-10 max-xl:hidden mr-20">
+        <div className="font-Kalameh m-auto mr-20 h-[80%] w-[10%] border-l-2 border-gray-300 text-center text-3xl leading-10 max-xl:hidden">
           مرتب سازی
         </div>
 
-        <div className="relative flex flex-row-reverse  w-2/10 ">
+        <div className="relative flex w-2/10 flex-row-reverse">
           <input
-          className=" mt-2 mr-2 bg-gray-100 h-14 w-9/10 text-right border pr-5 font-iransans rounded-[10px] text-xl dark:bg-gray-300"
-          type="text"
-          placeholder="...جستجو"
-          value={filters.Query}
-          onChange={handleSearchChange}
-        />
-        <img className="w-9 h-9 relative mr-[-50px] mt-4" src={searchicon} />
+            className="font-iransans mt-2 mr-2 h-14 w-9/10 rounded-[10px] border bg-gray-100 pr-5 text-right text-xl"
+            type="text"
+            placeholder="...جستجو"
+            value={urlParams.Query}
+            onChange={handleSearchChange}
+          />
+          <img className="relative mt-4 mr-[-50px] h-9 w-9" src={searchicon} />
         </div>
-
       </div>
 
-      <div className="flex w-full justify-center  max-xl:flex-row  max-xl:flex-wrap ">
-        <div className="mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4 pt-30 max-xl:w-1/1 ">
+      <div className="flex w-full justify-center max-xl:flex-row max-xl:flex-wrap">
+        <div className="mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4 pt-30 max-xl:w-1/1">
           {newCoursesData?.map((item, index) => (
             <Card item={item} index={index} key={index} />
           ))}
-
         </div>
 
-        <div className="h-75 w-[25%] justify-items-center rounded-md mt-22  p-4 max-xl:w-1/2 ">
-          {/* <div className="mb-6 text-right font-iransans p-2 text-3xl  w-8/10 text-right text-deep-blue bg-white rounded-[10px]">فیلتر ها</div> */}
-
-          <div className="mt-4 mb-11 h-34 w-8/10 border-2 border-gray-400/50 rounded-md m-auto bg-white dark:bg-gray-400 ">
+        <div className="mt-22 h-75 w-[25%] justify-items-center rounded-md p-4 max-xl:w-1/2 dark:bg-gray-400/95">
+          <div className="m-auto mt-4 mb-11 h-34 w-8/10 rounded-md border-2 border-gray-400/50 bg-white">
             <div className="mb-6">
-              <label className="block mb-2 text-right text-lg font-bold">
+              <label className="mb-2 block text-right text-lg font-bold"></label>
 
-              </label>
-
-              <div className="flex bor justify-center font-vazir text-gray-500 text-xl mt-5 mb-2 dark:text-black">
-                <span>تا  {Number(filters.CostUp).toLocaleString()} تومان</span>
-                <span> از   {Number(filters.CostDown).toLocaleString()} </span>
+              <div className="bor font-vazir mt-5 mb-2 flex justify-center text-xl text-gray-500">
+                <span>
+                  تا {Number(urlParams.CostUp).toLocaleString()} تومان
+                </span>
+                <span> از {Number(urlParams.CostDown).toLocaleString()} </span>
               </div>
 
               <input
@@ -167,12 +166,15 @@ const handlePageChange = (newPage) => {
                 min="0"
                 max="50000000"
                 step="100000"
-                value={filters.CostDown}
+                value={urlParams.CostDown}
                 onChange={(e) => {
-                  const val = Math.min(Number(e.target.value), filters.CostUp);
-                  setFilters((prev) => ({ ...prev, CostDown: val }));
+                  const val = Math.min(
+                    Number(e.target.value),
+                    urlParams.CostUp,
+                  );
+                  handleCostChange("CostDown", val);
                 }}
-                className="w-9/10  accent-blue-600"
+                className="w-9/10 accent-blue-600"
               />
 
               <input
@@ -180,36 +182,50 @@ const handlePageChange = (newPage) => {
                 min="0"
                 max="50000000"
                 step="100000"
-                value={filters.CostUp}
+                value={urlParams.CostUp}
                 onChange={(e) => {
-                  const val = Math.max(Number(e.target.value), filters.CostDown);
-                  setFilters((prev) => ({ ...prev, CostUp: val }));
+                  const val = Math.max(
+                    Number(e.target.value),
+                    urlParams.CostDown,
+                  );
+                  handleCostChange("CostUp", val);
                 }}
                 className="mt-2 w-9/10 accent-blue-500"
               />
 
-                  {/* teachersname */}
-              <FilterAccordion setFilters={setFilters}/>
+              {/* teachersname */}
+              <FilterAccordion
+                setUrlParams={setUrlParams}
+                urlParams={urlParams}
+                setSearchParams={setSearchParams}
+              />
 
-                  {/* skills level */}
-              <FilterAccordionforskills setFilters={setFilters}/>
+              {/* skills level */}
+              <FilterAccordionforskills
+                setUrlParams={setUrlParams}
+                urlParams={urlParams}
+                setSearchParams={setSearchParams}
+              />
 
-                  {/* course type */}
-
-               <FilterAccordionforType setFilters={setFilters}/>   
+              {/* course type */}
+              <FilterAccordionforType
+                setUrlParams={setUrlParams}
+                urlParams={urlParams}
+                setSearchParams={setSearchParams}
+              />
             </div>
           </div>
         </div>
       </div>
 
-                {/* pagination */}
-      <div className="flex justify-center items-center gap-4 mt-6 mb-10 w-full pr-110 font-iransans font-bold">
+      {/* pagination */}
+      <div className="font-iransans mt-6 mb-10 flex w-full items-center justify-center gap-4 pr-110 font-bold">
         <button
-          className={`w-12 h-12 rounded-[50px] bg-deep-blue text-white hover:bg-blue-700 ${
-      filters.PageNumber === 1 ? "opacity-50 cursor-not-allowed" : ""
-    }`}
-    disabled={filters.PageNumber === 1}
-          onClick={() => handlePageChange(filters.PageNumber - 1)}
+          className={`bg-deep-blue h-12 w-12 rounded-[50px] text-white hover:bg-blue-700 ${
+            urlParams.PageNumber === 1 ? "cursor-not-allowed opacity-50" : ""
+          }`}
+          disabled={urlParams.PageNumber === 1}
+          onClick={() => handlePageChange(urlParams.PageNumber - 1)}
         >
           قبلی
         </button>
@@ -219,23 +235,21 @@ const handlePageChange = (newPage) => {
           {Array.from({ length: 10 }, (_, i) => i + 1).map((page) => (
             <button
               key={page}
-              className={`px-3 py-1 border border-gray-300 rounded-[50px] bg-white text-lg hover:bg-gray-100 
-                ${filters.PageNumber === page ? "text-red-500" : "text-wite"}`}
+              className={`rounded-[50px] border border-gray-300 bg-white px-3 py-1 text-lg hover:bg-gray-100 ${urlParams.PageNumber === page ? "bg-deep-blue text-white" : ""}`}
               onClick={() => handlePageChange(page)}
             >
               {page}
             </button>
           ))}
         </div>
-        
+
         <button
-          className="w-12 h-12 rounded-[50px] bg-deep-blue text-white hover:bg-blue-700"
-          onClick={() => handlePageChange(filters.PageNumber + 1)}
+          className="bg-deep-blue h-12 w-12 rounded-[50px] text-white hover:bg-blue-700"
+          onClick={() => handlePageChange(urlParams.PageNumber + 1)}
         >
           بعدی
         </button>
-            </div>
-
+      </div>
     </div>
   );
 };

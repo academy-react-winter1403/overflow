@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Getteacherid } from "../../core/services/api/filterapi/teacerid";
 
-const FilterAccordion = ({ setFilters }) => {
+const FilterAccordion = ({ setUrlParams, urlParams, setSearchParams }) => {
   const [openSection, setOpenSection] = useState(null);
   const [teacher, setTeacher] = useState([]);
   const [selectedTeachers, setSelectedTeachers] = useState({});
@@ -20,10 +20,13 @@ const FilterAccordion = ({ setFilters }) => {
   };
 
   const handleCheckboxChange = (event, id) => {
-    setFilters((prev) => ({
-      ...prev,
+    const newParams = {
+      ...urlParams,
       TeacherId: id,
-    }));
+      PageNumber: 1,
+    };
+    setUrlParams(newParams);
+    setSearchParams(newParams);
 
     setSelectedTeachers((prev) => ({
       [id]: !prev[id],
@@ -32,10 +35,13 @@ const FilterAccordion = ({ setFilters }) => {
 
   const clearFilters = () => {
     setSelectedTeachers({});
-    setFilters((prev) => ({
-      ...prev,
-      TeacherId: null, 
-    }));
+    const newParams = {
+      ...urlParams,
+      TeacherId: "",
+      PageNumber: 1,
+    };
+    setUrlParams(newParams);
+    setSearchParams(newParams);
   };
 
   return (

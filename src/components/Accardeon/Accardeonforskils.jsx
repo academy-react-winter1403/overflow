@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Getskills } from "../../core/services/api/filterapi/skills";
 
-const FilterAccordionforskills = ({setFilters}) => {
+const FilterAccordionforskills = ({ setUrlParams, urlParams, setSearchParams }) => {
   const [openSection, setOpenSection] = useState(null);
   const [Skill, setSkill] = useState([]);
   const [selectedSkills, setSelectedSkills] = useState({});
@@ -9,7 +9,6 @@ const FilterAccordionforskills = ({setFilters}) => {
   const getSkillsInfo = async () => {
     const response = await Getskills();
     setSkill(response.flat());
-    // console.log(response);
   };
 
   useEffect(() => {
@@ -21,23 +20,31 @@ const FilterAccordionforskills = ({setFilters}) => {
   };
 
   const handleCheckboxChange = (event, id) => {
-    // event.stopPropagation();
-     setFilters((prev) => ({
-      ...prev,
+    const newParams = {
+      ...urlParams,
       CourseTypeId: id,
-    }));
+      PageNumber: 1,
+    };
+    setUrlParams(newParams);
+    setSearchParams(newParams);
+
     setSelectedSkills((prev) => ({
       ...prev,
       [id]: !prev[id],
     }));
   };
+
   const clearFilters = () => {
     setSelectedSkills({});
-    setFilters((prev) => ({
-      ...prev,
-      CourseTypeId: null, 
-    }));
+    const newParams = {
+      ...urlParams,
+      CourseTypeId: "",
+      PageNumber: 1,
+    };
+    setUrlParams(newParams);
+    setSearchParams(newParams);
   };
+
   return (
     <div className="space-y-2" dir="rtl">
       {/* Skills Filter */}

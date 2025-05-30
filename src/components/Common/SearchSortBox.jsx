@@ -4,7 +4,7 @@ import { getApi } from "../../core/services/api/getApi";
 function SearchSortBox({ setSort, setSearch, categoryURL }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [timer, setTimer] = useState(null); // To store the timeout ID
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to track menu visibility
+  const [isMenuOpen, setIsMenuOpen] = useState(true); // State to track menu visibility
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filterData, setFilterData] = useState([]);
 
@@ -43,20 +43,20 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
   return (
     <>
       {/* Search */}
-      <div className="flex flex-row-reverse items-center my-6 mb-17 h-20 rounded-3xl bg-white dark:bg-gray-400/95">
+      <div className="my-6 mb-17 flex h-20 flex-row-reverse items-center rounded-3xl bg-white dark:bg-gray-400/95">
         <input
           type="text"
           placeholder="جستجو"
           onChange={handleSearchChange}
           value={searchTerm}
-          className="w-3/10 text-right text-4xl font-kalameh font-black h-full pr-8 focus:w-5/10 focus:text-black border-gray-300 rounded-md focus:outline-none transition-all duration-300"
+          className="font-kalameh h-full w-3/10 rounded-md border-gray-300 pr-8 text-right text-4xl font-black transition-all duration-300 focus:w-5/10 focus:text-black focus:outline-none"
         />
 
         {/* Sort */}
-        <div className="flex flex-row-reverse justify-around items-center relative w-full">
+        <div className="relative flex w-full flex-row-reverse items-center justify-around">
           <div>
             <button
-              className=" m-3 border-l-2 h-full p-2 font-black font-kalameh text-4xl border-gray-300 focus:outline-none"
+              className="font-kalameh m-3 h-full border-l-2 border-gray-300 p-2 text-4xl font-black focus:outline-none"
               onClick={toggleMenu} // Toggle menu on button click
             >
               مرتب سازی
@@ -66,14 +66,14 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
           <div
             className={`mr-5 transition-all duration-500 ease-in-out ${
               isMenuOpen
-                ? "opacity-100 translate-x-25"
-                : "opacity-0 translate-x-60 "
+                ? "translate-x-25 opacity-100"
+                : "translate-x-60 opacity-0"
             }`}
           >
             {isMenuOpen && (
-              <ul className="flex justify-center items-center text-3xl font-kalameh font-black text-gray-500">
+              <ul className="font-kalameh flex items-center justify-center text-3xl font-black text-gray-500">
                 <li
-                  className="px-4 py-2 rounded-2xl hover:bg-gray-200 cursor-pointer hover:text-black hover:shadow-xl"
+                  className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
                   onClick={() =>
                     setSort({ col: "InsertDate", SortType: "DESC" })
                   }
@@ -81,7 +81,7 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
                   تاریخ
                 </li>
                 <li
-                  className="px-4 py-2 rounded-2xl hover:bg-gray-200 cursor-pointer hover:text-black hover:shadow-xl"
+                  className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
                   onClick={() =>
                     setSort({ col: "currentLikeCount", SortType: "DESC" })
                   }
@@ -89,7 +89,7 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
                   محبوبیت
                 </li>
                 <li
-                  className="px-4 py-2 rounded-2xl hover:bg-gray-200 cursor-pointer hover:text-black hover:shadow-xl"
+                  className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
                   onClick={() =>
                     setSort({ col: "currentView", SortType: "DESC" })
                   }
@@ -99,38 +99,40 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
               </ul>
             )}
           </div>
-          <div className="flex flex-row-reverse justify-around items-center">
+          <div className="relative flex flex-row-reverse items-center justify-around">
             <button
-              className=" h-full p-2 text-4xl font-kalameh font-black  border-gray-300 border-l-2"
+              className="font-kalameh h-full border-l-2 border-gray-300 p-2 text-4xl font-black"
               onClick={toggleFilter} // Close menu on button click
             >
               فیلتر
             </button>
-            <div
-              className={`ml-10 transition-all duration-500 ease-in-out ${
-                isFilterOpen
-                  ? "opacity-100 -translate-x-5"
-                  : "opacity-0 translate-x-6 "
-              }`}
-            >
-              {isFilterOpen && (
-                <ul className="flex flex-col  overflow-y-autoscroll custom-scrollbar max-w-80 overflow-x-hidden max-h-60 items-center text-3xl font-kalameh font-black text-gray-500">
-                  {filterData&&filterData?.map((item) => (
+             <div
+            className={`absolute top-19 z-30 bg-white  dark:bg-gray-400/95 text-gray-100 rounded-2xl ml-10  transition-all duration-500 ease-in-out ${
+              isFilterOpen
+                ? "-translate-x-5 opacity-100"
+                : "translate-x-6 opacity-0"
+            }`}
+          >
+            {isFilterOpen && (
+              <ul className="overflow-y-autoscroll custom-scrollbar font-kalameh flex max-h-150 max-w-80 flex-col items-center overflow-x-hidden text-3xl font-black text-gray-500">
+                {filterData &&
+                  filterData?.map((item) => (
                     <li
                       key={item.id}
-                      className=" py-3 rounded-2xl  hover:bg-gray-200 cursor-pointer hover:scale-115 hover:text-black hover:shadow-xl"
+                      className="cursor-pointer rounded-2xl py-3 hover:scale-115 hover:bg-gray-200 hover:text-black hover:shadow-xl"
                       onClick={() => setSort({ categoryId: item.id })}
                     >
                       {item.categoryName}
                     </li>
                   ))}
-                </ul>
-              )}
-            </div>
+              </ul>
+            )}
           </div>
+          </div>
+         
         </div>
         <NavLink
-          className="pl-4 font-black text-4xl font-kalameh text-gray-500 hover:text-black"
+          className="font-kalameh pl-4 text-4xl font-black text-gray-500 hover:text-black"
           to={"/News"}
         >
           X
