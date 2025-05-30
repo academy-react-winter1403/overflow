@@ -19,7 +19,7 @@ function PanelLayout() {
       <div className="w-3/12 min-w-50 ">
         <SidePanel />
       </div>
-      <div className=" w-8/11 rounded-2xl bg-white dark:bg-gray-700  overflow-auto h-181">
+      <div className=" w-8/11 rounded-2xl bg-white dark:bg-gray-700  overflow-auto h-185">
         <Outlet />
       </div>
     </div>

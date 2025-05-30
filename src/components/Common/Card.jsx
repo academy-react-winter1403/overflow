@@ -4,6 +4,11 @@ import cardImg from "../../assets/common/cardImg.png";
 import clock from "../../assets/common/clock.png";
 import like from '../../assets/Coursesimage/like.png'
 import dislike from '../../assets/Coursesimage/dislike.png'
+import SmartImage from "./SmartImage";
+import fallbackcourse from "../../assets/Coursesimage/product-img.png";
+
+
+
 function Card({ item, index, handleNavigation, className = "" }) {
   const courseDuration = item?.lastUpdate;
 
@@ -16,7 +21,8 @@ function Card({ item, index, handleNavigation, className = "" }) {
         onClick={() => handleNavigation(item.courseId)}
       >
         <div className="relative h-[200px] max-2xl:h-45">
-          <img
+          <SmartImage src={item?.tumbImageAddress} fallback={fallbackcourse} alt={item.title} className="absolute shadow-deep-blue shadow-lg -top-15 w-[340px] h-[223px] object-cover rounded-3xl" />
+          {/* <img
             src={
               item?.tumbImageAddress && item?.tumbImageAddress !== "Not-set"
                 ? item?.tumbImageAddress
@@ -24,7 +30,7 @@ function Card({ item, index, handleNavigation, className = "" }) {
             }
             alt={item.title}
             className="shadow-deep-blue absolute -top-15 h-[223px] w-[340px] rounded-3xl object-cover shadow-lg max-lg:h-40"
-          />
+          /> */}
         </div>
 
         {/* Description */}

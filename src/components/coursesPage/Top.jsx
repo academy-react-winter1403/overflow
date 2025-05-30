@@ -67,7 +67,7 @@ const Top = ({ data,id}) => {
         </p>
       </div>
 
-      <div className="text-amber-50 shadow-2xl shadow-amber-50 rounded-2xl w-3/10 h-4/10 mt-10 mr-45 max-xl:mr-20">
+      <div className="text-amber-50 shadow-2xl shadow-amber-50 rounded-2xl w-3/10  mt-10 mr-45 max-xl:mr-20">
         <SmartImage
           src={courseData.imageAddress || productimg}
           alt="Course Banner"

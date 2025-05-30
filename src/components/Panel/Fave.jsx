@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import profile from '../../assets/userpanel/Path 31.png';
 import { favecourse } from '../../core/services/api/userpanelapi/panelapis';
+import SmartImage from '../Common/SmartImage';
 
 const Fave = () => {
     const [fave, setFave] = useState([]);
@@ -35,10 +36,13 @@ const Fave = () => {
                 fave.map((item, index) => (
                     <div
                         key={index}
-                        className="bg-gray-200 rounded-2xl w-11/12 h-20 flex flex-row-reverse justify-start pr-5 mt-3 items-center m-auto dark:bg-gray-500 hover:bg-gray-400 "
+                        className="bg-gray-200 rounded-2xl w-11/12 h-20 flex flex-row-reverse justify-start pr-5 mt-3 items-center m-auto dark:bg-gray-500 hover:bg-gray-400 gap-3"
                     >
-                        <img className=" w-12 h-12 rounded-[50px]" src={item.tumbImageAddress || profile} alt="Course profile" />
-                        <div className="pt-5 w-4/10 h-full text-right pr-5 ">{item.courseTitle || 'No Name'}</div>
+                        
+                        <div className=' w-1/10 justify-end flex flex-row'>
+                            <SmartImage src={item?.tumbImageAddress} fallback={profile} alt={item.title} className=" w-12 h-12 rounded-[50px] " />
+                        </div>
+                        <div className="pt-5 w-3/10 h-full text-right pr-5 truncate">{item.courseTitle || 'No Name'}</div>
                         <div className="pt-5 w-3/10 h-full text-right ">{item.teacheName || 'No Teacher'}</div>
                         <div className="pt-5 w-3/10 h-full  text-right">{item.lastUpdate.slice(0,10) || 'No Date'}</div>
                         {/* <div className="pt-5 w-2/10 h-full">{item.price || 'No Price'}</div> */}

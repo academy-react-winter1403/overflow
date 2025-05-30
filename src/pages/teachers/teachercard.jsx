@@ -1,6 +1,8 @@
 import hat from "../../assets/techers/mortarboard.png"
 import star from "../../assets/techers/starr.png"
 import clock from "../../assets/techers/clock.png"
+import fallbackteacher from "../../assets/techers/teacherbackup.webp"
+import SmartImage from "../../components/Common/SmartImage";
 const Techerscard = ({ item }) => {
     return (
         <div className="relative h-85 w-10/10 flex justify-center mt-10 m-auto hover:scale-105 transition-transform duration-300">
@@ -33,7 +35,8 @@ const Techerscard = ({ item }) => {
                         </div>
                     </div>
                 </div>
-                <img src={item.pictureAddress} className="absolute shadow-[1px 1px 10px 1px black] rounded-3xl float-right w-3/7 h-60 top-1/20 right-[-17px]"/>
+                <SmartImage src={item?.pictureAddress} fallback={fallbackteacher} alt={item.title} className="absolute shadow-[1px 1px 10px 1px black] rounded-3xl float-right w-3/7 h-60 top-1/20 right-[-17px]" />
+                
             </div>
         </div>
     );

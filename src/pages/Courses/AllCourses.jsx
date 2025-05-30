@@ -25,6 +25,7 @@ const [filters, setFilters] = useState({
   CourseTypeId:"",
   courseLevelId:"",
 });
+
 // useEffect(() => {
 //   console.log("this filter",filters)
 
@@ -219,7 +220,7 @@ const handlePageChange = (newPage) => {
             <button
               key={page}
               className={`px-3 py-1 border border-gray-300 rounded-[50px] bg-white text-lg hover:bg-gray-100 
-                ${filters.PageNumber === page ? "bg-deep-blue text-white" : ""}`}
+                ${filters.PageNumber === page ? "text-red-500" : "text-wite"}`}
               onClick={() => handlePageChange(page)}
             >
               {page}

@@ -34,7 +34,7 @@ const FilterAccordion = ({ setFilters }) => {
     setSelectedTeachers({});
     setFilters((prev) => ({
       ...prev,
-      TeacherId: null, // Resets the filter
+      TeacherId: null, 
     }));
   };
 
@@ -81,7 +81,7 @@ const FilterAccordion = ({ setFilters }) => {
 
           {/* Clear Filter Button */}
           <button
-            className="font-iransans font-bold mt-3 px-4 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-all duration-300 dark:text-black"
+            className="font-iransans font-bold mt-3 px-4 py-1 bg-deep-blue text-white rounded hover:bg-blue-900 transition-all duration-300 dark:text-black"
             onClick={clearFilters}
           >
            فیلتر را پاک کنید

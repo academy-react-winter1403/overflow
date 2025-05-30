@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getApi } from '../../core/services/api/getApi';
-import teach from '../../assets/userpanel/tech.png';
+import teach from '../../assets/userpanel/icons8-user-30.png';
 import courseimg from '../../assets/userpanel/word.png';
 import SmartImage from '../Common/SmartImage';
 
@@ -37,7 +37,7 @@ const ExistingCourseMap = () => {
                         </div>
                         <div className="flex flex-col w-5/10 text-right gap-10 pr-5  max-xl:w-6/10 max-xl:gap-3 transition-all duration-300 max-lg:text-sm max-lg:w-4/10">
                            
-                            <p>{course.title || "آموزش Tailwind css"}</p>
+                            <p className='pr-2 truncate'>{course.title || "آموزش Tailwind css"}</p>
                             <div className="flex flex-row gap-5 justify-end max-lg:hidden">
                                 {course.teacherName || "مهدی اصغری"}
                                 <img className="w-5 h-5" src={teach} alt="Teacher" />

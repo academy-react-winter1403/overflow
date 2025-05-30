@@ -20,23 +20,23 @@ function SidePanel() {
     navigate("/login")
   }
   return (
-    <div className=" bg-white h-180 rounded-2xl  dark:bg-gray-800">
+    <div className=" bg-white h-185 rounded-2xl  dark:bg-gray-800 ">
       <div className='flex items-end flex-row-reverse w-10/10 h-20 pr-9'>
         <img className='w-2/10 ' src={logo} alt="Logo" />
         <span className='text-deep-blue text-2xl font-bold mr-5 max-sm:text-xs max-sm:font-bold dark:text-white'>آکادمی سپهر</span>
       </div>
 
-      <div className="flex flex-col items-end w-10/10 h-auto mt-10 font-iransans">
+      <div className="flex flex-col items-end w-10/10 h-aut0 mt-10 font-iransans  ">
         {[
           { icon: dashboard, to: '/Panel', label: 'داشبورد' },
           { icon: courses, to: '/panel/mycourse', label: 'دوره های من' },
           { icon: ticket, to: '/panel/coursereserve', label: 'دوره های رزرو شده' },
           { icon: fave, to: '/panel/favecourse', label: 'دوره های مورد علاقه' },
           { icon: favenews, to: '/panel/Favenews', label: 'اخبار مورد علاقه' },
-          { icon: secur, to: '/panel/security', label: 'امنیت' },
-          { icon: comm, to: '/panel/Mycomment', label: 'نظرات من' },
+          { icon: comm, to: '/panel/Mycomment', label: 'نظرات  دوره ها' },
           { icon: commnews, to: '/panel/Mynewscomment', label: ' نظرات خبری' },
-          { icon: profile, to: '/panel/panelpersoninfo', label: 'جزییات حساب' }
+          { icon: profile, to: '/panel/panelpersoninfo', label: 'جزییات حساب' },
+          { icon: secur, to: '/panel/security', label: 'امنیت' },
         ].map((item, idx) => (
           <div key={idx} className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 transition-all duration-300 cursor-pointer max-lg:text-sm ease-in-out hover:scale-110">
             <img className="w-1/10" src={item.icon} alt={item.label} />
@@ -46,9 +46,9 @@ function SidePanel() {
           </div>
         ))}
 
-        <button onClick={logout} className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 transition-all duration-300 cursor-pointer max-lg:text-sm bg-transparent border-none">
+        <button onClick={logout} className="text-2xl w-10/10 flex items-end flex-row-reverse pr-10 mt-5 transition-all duration-300 cursor-pointer max-lg:text-sm bg-transparent border-none hover:scale-110">
           <img className="w-1/10" src={exit} alt="خروج" />
-          <span className="mr-5 text-gray-500 dark:text-white">خروج</span>
+          <span className="mr-5 text-gray-500 dark:text-white ">خروج</span>
         </button>
       </div>
     </div>

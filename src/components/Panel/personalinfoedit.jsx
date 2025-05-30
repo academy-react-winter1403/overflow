@@ -213,7 +213,7 @@ const Personalinfoedit = () => {
             />
           </div>
 
-          <div>
+          {/* <div>
             <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-white">
               عرض جغرافیایی
             </label>
@@ -235,7 +235,7 @@ const Personalinfoedit = () => {
               onChange={handleChange}
               className="w-full rounded-xl border border-gray-700 p-3 text-gray-700 shadow-lg dark:border-gray-400/50 dark:bg-gray-800 dark:text-white"
             />
-          </div>
+          </div> */}
 
           <div className="mt-4 flex justify-center md:col-span-2">
             <button

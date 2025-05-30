@@ -33,7 +33,6 @@ function NewsPage() {
     navigate(URL);
   }, [URL]);
 
-  // Update the state when searchParams change
   useEffect(() => {
     seturlParams({
       Query: searchParams.get("Query") || "",
@@ -44,7 +43,7 @@ function NewsPage() {
       SortType: searchParams.get("SortType") || "DESC",
     });
   }, [searchParams]);
-  // Handle Sort Change
+  
   const handleSortChange = (sort) => {
     seturlParams((prev) => ({
       ...prev,
@@ -54,12 +53,12 @@ function NewsPage() {
       pageNumber: 1,
     }));
   };
-  //Handel navigation
+  
   const handleNavigation = (id) => {
-    // console.log(id)
+    
     navigate(`NewsDetails/${id}`); 
   };
-  // Handle Search Change
+  
   const handelSearch = (search) => {
     seturlParams((prev) => ({
       ...prev,

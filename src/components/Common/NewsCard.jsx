@@ -3,6 +3,9 @@ import fallbackNews from "../../assets/News/newspaper.png";
 import clock from "../../assets/common/clock.png";
 import SmartImage from "./SmartImage";
 import { Link } from "react-router-dom";
+import like from '../../assets/Coursesimage/like.png';
+import dislike from '../../assets/Coursesimage/dislike.png';
+import views from '../../assets/Coursesimage/icons8-view-24.png';
 
 function NewsCard({ item, index, }) {
   return (
@@ -26,16 +29,22 @@ function NewsCard({ item, index, }) {
             {item.miniDescribe}
           </h5>
         </div>
-        <div className="text-right border-b-3 border-gray-300 h-1/9 items-center pb-7 mb-4">
-          <div className="text-deep-blue font-vazir text-lg font-semibold">
+        <div className="text-right border-b-3 border-gray-300 h-1/9 items-center pb-7 mb-2">
+          <div className="text-deep-blue font-vazir text-lg font-semibold ">
             {item.addUserFullName} ●
           </div>
         </div>
 
-        <div className="flex items-center justify-between text-sm text-gray-500">
-          <span>👁 {item.currentView}</span>
-          <span>👍🏼 {item.currentLikeCount}</span>
-          <span>👎 {item.currentDissLikeCount}</span>
+        <div className="flex items-center justify-between text-sm text-gray-500 ">
+          <span className="flex flex-row gap-1">
+            <img src={views} /> {item.currentView}
+            </span>
+          <span className="flex felx-row ">
+            <img  src={like} /> {item.currentLikeCount}
+            </span>
+          <span className="flex flex-row">
+            <img src={dislike} /> {item.currentDissLikeCount}
+            </span>
         </div>
       </div>
     </div>
