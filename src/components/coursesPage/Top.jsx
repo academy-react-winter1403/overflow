@@ -8,9 +8,6 @@ import eye from "../../assets/Coursesimage/eye.png";
 import calender from "../../assets/Coursesimage/cal.png";
 import SmartImage from "../Common/SmartImage";
 import { Addreserve } from "../../core/services/api/GetCourses/Reserveapi";
-import addtofave from'../../assets/Coursesimage/add-removebg-preview.png'
-import { Addtofave } from "../../core/services/api/GetCourses/addtofave";
-// import { Addreserve } from "../../core/services/api/GetCourses/reserveapi";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -43,20 +40,6 @@ const Top = ({ data,id}) => {
     }
 
   };  
-  const addtofavorite = async () => {
-
-    try {
-      const response = await Addtofave(id);
-      if (response){
-        toast.success("   به علاقمندی ها اضافه شد    ");
-        Navigate(`/AllCourses/Courses/${id}`)
-      }
-      console.log("Reserve Response:", response);
-      
-    } catch (error) {
-      console.error("Error reserving course:", error);
-    }
-  };
 
   return (
     <div className="flex flex-row-reverse items-center bg-gray-800 rounded-2xl flex-wrap w-10/10 h-auto transition-all duration-300 max-lg:pt-5">
@@ -86,7 +69,7 @@ const Top = ({ data,id}) => {
         </div> */}
         <button
           onClick={() => postreserve(id)}
-          className="text-amber-50 font-bold text-2xl bg-deep-blue rounded-3xl px-6 py-3 text-center max-lg:text-sm"
+          className="text-amber-50 font-bold text-2xl bg-deep-blue rounded-3xl px-6 py-3 text-center max-lg:text-sm hover:scale-110 transition-all duration-300"
         >
           رزرو دوره
           <ToastContainer />
@@ -96,31 +79,26 @@ const Top = ({ data,id}) => {
 
       <div className="flex flex-row w-5/10 justify-end pr-12 mb-5 gap-15 max-xl:w-10/10 ">
 
-        <button onClick={() => addtofavorite()} className="w-8 h-8">
-          <img src={addtofave} />
-          <ToastContainer />
-        </button>
-
-        <div className="text-white flex flex-row-reverse gap-2 h-6">
+        <div className="text-white flex flex-row-reverse gap-2 h-6 hover:scale-130 transition-all duration-300">
           <img className=" w-7 h-7 " src={commentcount} alt="Comment Count" />
           <div className="mt-1">{courseData.commentCount}</div>
         </div>
 
-        <div className="flex flex-row-reverse text-white gap-2 w-10 max-xl:w-2/10 items-center ">
+        <div className="flex flex-row-reverse text-white gap-2 w-10 max-xl:w-2/10 items-center hover:scale-130 transition-all duration-300">
           <img className="w-8 h-8 mt-[-10px]" src={likecount} alt="Clock Icon" />
           <div className="">{courseData.likeCount}</div>
         </div>       
-         <div className="flex flex-row-reverse text-white gap-2 w-10 max-xl:w-2/10 items-center ">
+         <div className="flex flex-row-reverse text-white gap-2 w-10 max-xl:w-2/10 items-center hover:scale-130 transition-all duration-300">
           <img className="w-7 h-7 mb-1" src={dislikecount} alt="Clock Icon" />
           <div className="mb-2">{courseData.dissLikeCount}</div>
         </div>
 
-        <div className="flex flex-row-reverse gap-2 text-white h-6">
+        <div className="flex flex-row-reverse gap-2 text-white h-6 hover:scale-130 transition-all duration-300">
           <img className="rounded-[50px]" src={eye} alt="Eye Icon" />
           {courseData.capacity}
         </div>
 
-        <div className="flex flex-row-reverse gap-2 text-white h-6">
+        <div className="flex flex-row-reverse gap-2 text-white h-6 hover:scale-130 transition-all duration-300">
           <img src={calender} alt="Calendar Icon" />
           {courseData?.insertDate && <p>{courseData?.insertDate.slice(0, 10)}</p>}
         </div>

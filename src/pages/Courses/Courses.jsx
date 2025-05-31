@@ -61,7 +61,7 @@ const Courses = () => {
 
         <div className=" pt-10 flex flex-col  w-10/10 items-end">
           
-          <Addlikeforcourse data={id} />
+          <Addlikeforcourse data={id} courseData={courseData}/>
           <SendNewComment id={id} />
         </div>
 
