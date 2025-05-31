@@ -3,7 +3,7 @@ import {
   Getprofile,
   UpdateProfileInfo,
 } from "../../core/services/api/userpanelapi/panelapis";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const Personalinfoedit = () => {
   const [fieldData, setFieldData] = useState({
@@ -237,11 +237,12 @@ const Personalinfoedit = () => {
             />
           </div> */}
 
-          <div className="mt-4 flex justify-center md:col-span-2">
+          <div className="mt-4 flex justify-center md:col-span-2 gap-5">
+            <Link className="bg-deep-blue rounded-xl text-center text-white font-bold font-iransans w-100 flex items-center justify-center hover:bg-blue-800 disabled:opacity-50" to="/panel/panelpersoninfo"> صفحه قبل</Link>
             <button
               type="submit"
               disabled={loading}
-              className="w-1/2 rounded-xl bg-[#436E8E] p-3 text-white shadow-lg hover:bg-blue-800 disabled:opacity-50"
+              className="w-1/2 rounded-xl bg-[#436E8E] p-3 text-white shadow-lg hover:bg-blue-800 disabled:opacity-50 font-bold"
             >
               {loading ? "در حال ارسال..." : "ثبت تغییرات"}
             </button>

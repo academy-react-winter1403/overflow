@@ -37,7 +37,7 @@ const Dashboard = () => {
         try {
             const response = await Getprofile();
             setProfile(response);
-            console.log("Profile response:", response);
+            // console.log("Profile response:", response);
         } catch (error) {
             console.log('Error from profileInfo:', error);
         }
@@ -53,7 +53,7 @@ const Dashboard = () => {
 
             setProfileinfo(response.totalCount);
 
-            console.log("Profile info :", response);
+            // console.log("Profile info :", response);
 
         } catch (error) {
             console.log('Error from profileInfo:', error);
@@ -69,7 +69,7 @@ const Dashboard = () => {
 
             setcoursecount(response.totalCount);
 
-            console.log("Profile info :", response);
+            // console.log("Profile info :", response);
 
         } catch (error) {
             console.log('Error from profileInfo:', error);
@@ -112,15 +112,18 @@ const Dashboard = () => {
                                         <div className="w-3/10 h-6/10 rounded-[50px] mt-[-35px] ml-5 bg-deep-blue flex justify-center items-center max-lg:w-15 max-lg:h-15">
                                             <img src={frame1} alt="Frame 1" />
                                         </div>
-                                        <span className='text-center mr-5 font-bold  max-lg:text-xs flex flex-row justify-end text-xl text-gray-500 mt-4 font-iransans dark:text-white'>  
+                                        <span  className='text-center mr-5 font-bold  max-lg:text-xs flex flex-row justify-end text-xl text-gray-500 mt-4 font-iransans dark:text-white'>  
                                             {coursecount} کورس های موردعلاقه  </span>
                                     </Link>
                                 </div>
                             </div>
 
                             <div className="flex flex-row-reverse justify-center w-5/10 h-60   transition-all duration-100 max-xl:w-4/10  dark:bg-gray-700 max-md:w-6/10">
-                                <span className="w-5/10 pt-20 font-bold max-xl:hidden">برای شرکت در دوره ها باید حداقل ٪ ۸۰ از پروفایل خود را تکمیل کنید.</span>
-                                <div className="flex flex-row w-5/10 mt-10 h-40 max-xl:w-4-10 max-xl:h-30">
+                                <span className="w-5/10 pt-20 font-bold max-xl:hidden" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}> 
+                                    برای شرکت در دوره ها باید حداقل ٪ ۸۰ از پروفایل خود را تکمیل کنید.
+                                </span>
+                                
+                                <div className="flex flex-row w-5/10 mt-10 h-40 max-xl:w-4-10 max-xl:h-30 hover:scale-110 transition-all duration-300">
                                     <CircularProgressbar value={percentage} text={`${percentage}%`} />
                                 </div>
                             </div>
@@ -128,14 +131,14 @@ const Dashboard = () => {
 
                         <div className="flex flex-row-reverse w-10/10 h-full">
                             <div className="flex flex-col gap-5 w-5/10 h-full">
-                                <span className="flex flex-row-reverse text-2xl font-bold pt-2 pr-10 max-lg:text-sm transition-all duration-300">دوره های در حال برگزاری</span>
+                                <span className="flex flex-row-reverse text-2xl font-bold pt-2 pr-10 max-lg:text-sm transition-all duration-300 "  style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>دوره های در حال برگزاری</span>
 
                                 <ExistingCourseMap  handleNavigation={handleNavigation}/>
 
                             </div>
 
                             <div className="flex flex-col gap-5 w-5/10 h-full transition-all duration-300">
-                                <span className="flex flex-row-reverse text-2xl font-bold pt-2 pr-10 transition-all duration-300 max-lg:text-sm"> دوره های پیشنهادی </span>
+                                <span className="flex flex-row-reverse text-2xl font-bold pt-2 pr-10 transition-all duration-300 max-lg:text-sm"  style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}> دوره های پیشنهادی </span>
                                 <div className="flex flex-row justify-center hover:scale-105 transition-transform duration-300 ">
                                     <div className="flex flex-row items-center bg-gray-100 rounded-2xl w-9/10 h-25 transition-all duration-300 dark:bg-gray-700 dark:border dark:border-white">
                                         <div className="flex flex-row-reverse items-end gap-10 w-5/10 max-lg:gap-2 ">

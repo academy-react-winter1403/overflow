@@ -66,7 +66,7 @@ const Addlikeforcourse = ({ data,courseData }) => {
 
       <div className="flex flex-row gap-5 ml-5 items-center ">
 
-        <button className="w-10 pb-2 hover:scale-130 transition-all duration-300" onClick={() => addtofavorite()}>
+        <button className="w-10 pb-2 hover:scale-130 transition-all duration-300" onClick={addtofavorite}>
           <img src={addtofave} />
           <ToastContainer />
         </button>

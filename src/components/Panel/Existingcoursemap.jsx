@@ -3,9 +3,10 @@ import { getApi } from '../../core/services/api/getApi';
 import teach from '../../assets/userpanel/icons8-user-30.png';
 import courseimg from '../../assets/userpanel/word.png';
 import SmartImage from '../Common/SmartImage';
+import { Link } from 'react-router';
 
 
-const ExistingCourseMap = () => {
+const ExistingCourseMap = (handleNavigation) => {
 
 
     const URL = "/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=2&SortingCol=lastUpdate";
@@ -26,7 +27,7 @@ const ExistingCourseMap = () => {
     }, []);
 
     return (
-        <div className="flex flex-col gap-5 ">
+        <Link to={`/AllCourses/Courses/${handleNavigation}`} className="flex flex-col gap-5 ">
             {newCoursesData&&newCoursesData.map((course, index) => (
                 <div key={index} className="flex flex-row justify-center">
                     <div className="flex flex-row items-center bg-gray-100 rounded-2xl w-9/10 h-25 dark:bg-gray-700 dark:border dark:border-white hover:scale-105 transition-transform duration-300 ">
@@ -46,7 +47,7 @@ const ExistingCourseMap = () => {
                     </div>
                 </div>
             ))}
-        </div>
+        </Link>
     );
 };
 

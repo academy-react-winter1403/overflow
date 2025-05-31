@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/userpanel/Logo.png';  
 import dashboard from '../../assets/userpanel/icons8-dashboard-100.png';  
@@ -13,17 +13,41 @@ import commnews from '../../assets/userpanel/icons8-interview-48.png'
 import favenews from '../../assets/userpanel/icons8-news-48.png';
 import { setItem } from '../../core/services/common/storage.services';
 import { useNavigate } from 'react-router-dom';
+import { Getprofile } from '../../core/services/api/userpanelapi/panelapis';
+
 function SidePanel() {
+
+  const [Profile, setProfile] = useState(null); 
+
   const navigate = useNavigate();
   const logout =() =>{
   setItem("token","");
     navigate("/login")
+
+    }; 
+
+    const profileInfo = async () => {
+
+        try {
+            const response = await Getprofile();
+
+            setProfile(response);
+
+        } catch (error) {
+            console.log('Error from profileInfo:', error);
+        }
+
   }
+  
+    useEffect(() => {
+          profileInfo();
+    }, []);
+
   return (
     <div className=" bg-white h-185 rounded-2xl  dark:bg-gray-800 ">
-      <div className='flex items-end flex-row-reverse w-10/10 h-20 pr-9'>
-        <img className='w-2/10 ' src={logo} alt="Logo" />
-        <span className='text-deep-blue text-2xl font-bold mr-5 max-sm:text-xs max-sm:font-bold dark:text-white'>آکادمی سپهر</span>
+      <div className='flex items-end flex-row-reverse w-10/10 h-20 pr-9   '>
+        <img className='w-15 h-15 rounded-[50px]' src={Profile?.userImage?.[0]?.puctureAddress || logo} alt="User Profile"/>
+        <span className='text-deep-blue text-2xl font-bold mr-5 max-sm:text-xs max-sm:font-bold dark:text-white'> {Profile?.fName} {Profile?.lName}  </span>
       </div>
 
       <div className="flex flex-col items-end w-10/10 h-aut0 mt-10 font-iransans  ">
