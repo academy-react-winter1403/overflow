@@ -14,6 +14,7 @@ import favenews from '../../assets/userpanel/icons8-news-48.png';
 import { setItem } from '../../core/services/common/storage.services';
 import { useNavigate } from 'react-router-dom';
 import { Getprofile } from '../../core/services/api/userpanelapi/panelapis';
+import ImageUpload from './ImageUpload';
 
 function SidePanel() {
 
@@ -45,9 +46,10 @@ function SidePanel() {
 
   return (
     <div className=" bg-white h-185 rounded-2xl  dark:bg-gray-800 ">
-      <div className='flex items-end flex-row-reverse w-10/10 h-20 pr-9   '>
+      <div className='flex flex-wrap items-end flex-row-reverse w-10/10 h-20 pr-9   '>
         <img className='w-15 h-15 rounded-[50px]' src={Profile?.userImage?.[0]?.puctureAddress || logo} alt="User Profile"/>
         <span className='text-deep-blue text-2xl font-bold mr-5 max-sm:text-xs max-sm:font-bold dark:text-white'> {Profile?.fName} {Profile?.lName}  </span>
+        <ImageUpload />
       </div>
 
       <div className="flex flex-col items-end w-10/10 h-aut0 mt-10 font-iransans  ">
