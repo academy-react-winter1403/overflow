@@ -70,8 +70,8 @@ const FilterAccordionforskills = ({ setUrlParams, urlParams, setSearchParams }) 
                 className="flex items-center space-x-2 flex-row hover:pr-3 transition-all duration-300 ease-in-out"
               >
                 <input
-                  type="Radio"
-                  className="rounded text-blue-500 transition-all duration-300 ease-in-out transform hover:scale-105"
+                  type="radio"
+                  className="h-5 w-5 appearance-none rounded-full border border-deep-blue transition-all duration-300 ease-in-out checked:bg-deep-blue hover:scale-110 focus:bg-blue-300"
                   checked={selectedSkills[item.CourseTypeId] || false}
                   onChange={(event) => handleCheckboxChange(event, index)}
                 />

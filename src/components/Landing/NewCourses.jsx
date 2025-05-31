@@ -1,46 +1,60 @@
-import React, {  useEffect, useState } from "react";
-import { Link, useNavigate,  } from "react-router-dom";
-import { getApi } from "../../core/services/api/getApi";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Card from "../Common/Card";
-function NewCourses() {
-  // console.log(params)
-  const URL = "/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=4&SortingCol=lastUpdate";
+import { useGetNewCourses } from "../../core/services/ReactQuery/useCourses";
 
-  const [newCoursesData, setNewCoursesData] = useState([]);
+function NewCourses() {
+  const { data: courses = [], isLoading, error } = useGetNewCourses();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    getNewCoursesData();
-  }, []);
-
-  const getNewCoursesData = async () => {
-    const response = await getApi(URL, "courseFilterDtos");
-    setNewCoursesData(response);
-    // console.log("NewCourse",response);
-  };
-
   const handleNavigation = (id) => {
-    console.log(id)
-    navigate(`AllCourses/Courses/${id}`); 
+    navigate(`AllCourses/Courses/${id}`);
   };
+
+  if (isLoading) {
+    return (
+      <div className="grid grid-cols-1 gap-4 p-4 lg:grid-cols-2 xl:grid-cols-4">
+        {[...Array(4)].map((_, index) => (
+          <div key={index} className="animate-pulse">
+            <div className="h-48 rounded-t-lg bg-gray-200"></div>
+            <div className="rounded-b-lg bg-white p-4">
+              <div className="mb-2 h-4 w-3/4 rounded bg-gray-200"></div>
+              <div className="h-4 w-1/2 rounded bg-gray-200"></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-4 text-center text-red-500">Error loading courses</div>
+    );
+  }
 
   return (
-    <div className="flex self-center flex-col max-w-[1641px] z-10  text-center my-24 py-8  ">
-      <h2 className="text-5xl font-peyda font-black text-deep-blue mb-13">جدید ترین دوره ها</h2>
+    <div className="z-10 my-24 flex max-w-[1641px] flex-col self-center py-8 text-center">
+      <h2 className="font-peyda text-deep-blue mb-13 text-5xl font-black">
+        جدید ترین دوره ها
+      </h2>
 
-      <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-4  max-lg:flex max-lg:flex-row max-lg:flex-wrap max-lg:justify-center">
-      {newCoursesData&&newCoursesData.map((item, index) => (
-
+      <div className="mt-4 grid grid-cols-1 gap-4 max-lg:flex max-lg:flex-row max-lg:flex-wrap max-lg:justify-center lg:grid-cols-2 xl:grid-cols-4">
+        {courses.map((item) => (
           <Card
             item={item}
-            index={index}
             handleNavigation={handleNavigation}
-            key={index}
+            key={item.courseId.toString()}
           />
         ))}
       </div>
 
-      <Link to="/AllCourses" className="font-bold mt-6 text-blue-500 hover:underline  flex flex-row justify-start">مشاهده همه</Link>
+      <Link
+        to="/AllCourses"
+        className="mt-6 flex flex-row justify-start font-bold text-blue-500 hover:underline"
+      >
+        مشاهده همه
+      </Link>
     </div>
   );
 }

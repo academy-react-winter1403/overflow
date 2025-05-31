@@ -1,0 +1,102 @@
+import { useEffect, useState } from "react";
+import { Getteacherid } from "../../core/services/api/filterapi/teacerid";
+
+const FilterAccordion = ({ setUrlParams, urlParams, setSearchParams }) => {
+  const [openSection, setOpenSection] = useState(null);
+  const [teacher, setTeacher] = useState([]);
+  const [selectedTeacherId, setSelectedTeacherId] = useState("");
+
+  const getTeacherInfo = async () => {
+    const response = await Getteacherid();
+    setTeacher(response.flat());
+  };
+
+  useEffect(() => {
+    getTeacherInfo();
+  }, []);
+
+  const toggleSection = (section) => {
+    setOpenSection((prev) => (prev === section ? null : section));
+  };
+
+  const handleRadioChange = (id) => {
+    const newId = selectedTeacherId === id ? "" : id; // Toggle if same id
+    setSelectedTeacherId(newId);
+
+    const newParams = {
+      ...urlParams,
+      TeacherId: newId,
+      PageNumber: 1,
+    };
+    setUrlParams(newParams);
+  };
+
+  const clearFilters = () => {
+    setSelectedTeacherId("");
+    const newParams = {
+      ...urlParams,
+      TeacherId: "",
+      PageNumber: 1,
+    };
+    setUrlParams(newParams);
+  };
+
+  return (
+    <div className="space-y-2" dir="rtl">
+      {/* Category Filter */}
+      <div className="mt-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div
+          className="flex cursor-pointer items-center justify-between"
+          onClick={() => toggleSection("category")}
+        >
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            اساتید
+          </h3>
+          <span className="text-xl text-gray-500 dark:text-gray-400">
+            {openSection === "category" ? "−" : "+"}
+          </span>
+        </div>
+
+        {/* Smooth expanding transition */}
+        <div
+          className={`overflow-hidden transition-all duration-300 ease-in-out ${
+            openSection === "category"
+              ? "max-h-[500px] opacity-100"
+              : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="mt-4 space-y-3">
+            {teacher.map((item) => (
+              <label
+                key={item.teacherId}
+                className="group flex cursor-pointer items-center space-x-3 rounded-lg p-2 hover:bg-gray-50 dark:hover:bg-gray-700"
+              >
+                <input
+                  type="radio"
+                  name="teacher"
+                  checked={selectedTeacherId === item.teacherId}
+                  onChange={() => handleRadioChange(item.teacherId)}
+                  className="h-4 w-4 cursor-pointer accent-deep-blue"
+                />
+                <span className="font-iransans pr-2 text-base font-medium text-gray-900 dark:text-gray-300">
+                  {item.fullName}
+                </span>
+              </label>
+            ))}
+          </div>
+
+          {selectedTeacherId && (
+            <button
+              className="font-iransans mt-4 w-full rounded-lg bg-deep-blue px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-700 dark:hover:bg-blue-600"
+              onClick={clearFilters}
+            >
+              پاک کردن فیلتر
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FilterAccordion;

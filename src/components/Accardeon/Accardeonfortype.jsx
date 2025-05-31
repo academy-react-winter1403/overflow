@@ -72,7 +72,7 @@ const FilterAccordionforType = ({ setUrlParams, urlParams, setSearchParams }) =>
               >
                 <input
                   type="radio"
-                  className="rounded text-blue-500 ml-2 transition-all duration-300 ease-in-out transform hover:scale-105"
+                  className="h-5 w-5 appearance-none rounded-full border border-deep-blue transition-all duration-300 ease-in-out checked:bg-deep-blue hover:scale-110 focus:bg-blue-300"
                   checked={selectedTypes[index] || false}
                   onChange={(event) => handleCheckboxChange(event, index)}
                 />

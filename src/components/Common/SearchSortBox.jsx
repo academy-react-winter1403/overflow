@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router-dom";
 import { getApi } from "../../core/services/api/getApi";
+
 function SearchSortBox({ setSort, setSearch, categoryURL }) {
+  const location = useLocation();
+  const isNewsPage = location.pathname.includes("/News");
   const [searchTerm, setSearchTerm] = useState("");
-  const [timer, setTimer] = useState(null); // To store the timeout ID
-  const [isMenuOpen, setIsMenuOpen] = useState(true); // State to track menu visibility
+  const [timer, setTimer] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filterData, setFilterData] = useState([]);
 
@@ -22,23 +25,24 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
 
   const toggleMenu = () => {
     setIsFilterOpen(false);
-
     setIsMenuOpen((prev) => !prev);
-
-    // Toggle the menu visibility
   };
+
   const toggleFilter = () => {
     setIsMenuOpen(false);
     setIsFilterOpen(!isFilterOpen);
   };
-  const getFilterData = async () => {
-    const response = await getApi(categoryURL);
-    setFilterData(response);
-  };
+
   useEffect(() => {
+    const getFilterData = async () => {
+      if (isNewsPage && categoryURL) {
+        const response = await getApi(categoryURL);
+        setFilterData(response);
+      }
+    };
+
     getFilterData();
-    console.log(filterData);
-  }, []);
+  }, [categoryURL, isNewsPage]);
 
   return (
     <>
@@ -57,7 +61,7 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
           <div>
             <button
               className="font-kalameh m-3 h-full border-l-2 border-gray-300 p-2 text-4xl font-black focus:outline-none"
-              onClick={toggleMenu} // Toggle menu on button click
+              onClick={toggleMenu}
             >
               مرتب سازی
             </button>
@@ -99,41 +103,49 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
               </ul>
             )}
           </div>
-          <div className="relative flex flex-row-reverse items-center justify-around">
-            <button
-              className="font-kalameh h-full border-l-2 border-gray-300 p-2 text-4xl font-black"
-              onClick={toggleFilter} // Close menu on button click
-            >
-              فیلتر
-            </button>
-             <div
-            className={`absolute top-19 z-30 bg-white  dark:bg-gray-400/95 text-gray-100 rounded-2xl ml-10  transition-all duration-500 ease-in-out ${
-              isFilterOpen
-                ? "-translate-x-5 opacity-100"
-                : "translate-x-6 opacity-0"
-            }`}
-          >
-            {isFilterOpen && (
-              <ul className="overflow-y-autoscroll custom-scrollbar font-kalameh flex max-h-150 max-w-80 flex-col items-center overflow-x-hidden text-3xl font-black text-gray-500">
-                {filterData &&
-                  filterData?.map((item) => (
-                    <li
-                      key={item.id}
-                      className="cursor-pointer rounded-2xl py-3 hover:scale-115 hover:bg-gray-200 hover:text-black hover:shadow-xl"
-                      onClick={() => setSort({ categoryId: item.id })}
-                    >
-                      {item.categoryName}
-                    </li>
-                  ))}
-              </ul>
-            )}
-          </div>
-          </div>
-         
+
+          {/* Filter section - only show on News page */}
+          {isNewsPage && (
+            <div className="relative flex flex-row-reverse items-center justify-around">
+              <button
+                className="font-kalameh h-full border-l-2 border-gray-300 p-2 text-4xl font-black"
+                onClick={toggleFilter}
+              >
+                فیلتر
+              </button>
+              <div
+                className={`absolute top-19 z-30 ml-10 rounded-2xl bg-white text-gray-100 transition-all duration-500 ease-in-out dark:bg-gray-400/95 ${
+                  isFilterOpen
+                    ? "-translate-x-5 opacity-100"
+                    : "translate-x-6 opacity-0"
+                }`}
+              >
+                {isFilterOpen && (
+                  <ul className="overflow-y-autoscroll custom-scrollbar font-kalameh flex max-h-150 max-w-80 flex-col items-center overflow-x-hidden text-3xl font-black text-gray-500">
+                    {filterData &&
+                      filterData?.map((item) => (
+                        <li
+                          key={item.id}
+                          className="cursor-pointer rounded-2xl py-3 hover:scale-115 hover:bg-gray-200 hover:text-black hover:shadow-xl"
+                          onClick={() => setSort({ categoryId: item.id })}
+                        >
+                          {item.categoryName}
+                        </li>
+                      ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          )}
         </div>
+
         <NavLink
           className="font-kalameh pl-4 text-4xl font-black text-gray-500 hover:text-black"
-          to={"/News"}
+          to={
+            isNewsPage
+              ? "/News?NewsCategoryId=&PageNumber=1&RowsOfPage=10&Query=&SortingCol=InsertDate&SortType=DESC"
+              : "/AllCourses?SortingCol=lastUpdate&SortType=DESC&CostDown=0&CostUp=50000000&Query=&PageNumber=1&RowsOfPage=12&TeacherId="
+          }
         >
           X
         </NavLink>
