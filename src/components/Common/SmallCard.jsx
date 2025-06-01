@@ -1,12 +1,15 @@
 import React from "react";
 import cardImg from "../../assets/common/cardImg.png";
+import { useNavigate } from "react-router";
 // import clock from "../../assets/common/clock.png";
-function SmallCard({ item, index, handleNavigation }) {
+function SmallCard({ item, index, }) {
+    const navigate = useNavigate();
+
   return (
     <div
       className="flex flex-col shrink-0  items-center dark:bg-gray-400/95 bg-white rounded-[29px] shadow-lg w-[328px] h-[328PX] px-6  cursor-pointer"
       key={index}
-      onClick={() => handleNavigation(`/AllCourses/Courses/${item.courseId}`)}
+      onClick={() => navigate(`/AllCourses?ListTech=${item.courseId}&TechCount=1&SortingCol=Active&SortType=DESC&CostDown=0&CostUp=1000000000&PageNumber=1&RowsOfPage=12`)}
     >
       <div className="mt-8 flex items-center h-[150px] ">
         <img

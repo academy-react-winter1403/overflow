@@ -1,5 +1,4 @@
 import React, {  useEffect, useState } from "react";
-import { useNavigate,  } from "react-router-dom";
 import { getApi } from "../../core/services/api/getApi";
 import SmallCard from "../Common/SmallCard.jsx";
 
@@ -8,7 +7,6 @@ function CourseCategories() {
   const URL = "/Home/GetTechnologies";
 
   const [newCoursesData, setNewCoursesData] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     getNewCoursesData();
@@ -20,10 +18,6 @@ function CourseCategories() {
     console.log("NewCourse",response);
   };
 
-  const handleNavigation = (id) => {
-    console.log(id)
-    navigate(`Courses/${id}`); 
-  };
 
   return (
     <div className="max-w-[1641px] z-10 flex flex-col mx-auto py-8 mb-80">
@@ -34,7 +28,6 @@ function CourseCategories() {
           <SmallCard
             item={item}
             index={index}
-            handleNavigation={handleNavigation}
             key={index}
           />
         ))}

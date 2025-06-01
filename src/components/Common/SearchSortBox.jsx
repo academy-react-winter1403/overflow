@@ -53,7 +53,7 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
           placeholder="جستجو"
           onChange={handleSearchChange}
           value={searchTerm}
-          className="font-kalameh h-full w-3/10 rounded-md border-gray-300 pr-8 text-right text-4xl font-black transition-all duration-300 focus:w-5/10 focus:text-black focus:outline-none"
+          className="font-kalameh h-full w-3/10 rounded-3xl border-3 shadow-md shadow-deep-blue border-deep-blue/15 dark:border-white/35   pr-8 text-right text-4xl font-black transition-all duration-300 focus:w-5/10 focus:text-black focus:outline-none"
         />
 
         {/* Sort */}

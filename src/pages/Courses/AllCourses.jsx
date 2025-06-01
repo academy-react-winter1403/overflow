@@ -105,7 +105,7 @@ const AllCourse = () => {
         </div>
 
         <div className="mt-10 h-75 w-[25%] justify-items-center rounded-md p-4 max-xl:w-1/2 ">
-          <div className="m-auto rounded-xl border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800">
+          <div className="m-auto  bg-white   dark:bg-gray-800 rounded-3xl border-3 shadow-md shadow-deep-blue border-deep-blue/15 dark:border-white/35 ">
             {/* Price Range Filter */}
             <div className="border-b border-gray-200 p-6 dark:border-gray-700">
               <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
@@ -158,7 +158,7 @@ const AllCourse = () => {
             </div>
 
             {/* Filters Section */}
-            <div className="space-y-1 p-6">
+            <div className="space-y-1 p-6 ">
               <div className="border-b border-gray-200 pb-4 dark:border-gray-700">
                 <FilterAccordion
                   setUrlParams={setUrlParams}
