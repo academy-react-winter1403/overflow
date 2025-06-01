@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { imageuploder } from '../../core/services/api/userpanelapi/ImageUpload';
+import { useFormData } from '../../core/Hook/formdata';
 
 const ImageUpload = () => {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -15,13 +16,14 @@ const ImageUpload = () => {
             return;
         }
 
-        const formData = {
-            formFile:''
+        const formData =  {
+            formFile:selectedFile
         }
-
+        
         setIsUploading(true);
+        const imguploader = useFormData(formData);
         try {
-            const response = await imageuploder(formData)
+            const response = await imageuploder(imguploader)
             alert('Upload successful!');
             console.log('Response:', response);
         } catch (error) {
