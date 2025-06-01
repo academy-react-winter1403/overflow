@@ -1,6 +1,5 @@
 import React from "react";
 import fallbackNews from "../../assets/News/newspaper.png";
-import clock from "../../assets/common/clock.png";
 import SmartImage from "./SmartImage";
 import { Link } from "react-router-dom";
 import like from '../../assets/Coursesimage/like.png';

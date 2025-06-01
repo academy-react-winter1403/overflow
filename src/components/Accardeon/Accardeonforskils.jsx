@@ -19,11 +19,12 @@ const FilterAccordionforskills = ({ setUrlParams, urlParams, setSearchParams }) 
     setOpenSection((prev) => (prev === section ? null : section));
   };
 
-  const handleCheckboxChange = (event, id) => {
+  const handleCheckboxChange = (event, id, levelName) => {
     const newParams = {
       ...urlParams,
       CourseTypeId: id,
       PageNumber: 1,
+      LevelName: levelName,
     };
     setUrlParams(newParams);
     setSearchParams(newParams);
@@ -48,7 +49,7 @@ const FilterAccordionforskills = ({ setUrlParams, urlParams, setSearchParams }) 
   return (
     <div className="space-y-2" dir="rtl">
       {/* Skills Filter */}
-      <div className="border border-gray-200 rounded-lg p-4 mt-10 bg-white dark:bg-gray-400 dark:text-black">
+      <div className="border  hover:bg-deep-blue/10  shadow-deep-blue shadow-2xs hover:shadow-sm transition-all border-gray-200 rounded-lg p-4 mt-10 bg-white dark:bg-gray-400 dark:text-black">
         <div
           className="cursor-pointer flex justify-between items-center text-2xl font-iransans"
           onClick={() => toggleSection("skills")}
@@ -59,11 +60,12 @@ const FilterAccordionforskills = ({ setUrlParams, urlParams, setSearchParams }) 
 
         {/* Smooth expanding transition */}
         <div
-          className={`overflow-auto transition-all duration-300 ${
+          className={`overflow-auto  transition-all duration-300 scrollbar-none ${
             openSection === "skills" ? "max-h-[500px] opacity-100 scale-100" : "max-h-0 opacity-0 scale-95"
           }`}
         >
-          <div className="mt-3 space-y-2">
+          <div className=" mt-3 space-y-2">
+          
             {Skill.map((item, index) => (
               <label
                 key={index}
@@ -73,7 +75,7 @@ const FilterAccordionforskills = ({ setUrlParams, urlParams, setSearchParams }) 
                   type="radio"
                   className="h-5 w-5 appearance-none rounded-full border border-deep-blue transition-all duration-300 ease-in-out checked:bg-deep-blue hover:scale-110 focus:bg-blue-300"
                   checked={selectedSkills[item.CourseTypeId] || false}
-                  onChange={(event) => handleCheckboxChange(event, index)}
+                  onChange={(event) => handleCheckboxChange(event, index,item.levelName)}
                 />
                 <span className="font-iransans pr-2 font-bold">{item.levelName}</span>
               </label>

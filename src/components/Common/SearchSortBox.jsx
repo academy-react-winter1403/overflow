@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { getApi } from "../../core/services/api/getApi";
 
-function SearchSortBox({ setSort, setSearch, categoryURL }) {
+function SearchSortBox({ urlParams,setSort, setSearch, categoryURL }) {
   const location = useLocation();
   const isNewsPage = location.pathname.includes("/News");
   const [searchTerm, setSearchTerm] = useState("");
@@ -47,7 +47,7 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
   return (
     <>
       {/* Search */}
-      <div className="my-6 mb-17 flex h-20 flex-row-reverse items-center rounded-3xl bg-white dark:bg-gray-400/95">
+      <div className="my-6 mb-17 flex h-20 shadow-lg flex-row-reverse items-center rounded-3xl bg-white dark:bg-gray-400/95">
         <input
           type="text"
           placeholder="جستجو"
@@ -78,7 +78,7 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
               isMenuOpen && (
                 <ul className="font-kalameh flex items-center justify-center text-3xl font-black text-gray-500">
                   <li
-                    className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
+                    className={`cursor-pointer rounded-2xl px-4 py-2 ${urlParams.SortingCol === "InsertDate" ? "bg-deep-blue/35 text-black" : ""} hover:bg-gray-200 hover:text-black hover:shadow-xl`}
                     onClick={() =>
                       setSort({ col: "InsertDate", SortType: "DESC" })
                     }
@@ -87,7 +87,7 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
                   </li>
 
                   <li
-                    className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
+                    className={`cursor-pointer rounded-2xl px-4 py-2 ${urlParams.SortingCol === "currentView" ? "bg-deep-blue/35 text-black" : ""} hover:bg-gray-200 hover:text-black hover:shadow-xl`}
                     onClick={() =>
                       setSort({ col: "currentView", SortType: "DESC" })
                     }
@@ -95,7 +95,7 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
                     بازدید
                   </li>
                   <li
-                    className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
+                    className={`cursor-pointer rounded-2xl px-4 py-2 ${urlParams.SortingCol === "currentLikeCount" ? "bg-deep-blue/35 text-black" : ""} hover:bg-gray-200 hover:text-black hover:shadow-xl`}
                     onClick={() =>
                       setSort({ col: "currentLikeCount", SortType: "DESC" })
                     }
@@ -106,8 +106,9 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
               )
             ) : (
               <ul className="font-kalameh flex items-center justify-center text-3xl font-black text-gray-500">
+                
                 <li
-                  className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
+                  className={`cursor-pointer rounded-2xl px-4 py-2 ${urlParams.SortingCol === "lastUpdate" ? "bg-deep-blue/35 text-black" : ""} hover:bg-gray-200 hover:text-black hover:shadow-xl`}
                   onClick={() =>
                     setSort({ col: "lastUpdate", SortType: "DESC" })
                   }
@@ -115,13 +116,13 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
                   تاریخ
                 </li>
                 <li
-                  className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
+                  className={`cursor-pointer rounded-2xl px-4 py-2 ${urlParams.SortingCol === "cost" ? "bg-deep-blue/35 text-black" : ""} hover:bg-gray-200 hover:text-black hover:shadow-xl`}
                   onClick={() => setSort({ col: "cost", SortType: "DESC" })}
                 >
                   قیمت
                 </li>
                 <li
-                  className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
+                  className={`cursor-pointer rounded-2xl px-4 py-2 ${urlParams.SortingCol === "likeCount" ? "bg-deep-blue/35 text-black" : ""} hover:bg-gray-200 hover:text-black hover:shadow-xl`}
                   onClick={() =>
                     setSort({ col: "likeCount", SortType: "DESC" })
                   }

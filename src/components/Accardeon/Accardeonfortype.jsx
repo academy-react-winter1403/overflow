@@ -19,12 +19,13 @@ const FilterAccordionforType = ({ setUrlParams, urlParams, setSearchParams }) =>
     setOpenSection((prev) => (prev === section ? null : section));
   };
 
-  const handleCheckboxChange = (event, id) => {
+  const handleCheckboxChange = (event, id,typeName) => {
     event.stopPropagation();
     const newParams = {
       ...urlParams,
       courseLevelId: id,
       PageNumber: 1,
+      TypeName: typeName,
     };
     setUrlParams(newParams);
     setSearchParams(newParams);
@@ -49,7 +50,7 @@ const FilterAccordionforType = ({ setUrlParams, urlParams, setSearchParams }) =>
   return (
     <div className="space-y-2" dir="rtl"> {/* Set right-to-left direction */}
       {/* Category Filter */}
-      <div className="border border-gray-200 rounded-lg p-4 mt-10 bg-white text-right dark:bg-gray-400 dark:text-black">
+      <div className="border hover:bg-deep-blue/10  shadow-deep-blue shadow-2xs hover:shadow-sm transition-all dark:shadow-gray-700 border-gray-200 rounded-lg p-4 mt-10 bg-white text-right dark:bg-gray-400 dark:text-black">
         <div
           className="cursor-pointer flex justify-between items-center text-2xl font-iransans"
           onClick={() => toggleSection("category")}
@@ -74,7 +75,7 @@ const FilterAccordionforType = ({ setUrlParams, urlParams, setSearchParams }) =>
                   type="radio"
                   className="h-5 w-5 appearance-none rounded-full border border-deep-blue transition-all duration-300 ease-in-out checked:bg-deep-blue hover:scale-110 focus:bg-blue-300"
                   checked={selectedTypes[index] || false}
-                  onChange={(event) => handleCheckboxChange(event, index)}
+                  onChange={(event) => handleCheckboxChange(event, index,item.typeName)}
                 />
                 <span className="font-iransans font-bold">{item.typeName}</span>
               </label>

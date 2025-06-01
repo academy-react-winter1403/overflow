@@ -22,11 +22,13 @@ const FilterAccordion = ({ setUrlParams, urlParams, setSearchParams }) => {
     setOpenSection((prev) => (prev === section ? null : section));
   };
 
-  const handleCheckboxChange = (event, id) => {
+  const handleCheckboxChange = (event, id, teacherName) => {
     const newParams = {
       ...urlParams,
       TeacherId: id,
       PageNumber: 1,
+      TeacherName: teacherName,
+
     };
     setUrlParams(newParams);
     // setSearchParams(newParams);
@@ -50,7 +52,7 @@ const FilterAccordion = ({ setUrlParams, urlParams, setSearchParams }) => {
   return (
     <div className="space-y-2" dir="rtl">
       {/* Category Filter */}
-      <div className="mt-10 rounded-lg border border-gray-200 bg-white p-4 dark:bg-gray-400 dark:text-black">
+      <div className="mt-10 rounded-lg border  hover:bg-deep-blue/10  shadow-deep-blue shadow-2xs hover:shadow-sm transition-all border-gray-200 bg-white p-4 dark:bg-gray-400 dark:text-black">
         <div
           className="font-iransans flex cursor-pointer items-center justify-between text-2xl"
           onClick={() => toggleSection("category")}
@@ -87,7 +89,7 @@ const FilterAccordion = ({ setUrlParams, urlParams, setSearchParams }) => {
                   className="h-5 w-5 appearance-none rounded-full border border-deep-blue transition-all duration-300 ease-in-out checked:bg-deep-blue hover:scale-110 focus:bg-blue-300"
                   checked={selectedTeachers[item.teacherId] || false}
                   onChange={(event) =>
-                    handleCheckboxChange(event, item.teacherId)
+                    handleCheckboxChange(event, item.teacherId, item.fullName)
                   }
                 />
                 <span className="font-iransans pr-2 font-bold">

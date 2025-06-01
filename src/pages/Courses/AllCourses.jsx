@@ -62,6 +62,17 @@ const AllCourse = () => {
       PageNumber: pageNumber,
     }));
   };
+  const setDefaultValue = () => {
+    setUrlParams({
+      SortingCol: "lastUpdate",
+      SortType: "DESC",
+      CostDown: 0,
+      CostUp: 50000000,
+      PageNumber: 1,
+      RowsOfPage: 12,
+      TeacherId: "",
+    });
+  };
 
   return (
     <div className="m-auto flex w-9/10 flex-wrap justify-center">
@@ -71,6 +82,7 @@ const AllCourse = () => {
       <div className="container mx-auto px-4 py-10 text-gray-600">
         {/* Search and Sort Box */}
         <SearchSortBox
+        urlParams={urlParams}
           setSort={({ col, SortType }) => {
             setUrlParams((prev) => ({
               ...prev,
@@ -90,7 +102,7 @@ const AllCourse = () => {
         />
         <div className="mb-10 flex flex-nowrap items-center justify-center">
           <div className="w-full border-b-4 border-gray-500"></div>
-          <h1 className="font-kalameh  max-w-7/10 min-w-3/10 text-center text-5xl font-black">
+          <h1 className="font-kalameh max-w-7/10 min-w-3/10 text-center text-5xl font-black">
             دوره‌ها
           </h1>
           <div className="w-full border-b-4 border-gray-600"></div>
@@ -104,8 +116,8 @@ const AllCourse = () => {
           ))}
         </div>
 
-        <div className="mt-10 h-75 w-[25%] justify-items-center rounded-md p-4 max-xl:w-1/2 ">
-          <div className="m-auto  bg-white   dark:bg-gray-800 rounded-3xl border-3 shadow-md shadow-deep-blue border-deep-blue/15 dark:border-white/35 ">
+        <div className="mt-10 h-75 w-[25%] justify-items-center rounded-md p-4 max-xl:w-1/2">
+          <div className="shadow-deep-blue border-deep-blue/15 m-auto rounded-3xl border-3 bg-white shadow-md dark:border-white/35 dark:bg-gray-800">
             {/* Price Range Filter */}
             <div className="border-b border-gray-200 p-6 dark:border-gray-700">
               <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
@@ -158,7 +170,83 @@ const AllCourse = () => {
             </div>
 
             {/* Filters Section */}
-            <div className="space-y-1 p-6 ">
+            <div className="space-y-1 p-2">
+              <button
+                onClick={setDefaultValue}
+                className="font-iransans w-full cursor-pointer rounded-lg border py-1 text-sm font-semibold transition-colors  hover:text-white dark:bg-transparent dark:text-white dark:hover:bg-gray-100 dark:hover:text-black  border-deep-blue  bg-deep-blue/10 text-deep-blue hover:bg-deep-blue "
+              >
+                حذف همه فیلترها
+              </button>
+
+              <div className="my-4 flex flex-wrap gap-2 text-sm">
+                {urlParams.TeacherName && (
+                  <span className="transition-colors cursor-pointer hover:text-white dark:bg-transparent dark:text-white dark:hover:bg-gray-100 dark:hover:text-black border-deep-blue bg-deep-blue/10 text-deep-blue hover:bg-deep-blue border font-iransans px-3 py-1 rounded-full flex items-center gap-2">
+                    {urlParams.TeacherName}
+                    <button
+                      onClick={() =>
+                        setUrlParams((prev) => ({
+                          ...prev,
+                          TeacherName: "",
+                          TeacherId: "",
+                          PageNumber: 1,
+                        }))
+                      }
+                    >
+                      ×
+                    </button>
+                  </span>
+                )}
+                {urlParams.Query && (
+                  <span className="cursor-pointer transition-colors hover:text-white dark:bg-transparent dark:text-white dark:hover:bg-gray-100 dark:hover:text-black border-deep-blue bg-deep-blue/30 text-deep-blue hover:bg-deep-blue border font-iransans px-3 py-1 rounded-full flex items-center gap-2">
+                    {urlParams.Query}
+                    <button
+                      onClick={() =>
+                        setUrlParams((prev) => ({
+                          ...prev,
+                          Query: "",
+                          PageNumber: 1,
+                        }))
+                      }
+                    >
+                      ×
+                    </button>
+                  </span>
+                )}
+                {urlParams.LevelName && (
+                  <span className=" transition-colors cursor-pointer hover:text-white dark:bg-transparent text-white dark:hover:bg-gray-100 dark:hover:text-black border-deep-blue bg-deep-blue/50 text-deep-blue hover:bg-deep-blue border font-iransans px-3 py-1 rounded-full flex items-center gap-2">
+                    {urlParams.LevelName}
+                    <button
+                      onClick={() =>
+                        setUrlParams((prev) => ({
+                          ...prev,
+                          LevelName: "",
+                          CourseTypeId: "",
+                          PageNumber: 1,
+                        }))
+                      }
+                    >
+                      ×
+                    </button>
+                  </span>
+                )}
+                {urlParams.TypeName && (
+                  <span className=" transition-colors cursor-pointer hover:text-white dark:bg-transparent dark:text-white dark:hover:bg-gray-100 dark:hover:text-black border-deep-blue bg-deep-blue/10 text-deep-blue hover:bg-deep-blue border font-iransans px-3 py-1 rounded-full flex items-center gap-2">
+                    {urlParams.TypeName}
+                    <button
+                      onClick={() =>
+                        setUrlParams((prev) => ({
+                          ...prev,
+                          TypeName: "",
+                          courseLevelId: "",
+                          PageNumber: 1,
+                        }))
+                      }
+                    >
+                      ×
+                    </button>
+                  </span>
+                )}
+              </div>
               <div className="border-b border-gray-200 pb-4 dark:border-gray-700">
                 <FilterAccordion
                   setUrlParams={setUrlParams}
@@ -235,10 +323,9 @@ const AllCourse = () => {
                 ) : (
                   <button
                     key={page}
-                    className={`rounded-[50px] border border-gray-300 bg-white px-3 py-1 text-lg hover:bg-gray-100 ${
-                      urlParams.PageNumber === page
-                        ? "bg-deep-blue text-white"
-                        : ""
+                   style={{ background: ` ${urlParams.PageNumber === page ? "#436e8e4D" : ""}` }}
+                    className={`rounded-[50px] border bg-white border-gray-300 px-3 py-1 text-lg hover:bg-gray-100 ${
+                      urlParams.PageNumber === page ? "text-black" : ""
                     }`}
                     onClick={() => handlePageChange(page)}
                   >

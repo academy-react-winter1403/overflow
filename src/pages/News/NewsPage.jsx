@@ -54,7 +54,7 @@ function NewsPage() {
       Query: searchParams.get("Query") || "",
       PageNumber: parseInt(searchParams.get("PageNumber") || "1"),
       NewsCategoryId: searchParams.get("NewsCategoryId") || "",
-      RowsOfPage: parseInt(searchParams.get("RowsOfPage")||"9"),
+      RowsOfPage: parseInt(searchParams.get("RowsOfPage") || "9"),
       SortingCol: searchParams.get("SortingCol") || "InsertDate",
       SortType: searchParams.get("SortType") || "DESC",
     });
@@ -97,6 +97,7 @@ function NewsPage() {
         setSort={handleSortChange}
         setSearch={handelSearch}
         categoryURL={categoryURL}
+        urlParams={urlParams}
       />
       {/* Title */}
       <div className="mb-10 flex flex-nowrap items-center justify-center">
@@ -166,10 +167,9 @@ function NewsPage() {
                 ) : (
                   <button
                     key={page}
-                    className={`rounded-[50px] border border-gray-300 bg-white px-3 py-1 text-lg hover:bg-gray-100 ${
-                      urlParams.PageNumber === page
-                        ? "bg-deep-blue text-white"
-                        : ""
+                    style={{ background: ` ${urlParams.PageNumber === page ? "#436e8e4D" : ""}` }}
+                    className={`rounded-[50px] border bg-white border-gray-300 px-3 py-1 text-lg hover:bg-gray-100 ${
+                      urlParams.PageNumber === page ? "text-black" : ""
                     }`}
                     onClick={() => handlePageChange(page)}
                   >
