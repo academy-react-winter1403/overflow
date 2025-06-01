@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Gettype } from "../../core/services/api/filterapi/coursetype";
 
-const FilterAccordionforType = ({setFilters}) => {
+const FilterAccordionforType = ({ setUrlParams, urlParams, setSearchParams }) => {
   const [openSection, setOpenSection] = useState(null);
   const [Type, setType] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState({});
@@ -9,7 +9,6 @@ const FilterAccordionforType = ({setFilters}) => {
   const getTypeInfo = async () => {
     const response = await Gettype();
     setType(response.flat());
-    // console.log(response);
   };
 
   useEffect(() => {
@@ -22,23 +21,31 @@ const FilterAccordionforType = ({setFilters}) => {
 
   const handleCheckboxChange = (event, id) => {
     event.stopPropagation();
-         setFilters((prev) => ({
-      ...prev,
+    const newParams = {
+      ...urlParams,
       courseLevelId: id,
-    }));
+      PageNumber: 1,
+    };
+    setUrlParams(newParams);
+    setSearchParams(newParams);
+
     setSelectedTypes((prev) => ({
       ...prev,
       [id]: !prev[id],
     }));
   };
 
-    const clearFilters = () => {
+  const clearFilters = () => {
     setSelectedTypes({});
-    setFilters((prev) => ({
-      ...prev,
-      courseLevelId: null, 
-    }));
+    const newParams = {
+      ...urlParams,
+      courseLevelId: "",
+      PageNumber: 1,
+    };
+    setUrlParams(newParams);
+    setSearchParams(newParams);
   };
+
   return (
     <div className="space-y-2" dir="rtl"> {/* Set right-to-left direction */}
       {/* Category Filter */}
@@ -65,7 +72,7 @@ const FilterAccordionforType = ({setFilters}) => {
               >
                 <input
                   type="radio"
-                  className="rounded text-blue-500 ml-2 transition-all duration-300 ease-in-out transform hover:scale-105"
+                  className="h-5 w-5 appearance-none rounded-full border border-deep-blue transition-all duration-300 ease-in-out checked:bg-deep-blue hover:scale-110 focus:bg-blue-300"
                   checked={selectedTypes[index] || false}
                   onChange={(event) => handleCheckboxChange(event, index)}
                 />

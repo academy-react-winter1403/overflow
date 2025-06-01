@@ -1,46 +1,59 @@
-import React, { useEffect, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Card from "../Common/Card";
-import { getApi } from "../../core/services/api/getApi";
+import { useGetBestSellers } from "../../core/services/ReactQuery/useCourses";
 
 function BestSellers() {
-  const URL = "/Home/GetCoursesTop?Count=4";
-
-  const [coursesData, setCoursesData] = useState([]);
-  useEffect(() => {
-    getCoursesData();
-  }, []);
-
-  const getCoursesData = async () => {
-    const response = await getApi(URL);
-    setCoursesData(response);
-    console.log("bestsellll", response);
-  };
-
+  const { data: courses = [], isLoading, error } = useGetBestSellers();
   const navigate = useNavigate();
+
   const handleNavigation = (id) => {
     navigate(`/Courses/${id}`);
   };
 
+  if (isLoading) {
+    return (
+      <div className="grid grid-cols-1 gap-4 p-4 lg:grid-cols-2 xl:grid-cols-4">
+        {[...Array(4)].map((_, index) => (
+          <div key={index} className="animate-pulse">
+            <div className="h-48 rounded-t-lg bg-gray-200"></div>
+            <div className="rounded-b-lg bg-white p-4">
+              <div className="mb-2 h-4 w-3/4 rounded bg-gray-200"></div>
+              <div className="h-4 w-1/2 rounded bg-gray-200"></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-4 text-center text-red-500">Error loading courses</div>
+    );
+  }
+
   return (
     <div className="z-10 my-24 flex max-w-[1641px] flex-col self-center py-8 text-center">
-      <h2 className="font-peyda mb-13 text-5xl font-black text-deep-blue">
+      <h2 className="font-peyda text-deep-blue mb-13 text-5xl font-black">
         پرفروش‌ترین دوره‌ها
       </h2>
 
       {/* Grid Layout for Cards */}
       <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-4">
-        {coursesData&&coursesData.map((item, index) => (
+        {courses.map((item) => (
           <Card
             item={item}
-            index={index}
             handleNavigation={handleNavigation}
-            key={index}
+            key={item.courseId.toString()}
           />
         ))}
       </div>
 
-      <Link to="/AllCourses" className=" font-bold mt-6 flex flex-row justify-start text-blue-500 hover:underline">
+      <Link
+        to="/AllCourses"
+        className="mt-6 flex flex-row justify-start font-bold text-blue-500 hover:underline"
+      >
         مشاهده همه
       </Link>
     </div>

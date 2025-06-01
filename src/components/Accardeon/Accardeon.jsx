@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { Getteacherid } from "../../core/services/api/filterapi/teacerid";
 
-const FilterAccordion = ({ setFilters }) => {
+const FilterAccordion = ({ setUrlParams, urlParams, setSearchParams }) => {
   const [openSection, setOpenSection] = useState(null);
   const [teacher, setTeacher] = useState([]);
   const [selectedTeachers, setSelectedTeachers] = useState({});
 
   const getTeacherInfo = async () => {
     const response = await Getteacherid();
-    setTeacher(response.flat());
+    const filteredTeachers = response
+      .flat()
+      .filter((teacher) => teacher.fullName && teacher.fullName.trim() !== "");
+    setTeacher(filteredTeachers);
   };
 
   useEffect(() => {
@@ -20,10 +23,13 @@ const FilterAccordion = ({ setFilters }) => {
   };
 
   const handleCheckboxChange = (event, id) => {
-    setFilters((prev) => ({
-      ...prev,
+    const newParams = {
+      ...urlParams,
       TeacherId: id,
-    }));
+      PageNumber: 1,
+    };
+    setUrlParams(newParams);
+    // setSearchParams(newParams);
 
     setSelectedTeachers((prev) => ({
       [id]: !prev[id],
@@ -32,10 +38,13 @@ const FilterAccordion = ({ setFilters }) => {
 
   const clearFilters = () => {
     setSelectedTeachers({});
-    setFilters((prev) => ({
-      ...prev,
-      TeacherId: null, 
-    }));
+    const newParams = {
+      ...urlParams,
+      TeacherId: "",
+      PageNumber: 1,
+    };
+    setUrlParams(newParams);
+    // setSearchParams(newParams);
   };
 
   return (
@@ -54,11 +63,18 @@ const FilterAccordion = ({ setFilters }) => {
 
         {/* Smooth expanding transition */}
         <div
-          className={`overflow-auto transition-all duration-300 ${
+          className={`scrollbar-none hover:scrollbar-none overflow-x-visible overflow-y-auto transition-all duration-300 ${
             openSection === "category"
               ? "max-h-[500px] opacity-100"
               : "max-h-0 opacity-0"
           }`}
+          style={{
+            scrollbarWidth: "none",
+            "-ms-overflow-style": "none",
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
+          }}
         >
           <div className="mt-3 space-y-2">
             {teacher.map((item) => (
@@ -68,9 +84,11 @@ const FilterAccordion = ({ setFilters }) => {
               >
                 <input
                   type="radio"
-                  className="appearance-none h-5 w-5 border border-blue-500 rounded-full checked:bg-blue-500 transition-all duration-300 ease-in-out hover:scale-110 focus:bg-blue-300"
+                  className="h-5 w-5 appearance-none rounded-full border border-deep-blue transition-all duration-300 ease-in-out checked:bg-deep-blue hover:scale-110 focus:bg-blue-300"
                   checked={selectedTeachers[item.teacherId] || false}
-                  onChange={(event) => handleCheckboxChange(event, item.teacherId)}
+                  onChange={(event) =>
+                    handleCheckboxChange(event, item.teacherId)
+                  }
                 />
                 <span className="font-iransans pr-2 font-bold">
                   {item.fullName}
@@ -81,10 +99,10 @@ const FilterAccordion = ({ setFilters }) => {
 
           {/* Clear Filter Button */}
           <button
-            className="font-iransans font-bold mt-3 px-4 py-1 bg-deep-blue text-white rounded hover:bg-blue-900 transition-all duration-300 dark:text-black"
+            className="font-iransans bg-deep-blue mt-3 rounded px-4 py-1 font-bold text-white transition-all duration-300 hover:bg-blue-900 dark:text-black"
             onClick={clearFilters}
           >
-           فیلتر را پاک کنید
+            فیلتر را پاک کنید
           </button>
         </div>
       </div>
