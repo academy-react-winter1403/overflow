@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import Card from "../../components/Common/Card";
 import SearchSortBox from "../../components/Common/SearchSortBox";
-import { useGetCourses } from "../../core/services/ReactQuery/useCourses";
-import { getApi } from "../../core/services/api/getApi";
 import FilterAccordion from "../../components/Accardeon/Accardeon";
 import FilterAccordionforskills from "../../components/Accardeon/Accardeonforskils";
 import FilterAccordionforType from "../../components/Accardeon/Accardeonfortype";
@@ -19,26 +17,24 @@ const AllCourse = () => {
     SortType: searchParams.get("SortType") || "DESC",
     CostDown: parseInt(searchParams.get("CostDown")) || 0,
     CostUp: parseInt(searchParams.get("CostUp")) || 50000000,
-    // Query: searchParams.get("Query") || "",
+    Query: searchParams.get("Query") || "",
     PageNumber: parseInt(searchParams.get("PageNumber")) || 1,
     RowsOfPage: parseInt(searchParams.get("RowsOfPage")) || 12,
     TeacherId: searchParams.get("TeacherId") || "",
   });
 
   useEffect(() => {
-    setSearchParams(urlParams);
-  }, [urlParams, setSearchParams]);
-
-  // Use React Query hook for data fetching
-  // const { data: courseData, isLoading, error } = useGetCourses(urlParams);
-
-  useEffect(() => {
+    const cleanedParams = Object.fromEntries(
+      Object.entries(urlParams).filter(([, v]) => v !== ""),
+    );
     const getCoursesData = async () => {
       const response = await http.get("/Home/GetCoursesWithPagination", {
-        params: urlParams,
+        params: cleanedParams,
       });
       setCourseData(response);
     };
+    setSearchParams(cleanedParams);
+
     getCoursesData();
   }, [urlParams]);
 
@@ -67,28 +63,6 @@ const AllCourse = () => {
     }));
   };
 
-  // if (isLoading) {
-  //   return (
-  //     <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-  //       {[...Array(12)].map((_, index) => (
-  //         <div key={index} className="animate-pulse">
-  //           <div className="h-48 rounded-t-lg bg-gray-200"></div>
-  //           <div className="rounded-b-lg bg-white p-4">
-  //             <div className="mb-2 h-4 w-3/4 rounded bg-gray-200"></div>
-  //             <div className="h-4 w-1/2 rounded bg-gray-200"></div>
-  //           </div>
-  //         </div>
-  //       ))}
-  //     </div>
-  //   );
-  // }
-
-  // if (error) {
-  //   return (
-  //     <div className="p-4 text-center text-red-500">Error loading courses</div>
-  //   );
-  // }
-
   return (
     <div className="m-auto flex w-9/10 flex-wrap justify-center">
       {/* <div className="font-iransans mt-14 mb-14 h-16 w-full rounded-lg text-right text-4xl leading-14 font-bold dark:bg-gray-400/95">
@@ -114,16 +88,23 @@ const AllCourse = () => {
           }}
           categoryURL="/Course/GetCourseCategory"
         />
+        <div className="mb-10 flex flex-nowrap items-center justify-center">
+          <div className="w-full border-b-4 border-gray-500"></div>
+          <h1 className="font-kalameh  max-w-7/10 min-w-3/10 text-center text-5xl font-black">
+            دوره‌ها
+          </h1>
+          <div className="w-full border-b-4 border-gray-600"></div>
+        </div>
       </div>
 
       <div className="flex w-full justify-center max-xl:flex-row max-xl:flex-wrap">
-        <div className="mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4 pt-30 max-xl:w-1/1">
+        <div className="mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4 pt-10 max-xl:w-1/1">
           {courses.map((item) => (
             <Card item={item} key={item.courseId} />
           ))}
         </div>
 
-        <div className="mt-22 h-75 w-[25%] justify-items-center rounded-md p-4 max-xl:w-1/2 dark:bg-gray-400/95">
+        <div className="mt-10 h-75 w-[25%] justify-items-center rounded-md p-4 max-xl:w-1/2 ">
           <div className="m-auto rounded-xl border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800">
             {/* Price Range Filter */}
             <div className="border-b border-gray-200 p-6 dark:border-gray-700">

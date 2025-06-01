@@ -74,31 +74,59 @@ function SearchSortBox({ setSort, setSearch, categoryURL }) {
                 : "translate-x-60 opacity-0"
             }`}
           >
-            {isMenuOpen && (
+            {isNewsPage ? (
+              isMenuOpen && (
+                <ul className="font-kalameh flex items-center justify-center text-3xl font-black text-gray-500">
+                  <li
+                    className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
+                    onClick={() =>
+                      setSort({ col: "InsertDate", SortType: "DESC" })
+                    }
+                  >
+                    تاریخ
+                  </li>
+
+                  <li
+                    className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
+                    onClick={() =>
+                      setSort({ col: "currentView", SortType: "DESC" })
+                    }
+                  >
+                    بازدید
+                  </li>
+                  <li
+                    className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
+                    onClick={() =>
+                      setSort({ col: "currentLikeCount", SortType: "DESC" })
+                    }
+                  >
+                    محبوبیت
+                  </li>
+                </ul>
+              )
+            ) : (
               <ul className="font-kalameh flex items-center justify-center text-3xl font-black text-gray-500">
                 <li
                   className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
                   onClick={() =>
-                    setSort({ col: "InsertDate", SortType: "DESC" })
+                    setSort({ col: "lastUpdate", SortType: "DESC" })
                   }
                 >
                   تاریخ
                 </li>
                 <li
                   className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
-                  onClick={() =>
-                    setSort({ col: "currentLikeCount", SortType: "DESC" })
-                  }
+                  onClick={() => setSort({ col: "cost", SortType: "DESC" })}
                 >
-                  محبوبیت
+                  قیمت
                 </li>
                 <li
                   className="cursor-pointer rounded-2xl px-4 py-2 hover:bg-gray-200 hover:text-black hover:shadow-xl"
                   onClick={() =>
-                    setSort({ col: "currentView", SortType: "DESC" })
+                    setSort({ col: "likeCount", SortType: "DESC" })
                   }
                 >
-                  بازدید
+                  محبوبیت
                 </li>
               </ul>
             )}
