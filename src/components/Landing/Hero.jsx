@@ -47,7 +47,7 @@ function Hero() {
   }, [newsQuery]);
 
   return (
-    <section className="relative lg:px-30 px-10 py-16">
+    <section className="relative lg:px-30 px-10 py-16 ">
       {/* set onFocus */}
       {isSearchFocused && (
         <div
@@ -72,9 +72,9 @@ function Hero() {
         />
 
         {/* Right Section */}
-        <div className="flex w-full flex-shrink-2 flex-col items-end justify-start space-y-6 text-right max-xl:mx-auto max-xl:items-center">
+        <div className="flex w-full flex-shrink-2 flex-col items-end justify-start space-y-6 text-right max-xl:mx-auto max-xl:items-center ">
           <h1
-            className={`  font-peyda text-deep-blue text-[59px] font-black tracking-widest dark:text-gray-200 ${
+            className={`  font-peyda text-deep-blue text-[59px] font-black tracking-widest dark:text-gray-200  max-sm:text-4xl ${
               isSearchFocused ? "opacity-20" : ""
             }`}
           >

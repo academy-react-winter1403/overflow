@@ -1,3 +1,4 @@
+import SliderComponent from '../../components/Common/slider';
 import { Hero, NewCourses, News, BestSellers, Services, SiteStats, CourseCategories } from '../../components/Landing';
 import Footer from '../Layout/Footer';
 

@@ -36,7 +36,7 @@ function News() {
     }
   };
   return (
-    <div className="relative container mx-auto flex flex-col py-10">
+    <div className="relative container mx-auto flex flex-col py-10 ">
       <div className="z-0">
         <img
           src={bubbleBack}

@@ -15,7 +15,7 @@ const InfoCard = ({ items }) => {
   ];
 
   return (
-    <div className="flex relative justify-center my-50 p-4 gap-28 ">
+    <div className="flex relative justify-center my-50 p-4 gap-28  max-lg:w-10/10 max-lg:gap-15  max-sm:w-10/10 max-sm:h-100  max-sm:flex-wrap max-sm:gap-30">
       {/* Background */}
       <img
         src={teacherBack}
@@ -32,7 +32,7 @@ const InfoCard = ({ items }) => {
       {stats&&stats.map((stat, index) => (
         <div
           key={index}
-          className="flex flex-col items-center font-vazir text-[40px] font-bold justify-center"
+          className="flex flex-col items-center font-vazir text-[40px] font-bold justify-center  max-sm:w-2/10 max-sm:h-10"
         >
           <span className="text-gray-400 dark:text-gray-200">
             {Number(stat.value).toLocaleString("fa-IR")}

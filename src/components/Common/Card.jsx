@@ -13,15 +13,15 @@ function Card({ item, index, handleNavigation, className = "" }) {
   const courseDuration = item?.lastUpdate;
 
   return (
-    <div className={`${className} pt-15`}>
+    <div className={`${className} pt-15 `}>
       <Link to={`/AllCourses/Courses/${item.courseId}`}> 
       <div
-        className="relative h-140 w-96 cursor-pointer rounded-[29px] bg-white px-6 text-right shadow-lg transition-all max-2xl:h-126 max-2xl:w-80 max-lg:w-60 max-md:w-80 dark:bg-gray-400/95 hover:scale-105 hover:shadow-xl max-lg:h-80"
+        className="relative h-140 w-96 cursor-pointer rounded-[29px] bg-white px-6 text-right shadow-lg transition-all max-2xl:h-126 max-2xl:w-80 max-lg:w-60 max-md:w-80 dark:bg-gray-400/95 hover:scale-105 hover:shadow-xl max-lg:h-80 "
         key={index}
         onClick={() => handleNavigation(item.courseId)}
       >
         <div className="relative h-[200px] max-2xl:h-45">
-          <SmartImage src={item?.tumbImageAddress} fallback={fallbackcourse} alt={item.title} className="absolute shadow-deep-blue shadow-lg -top-15 w-[340px] h-[223px] object-cover rounded-3xl" />
+          <SmartImage src={item?.tumbImageAddress} fallback={fallbackcourse} alt={item.title} className="absolute shadow-deep-blue shadow-lg -top-15 w-[340px] h-[223px] object-cover rounded-3xl max-lg:h-[180px]" />
           {/* <img
             src={
               item?.tumbImageAddress && item?.tumbImageAddress !== "Not-set"

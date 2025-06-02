@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Card from "../Common/Card";
 import { useGetNewCourses } from "../../core/services/ReactQuery/useCourses";
 
+
 function NewCourses() {
   const { data: courses = [], isLoading, error } = useGetNewCourses();
   const navigate = useNavigate();
@@ -35,11 +36,11 @@ function NewCourses() {
 
   return (
     <div className="z-10 my-24 flex max-w-[1641px] flex-col self-center py-8 text-center">
-      <h2 className="font-peyda text-deep-blue mb-13 text-5xl font-black">
+      <h2 className="font-peyda text-deep-blue mb-13 text-5xl font-black max-sm:text-2xl">
         جدید ترین دوره ها
       </h2>
 
-      <div className="mt-4 grid grid-cols-1 gap-4 max-lg:flex max-lg:flex-row max-lg:flex-wrap max-lg:justify-center lg:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-4 grid grid-cols-1 gap-4 max-lg:flex max-lg:flex-row max-lg:flex-wrap max-lg:justify-center lg:grid-cols-2 xl:grid-cols-4 max-lg:h-98 max-lg:overflow-hidden">
         {courses.map((item) => (
           <Card
             item={item}
@@ -51,7 +52,7 @@ function NewCourses() {
 
       <Link
         to="/AllCourses"
-        className="mt-6 flex flex-row justify-start font-bold text-blue-500 hover:underline"
+        className="mt-6 flex flex-row justify-start font-bold text-blue-500 hover:underline max-sm:ml-10"
       >
         مشاهده همه
       </Link>
