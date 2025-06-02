@@ -50,7 +50,7 @@ const FilterAccordionforType = ({ setUrlParams, urlParams, setSearchParams }) =>
   return (
     <div className="space-y-2" dir="rtl"> {/* Set right-to-left direction */}
       {/* Category Filter */}
-      <div className="border hover:bg-deep-blue/10  shadow-deep-blue shadow-2xs hover:shadow-sm transition-all dark:shadow-gray-700 border-gray-200 rounded-lg p-4 mt-10 bg-white text-right dark:bg-gray-400 dark:text-black">
+      <div className="border hover:bg-deep-blue/10  shadow-deep-blue shadow-2xs hover:shadow-sm transition-all dark:shadow-gray-700 border-gray-200 rounded-lg p-4 mt-10 bg-white text-right dark:bg-gray-400 dark:text-white">
         <div
           className="cursor-pointer flex justify-between items-center text-2xl font-iransans"
           onClick={() => toggleSection("category")}

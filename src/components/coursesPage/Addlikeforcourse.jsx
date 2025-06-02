@@ -66,18 +66,19 @@ const Addlikeforcourse = ({ data,courseData }) => {
 
       <div className="flex flex-row gap-5 ml-5 items-center ">
 
-        <button className="w-10 pb-2 hover:scale-130 transition-all duration-300" onClick={addtofavorite}>
+        <button className="w-10 pb-2 shrink-0 hover:scale-130 transition-all duration-300" onClick={addtofavorite}>
           <img src={addtofave} />
           <ToastContainer />
         </button>
         
-        <button onClick={likecourse} className="flex flex-row items-center text-2xl">
+        <button onClick={likecourse} className="flex shrink-0 flex-row items-center text-2xl">
           <ToastContainer />
-          <img className="h-10 w-14 hover:scale-130 transition-all duration-300" src={ Like  } />
+          <img className={`h-10 w-14 hover:scale-130 transition-all ${courseData.currentUserLike == "1"? "bg-amber-400":""}   duration-300`} src={ Like  } />
           {/* {courseData.currentUserLike? Like : Dislike } */}
+          
         </button>
         
-        <button onClick={dislikecourse} className="flex flex-row items-center text-2xl">
+        <button onClick={dislikecourse} className="flex shrink-0 flex-row items-center text-2xl">
           <ToastContainer />
           <img className="h-10 w-15 mt-1 hover:scale-130 transition-all duration-300" src={Dislike} />
         </button>

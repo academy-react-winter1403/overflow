@@ -49,7 +49,7 @@ const FilterAccordionforskills = ({ setUrlParams, urlParams, setSearchParams }) 
   return (
     <div className="space-y-2" dir="rtl">
       {/* Skills Filter */}
-      <div className="border  hover:bg-deep-blue/10  shadow-deep-blue shadow-2xs hover:shadow-sm transition-all border-gray-200 rounded-lg p-4 mt-10 bg-white dark:bg-gray-400 dark:text-black">
+      <div className="border  hover:bg-deep-blue/10  shadow-deep-blue shadow-2xs hover:shadow-sm transition-all border-gray-200 rounded-lg p-4 mt-10 bg-white dark:bg-gray-400 dark:text-white">
         <div
           className="cursor-pointer flex justify-between items-center text-2xl font-iransans"
           onClick={() => toggleSection("skills")}

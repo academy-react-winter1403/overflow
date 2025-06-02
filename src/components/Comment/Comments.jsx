@@ -52,11 +52,11 @@ function Comments({ comment, type, index }) {
   };
 
   return (
-    <div className="mb-5">
-      <div className="relative mr-10 flex flex-row-reverse rounded-2xl border-r-2 border-deep-blue bg-white/55 p-2 dark:bg-gray-800">
+    <div className="mb-5 ">
+      <div className="relative mr-10  shadow-deep-blue/50 shadow-xl flex flex-row-reverse rounded-2xl border-r-2 border-deep-blue bg-white/55 p-2 dark:bg-gray-800">
         <div className="absolute -top-3 -right-10 z-30 h-18 w-18 space-y-3 py-2">
           <SmartImage
-            className="rounded-full bg-gray-500 h-18 dark:bg-gray-600"
+            className="rounded-full bg-gray-500 h-18 dark:bg-gray-600 shadow-2xl"
             src={comment.pictureAddress || user}
             alt="Author"
             fallback={user}
