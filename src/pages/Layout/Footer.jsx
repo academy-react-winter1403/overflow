@@ -8,6 +8,7 @@ import appstore from "../../assets/landing/footer/appstore.png";
 import { useState } from "react";
 import up from "../../assets/landing/icons8-up-24.png";
 import down from "../../assets/landing/icons8-down-24.png";
+import { Link } from "react-router";
 
 function Footer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +16,7 @@ function Footer() {
   const [isOpen3, setIsOpen3] = useState(false);
 
   return (
-    <div className="font-iransans relative flex gap-3 rounded-2xl bg-gray-100/50 font-bold text-gray-600 transition-all duration-300 dark:text-gray-200 max-lg:overflow-auto">
+    <div className="font-iransans relative flex gap-3 rounded-2xl bg-gray-100/50 font-bold text-gray-600 transition-all duration-300 dark:text-gray-200 max-lg:overflow-auto max-sm:hidden">
      
       <div className="container mx-auto flex h-[382px] items-center justify-between gap-3  ">
         
@@ -38,12 +39,12 @@ function Footer() {
 
             <div className="max-lg:flex max-lg:flex-row-reverse">
               {/* Section Title (Always Clickable in Tablet/Mobile Mode) */}
-              <h4
-                className="mb-4 flex cursor-pointer flex-row justify-end text-4xl font-semibold max-lg:flex-col"
+              <a href='/sendyourthing'
+                className="mb-4 flex cursor-pointer flex-row justify-end text-4xl font-semibold max-lg:flex-col text-blue-600"
                 onClick={() => setIsOpen3(!isOpen3)}
               >
                 ارتباط با ما
-              </h4>
+              </a>
               <div className="lg:hidden">
                 <button
                   onClick={() => setIsOpen3(!isOpen3)}
@@ -89,7 +90,7 @@ function Footer() {
             </div>
           </div>
 
-          <div className="max-lg:flex max-lg:flex-col max-lg:border-b max-lg:border-gray-600 max-lg:pt-5">
+          <div className="max-lg:flex max-lg:flex-col max-lg:border-b max-lg:border-gray-600 max-lg:pt-5 ">
             <div className="max-lg:flex max-lg:flex-row-reverse">
               <h4 className="mb-4 text-4xl font-semibold max-lg:mr-5">
                 {" "}

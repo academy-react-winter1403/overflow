@@ -20,7 +20,7 @@ const InfoCard = ({ items }) => {
       <img
         src={teacherBack}
         alt=""
-        className="absolute -top-50 -right-20 w-[1184px] h-[880px]"
+        className="absolute -top-50 -right-20 w-[1184px] h-[880px] max-sm:hidden"
       />
       <img
         src={path4}

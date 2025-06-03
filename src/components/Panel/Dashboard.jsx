@@ -53,7 +53,7 @@ const Dashboard = () => {
 
             setProfileinfo(response.totalCount);
 
-            // console.log("Profile info :", response);
+            console.log("Profile info :", response);
 
         } catch (error) {
             console.log('Error from profileInfo:', error);
@@ -78,7 +78,7 @@ const Dashboard = () => {
     };
 
         const handleNavigation = (id) => {
-            console.log(id)
+            // console.log(id)
             navigate(`AllCourses/Courses/${id}`); 
           };
     

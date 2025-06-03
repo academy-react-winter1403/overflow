@@ -34,13 +34,13 @@ function BestSellers() {
   }
 
   return (
-    <div className="z-10 my-24 flex max-w-[1641px] flex-col self-center py-8 text-center  max-lg:w-10/10">
+    <div className="z-10 my-24 flex max-w-[1641px] flex-col self-center py-8 text-center  max-lg:w-10/10 max-sm:w-10/10">
       <h2 className="font-peyda text-deep-blue mb-13 text-5xl font-black">
         پرفروش‌ترین دوره‌ها
       </h2>
 
       {/* Grid Layout for Cards */}
-      <div className="mt-4 grid grid-cols-1 gap-4 max-lg:flex max-lg:flex-row max-lg:flex-wrap max-lg:justify-center lg:grid-cols-2 xl:grid-cols-4 max-lg:h-98 max-lg:overflow-hidden">
+      <div className="mt-4 grid grid-cols-1 gap-4 max-lg:flex max-lg:flex-row max-lg:flex-wrap max-lg:justify-center lg:grid-cols-2 xl:grid-cols-4 max-lg:h-98 max-lg:overflow-hidden max-sm:overflow-auto">
         {courses.map((item) => (
           <Card
             item={item}

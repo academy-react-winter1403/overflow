@@ -47,20 +47,20 @@ function SearchSortBox({ urlParams,setSort, setSearch, categoryURL }) {
   return (
     <>
       {/* Search */}
-      <div className="my-6 mb-17 flex h-20 shadow-lg flex-row-reverse items-center rounded-3xl bg-white dark:bg-gray-400/95">
+      <div className="my-6 mb-17 flex h-20 shadow-lg flex-row-reverse items-center rounded-3xl bg-white dark:bg-gray-400/95  ">
         <input
           type="text"
           placeholder="جستجو"
           onChange={handleSearchChange}
           value={searchTerm}
-          className="font-kalameh h-full w-3/10 rounded-3xl border-3 shadow-md shadow-deep-blue border-deep-blue/15 dark:border-white/35   pr-8 text-right text-4xl font-black transition-all duration-300 focus:w-5/10 focus:text-black focus:outline-none"
+          className="max-sm:relative  max-sm:focus:w-10/10 max-sm:w-10/10 max-md:text-2xl max-lg:w-5/10 max-lg:focus:w-5/10 font-kalameh h-full w-5/10 rounded-3xl border-3 shadow-md shadow-deep-blue border-deep-blue/15 dark:border-white/35 pr-8 text-right text-4xl font-black transition-all duration-300 focus:w-5/10  focus:text-black focus:outline-none"
         />
 
         {/* Sort */}
-        <div className="relative flex w-full flex-row-reverse items-center justify-around">
-          <div>
+        <div className="max-sm:absolute max-sm:top-40 max-sm:bg-white max-sm:w-90 max-sm:rounded-2xl relative flex w-10/10 flex-row-reverse items-center justify-around  max-xl:gap-30 max-lg:flex-col  max-lg:items-end max-lg:h-20 ">
+          <div> 
             <button
-              className="font-kalameh m-3 h-full border-l-2 border-gray-300 p-2 text-4xl font-black focus:outline-none"
+              className=" font-kalameh m-3 h-full border-l-2 border-gray-300 p-2 text-4xl font-black focus:outline-none max-xl:truncate max-lg:h-15 max-md:text-xl"
               onClick={toggleMenu}
             >
               مرتب سازی
@@ -68,15 +68,15 @@ function SearchSortBox({ urlParams,setSort, setSearch, categoryURL }) {
           </div>
 
           <div
-            className={`mr-5 transition-all duration-500 ease-in-out ${
+            className={`mr-5 transition-all duration-500 ease-in-out max-xl:w-auto max-lg:mr-10  max-lg:absolute right-70  ${
               isMenuOpen
-                ? "translate-x-25 opacity-100"
-                : "translate-x-60 opacity-0"
+                ? "translate-x-25 opacity-100 max-lg:translate-x-25 max-lg:opacity-100 "
+                : "translate-x-60  opacity-0 max-lg:translate-x-50 max-lg:opacity-0 max-md:translate-x-40"
             }`}
           >
             {isNewsPage ? (
               isMenuOpen && (
-                <ul className="font-kalameh flex items-center justify-center text-3xl font-black text-gray-500">
+                <ul className=" font-iransans flex items-center justify-center text-3xl font-black text-gray-500 ">
                   <li
                     className={`cursor-pointer rounded-2xl px-4 py-2 ${urlParams.SortingCol === "InsertDate" ? "bg-deep-blue/35 text-black" : ""} hover:bg-gray-200 hover:text-black hover:shadow-xl`}
                     onClick={() =>
@@ -105,7 +105,7 @@ function SearchSortBox({ urlParams,setSort, setSearch, categoryURL }) {
                 </ul>
               )
             ) : (
-              <ul className="font-kalameh flex items-center justify-center text-3xl font-black text-gray-500">
+              <ul className="font-iransans flex items-center justify-center text-3xl font-black text-gray-500 max-lg:text-2xl max-md:text-xl max-md:absolute max-md:right-[-70px] max-md:bottom-[-24px] max-sm:absolute max-sm:right-[-100px] ">
                 
                 <li
                   className={`cursor-pointer rounded-2xl px-4 py-2 ${urlParams.SortingCol === "lastUpdate" ? "bg-deep-blue/35 text-black" : ""} hover:bg-gray-200 hover:text-black hover:shadow-xl`}
@@ -168,7 +168,7 @@ function SearchSortBox({ urlParams,setSort, setSearch, categoryURL }) {
           )}
         </div>
 
-        <NavLink
+        {/* <NavLink
           className="font-kalameh pl-4 text-4xl font-black text-gray-500 hover:text-black"
           to={
             isNewsPage
@@ -177,7 +177,7 @@ function SearchSortBox({ urlParams,setSort, setSearch, categoryURL }) {
           }
         >
           X
-        </NavLink>
+        </NavLink> */}
       </div>
     </>
   );

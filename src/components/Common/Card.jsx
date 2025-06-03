@@ -13,15 +13,15 @@ function Card({ item, index, handleNavigation, className = "" }) {
   const courseDuration = item?.lastUpdate;
 
   return (
-    <div className={`${className} pt-15 `}>
+    <div className={`${className} pt-15 max-sm:w-10/10 max-sm:h-auto max-sm:relative `}>
       <Link to={`/AllCourses/Courses/${item.courseId}`}> 
       <div
-        className="relative h-140 w-96 cursor-pointer rounded-[29px] bg-white px-6 text-right shadow-lg transition-all max-2xl:h-126 max-2xl:w-80 max-lg:w-60 max-md:w-80 dark:bg-gray-400/95 hover:scale-105 hover:shadow-xl max-lg:h-80 "
+        className=" max-sm:h-40 max-sm:w-10/10 relative h-140 w-96 cursor-pointer rounded-[29px] bg-white px-6 text-right shadow-lg transition-all max-2xl:h-126 max-2xl:w-80 max-lg:w-60 max-md:w-80 dark:bg-gray-400/95 hover:scale-105 hover:shadow-xl max-lg:h-80 "
         key={index}
         onClick={() => handleNavigation(item.courseId)}
       >
-        <div className="relative h-[200px] max-2xl:h-45">
-          <SmartImage src={item?.tumbImageAddress} fallback={fallbackcourse} alt={item.title} className="absolute shadow-deep-blue shadow-lg -top-15 w-[340px] h-[223px] object-cover rounded-3xl max-lg:h-[180px]" />
+        <div className="relative h-[200px] max-2xl:h-45 ">
+          <SmartImage src={item?.tumbImageAddress} fallback={fallbackcourse} alt={item.title} className="max-sm:h-[150px] max-sm:top-1 max-sm:right-[-15px] max-sm:w-[150px] max-sm:absolute absolute shadow-deep-blue shadow-lg -top-15 w-[340px] h-[223px] object-cover rounded-3xl max-lg:h-[180px]" />
           {/* <img
             src={
               item?.tumbImageAddress && item?.tumbImageAddress !== "Not-set"
@@ -34,23 +34,27 @@ function Card({ item, index, handleNavigation, className = "" }) {
         </div>
 
         {/* Description */}
-        <div className="text-right max-lg:mt-[-50px] ">
-          <h3 className="font-peyda mb-2 truncate text-2xl font-bold text-gray-600 max-2xl:h-10 dark:text-gray-100">
+        <div className="text-right max-lg:mt-[-50px]  max-sm:absolute max-sm:bottom-5 max-sm:h-30  max-sm:w-50 ">
+          <h3 className="font-iransans mb-2 truncate text-2xl font-bold text-gray-600 max-2xl:h-10 dark:text-gray-100 max-sm:h-10 max-sm:text-xs max-sm:pr-3">
             {item.title}
           </h3>
-          <div className="relative mb-4 h-[160px] w-full pt-1 max-2xl:h-31">
-            <h5 className="font-vazir h-full overflow-hidden text-[20px] font-semibold text-ellipsis whitespace-normal text-gray-400 dark:text-gray-200">
+          <div className="relative mb-4 h-[160px] w-full pt-1 max-2xl:h-31 max-sm:h-20 max-sm:pr-4 max-sm:flex-row-reverse max-sm:flex ">
+
+            <h5 className="font-iransans h-full overflow-hidden text-[20px] font-semibold text-ellipsis whitespace-normal text-gray-400 dark:text-gray-200 max-sm:w-10/10 max-sm:absolute max-sm:bottom-[40px] max-sm:overflow-hidden max-sm:right-[9px] max-sm:h-15 max-sm:truncate  ">
               {item.describe}
             </h5>
+
+
           </div>
-          <div className=" w-10/10  flex flex-row-reverse mb-4 h-1/9 items-center border-b-3 border-gray-300 pb-7 text-right max-lg:hidden">
-            <div className="w-5/10 font-vazir text-lg font-semibold text-blue-600">{`${item.teacherName} ●`}</div>
+          
+          <div className=" w-10/10  flex flex-row-reverse mb-4 h-1/9 items-center border-b-3 border-gray-300 pb-7 text-right max-lg:hidden max-sm:flex max-sm:hidden">
+            <div className="w-5/10 font-vazir text-lg font-semibold text-blue-600 max-sm:hidden">{`${item.teacherName} ●`}</div>
             <div className="w-5/10 flex flex-row">
-             <div className="flex flex-row items-center">
+             <div className="flex flex-row items-center max-sm:hidden">
                 <img src={like} />
                 <span>{item.likeCount}</span>
              </div>
-             <div className="flex flex-row items-center">
+             <div className="flex flex-row items-center max-sm:hidden">
              <img src={dislike} />
               <span>{item.dissLikeCount}</span>
              </div>
@@ -58,13 +62,13 @@ function Card({ item, index, handleNavigation, className = "" }) {
           </div>
 
           <div className="font-kalameh-num flex flex-row-reverse justify-between  max-lg:mt-[-75px] max-lg:flex max-lg:flex-col max-lg:items-end max-lg:gap-2">
-            <div className="flex h-6 w-26 justify-around rounded-4xl items-center bg-gray-400 px-1 text-left">
-              <span className="font-iransans text-white">
+            <div className="flex h-6 w-26 justify-around rounded-4xl items-center bg-gray-400 px-1 text-left max-sm:hidden">
+              <span className="font-iransans text-white ">
                 {new Date(item.lastUpdate).toLocaleTimeString("fa-IR")}
               </span>
               <img className="py-0.5 h-6" src={clock} alt="" />
             </div>
-            <span className="text-deep-blue relative flex w-auto max-w-5/7  flex-wrap  justify-center gap-1 truncate text-2xl font-bold max-lg:text-sm">
+            <span className="text-deep-blue relative flex w-auto max-w-5/7  flex-wrap  justify-center gap-1 truncate text-2xl font-bold max-lg:text-sm max-sm:absolute max-sm:bottom-[-10px] max-sm:right-20 max-sm:text-right max-sm:text-xl max-sm:w-10/10 transition-all duration-300">
               {Number(item.cost).toLocaleString("fa-IR")}
               
               <svg

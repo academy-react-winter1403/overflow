@@ -29,10 +29,10 @@ function ResultCard({
     <div className={`${className} rounded-2xl overflow-hidden h-30 w-full`}>
       <Link to={to}> 
         <div
-          className="relative flex p-2 h-full cursor-pointer flex-row-reverse items-center text-right shadow-lg transition-all hover:scale-102 hover:shadow-xl dark:bg-gray-400/95"
+          className="  max-sm:h-25 max-sm:overflow-hidden relative flex p-2 h-full cursor-pointer flex-row-reverse items-center text-right shadow-lg transition-all hover:scale-102 hover:shadow-xl dark:bg-gray-400/95"
           key={index}
         >
-          <div className="relative h-full w-40">
+          <div className="relative h-full w-40 max-sm:w-20 max-sm:h-15  ">
             <SmartImage
               src={imageSrc}
               alt={title}
@@ -41,11 +41,11 @@ function ResultCard({
             />
           </div>
 
-          <div className="my-2 w-full overflow-hidden p-6 text-right">
-            <h3 className="font-peyda truncate text-2xl font-bold text-gray-600 dark:text-gray-100">
+          <div className="my-2 w-full overflow-hidden p-6 text-right  max-sm:h-15 max-sm:w-10/10 relative">
+            <h3 className="font-peyda truncate text-2xl font-bold text-gray-600 dark:text-gray-100 max-sm:w-10/10 max-sm:absolute max-sm:left-0 max-sm:top-0 max-sm:h-full max-sm:text-xl max-sm:pr-3 max-sm:truncate">
               {title}
             </h3>
-            <div className="relative h-15 w-full pt-1">
+            <div className="relative h-15 w-full pt-1 max-sm:hidden">
               <h5 className="font-vazir h-full overflow-hidden text-[20px] font-semibold text-ellipsis whitespace-normal text-gray-400 dark:text-gray-200">
                 {describe}
               </h5>
@@ -53,13 +53,13 @@ function ResultCard({
 
             {isNews ? (
               <div>
-               <div className="font-vazir text-lg font-semibold overflow-hidden text-deep-blue/90">
+               <div className="font-vazir text-lg font-semibold overflow-hidden text-deep-blue/90 max-sm:hidden">
                   {`${item.addUserFullName} `}
                 </div>
               </div>
             ) : (
               <div>
-                <div className="font-vazir text-lg font-semibold overflow-hidden text-deep-blue/90">{`${item.teacherName}`}</div>
+                <div className="font-vazir text-lg font-semibold overflow-hidden text-deep-blue/90 max-sm:hidden">{`${item.teacherName}`}</div>
               </div>
             )}
           </div>
