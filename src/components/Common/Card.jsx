@@ -47,7 +47,7 @@ function Card({ item, index, handleNavigation, className = "" }) {
 
           </div>
           
-          <div className=" w-10/10  flex flex-row-reverse mb-4 h-1/9 items-center border-b-3 border-gray-300 pb-7 text-right max-lg:hidden max-sm:flex max-sm:hidden">
+          <div className=" w-10/10  flex flex-row-reverse mb-4 h-1/9 items-center border-b-3 border-gray-300 pb-7 text-right max-lg:hidden  max-sm:hidden">
             <div className="w-5/10 font-vazir text-lg font-semibold text-blue-600 max-sm:hidden">{`${item.teacherName} ●`}</div>
             <div className="w-5/10 flex flex-row">
              <div className="flex flex-row items-center max-sm:hidden">
