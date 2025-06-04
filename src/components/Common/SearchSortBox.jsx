@@ -135,9 +135,9 @@ function SearchSortBox({ urlParams,setSort, setSearch, categoryURL }) {
 
           {/* Filter section - only show on News page */}
           {isNewsPage && (
-            <div className="relative flex flex-row-reverse items-center justify-around">
+            <div className="relative flex flex-row-reverse items-center justify-around ">
               <button
-                className="font-kalameh h-full border-l-2 border-gray-300 p-2 text-4xl font-black"
+                className="font-kalameh h-full border-l-2 border-gray-300 p-2 text-4xl font-black max-sm:hidden"
                 onClick={toggleFilter}
               >
                 فیلتر
