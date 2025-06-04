@@ -40,7 +40,7 @@ const Panel3 = () => {
     return (
         <div className="flex flex-row-reverse flex-wrap w-10/10 font-kalameh">
             <div className='flex flex-row-reverse flex-wrap w-10/10'>
-                <div className='flex flex-row-reverse flex-wrap w-10/10 h-155 justify-center gap-8 mt-10 max-sm:overflow-auto max-sm:h-150 max-lg:h-150 max-lg:overflow-auto'>
+                <div className='flex flex-row-reverse flex-wrap w-10/10 h-155 justify-center gap-8 mt-10 max-sm:overflow-auto max-sm:h-full max-lg:h-150 max-lg:overflow-auto '>
                     {newCoursesData.length > 0 ? (
                         newCoursesData.map((course, index) => (
                             <Card

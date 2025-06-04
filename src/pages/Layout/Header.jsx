@@ -7,6 +7,7 @@ import homeIcon from "../../assets/Header/home.png";
 import learningIcon from "../../assets/Header/learning.png";
 import newspaperIcon from "../../assets/Header/newspaper-folded.png";
 import profile from "../../assets/Header/profile.png";
+import teacher from "../../assets/Header/icons8-teacher-48.png";
 import {
   getItem,
   getItemGeneric,
@@ -107,8 +108,9 @@ function Header() {
       </div>
       {/* mobile mode */}
 
-      <nav className="bg-deep-blue fixed bottom-0 z-100 grid w-full grid-cols-4 items-center justify-center gap-2 px-2 py-2 text-center shadow-2xl lg:hidden">
+      <nav className="bg-gray-400/95  fixed bottom-0 z-100 grid w-full grid-cols-5 items-center justify-center gap-2 px-2 py-2 text-center shadow-2xl lg:hidden">
         <MobileNavItem to="/panel" icon={profile} alt="Me" />
+        <MobileNavItem to="/teachers" icon={teacher} alt="teacher" />
         <MobileNavItem to="/news" icon={newspaperIcon} alt="News" />
         <MobileNavItem to="/AllCourses" icon={learningIcon} alt="Courses" />
         <MobileNavItem to="/" icon={homeIcon} alt="Home" />

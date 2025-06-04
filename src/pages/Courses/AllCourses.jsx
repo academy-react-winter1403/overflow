@@ -88,7 +88,7 @@ const AllCourse = () => {
   };
 
   return (
-    <div className="relative m-auto flex w-9/10 flex-wrap justify-center max-lg:w-10/10 max-sm:overflow-x-hidden">
+    <div className=" max-xl:w-10/10 relative m-auto flex w-9/10 flex-wrap justify-center max-lg:w-10/10 max-sm:overflow-x-hidden ">
       {/* <div className="font-iransans mt-14 mb-14 h-16 w-full rounded-lg text-right text-4xl leading-14 font-bold dark:bg-gray-400/95">
         دوره ها
       </div> */}
@@ -124,13 +124,13 @@ const AllCourse = () => {
 
       <div className="flex w-full justify-center transition-all duration-300 max-xl:flex-row max-xl:flex-wrap max-xl:overflow-auto max-lg:w-10/10 max-sm:flex-col-reverse ">
 
-        <div className="  mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4 pt-10 max-xl:w-[60%] max-lg:h-190 max-lg:w-5/10 max-lg:overflow-auto max-sm:w-10/10 max-sm:overflow-auto max-sm:p-0 max-sm:mt-10">
+        <div className=" mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4 pt-10 max-xl:w-6/10 max-lg:h-190 max-lg:w-6/10 max-lg:overflow-auto max-sm:w-10/10 max-sm:overflow-auto max-sm:p-0 max-sm:mt-10">
           {courses.map((item) => (
             <Card item={item} key={item.courseId} />
           ))}
         </div>
 
-        <div className="mt-10 h-75 w-[25%] justify-items-center rounded-md p-4 transition-all duration-300 max-xl:w-[30%] max-lg:w-4/10 max-sm:mt-[-10px] max-sm:h-15 max-sm:w-10/10">
+        <div className="mt-10 h-75 w-[25%] justify-items-center rounded-md p-4 transition-all duration-300 max-xl:w-[35%] max-lg:w-3/10 max-sm:mt-[-10px] max-sm:h-15 max-sm:w-10/10">
           <div className="shadow-deep-blue border-deep-blue/15 m-auto rounded-3xl border-3 bg-white shadow-md dark:border-white/35 dark:bg-gray-800">
             {/* Price Range Filter */}
             <div className="border-b border-gray-200 p-6 max-sm:hidden dark:border-gray-700">

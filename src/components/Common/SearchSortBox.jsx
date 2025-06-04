@@ -76,7 +76,7 @@ function SearchSortBox({ urlParams,setSort, setSearch, categoryURL }) {
           >
             {isNewsPage ? (
               isMenuOpen && (
-                <ul className=" font-iransans flex items-center justify-center text-3xl font-black text-gray-500 ">
+                <ul className=" font-iransans flex items-center justify-center text-3xl font-black text-gray-500 max-sm:text-sm  max-sm:mr-[-90px]">
                   <li
                     className={`cursor-pointer rounded-2xl px-4 py-2 ${urlParams.SortingCol === "InsertDate" ? "bg-deep-blue/35 text-black" : ""} hover:bg-gray-200 hover:text-black hover:shadow-xl`}
                     onClick={() =>

@@ -116,7 +116,7 @@ const favecoursenew = async () => {
 const Getmycourse = async () => {
 
     try {
-        const respone = await http.get('/SharePanel/GetMyCourses?PageNumber=1&RowsOfPage=5&SortingCol=DESC&SortType=LastUpdate&Query=');
+        const respone = await http.get('/SharePanel/GetMyCourses?PageNumber=1&RowsOfPage=5&SortingCol=DESC&SortType=LastUpdate');
 
         return respone;
 

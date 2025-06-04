@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import cardImg from "../../assets/common/cardImg.png";
+// import cardImg from "../../assets/common/cardImg.png";
 import clock from "../../assets/common/clock.png";
 import like from '../../assets/Coursesimage/like.png'
 import dislike from '../../assets/Coursesimage/dislike.png'
@@ -16,12 +16,12 @@ function Card({ item, index, handleNavigation, className = "" }) {
     <div className={`${className} pt-15 max-sm:w-10/10 max-sm:h-auto max-sm:relative `}>
       <Link to={`/AllCourses/Courses/${item.courseId}`}> 
       <div
-        className=" max-sm:h-40 max-sm:w-10/10 relative h-140 w-96 cursor-pointer rounded-[29px] bg-white px-6 text-right shadow-lg transition-all max-2xl:h-126 max-2xl:w-80 max-lg:w-60 max-md:w-80 dark:bg-gray-400/95 hover:scale-105 hover:shadow-xl max-lg:h-80 "
+        className=" max-sm:scale-90 max-sm:h-40 max-sm:w-10/10 relative h-140 w-96 cursor-pointer rounded-[29px] bg-white px-6 text-right shadow-lg transition-all max-2xl:h-126 max-2xl:w-80 max-lg:w-60 max-md:w-80 max-xl:w-70 dark:bg-gray-400/95 hover:scale-105 hover:shadow-xl max-lg:h-80 "
         key={index}
         onClick={() => handleNavigation(item.courseId)}
       >
         <div className="relative h-[200px] max-2xl:h-45 ">
-          <SmartImage src={item?.tumbImageAddress} fallback={fallbackcourse} alt={item.title} className="max-sm:h-[150px] max-sm:top-1 max-sm:right-[-15px] max-sm:w-[150px] max-sm:absolute absolute shadow-deep-blue shadow-lg -top-15 w-[340px] h-[223px] object-cover rounded-3xl max-lg:h-[180px]" />
+          <SmartImage src={item?.tumbImageAddress} fallback={fallbackcourse} alt={item.title} className="max-sm:h-[130px] max-sm:top-3 max-sm:right-[-15px] max-sm:w-[130px] max-sm:absolute absolute shadow-deep-blue shadow-lg -top-15 w-[340px] h-[223px] object-cover rounded-3xl max-lg:h-[180px]" />
           {/* <img
             src={
               item?.tumbImageAddress && item?.tumbImageAddress !== "Not-set"
@@ -48,8 +48,8 @@ function Card({ item, index, handleNavigation, className = "" }) {
           </div>
           
           <div className=" w-10/10  flex flex-row-reverse mb-4 h-1/9 items-center border-b-3 border-gray-300 pb-7 text-right max-lg:hidden  max-sm:hidden">
-            <div className="w-5/10 font-vazir text-lg font-semibold text-blue-600 max-sm:hidden">{`${item.teacherName} ●`}</div>
-            <div className="w-5/10 flex flex-row">
+            <div className="w-5/10 font-vazir text-lg font-semibold text-blue-600 max-sm:hidden max-xl:w-6/10">{`${item.teacherName} ●`}</div>
+            <div className="w-5/10 flex flex-row max-xl:hidden">
              <div className="flex flex-row items-center max-sm:hidden">
                 <img src={like} />
                 <span>{item.likeCount}</span>
@@ -68,7 +68,7 @@ function Card({ item, index, handleNavigation, className = "" }) {
               </span>
               <img className="py-0.5 h-6" src={clock} alt="" />
             </div>
-            <span className="text-deep-blue relative flex w-auto max-w-5/7  flex-wrap  justify-center gap-1 truncate text-2xl font-bold max-lg:text-sm max-sm:absolute max-sm:bottom-[-10px] max-sm:right-20 max-sm:text-right max-sm:text-xl max-sm:w-10/10 transition-all duration-300">
+            <span className="text-deep-blue relative flex w-auto max-w-5/7  flex-wrap  justify-center gap-1 truncate text-2xl font-bold max-xl:text-sm max-lg:text-sm max-sm:absolute max-sm:bottom-[-10px] max-sm:right-20 max-sm:text-right max-sm:text-xl max-sm:w-10/10 transition-all duration-300">
               {Number(item.cost).toLocaleString("fa-IR")}
               
               <svg
