@@ -42,7 +42,7 @@ const Resetpasswordlevel1 = () => {
   return (
     <div className="font-kalameh mt-10 ml-50 flex h-170 w-8/10 flex-row rounded-[30px] bg-white transition-all duration-300 max-2xl:w-7/10 max-xl:m-auto max-xl:w-6/10 max-lg:mt-20 max-sm:w-full max-sm:scale-90 dark:bg-gray-500">
       <div className="flex w-10/10 flex-row justify-center gap-20 transition-all duration-300">
-        <div className="mt-15  h-138 w-4/10 max-xl:hidden border">
+        <div className="mt-15  h-138 w-4/10 max-xl:hidden ">
           <img className="h-120 w-8/10" src={signin} />
         </div>
 

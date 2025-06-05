@@ -121,7 +121,7 @@ function NewsPage() {
 
       {/* pagination */}
       {totalPages > 1 && (
-        <div className="font-iransans mt-6 mb-10 flex w-full items-center justify-center gap-4 pr-110 font-bold border max-sm:pl-50">
+        <div className="font-iransans mt-6 mb-10 flex w-full items-center justify-center gap-4 pr-110 font-bold  max-sm:pl-50">
           <button
             className={`bg-deep-blue h-12 w-12 rounded-[50px] text-white hover:bg-blue-700 max-sm:w-15 ${
               urlParams.PageNumber === 1 ? "cursor-not-allowed opacity-50" : ""
