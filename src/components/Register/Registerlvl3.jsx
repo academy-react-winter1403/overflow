@@ -58,19 +58,19 @@ const Registerlvl3 = () => {
 
   return (
     
-    <div className="flex flex-row  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 font-iransans max-2xl:w-7/10 max-xl:w-6/10 max-xl:m-auto transition-all duration-300 dark:bg-gray-800">
+    <div className="flex flex-row  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 font-iransans max-2xl:w-7/10 max-xl:w-6/10 max-xl:m-auto transition-all duration-300 dark:bg-gray-800 max-lg:mt-10 max-sm:w-full max-sm:scale-90">
 
       <div className=" w-10/10 flex-row flex justify-center gap-20 transition-all duration-300">
 
-        <div className="w-4/10 h-138 mt-15 ml-10  max-xl:w-0">
+        <div className="w-4/10 h-138 mt-15 ml-10  max-xl:hidden">
           <img className="h-120 w-8/10 " src={signin}  />
         </div>
 
-        <div className="w-4/10 h-138 mt-25  gap-5 flex flex-col max-xl:justify-center max-xl:w-9/10 transition-all duration-300">
+        <div className="w-4/10 h-138 mt-25  gap-5 flex flex-col max-xl:justify-center max-xl:w-9/10 transition-all duration-300 ">
 
-          <div className="w-10/10 flex flex-row flex-wrap gap-2 justify-end pr-20 ">
+          <div className="w-10/10 flex flex-row flex-wrap gap-2 justify-end pr-20 max-sm:pr-5 ">
 
-            <p className="w-5/10 h-full text-right text-4xl font-iransans pt-5 pr-3"> آکادمی سپهر</p>
+            <p className="w-5/10 h-full text-right text-4xl font-iransans pt-5 pr-3 max-2xl:text-2xl"> آکادمی سپهر</p>
             <img
             src={academylogo}
             alt="logo"
@@ -79,7 +79,7 @@ const Registerlvl3 = () => {
         </div>
 
         <div className="flex flex-row justify-end  w-10/10 font-iransans ">
-          <p className=" w-5/10 text-4xl text-right  mr-22 "> ثبت نام</p>
+          <p className=" w-5/10 text-4xl text-right  mr-22 max-2xl:text-2xl max-sm:mr-10" > ثبت نام</p>
         </div>
 
         <Formik
@@ -88,12 +88,12 @@ const Registerlvl3 = () => {
           onSubmit={handleSubmit}
         >
           {() => (
-            <Form className=" flex flex-col items-end gap-5 pr-22 mx-auto w-10/10 h-auto dark:text-black">
+            <Form className=" flex flex-col items-end gap-5 pr-22 mx-auto w-10/10 h-auto dark:text-black max-sm:pr-0 ">
               <Field
                 type="text"
                 name="phone"
                 placeholder="شماره تماس"
-                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 pr-3" 
+                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 pr-3 " 
               />
               <ErrorMessage name="phone" component="div" className="text-red-500 text-sm pr-2" />
 
@@ -119,7 +119,7 @@ const Registerlvl3 = () => {
             </Form>
           )}
         </Formik>
-          <div className=" flex flex-row pl-35 ">
+          <div className=" flex flex-row pl-35 max-sm:pl-0 ">
             <Link to='/Register-1'>
               <p className="text-blue-500 border-b-2 border-blue-500 w-30">  بازگشت به صفحه اول </p>
             </Link>

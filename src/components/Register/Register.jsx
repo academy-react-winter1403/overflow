@@ -3,8 +3,8 @@ import * as Yup from "yup";
 import { SendVerifyMessage } from "../../core/services/api/Register/RegisterPages.js";
 import { setItem } from "../../core/services/common/storage.services";
 import { useNavigate } from "react-router-dom";
-import signin from '../../assets/register/Image 6.png';
-import academylogo from '../../assets/register/ac-Logo.png';
+import signin from "../../assets/register/Image 6.png";
+import academylogo from "../../assets/register/ac-Logo.png";
 
 const validationSchema = Yup.object({
   phone: Yup.string()
@@ -13,7 +13,7 @@ const validationSchema = Yup.object({
 });
 
 const Register = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleSubmit = async ({ phone }) => {
     try {
@@ -27,7 +27,7 @@ const Register = () => {
         setItem("userPhone", phone);
         console.log("Phone number saved to local storage:", phone);
 
-        navigate("/Register-2"); 
+        navigate("/Register-2");
       } else {
         console.log("Failed to send phone number.");
       }
@@ -37,65 +37,65 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-row  w-8/10 h-170 bg-white rounded-[30px] ml-50 mt-10 font-kalameh max-2xl:w-7/10 max-xl:w-6/10 max-xl:m-auto transition-all duration-300 dark:bg-gray-500">
-
-    <div className=" w-10/10 flex-row flex justify-center gap-20 transition-all duration-300">
-    
-    <div className="w-4/10 h-138 mt-15 ml-10  max-xl:w-0 ">
-        <img className="h-120 w-8/10" src={signin} />
-        
-      </div>
-
-      <div className="w-4/10 h-138 mt-25  gap-5 flex flex-col max-xl:justify-center max-xl:w-9/10 transition-all duration-300">
-
-        <div className=" flex flex-row-reverse justify-start pr-22 gap-10 ">
-          
-        <div className="">
-          <img src={academylogo} alt="logo"/>
+    <div className="max-sm:scale-90 font-kalameh mt-10 ml-50 flex h-170 w-8/10 flex-row rounded-[30px] bg-white transition-all duration-300 max-2xl:w-7/10 max-xl:m-auto max-xl:w-6/10 max-lg:mt-20 max-sm:w-full dark:bg-gray-500">
+      <div className="flex w-10/10 flex-row justify-center gap-20 transition-all duration-300">
+        <div className="mt-15 ml-10 h-138 w-4/10 max-xl:hidden">
+          <img className="h-120 w-8/10" src={signin} />
         </div>
 
-        <div className="text-4xl max-md:text-2xl mt-3"> آکادمی سپهر</div>
-        
-        </div>
+        <div className="mt-25 flex h-138 w-4/10 flex-col gap-5 transition-all duration-300 max-xl:w-9/10 max-xl:justify-center max-lg:w-full">
+          <div className="flex flex-row-reverse justify-start gap-10 pr-22 max-sm:pr-12">
+            <div className="">
+              <img src={academylogo} alt="logo" />
+            </div>
 
-        <div className="flex flex-col gap-5 justify-start items-end pr-22  ">
-
-          <div className="text-4xl"> ثبت نام</div>
+            <div className="mt-3 text-4xl max-md:text-2xl"> آکادمی سپهر</div>
           </div>
 
-          <div className=" flex flex-row-reverse w-10/10 pr-22 gap-2">
-              
-            <div className="text-2xl">حساب کاربری دارید؟          </div>
-            <a href="/login" className="mt-1 text-[18px] font-bold text-blue-500"> وارد شوید</a>
+          <div className="flex flex-col items-end justify-start gap-5 pr-22 max-sm:pr-12">
+            <div className="text-4xl"> ثبت نام</div>
+          </div>
 
+          <div className="flex w-10/10 flex-row-reverse gap-2 pr-22 max-sm:pr-12">
+            <div className="text-2xl">حساب کاربری دارید؟ </div>
+            <a
+              href="/login"
+              className="mt-1 text-[18px] font-bold text-blue-500"
+            >
+              {" "}
+              وارد شوید
+            </a>
+          </div>
+
+          <Formik
+            initialValues={{ phone: "" }}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+          >
+            {() => (
+              <Form className="mx-auto mt-10 flex h-auto w-10/10 flex-col items-end gap-5 pr-22 max-sm:pr-10 ">
+                <Field
+                  type="text"
+                  name="phone"
+                  placeholder="شماره تماس"
+                  className="h-12 w-8/11 rounded-[5px] border-none bg-gray-200 pr-3 text-end outline-none max-xl:w-9/10 max-lg:w-7/10  max-sm:w-9/10 dark:text-black"
+                />
+                <ErrorMessage
+                  name="phone"
+                  component="div"
+                  className="pr-2 text-sm text-red-500"
+                />
+                <button
+                  type="submit"
+                  className="h-12 w-8/11 rounded bg-[#436E8E] py-2 text-center text-black max-xl:w-9/10 max-lg:w-7/10 max-sm:w-9/10"
+                >
+                  ادامه
+                </button>
+              </Form>
+            )}
+          </Formik>
         </div>
-
-        <Formik
-          initialValues={{ phone: "" }}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-          {() => (
-
-            <Form className="flex flex-col items-end mt-10 gap-5 pr-22 mx-auto w-10/10 h-auto ">
-              <Field
-                type="text"
-                name="phone"
-                placeholder="شماره تماس"
-                className="w-8/11 h-12 bg-gray-200 outline-none border-none rounded-[5px] text-end max-xl:w-10/10 dark:text-black pr-3"
-              />
-              <ErrorMessage name="phone" component="div" className="text-red-500 text-sm pr-2" />
-              <button
-                type="submit"
-                className="w-8/11 h-12 text-center bg-[#436E8E] text-black py-2 rounded max-xl:w-10/10">ادامه</button>
-            </Form>
-
-          )}
-        </Formik>
-
       </div>
-    </div>
-
     </div>
   );
 };
