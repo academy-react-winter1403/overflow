@@ -7,7 +7,11 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Link, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
-import { Getprofile } from "../../core/services/api/userpanelapi/panelapis";
+import {
+  Getmycourse,
+  Getmyreserveapi,
+  Getprofile,
+} from "../../core/services/api/userpanelapi/panelapis";
 import { ExistingCourseMap } from "./existingcoursemap";
 // import { getApi } from '../../core/services/api/getApi';
 import { getItem } from "../../core/services/common/storage.services";
@@ -28,6 +32,8 @@ const Dashboard = () => {
     }
   }, [navigate, token]);
 
+  const [newCoursesData, setNewCoursesData] = useState([]);
+  const [Reservecourse, setReservecourse] = useState([]);
   const [profile, setProfile] = useState(null);
   const [Profileinfo, setProfileinfo] = useState(null);
   const [coursecount, setcoursecount] = useState(null);
@@ -38,17 +44,28 @@ const Dashboard = () => {
     try {
       const response = await Getprofile();
       setProfile(response);
-      // console.log("Profile response:", response);
     } catch (error) {
       console.log("Error from profileInfo:", error);
     }
   };
+  const getapi = async () => {
+    try {
+      const getresponse = await Getmyreserveapi();
 
+      if (!getresponse || getresponse.length === 0) {
+        return;
+      }
+
+      setReservecourse(getresponse.length);
+    } catch (error) {
+      console.error("Error fetching courses:", error);
+    }
+  };
+
+  useEffect(() => {}, []);
   const getInfo = async () => {
     try {
       const response = await getnewscountApi();
-
-      // getItem(id);
 
       setProfileinfo(response.totalCount);
 
@@ -61,18 +78,19 @@ const Dashboard = () => {
     try {
       const response = await getcoursecountApi();
 
-      // getItem(id);
-
       setcoursecount(response.totalCount);
-
-      // console.log("Profile info :", response);
     } catch (error) {
       console.log("Error from profileInfo:", error);
     }
   };
 
+  const getNewCoursesData = async () => {
+    const response = await Getmycourse();
+
+    setNewCoursesData(response.totalCount);
+  };
+
   const handleNavigation = (id) => {
-    // console.log(id)
     navigate(`AllCourses/Courses/${id}`);
   };
 
@@ -80,6 +98,8 @@ const Dashboard = () => {
     profileInfo();
     getInfo();
     getcourseInfo();
+    getapi();
+    getNewCoursesData();
   }, []);
 
   return (
@@ -126,9 +146,10 @@ const Dashboard = () => {
                     {/* <div className="bg-deep-blue mt-[-35px] ml-5 flex h-6/10 w-3/10 items-center justify-center rounded-[50px] max-lg:h-15 max-lg:w-15">
                       <img src={frame2} alt="Frame 2" />
                     </div> */}
-                    <span className="">
-                      {Profileinfo} {"اخبار مورد علاقه"}
-                    </span>
+                    <div className=" w-10/10 flex flex-row">
+                      <span className="w-5/10 text-center font-bold "> {Profileinfo}</span>
+                      <p className="w-5/10 text-center">{"اخبار مورد علاقه"}</p>
+                    </div>
                   </Link>
 
                   <Link
@@ -138,9 +159,10 @@ const Dashboard = () => {
                     {/* <div className="bg-deep-blue mt-[-35px] ml-5 flex h-6/10 w-3/10 items-center justify-center rounded-[50px] max-lg:h-15 max-lg:w-15">
                       <img src={frame1} alt="Frame 1" />
                     </div> */}
-                    <span className="">
-                      {coursecount} {"کورس های موردعلاقه "}
-                    </span>
+                    <div className="w-10/10 flex flex-row">
+                      <span className="w-5/10 text-center font-bold ">{coursecount}</span>
+                      <p className="w-5/10 text-center"> {"کورس های موردعلاقه "}</p>
+                    </div>
                   </Link>
                   <Link
                     to="/panel/coursereserve"
@@ -149,9 +171,10 @@ const Dashboard = () => {
                     {/* <div className="bg-deep-blue mt-[-35px] ml-5 flex h-6/10 w-3/10 items-center justify-center rounded-[50px] max-lg:h-15 max-lg:w-15">
                       <img src={frame2} alt="Frame 2" />
                     </div> */}
-                    <span className="">
-                      {Profileinfo} {" دوره های رزرو شده  "}
-                    </span>
+                    <div className="w-10/10 flex flex-row">
+                      <span className="w-5/10 text-center font-bold ">{Reservecourse} </span>
+                      <p className="w-5/10 text-center">{" دوره های رزرو شده  "}</p>
+                    </div>
                   </Link>
 
                   <Link
@@ -161,9 +184,10 @@ const Dashboard = () => {
                     {/* <div className="bg-deep-blue mt-[-35px] ml-5 flex h-6/10 w-3/10 items-center justify-center rounded-[50px] max-lg:h-15 max-lg:w-15">
                       <img src={frame1} alt="Frame 1" />
                     </div> */}
-                    <span className="">
-                      {coursecount} {"  دوره های من "}
-                    </span>
+                    <div className="w-10/10 flex flex-row">
+                      <span className="w-5/10 text-center font-bold " >{newCoursesData} </span>
+                      <p className="w-5/10 text-center">{"  دوره های من "}</p>
+                    </div>
                   </Link>
                 </div>
               </div>
@@ -205,7 +229,10 @@ const Dashboard = () => {
                 <ExistingCourseMap handleNavigation={handleNavigation} />
               </div>
 
-              <Link  to="/allcourses/" className="flex h-full w-5/10 flex-col gap-5 transition-all duration-300 max-lg:hidden ">
+              <Link
+                to="/allcourses/"
+                className="flex h-full w-5/10 flex-col gap-5 transition-all duration-300 max-lg:hidden"
+              >
                 <span
                   className="flex flex-row-reverse pt-2 pr-10 text-2xl font-bold transition-all duration-300 max-lg:text-sm"
                   style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
@@ -213,7 +240,7 @@ const Dashboard = () => {
                   {" "}
                   دوره های پیشنهادی{" "}
                 </span>
-                    <Ongoingcourses />
+                <Ongoingcourses />
               </Link>
             </div>
           </div>

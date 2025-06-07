@@ -40,7 +40,7 @@ function NewCourses() {
         جدید ترین دوره ها
       </h2>
 
-      <div className="mt-4 grid grid-cols-1 gap-4 max-lg:flex max-lg:flex-row max-lg:flex-wrap max-lg:justify-center lg:grid-cols-2 xl:grid-cols-4 max-lg:h-98 max-lg:overflow-hidden max-sm:overflow-auto">
+      <div className="mt-4 grid grid-cols-1 gap-4 max-lg:flex max-lg:flex-row max-lg:flex-wrap max-lg:justify-center lg:grid-cols-2 xl:grid-cols-4 max-lg:h-98 max-lg:overflow-hidden max-sm:h-auto max-sm:gap-0 ">
         {courses.map((item) => (
           <Card
             item={item}

@@ -23,7 +23,7 @@ function CourseCategories() {
     <div className="max-w-[1641px] z-10 flex flex-col mx-auto py-8 mb-80">
       <h2 className="text-5xl font-peyda font-black text-deep-blue mb-28">  پر طرفدارترین ها </h2>
 
-      <div className="flex flex-wrap justify-center gap-12 max-sm:overflow-auto max-sm:h-90 ">
+      <div className="flex flex-wrap justify-center gap-12 max-sm:overflow-auto max-sm:h-auto max-sm:gap-5 ">
         {newCoursesData&&newCoursesData.slice(0,4).map((item, index) => (
           <SmallCard
             item={item}

@@ -53,7 +53,7 @@ const Panel3 = () => {
           onChange={(mycourse) => setSearchQuery(mycourse.target.value)}
         />
       </div>
-        <div className="mt-10 flex h-155 w-10/10 flex-row-reverse flex-wrap justify-center gap-8 max-lg:h-150 max-lg:overflow-auto max-sm:h-full max-sm:overflow-auto">
+        <div className="mt-10 flex h-155 w-10/10 flex-row-reverse flex-wrap justify-center gap-8 max-lg:h-150 max-lg:overflow-auto max-sm:h-150 max-sm:overflow-auto max-sm:gap-0 ">
           {filtermycours.length > 0 ? (
             filtermycours.map((course, index) => (
               <Card

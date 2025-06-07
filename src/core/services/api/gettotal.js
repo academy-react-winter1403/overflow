@@ -1,15 +1,15 @@
-import http from "../interceptor";
+import http from "../../services/interceptor/index";
 
 export const getnewscountApi = async () => {
 
-    const respone = http.get("/SharePanel/GetMyFavoriteNews");
+    const respone = await http.get("/SharePanel/GetMyFavoriteNews");
 
     return respone;
   
 };
 export const getcoursecountApi = async () => {
 
-    const respone = http.get("/SharePanel/GetMyFavoriteCourses");
+    const respone = await http.get("/SharePanel/GetMyFavoriteCourses");
 
     return respone;
   

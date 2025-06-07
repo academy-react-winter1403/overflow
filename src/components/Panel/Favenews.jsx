@@ -28,9 +28,9 @@ const Favenews = () => {
   return (
     <div className="font-iransans flex h-full w-full flex-col pt-10 text-2xl font-bold">
       <div>
-        <input 
-        type="text"
-        placeholder="جستجو دوره..."
+        <input
+          type="text"
+          placeholder="جستجو دوره..."
           className="w-1/2 rounded-lg border border-gray-400 p-2 text-right"
           value={seachQurey}
           onChange={(news) => setseachQurey(news.target.value)}
@@ -49,14 +49,17 @@ const Favenews = () => {
         </p>
         <p className="mr-36 w-4/11 text-right max-sm:w-10/10">عنوان</p>
       </div>
-      {filterfavoritenews.length > 0 ? (
+
+
+      <div className=" h-full overflow-auto">
+              {filterfavoritenews.length > 0 ? (
         filterfavoritenews.map((reserve, index) => (
           <div
             key={index}
             className="m-auto mt-5 flex h-18 w-11/12 flex-row-reverse items-center justify-start gap-2 rounded-2xl bg-gray-200 pr-5 hover:bg-gray-400 dark:bg-gray-500"
           >
             <img
-              className="truncate h-12 w-12 rounded-[50px]"
+              className="h-12 w-12 truncate rounded-[50px]"
               src={reserve?.currentImageAddressTumb || profile}
               alt="Course profile"
             />
@@ -78,6 +81,7 @@ const Favenews = () => {
       ) : (
         <p className="mt-10 text-center"> اخباری یافت نشد </p> // Corrected JSX element syntax
       )}
+      </div>
     </div>
   );
 };

@@ -44,7 +44,7 @@ function PanelLayout() {
         <SidePanel setIsMenuOpen={setIsMenuOpen}/>
       </div>      
 
-      <div className="w-8/11 rounded-2xl bg-white dark:bg-gray-700 overflow-auto h-185 max-sm:w-full max-sm:mt-10">
+      <div className="w-8/11 rounded-2xl bg-white dark:bg-gray-700 h-185 max-sm:w-full max-sm:mt-10">
         <Outlet />
       </div>
     </div>

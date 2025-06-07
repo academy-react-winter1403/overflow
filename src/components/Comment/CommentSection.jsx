@@ -4,7 +4,7 @@ import Comments from "./Comments.jsx";
 
 const CommentSection = ({ commentData, type }) => {
   return (
-    <div className="w-9/10 max-sm:w-95  max-sm:h-70 max-sm:overflow-auto mt-20">
+    <div className="w-9/10 max-sm:w-95  mt-20">
       {/* <h3 className="text-deep-blue m-4 text-2xl font-bold dark:text-gray-300">
         Comments:
       </h3> */}
