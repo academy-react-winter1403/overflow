@@ -58,27 +58,27 @@ const Addlikeforcourse = ({ data,courseData }) => {
   };
 
   return (
-    <div className="font-iransans  flex h-20 w-7/14 flex-row-reverse items-center gap-95 rounded-2xl bg-white pr-5 text-3xl font-bold transition-all duration-300 max-lg:w-10/10 dark:bg-gray-700">
-      <div className="flex flex-row-reverse items-center gap-5 ">
+    <div className=" font-iransans  flex h-20 w-7/14 flex-row-reverse items-center gap-95 rounded-2xl bg-white pr-5 text-3xl font-bold transition-all duration-300 max-lg:w-10/10 dark:bg-gray-700 max-sm:gap-25">
+      <div className="flex flex-row-reverse items-center gap-5 max-sm:hidden">
         <p>امتیاز</p>
         <Rating style={{ maxWidth: 250 }} value={rating} onChange={setRating} />
       </div>
-
+        <p className="md:hidden">امتیاز</p>
       <div className="flex flex-row gap-5 ml-5 items-center ">
 
-        <button className="w-10 pb-2 shrink-0 hover:scale-130 transition-all duration-300" onClick={addtofavorite}>
+        <button className="w-10 pb-2 shrink-0 hover:scale-130 transition-all duration-300 max-sm:w-8" onClick={addtofavorite}>
           <img src={addtofave} />
           <ToastContainer />
         </button>
         
-        <button onClick={likecourse} className="flex shrink-0 flex-row items-center text-2xl">
+        <button onClick={likecourse} className="flex shrink-0 flex-row items-center text-2xl max-sm:w-10 max-sm:h-6">
           <ToastContainer />
           <img className={`h-10 w-14 hover:scale-130 transition-all ${courseData.currentUserLike == "1"? "bg-amber-400":""}   duration-300`} src={ Like  } />
           {/* {courseData.currentUserLike? Like : Dislike } */}
           
         </button>
         
-        <button onClick={dislikecourse} className="flex shrink-0 flex-row items-center text-2xl">
+        <button onClick={dislikecourse} className="flex shrink-0 flex-row items-center text-2xl max-sm:w-10 max-sm:h-6">
           <ToastContainer />
           <img className="h-10 w-15 mt-1 hover:scale-130 transition-all duration-300" src={Dislike} />
         </button>

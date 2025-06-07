@@ -33,7 +33,7 @@ const AllTeacers = () => {
 
   return (
     <div className="w-9/10 pt-5 m-auto relative flex flex-row flex-wrap gap-10 justify-center  max-lg:mb-50 ">
-      <div className="w-10/10 pr-10 pt-5 rounded-2xl h-20  text-5xl  font-iransans text-deep-blue text-right dark:text-white font-bold bg-white ">
+      <div className="w-10/10 pr-10 pt-5 rounded-2xl h-20  text-5xl  font-iransans text-deep-blue text-right font-bold bg-white dark:bg-gray-400 dark:text-gray-700">
         اساتید
       </div>
       <img

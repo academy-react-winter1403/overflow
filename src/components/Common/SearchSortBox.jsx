@@ -47,7 +47,7 @@ function SearchSortBox({ urlParams,setSort, setSearch, categoryURL }) {
   return (
     <>
       {/* Search */}
-      <div className="my-6 mb-17 flex h-20 shadow-lg flex-row-reverse items-center rounded-3xl bg-white dark:bg-gray-400/95  ">
+      <div className="my-6 mb-17 flex h-20 shadow-lg flex-row-reverse items-center rounded-3xl bg-white dark:bg-gray-400/95 ">
         <input
           type="text"
           placeholder="جستجو"
@@ -57,10 +57,10 @@ function SearchSortBox({ urlParams,setSort, setSearch, categoryURL }) {
         />
 
         {/* Sort */}
-        <div className="max-sm:absolute max-sm:top-40 max-sm:bg-white max-sm:w-90 max-sm:rounded-2xl relative flex w-10/10 flex-row-reverse items-center justify-around  max-xl:gap-30 max-lg:flex-col  max-lg:items-end max-lg:h-20 ">
+        <div className=" dark:bg-gray-400 max-sm:absolute max-sm:top-40 max-sm:bg-white max-sm:w-90 max-sm:rounded-2xl relative flex w-10/10 flex-row-reverse items-center justify-around  max-xl:gap-30 max-lg:flex-col  max-lg:items-end max-lg:h-20 ">
           <div> 
             <button
-              className=" font-kalameh m-3 h-full border-l-2 border-gray-300 p-2 text-4xl font-black focus:outline-none max-xl:truncate max-lg:h-15 max-md:text-xl"
+              className="max-lg:text-2xl font-iransans m-3 h-full border-l-2 border-gray-300 p-2 text-4xl font-black focus:outline-none max-xl:truncate max-lg:h-15 max-md:text-xl"
               onClick={toggleMenu}
             >
               مرتب سازی
@@ -76,9 +76,9 @@ function SearchSortBox({ urlParams,setSort, setSearch, categoryURL }) {
           >
             {isNewsPage ? (
               isMenuOpen && (
-                <ul className=" font-iransans flex items-center justify-center text-3xl font-black text-gray-500 max-sm:text-sm  max-sm:mr-[-90px]">
+                <ul className=" font-iransans flex items-center justify-center text-3xl font-black text-gray-500 max-sm:text-sm max-lg:mr-[-50px]  max-sm:mr-[-90px]">
                   <li
-                    className={`cursor-pointer rounded-2xl px-4 py-2 ${urlParams.SortingCol === "InsertDate" ? "bg-deep-blue/35 text-black" : ""} hover:bg-gray-200 hover:text-black hover:shadow-xl`}
+                    className={`cursor-pointer rounded-2xl px-4 py-2 max-lg:text-2xl ${urlParams.SortingCol === "InsertDate" ? "bg-deep-blue/35 text-black" : ""} hover:bg-gray-200 hover:text-black hover:shadow-xl`}
                     onClick={() =>
                       setSort({ col: "InsertDate", SortType: "DESC" })
                     }

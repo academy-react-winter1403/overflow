@@ -26,7 +26,7 @@ const Techerscard = ({ item }) => {
                             <div className="w-6/14 h-4/12 font-vazir bg-gray-200 rounded-3xl dark:text-black max-sm:mt-0 max-sm:w-5/10 max-sm:h-auto max-sm:hidden"> 10/10
                                 <img className="float-right mr-3 w-2/17 h-9/10" src={star} alt="" />
                             </div>
-                            <div className="w-6/14 h-4/12  font-vazir bg-gray-200 rounded-3xl dark:text-blackmax-sm:mt-0 max-sm:w-4/10 max-sm:h-auto max-sm:pt-2">تعداد اخبار   {item.newsCount}
+                            <div className="w-6/14 h-4/12  font-vazir bg-gray-200 rounded-3xl dark:text-blackmax-sm:mt-0 max-sm:w-4/10 max-sm:h-auto max-sm:pt-2 dark:text-gray-700">تعداد اخبار   {item.newsCount}
                                 <img className="float-right mr-3 w-2/17 h-9/10 max-sm:hidden" src={hat} alt="" />
                             </div>
                         </div>
