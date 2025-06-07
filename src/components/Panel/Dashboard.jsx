@@ -15,6 +15,7 @@ import {
   getcoursecountApi,
   getnewscountApi,
 } from "../../core/services/api/gettotal";
+import { Ongoingcourses } from "./Ongoing courses";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -89,8 +90,7 @@ const Dashboard = () => {
           <div className="mr-5 flex h-full w-10/10 flex-col gap-10 transition-all duration-300 dark:bg-gray-700">
             <div className="flex flex-row-reverse transition-all duration-300 max-lg:flex-col max-md:items-end">
               <div className="flex h-60 w-5/10 flex-row transition-all duration-300 max-2xl:w-8/10 max-xl:w-6/10 max-lg:w-full">
-
-                <div className="flex w-10/10 flex-row-reverse items-center justify-center gap-10 max-lg:h-auto max-lg:w-full dark:bg-gray-700 max-sm:hidden">
+                <div className="flex w-10/10 flex-row-reverse items-center justify-center gap-10 max-lg:h-auto max-lg:w-full max-sm:hidden dark:bg-gray-700">
                   <Link
                     to="/panel/Favenews"
                     className="flex h-30 w-4/10 flex-col rounded-2xl shadow-[5px_5px_10px_1px_gray] transition-all duration-300 hover:scale-110 hover:cursor-pointer max-lg:h-25"
@@ -116,14 +116,12 @@ const Dashboard = () => {
                   </Link>
                 </div>
 
+                {/* mobile mode */}
 
-                                    {/* mobile mode */}
-
-
-                <div className="pl-5 flex h-auto w-10/10 flex-row-reverse flex-wrap items-center justify-center  dark:bg-gray-700 sm:hidden text-right font-iransans font-bold">
+                <div className="font-iransans flex h-auto w-10/10 flex-row-reverse flex-wrap items-center justify-center pl-5 text-right font-bold sm:hidden dark:bg-gray-700">
                   <Link
                     to="/panel/Favenews"
-                    className=" bg-gray-500 w-10/10 text-white p-3 rounded-2xl"
+                    className="w-10/10 rounded-2xl bg-gray-400 p-3 text-white"
                   >
                     {/* <div className="bg-deep-blue mt-[-35px] ml-5 flex h-6/10 w-3/10 items-center justify-center rounded-[50px] max-lg:h-15 max-lg:w-15">
                       <img src={frame2} alt="Frame 2" />
@@ -135,7 +133,7 @@ const Dashboard = () => {
 
                   <Link
                     to="/panel/favecourse"
-                    className="bg-gray-700 w-10/10 text-white p-3 rounded-2xl"
+                    className="w-10/10 rounded-2xl bg-gray-600 p-3 text-white"
                   >
                     {/* <div className="bg-deep-blue mt-[-35px] ml-5 flex h-6/10 w-3/10 items-center justify-center rounded-[50px] max-lg:h-15 max-lg:w-15">
                       <img src={frame1} alt="Frame 1" />
@@ -143,10 +141,10 @@ const Dashboard = () => {
                     <span className="">
                       {coursecount} {"کورس های موردعلاقه "}
                     </span>
-                  </Link>                 
+                  </Link>
                   <Link
-                    to="/panel/Favenews"
-                    className=" bg-gray-500 w-10/10 text-white p-3 rounded-2xl"
+                    to="/panel/coursereserve"
+                    className="w-10/10 rounded-2xl bg-gray-400 p-3 text-white"
                   >
                     {/* <div className="bg-deep-blue mt-[-35px] ml-5 flex h-6/10 w-3/10 items-center justify-center rounded-[50px] max-lg:h-15 max-lg:w-15">
                       <img src={frame2} alt="Frame 2" />
@@ -157,21 +155,20 @@ const Dashboard = () => {
                   </Link>
 
                   <Link
-                    to="/panel/favecourse"
-                    className="bg-gray-700 w-10/10 text-white p-3 rounded-2xl"
+                    to="/panel/mycourse"
+                    className="w-10/10 rounded-2xl bg-gray-600 p-3 text-white"
                   >
                     {/* <div className="bg-deep-blue mt-[-35px] ml-5 flex h-6/10 w-3/10 items-center justify-center rounded-[50px] max-lg:h-15 max-lg:w-15">
                       <img src={frame1} alt="Frame 1" />
                     </div> */}
                     <span className="">
-                      {coursecount}  {"  دوره های من "}
+                      {coursecount} {"  دوره های من "}
                     </span>
                   </Link>
                 </div>
-
               </div>
 
-              <div className="flex h-60 w-5/10 flex-row-reverse justify-center transition-all duration-100 max-xl:w-4/10 max-lg:h-auto max-lg:w-full max-lg:flex-row-reverse dark:bg-gray-700 max-sm:hidden">
+              <div className="flex h-60 w-5/10 flex-row-reverse justify-center transition-all duration-100 max-xl:w-4/10 max-lg:h-auto max-lg:w-full max-lg:flex-row-reverse max-sm:hidden dark:bg-gray-700">
                 <div
                   className="w-5/10 pt-20 font-bold max-2xl:hidden max-lg:mb-20 max-lg:flex max-lg:h-full max-lg:w-10/10 max-lg:flex-wrap max-lg:pt-0"
                   style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
@@ -194,7 +191,6 @@ const Dashboard = () => {
                   />
                 </div>
               </div>
-
             </div>
 
             <div className="flex h-full w-10/10 flex-row-reverse max-lg:flex-col">
@@ -209,7 +205,7 @@ const Dashboard = () => {
                 <ExistingCourseMap handleNavigation={handleNavigation} />
               </div>
 
-              <div className="flex h-full w-5/10 flex-col gap-5 transition-all duration-300 max-lg:hidden">
+              <Link  to="/allcourses/" className="flex h-full w-5/10 flex-col gap-5 transition-all duration-300 max-lg:hidden ">
                 <span
                   className="flex flex-row-reverse pt-2 pr-10 text-2xl font-bold transition-all duration-300 max-lg:text-sm"
                   style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
@@ -217,31 +213,8 @@ const Dashboard = () => {
                   {" "}
                   دوره های پیشنهادی{" "}
                 </span>
-                <div className="flex flex-row justify-center transition-transform duration-300 hover:scale-105">
-                  <div className="flex h-25 w-9/10 flex-row items-center rounded-2xl bg-gray-100 transition-all duration-300 dark:border dark:border-white dark:bg-gray-700">
-                    <div className="flex w-5/10 flex-row-reverse items-end gap-10 max-lg:gap-2">
-                      <p className="max-xl:heddin text-gray-100 max-xl:w-5 max-lg:w-0">
-                        چهارشنبه ها . ۱۷:۳۰
-                      </p>
-                      <img
-                        className="ml-5 h-20 w-25 transition-all duration-300 max-lg:mb-2 max-lg:w-20"
-                        src={courseimg}
-                        alt="Course"
-                      />
-                    </div>
-
-                    <div className="flex w-5/10 flex-col gap-10 pr-5 text-right transition-all duration-300 max-xl:gap-3 max-lg:w-6/10 max-lg:text-sm">
-                      <p>آموزش کامل کار با Figma</p>
-                      <Link
-                        to="/allcourses/Courses/:id"
-                        className="text-blue- flex flex-row justify-end gap-5 text-blue-700 max-lg:hidden"
-                      >
-                        مشاهده دوره
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    <Ongoingcourses />
+              </Link>
             </div>
           </div>
         </div>

@@ -128,6 +128,83 @@ const AllCourse = () => {
           {courses.map((item) => (
             <Card item={item} key={item.courseId} />
           ))}
+          
+      {/* pagination */}
+      {totalPages > 1 && (
+        <div className="font-iransans mt-6 mb-10 flex w-10/10 items-center justify-center gap-4 pr-auto font-bold max-sm:auto ">
+          <button
+            className={`bg-deep-blue h-12 w-12 rounded-[50px] text-white hover:bg-blue-700 max-sm:hidden ${
+              urlParams.PageNumber === 1 ? "cursor-not-allowed opacity-50" : ""
+            }`}
+            disabled={urlParams.PageNumber === 1}
+            onClick={() => handlePageChange(urlParams.PageNumber - 1)}
+          >
+            قبلی
+          </button>
+
+          {/* Dynamic page numbers */}
+          <div className="flex space-x-2">
+            {(() => {
+              const currentPage = urlParams.PageNumber;
+              let pages = [];
+
+              // Always show first page
+              if (currentPage > 3) {
+                pages.push(1);
+                if (currentPage > 4) pages.push("...");
+              }
+
+              // Show pages around current page
+              for (
+                let i = Math.max(1, currentPage - 2);
+                i <= Math.min(totalPages, currentPage + 2);
+                i++
+              ) {
+                pages.push(i);
+              }
+
+              // Always show last page
+              if (currentPage < totalPages - 2) {
+                if (currentPage < totalPages - 3) pages.push("...");
+                pages.push(totalPages);
+              }
+
+              return pages.map((page, index) =>
+                page === "..." ? (
+                  <span key={`ellipsis-${index}`} className="px-3 py-1">
+                    ...
+                  </span>
+                ) : (
+                  <button
+                    key={page}
+                    style={{
+                      background: ` ${urlParams.PageNumber === page ? "#436e8e4D" : ""}`,
+                    }}
+                    className={`rounded-[50px] border border-gray-300 bg-white px-3 py-1 text-lg hover:bg-gray-100 ${
+                      urlParams.PageNumber === page ? "text-black" : ""
+                    }`}
+                    onClick={() => handlePageChange(page)}
+                  >
+                    {page}
+                  </button>
+                ),
+              );
+            })()}
+          </div>
+
+          <button
+            className={`bg-deep-blue h-12 w-12 rounded-[50px] text-white hover:bg-blue-700 max-sm:hidden ${
+              urlParams.PageNumber >= totalPages
+                ? "cursor-not-allowed opacity-50"
+                : ""
+            }`}
+            disabled={urlParams.PageNumber >= totalPages}
+            onClick={() => handlePageChange(urlParams.PageNumber + 1)}
+          >
+            بعدی
+          </button>
+        </div>
+      )}
         </div>
 
         <div className="mt-10 h-75 w-[25%] justify-items-center rounded-md p-4 transition-all duration-300 max-xl:w-[35%] max-lg:w-3/10 max-sm:mt-[-10px] max-sm:h-15 max-sm:w-10/10">
@@ -422,83 +499,6 @@ const AllCourse = () => {
           </div>
         </div>
       </div>
-
-      {/* pagination */}
-      {totalPages > 1 && (
-        <div className="font-iransans mt-6 mb-10 flex w-full items-center justify-center gap-4 pr-110 font-bold max-sm:pl-110 ">
-          <button
-            className={`bg-deep-blue h-12 w-12 rounded-[50px] text-white hover:bg-blue-700 max-sm:hidden ${
-              urlParams.PageNumber === 1 ? "cursor-not-allowed opacity-50" : ""
-            }`}
-            disabled={urlParams.PageNumber === 1}
-            onClick={() => handlePageChange(urlParams.PageNumber - 1)}
-          >
-            قبلی
-          </button>
-
-          {/* Dynamic page numbers */}
-          <div className="flex space-x-2">
-            {(() => {
-              const currentPage = urlParams.PageNumber;
-              let pages = [];
-
-              // Always show first page
-              if (currentPage > 3) {
-                pages.push(1);
-                if (currentPage > 4) pages.push("...");
-              }
-
-              // Show pages around current page
-              for (
-                let i = Math.max(1, currentPage - 2);
-                i <= Math.min(totalPages, currentPage + 2);
-                i++
-              ) {
-                pages.push(i);
-              }
-
-              // Always show last page
-              if (currentPage < totalPages - 2) {
-                if (currentPage < totalPages - 3) pages.push("...");
-                pages.push(totalPages);
-              }
-
-              return pages.map((page, index) =>
-                page === "..." ? (
-                  <span key={`ellipsis-${index}`} className="px-3 py-1">
-                    ...
-                  </span>
-                ) : (
-                  <button
-                    key={page}
-                    style={{
-                      background: ` ${urlParams.PageNumber === page ? "#436e8e4D" : ""}`,
-                    }}
-                    className={`rounded-[50px] border border-gray-300 bg-white px-3 py-1 text-lg hover:bg-gray-100 ${
-                      urlParams.PageNumber === page ? "text-black" : ""
-                    }`}
-                    onClick={() => handlePageChange(page)}
-                  >
-                    {page}
-                  </button>
-                ),
-              );
-            })()}
-          </div>
-
-          <button
-            className={`bg-deep-blue h-12 w-12 rounded-[50px] text-white hover:bg-blue-700 max-sm:hidden ${
-              urlParams.PageNumber >= totalPages
-                ? "cursor-not-allowed opacity-50"
-                : ""
-            }`}
-            disabled={urlParams.PageNumber >= totalPages}
-            onClick={() => handlePageChange(urlParams.PageNumber + 1)}
-          >
-            بعدی
-          </button>
-        </div>
-      )}
     </div>
   );
 };

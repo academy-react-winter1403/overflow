@@ -40,7 +40,7 @@ function PanelLayout() {
         </button>
       )}
 
-      <div className={`w-3/12 min-w-50 z-20  max-sm:w-full transition-all duration-300 max-sm:absolute ${isMobile && !isMenuOpen ? "translate-x-5 opacity-0 " : "translate-x-0 opacity-100"}`}>
+      <div className={`w-3/12 min-w-50 z-20  max-sm:w-full transition-all duration-300 max-sm:absolute ${isMobile && !isMenuOpen ? "translate-x-5 opacity-0 hidden" : "translate-x-0 opacity-100 block"}`}>
         <SidePanel setIsMenuOpen={setIsMenuOpen}/>
       </div>      
 

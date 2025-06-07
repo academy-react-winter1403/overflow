@@ -237,12 +237,18 @@ const Personalinfoedit = () => {
             />
           </div> */}
 
-          <div className="mt-4 flex justify-center md:col-span-2 gap-5">
-            <Link className="bg-deep-blue rounded-xl text-center text-white font-bold font-iransans w-100 flex items-center justify-center hover:bg-blue-800 disabled:opacity-50" to="/panel/panelpersoninfo"> صفحه قبل</Link>
+          <div className="mt-4 flex justify-center gap-5 md:col-span-2">
+            <Link
+              className="bg-deep-blue font-iransans flex w-100 items-center justify-center rounded-xl text-center font-bold text-white hover:bg-blue-800 disabled:opacity-50 max-sm:w-50"
+              to="/panel/panelpersoninfo"
+            >
+              {" "}
+              صفحه قبل
+            </Link>
             <button
               type="submit"
               disabled={loading}
-              className="w-1/2 rounded-xl bg-[#436E8E] p-3 text-white shadow-lg hover:bg-blue-800 disabled:opacity-50 font-bold"
+              className="w-1/2 rounded-xl bg-[#436E8E] p-3 font-bold text-white shadow-lg hover:bg-blue-800 disabled:opacity-50"
             >
               {loading ? "در حال ارسال..." : "ثبت تغییرات"}
             </button>

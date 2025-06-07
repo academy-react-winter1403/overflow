@@ -92,7 +92,7 @@ function NewsPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-10 text-gray-600 ">
+    <div className="container mx-auto px-4 py-10 text-gray-600">
       <SearchSortBox
         setSort={handleSortChange}
         setSearch={handelSearch}
@@ -100,15 +100,15 @@ function NewsPage() {
         urlParams={urlParams}
       />
       {/* Title */}
-      <div className="mb-10 flex flex-nowrap items-center justify-center max-sm:hidden max-lg:hidden">
-        <div className="w-full border-b-4 border-gray-500 max-sm:hidden max-lg:hidden"></div>
-        <h1 className="font-kalameh mb-8 max-w-7/10 min-w-3/10 text-center text-5xl font-black ">
+      <div className="mb-10 flex flex-nowrap items-center justify-center max-lg:hidden max-sm:hidden">
+        <div className="w-full border-b-4 border-gray-500 max-lg:hidden max-sm:hidden"></div>
+        <h1 className="font-kalameh mb-8 max-w-7/10 min-w-3/10 text-center text-5xl font-black">
           روزنامه سپهر
         </h1>
         <div className="w-full border-b-4 border-gray-600"></div>
       </div>
       {/* News List */}
-      <div className="flex flex-wrap items-center justify-center gap-6 max-sm:mt-25 max-sm:overflow-auto ">
+      <div className="flex flex-wrap items-center justify-center gap-6 max-sm:mt-25 max-sm:overflow-auto">
         {newsData &&
           newsData.map((news) => (
             <NewsCard
@@ -117,11 +117,9 @@ function NewsPage() {
               key={news.id}
             />
           ))}
-      </div>
-
-      {/* pagination */}
+                {/* pagination */}
       {totalPages > 1 && (
-        <div className="font-iransans mt-6 mb-10 flex w-full items-center justify-center gap-4 pr-110 font-bold  max-sm:pl-50">
+        <div className="font-iransans mt-6 mb-10 flex w-full items-center justify-center gap-4 pr-auto font-bold max-sm:pl-auto">
           <button
             className={`bg-deep-blue h-12 w-12 rounded-[50px] text-white hover:bg-blue-700 max-sm:w-15 ${
               urlParams.PageNumber === 1 ? "cursor-not-allowed opacity-50" : ""
@@ -167,8 +165,10 @@ function NewsPage() {
                 ) : (
                   <button
                     key={page}
-                    style={{ background: ` ${urlParams.PageNumber === page ? "#436e8e4D" : ""}` }}
-                    className={`rounded-[50px] border bg-white border-gray-300 px-3 py-1 text-lg hover:bg-gray-100 ${
+                    style={{
+                      background: ` ${urlParams.PageNumber === page ? "#436e8e4D" : ""}`,
+                    }}
+                    className={`rounded-[50px] border border-gray-300 bg-white px-3 py-1 text-lg hover:bg-gray-100 ${
                       urlParams.PageNumber === page ? "text-black" : ""
                     }`}
                     onClick={() => handlePageChange(page)}
@@ -193,6 +193,7 @@ function NewsPage() {
           </button>
         </div>
       )}
+      </div>
     </div>
   );
 }

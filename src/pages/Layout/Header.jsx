@@ -61,8 +61,8 @@ function Header() {
   return (
     <div className="">
       {/* Desktop Navigation */}
-      <div className="w-10/10  flex flex-row-reverse items-center justify-between px-6 py-4 text-white max-lg:hidden dark:bg-[#1b263ddb] dark:text-black">
-        <div className="font-kalameh max-lg:mr-0  max-lg z-10 mt-14 mr-25 flex flex-row-reverse items-center gap-11 text-[22px] font-bold text-gray-400 w-8/10">
+      <div className="flex w-10/10 flex-row-reverse items-center justify-between px-6 py-4 text-white max-lg:hidden dark:bg-[#1b263ddb] dark:text-black">
+        <div className="font-kalameh max-lg z-10 mt-14 mr-25 flex w-8/10 flex-row-reverse items-center gap-11 text-[22px] font-bold text-gray-400 max-lg:mr-0">
           {/* Logo */}
           <div className="relative mb-1 h-7 w-7 shrink-0 transition-transform hover:scale-110">
             <div className="bg-deep-blue absolute z-2 h-full w-full rotate-45 -skew-20 rounded-[6px] opacity-95"></div>
@@ -76,11 +76,11 @@ function Header() {
           <DesktopNavItem to="/sendyourthing">ارتباط با ما</DesktopNavItem>
         </div>
 
-        <div className="  w-2/10 flex flex-row-reverse mt-10 justify-center gap-3">
+        <div className="mt-10 flex w-2/10 flex-row-reverse justify-center gap-3">
           {/* Dark Mode Toggle */}
           <div
             onClick={handelToggleDarkMode}
-            className="bg-deep-blue  flex h-12 w-12 cursor-pointer items-center justify-center rounded-full "
+            className="bg-deep-blue flex h-12 w-12 cursor-pointer items-center justify-center rounded-full"
           >
             <div>
               <img
@@ -104,16 +104,29 @@ function Header() {
           </Link>
           {/* Search Icon */}
         </div>
-        
       </div>
       {/* mobile mode */}
 
-      <nav className="bg-gray-400/95  fixed bottom-0 z-100 grid w-full grid-cols-5 items-center justify-center gap-2 px-2 py-2 text-center shadow-2xl lg:hidden">
+      <nav className="fixed bottom-0 z-100 grid w-full grid-cols-5 items-center justify-center gap-2 bg-gray-400/95 px-2 py-2 text-center shadow-2xl lg:hidden">
         <MobileNavItem to="/panel" icon={profile} alt="Me" />
         <MobileNavItem to="/teachers" icon={teacher} alt="teacher" />
         <MobileNavItem to="/news" icon={newspaperIcon} alt="News" />
         <MobileNavItem to="/AllCourses" icon={learningIcon} alt="Courses" />
         <MobileNavItem to="/" icon={homeIcon} alt="Home" />
+
+              {/* dark buttom */}
+        <div
+          onClick={handelToggleDarkMode}
+          className="bg-deep-blue flex h-12 w-12 cursor-pointer items-center justify-center rounded-full absolute bottom-20 left-5"
+        >
+          <div>
+            <img
+              src={isDarkMode ? sun : moon}
+              alt={isDarkMode ? "sun" : "moon"}
+              className="h-8 w-8 scale-130 transition-transform duration-200 hover:scale-150"
+            />
+          </div>
+        </div>
       </nav>
     </div>
   );

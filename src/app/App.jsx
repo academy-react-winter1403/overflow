@@ -28,9 +28,14 @@ import { Mysetcomment } from "../components/Panel/Mycomment.jsx";
 import { Mynewssetcomment } from "../components/Panel/Mynewscomment.jsx";
 import { Updatesecurity } from "../components/Panel/editsecurity.jsx";
 import { Loginlevel2 } from "../pages/Auth/twosteplogin.jsx";
+import { NotFoundPage } from "../pages/Notfound/NotFoundPage.jsx";
 
 function App() {
   const publicRoutes = [
+    {
+      path:'/*',
+      element:<NotFoundPage />
+    },
     {
       path: "/",
       element: <Layout />,

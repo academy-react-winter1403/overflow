@@ -54,13 +54,13 @@ const GetMyCoursesReserve = () => {
         filteredReserve.map((reserve, index) => (
           <div
             key={index}
-            className="m-auto mt-5 flex h-20 w-11/12 flex-row-reverse items-center justify-start gap-2 rounded-2xl bg-gray-200 pr-5 hover:bg-gray-400 dark:bg-gray-500"
+            className=" p-2 m-auto mt-5 flex h-20 w-11/12 flex-row-reverse items-center justify-start gap-2 rounded-2xl bg-gray-200 pr-5 hover:bg-gray-400 dark:bg-gray-500"
           >
             <img className="h-12 w-12" src={profile} alt="Course profile" />
-            <div className="h-full w-6/10 pt-5 pr-3 text-right max-lg:truncate max-md:truncate max-sm:truncate">
+            <div className="h-full w-6/10 pt-4 pr-3 text-right max-lg:truncate max-md:truncate max-sm:truncate">
               {reserve.courseName || "No Name"}
             </div>
-            <div className="h-full w-5/10 pt-5 max-lg:truncate max-md:hidden max-sm:hidden">
+            <div className="h-full w-5/10 pt-4 max-lg:truncate max-md:hidden max-sm:hidden">
               {reserve.reserverDate || "No Date"}
             </div>
           </div>

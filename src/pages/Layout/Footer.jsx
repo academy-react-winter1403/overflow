@@ -16,11 +16,11 @@ function Footer() {
   const [isOpen3, setIsOpen3] = useState(false);
 
   return (
-    <div className="font-iransans relative flex gap-3 rounded-2xl bg-gray-100/50 font-bold text-gray-600 transition-all duration-300 dark:text-gray-200 max-lg:overflow-auto max-sm:hidden">
+    <div className=" font-iransans relative flex gap-3 rounded-2xl bg-gray-100/50 font-bold text-gray-600 transition-all duration-300 dark:text-gray-200 max-lg:overflow-auto max-sm:hidden">
      
       <div className="container mx-auto flex h-[382px] items-center justify-between gap-3  ">
         
-        <div className="w-1/3 max-w-[494px] text-right max-lg:ml-2">
+        <div className="w-1/3 max-w-[494px] text-right max-lg:ml-2 max-md:hidden">
           <div className="dark rounded-[30px] bg-white p-10 shadow-md dark:text-gray-200">
             <h3 className="mb-4 text-[26px] font-black">به ما بپیوندید</h3>
             <p className="mb-4 text-gray-600 dark:text-gray-200">
@@ -33,14 +33,14 @@ function Footer() {
           </div>
         </div>
 
-        <div className="footer-links norder-amber-700 flex w-2/3 justify-end gap-38 max-lg:flex-col max-lg:gap-0 max-lg:text-right">
+        <div className="footer-links norder-amber-700 flex w-2/3 justify-end gap-38 max-lg:flex-col max-lg:gap-0 max-lg:text-right  max-md:w-full">
           <div className="links-section p-4 max-lg:border-b max-lg:border-gray-600">
             {/* Toggle Button (Only Visible in Tablet/Mobile Mode) */}
 
             <div className="max-lg:flex max-lg:flex-row-reverse">
               {/* Section Title (Always Clickable in Tablet/Mobile Mode) */}
               <a href='/sendyourthing'
-                className="mb-4 flex cursor-pointer flex-row justify-end text-4xl font-semibold max-lg:flex-col text-blue-600"
+                className="mb-4 flex cursor-pointer flex-row justify-end text-4xl max-lg:text-2xl font-semibold max-lg:flex-col text-blue-600"
                 onClick={() => setIsOpen3(!isOpen3)}
               >
                 ارتباط با ما
@@ -65,7 +65,7 @@ function Footer() {
             </ul>
 
             <div
-              className={`flex flex-row justify-end gap-10 hover:cursor-pointer ${isOpen3 || window.innerWidth >= 1024 ? "flex" : "hidden"} lg:flex`}
+              className={`flex flex-row justify-end gap-10 hover:cursor-pointer ${isOpen3 || window.innerWidth >= 1024 ? "flex" : "hidden"} max-2xl:hidden`}
             >
               <img src={instagram} alt="" />
               <img src={facebook} alt="" />
@@ -92,7 +92,7 @@ function Footer() {
 
           <div className="max-lg:flex max-lg:flex-col max-lg:border-b max-lg:border-gray-600 max-lg:pt-5 ">
             <div className="max-lg:flex max-lg:flex-row-reverse">
-              <h4 className="mb-4 text-4xl font-semibold max-lg:mr-5">
+              <h4 className="mb-4 text-4xl font-semibold max-lg:mr-5 max-lg:text-2xl">
                 {" "}
                 شرکت ما{" "}
               </h4>
@@ -124,7 +124,7 @@ function Footer() {
 
           <div className="max-lg:flex max-lg:flex-col max-lg:border-b max-lg:border-gray-600 max-lg:pt-5">
             <div className="max-lg:flex max-lg:flex-row-reverse">
-              <h4 className="mb-4 text-4xl font-semibold max-lg:mr-5">
+              <h4 className="mb-4 text-4xl font-semibold max-lg:mr-5 max-lg:text-2xl">
                 لینک ها
               </h4>
 

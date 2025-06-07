@@ -6,10 +6,10 @@ import SmartImage from '../Common/SmartImage';
 import { Link } from 'react-router';
 
 
-const ExistingCourseMap = ({handleNavigation}) => {
+const Ongoingcourses = ({handleNavigation}) => {
 
 
-    const URL = "/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=2&SortingCol=lastUpdate";
+    const URL = "/Home/GetCoursesWithPagination?PageNumber=2&RowsOfPage=2&SortingCol=lastUpdate";
     const [newCoursesData, setNewCoursesData] = useState([]);
 
     const getNewCoursesData = async () => {
@@ -51,4 +51,4 @@ const ExistingCourseMap = ({handleNavigation}) => {
     );
 };
 
-export { ExistingCourseMap };
+export { Ongoingcourses };

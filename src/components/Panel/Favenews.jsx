@@ -56,8 +56,8 @@ const Favenews = () => {
             className="m-auto mt-5 flex h-18 w-11/12 flex-row-reverse items-center justify-start gap-2 rounded-2xl bg-gray-200 pr-5 hover:bg-gray-400 dark:bg-gray-500"
           >
             <img
-              className="tru h-12 w-12 rounded-[50px]"
-              src={reserve.currentImageAddressTumb || profile}
+              className="truncate h-12 w-12 rounded-[50px]"
+              src={reserve?.currentImageAddressTumb || profile}
               alt="Course profile"
             />
             <div className="h-full w-4/10 truncate pt-5 pr-2 text-right transition-all duration-300 max-xl:w-6/10 max-sm:w-8/10">
