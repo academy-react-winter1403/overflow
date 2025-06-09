@@ -100,7 +100,7 @@ const Registerlvl2 = () => {
               <ErrorMessage name="verifyCode" component="div" className="text-red-500 text-sm pr-2" />
               <button
                 type="submit"
-                className="w-6/11 h-12 text-center bg-[#436E8E] text-white py-2 rounded max-xl:w-9/10 max-sm:w-9/10">تایید و ثبت نام</button>
+                className="w-6/11 h-12 text-center bg-[#436E8E] font-bold text-white py-2 rounded max-xl:w-9/10 max-sm:w-9/10">تایید و ثبت نام</button>
             </Form>
             
           )}

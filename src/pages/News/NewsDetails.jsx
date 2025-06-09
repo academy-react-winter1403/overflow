@@ -91,7 +91,7 @@ const NewsDetails = () => {
     <>
       <div className="font-kalameh flex justify-center gap-10 px-6 py-8 font-semibold text-gray-700 dark:text-gray-300">
         <div
-          className={`flex ${similarNews.length == 0 ? "max-w-8/10" : "max-w-6/10"} max-md: flex-col items-center`}
+          className={`flex ${similarNews.length == 0 ? "max-w-8/10" : "max-w-6/10"} max-md: flex-col items-center `}
         >
           <div className="flex w-full flex-col items-center space-y-6 lg:space-y-0">
             <div className="relative mb-8 flex h-[500px] w-3/3 justify-center transition-all duration-300 max-sm:h-60 max-sm:w-100 max-sm:scale-90">
@@ -140,8 +140,8 @@ const NewsDetails = () => {
             </header>
           </div>
 
-          <div className="mt-10 flex w-full max-w-9/10 text-right max-sm:hidden">
-            <p className="font-iransans text-lg break-all whitespace-pre-line text-gray-700 dark:text-gray-300">
+          <div className="mt-10 flex w-full max-w-9/10 text-right max-sm:h-27 max-sm:absolute  max-sm:overflow-hidden top-120 max-sm:scale-90 max-sm:pr-2 truncate">
+            <p className="font-iransans text-lg break-all  whitespace-pre-line text-gray-700 dark:text-gray-300 ">
               {describe || googleDescribe}
             </p>
           </div>

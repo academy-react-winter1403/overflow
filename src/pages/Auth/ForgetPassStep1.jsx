@@ -78,7 +78,7 @@ const Resetpasswordlevel1 = () => {
 
                 <button
                   type="submit"
-                  className="h-12 w-8/11 rounded bg-[#436E8E] py-2 text-center text-black max-xl:w-9/10 max-lg:w-7/10 max-sm:w-9/10"
+                  className="h-12 w-8/11 rounded bg-[#436E8E] py-2 text-center text-white font-bold max-xl:w-9/10 max-lg:w-7/10 max-sm:w-9/10"
                 >
                   ارسال کد
                 </button>

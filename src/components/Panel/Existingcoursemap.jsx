@@ -6,7 +6,7 @@ import SmartImage from '../Common/SmartImage';
 import { Link } from 'react-router';
 
 
-const ExistingCourseMap = ({handleNavigation}) => {
+const ExistingCourseMap = () => {
 
 
     const URL = "/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=2&SortingCol=lastUpdate";
@@ -16,7 +16,7 @@ const ExistingCourseMap = ({handleNavigation}) => {
         try {
             const response = await getApi(URL, "courseFilterDtos");
             setNewCoursesData(response); 
-            // console.log("NewCourse:", response);
+ 
         } catch (error) {
             console.error("Error fetching courses:", error);
         }
@@ -29,7 +29,7 @@ const ExistingCourseMap = ({handleNavigation}) => {
     return (
         <div  className="flex flex-col gap-5 ">
             {newCoursesData&&newCoursesData.map((course, index) => (
-                <Link to={`/AllCourses/Courses/${handleNavigation}`} key={index} className="flex flex-row justify-center">
+                <Link to={`/AllCourses/Courses/${course.courseId}`} key={index} className="flex flex-row justify-center">
                     <div className="  flex flex-row items-center bg-gray-100 rounded-2xl w-9/10 h-25 dark:bg-gray-700 dark:border dark:border-white hover:scale-105 transition-transform duration-300 ">
                         <div className="flex flex-row-reverse justify-end items-end gap-5 w-5/10 ">
                            

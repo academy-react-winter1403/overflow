@@ -16,10 +16,8 @@ function Footer() {
   const [isOpen3, setIsOpen3] = useState(false);
 
   return (
-    <div className=" font-iransans relative flex gap-3 rounded-2xl bg-gray-100/50 font-bold text-gray-600 transition-all duration-300 dark:text-gray-200 max-lg:overflow-auto max-sm:hidden">
-     
-      <div className="container mx-auto flex h-[382px] items-center justify-between gap-3  ">
-        
+    <div className="font-iransans relative flex gap-3 rounded-2xl bg-gray-100/50 font-bold text-gray-600 transition-all duration-300 max-lg:overflow-auto max-sm:hidden dark:text-gray-200">
+      <div className="container mx-auto flex h-[382px] items-center justify-between gap-3">
         <div className="w-1/3 max-w-[494px] text-right max-lg:ml-2 max-md:hidden">
           <div className="dark rounded-[30px] bg-white p-10 shadow-md dark:text-gray-200">
             <h3 className="mb-4 text-[26px] font-black">به ما بپیوندید</h3>
@@ -33,14 +31,15 @@ function Footer() {
           </div>
         </div>
 
-        <div className="footer-links norder-amber-700 flex w-2/3 justify-end gap-38 max-lg:flex-col max-lg:gap-0 max-lg:text-right  max-md:w-full">
+        <div className="footer-links norder-amber-700 flex w-2/3 justify-end gap-38 max-xl:gap-0 max-lg:flex-col max-lg:gap-0 max-lg:text-right max-md:w-full">
           <div className="links-section p-4 max-lg:border-b max-lg:border-gray-600">
             {/* Toggle Button (Only Visible in Tablet/Mobile Mode) */}
 
             <div className="max-lg:flex max-lg:flex-row-reverse">
               {/* Section Title (Always Clickable in Tablet/Mobile Mode) */}
-              <a href='/sendyourthing'
-                className="mb-4 flex cursor-pointer flex-row justify-end text-4xl max-lg:text-2xl font-semibold max-lg:flex-col text-blue-600"
+              <a
+                href="/sendyourthing"
+                className="mb-4 flex cursor-pointer flex-row justify-end text-4xl font-semibold text-blue-600 max-lg:flex-col max-lg:text-2xl"
                 onClick={() => setIsOpen3(!isOpen3)}
               >
                 ارتباط با ما
@@ -75,22 +74,22 @@ function Footer() {
             </div>
 
             <div
-              className={`flex flex-row justify-start ${isOpen3 || window.innerWidth >= 1024 ? "flex" : "hidden"} lg:flex`}
+              className={`flex flex-row justify-end  ${isOpen3 || window.innerWidth >= 1024 ? "flex" : "hidden"} lg:flex`}
             >
               <img
-                className="h-20 w-60 hover:cursor-pointer"
+                className="h-20 w-60 hover:cursor-pointer max-xl:w-40"
                 src={googleplay}
                 alt=""
               />
               <img
-                className="h-20 w-60 hover:cursor-pointer"
+                className="h-20 w-60 hover:cursor-pointer max-xl:w-40"
                 src={appstore}
                 alt=""
               />
             </div>
           </div>
 
-          <div className="max-lg:flex max-lg:flex-col max-lg:border-b max-lg:border-gray-600 max-lg:pt-5 ">
+          <div className="max-xl:hidden max-lg:flex max-lg:flex-col max-lg:border-b max-lg:border-gray-600 max-lg:pt-5">
             <div className="max-lg:flex max-lg:flex-row-reverse">
               <h4 className="mb-4 text-4xl font-semibold max-lg:mr-5 max-lg:text-2xl">
                 {" "}
@@ -110,7 +109,7 @@ function Footer() {
 
             {/* Links List */}
             <ul
-              className={`space-y-2 py-2 text-right text-[20px] text-gray-600 hover:cursor-pointer dark:text-gray-200 max-lg:pr-5 ${
+              className={`space-y-2 py-2 text-right text-[20px] text-gray-600 hover:cursor-pointer max-lg:pr-5 dark:text-gray-200 ${
                 isOpen2 ? "block" : "hidden"
               } lg:block`}
             >
@@ -122,9 +121,9 @@ function Footer() {
             </ul>
           </div>
 
-          <div className="max-lg:flex max-lg:flex-col max-lg:border-b max-lg:border-gray-600 max-lg:pt-5">
+          <div className="max-xl:w-5/10 max-lg:flex-col max-lg:border-b max-lg:border-gray-600 max-lg:pt-5 max-lg:hidden">
             <div className="max-lg:flex max-lg:flex-row-reverse">
-              <h4 className="mb-4 text-4xl font-semibold max-lg:mr-5 max-lg:text-2xl">
+              <h4 className="mb-4 text-right text-4xl font-semibold max-lg:mr-5 max-lg:text-2xl">
                 لینک ها
               </h4>
 
@@ -141,7 +140,7 @@ function Footer() {
 
             {/* Links List */}
             <ul
-              className={`space-y-2  py-2 text-right text-[20px] text-gray-600 hover:cursor-pointer dark:text-gray-200 max-lg:pr-5 ${
+              className={`space-y-2 py-2 text-right text-[20px] text-gray-600 hover:cursor-pointer max-lg:pr-5 dark:text-gray-200 ${
                 isOpen ? "block" : "hidden"
               } lg:block`}
             >

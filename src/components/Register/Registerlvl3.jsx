@@ -115,7 +115,7 @@ const Registerlvl3 = () => {
 
               <button
                 type="submit"
-                className="w-8/11 h-12 outline-none border-none rounded-[5px] text-white text-center bg-sky-800 max-xl:w-10/10">ادامه</button>
+                className="w-8/11 h-12 outline-none border-none rounded-[5px] font-bold text-white text-center bg-sky-800 max-xl:w-10/10">ادامه</button>
             </Form>
           )}
         </Formik>

@@ -34,13 +34,13 @@ function PanelLayout() {
       {isMobile && (
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="fixed top-4 right-6 bg-gray-700 text-white p-2 rounded-lg z-50 max-sm:block w-10 h-10"
+          className="fixed top-4 right-6 bg-gray-700 text-white p-2 rounded-lg z-50 max-sm:block w-10 h-10 transition-all duration-300"
         >
           {isMenuOpen ? "✖️" : "☰"}
         </button>
       )}
 
-      <div className={`w-3/12 min-w-50 z-20  max-sm:w-full transition-all duration-300 max-sm:absolute ${isMobile && !isMenuOpen ? "translate-x-5 opacity-0 hidden" : "translate-x-0 opacity-100 block"}`}>
+      <div className={`w-3/12 min-w-50 z-20  max-sm:w-full  max-sm:absolute transition-all duration-300 ${isMobile && !isMenuOpen ? "translate-x-5 opacity-0 hidden transition-all duration-300" : "translate-x-0 opacity-100 block transition-all duration-300"}`}>
         <SidePanel setIsMenuOpen={setIsMenuOpen}/>
       </div>      
 

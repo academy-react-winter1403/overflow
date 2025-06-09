@@ -37,6 +37,7 @@ const Dashboard = () => {
   const [profile, setProfile] = useState(null);
   const [Profileinfo, setProfileinfo] = useState(null);
   const [coursecount, setcoursecount] = useState(null);
+  // const [CourseID, SetCourseID] = useState("");
 
   const percentage = profile?.profileCompletionPercentage || 80;
 
@@ -69,7 +70,7 @@ const Dashboard = () => {
 
       setProfileinfo(response.totalCount);
 
-      console.log("Profile info :", response);
+      // console.log("Profile info :", response);
     } catch (error) {
       console.log("Error from profileInfo:", error);
     }
@@ -79,6 +80,8 @@ const Dashboard = () => {
       const response = await getcoursecountApi();
 
       setcoursecount(response.totalCount);
+
+
     } catch (error) {
       console.log("Error from profileInfo:", error);
     }
@@ -226,7 +229,7 @@ const Dashboard = () => {
                   دوره های در حال برگزاری
                 </span>
 
-                <ExistingCourseMap handleNavigation={handleNavigation} />
+                <ExistingCourseMap  />
               </div>
 
               <Link
