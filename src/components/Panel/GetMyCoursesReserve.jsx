@@ -6,6 +6,8 @@ import profile from "../../assets/Coursesimage/IMG_6504.png";
 const GetMyCoursesReserve = () => {
   const [Reservecourse, setReservecourse] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5; // Number of items per page
 
   const getapi = async () => {
     try {
@@ -25,10 +27,17 @@ const GetMyCoursesReserve = () => {
     getapi();
   }, []);
 
+  // Filtering and paginating data
   const filteredReserve = Reservecourse.filter(
     (reserve) =>
       reserve?.courseName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      reserve?.description?.toLowerCase().includes(searchQuery.toLowerCase()),
+      reserve?.description?.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const totalPages = Math.ceil(filteredReserve.length / itemsPerPage);
+  const paginatedReserve = filteredReserve.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
   );
 
   return (
@@ -50,25 +59,45 @@ const GetMyCoursesReserve = () => {
         </p>
       </div>
 
-        <div className=" h-full overflow-auto">
-      {filteredReserve.length > 0 ? (
-        filteredReserve.map((reserve, index) => (
-          <div
-            key={index}
-            className=" m-auto mt-5 flex h-20 w-11/12 flex-row-reverse items-center justify-start gap-2 rounded-2xl bg-gray-200 p-2 pr-5 hover:bg-gray-400 dark:bg-gray-500"
-          >
-            <img className="h-12 w-12" src={profile} alt="Course profile" />
-            <div className="h-full w-6/10 pt-4 pr-3 text-right max-lg:truncate max-md:truncate max-sm:truncate">
-              {reserve.courseName || "No Name"}
+      <div className="">
+        {paginatedReserve.length > 0 ? (
+          paginatedReserve.map((reserve, index) => (
+            <div
+              key={index}
+              className="m-auto mt-5 flex h-20 w-11/12 flex-row-reverse items-center justify-start gap-2 rounded-2xl bg-gray-200 p-2 pr-5 hover:bg-gray-400 dark:bg-gray-500"
+            >
+              <img className="h-12 w-12" src={profile} alt="Course profile" />
+              <div className="h-full w-6/10 pt-4 pr-3 text-right max-lg:truncate max-md:truncate max-sm:truncate">
+                {reserve.courseName || "No Name"}
+              </div>
+              <div className="h-full w-5/10 pt-4 max-lg:truncate max-md:hidden max-sm:hidden">
+                {reserve.reserverDate || "No Date"}
+              </div>
             </div>
-            <div className="h-full w-5/10 pt-4 max-lg:truncate max-md:hidden max-sm:hidden">
-              {reserve.reserverDate || "No Date"}
-            </div>
-          </div>
-        ))
-      ) : (
-        <p className="mt-10 text-center">"دوره‌ای یافت نشد"</p>
-      )}</div>
+          ))
+        ) : (
+          <p className="mt-10 text-center">"دوره‌ای یافت نشد"</p>
+        )}
+      </div>
+
+      {/* Pagination Controls */}
+      <div className="flex justify-center mt-5 ">
+        <button
+          disabled={currentPage === 1}
+          className="mx-2 px-4 py-2  rounded-lg bg-gray-300 hover:bg-gray-400"
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+        >
+          قبلی
+        </button>
+        <span className="px-4 ">صفحه {currentPage} از {totalPages}</span>
+        <button
+          disabled={currentPage === totalPages}
+          className="mx-2 px-4 py-2  rounded-lg bg-gray-300 hover:bg-gray-400"
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+        >
+          بعدی
+        </button>
+      </div>
     </div>
   );
 };
