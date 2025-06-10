@@ -1,4 +1,4 @@
-import Like from "../../assets/Coursesimage/like.png";
+import Like from "../../assets/Coursesimage/icons8-facebook-like-48.png";
 import Dislike from "../../assets/Coursesimage/dislike.png";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
@@ -73,14 +73,14 @@ const Addlikeforcourse = ({ data,courseData }) => {
         
         <button onClick={likecourse} className="flex shrink-0 flex-row items-center text-2xl max-sm:w-10 max-sm:h-6">
           <ToastContainer />
-          <img className={`h-10 w-14 hover:scale-130 transition-all ${courseData.currentUserLike == "1"? "bg-amber-400":""}   duration-300`} src={ Like  } />
+          <img className={`h-8 w-12 hover:scale-130 transition-all  ${courseData.currentUserLike == "1"? "bg-amber-400":""}   duration-300`} src={ Like  } />
           {/* {courseData.currentUserLike? Like : Dislike } */}
           
         </button>
         
         <button onClick={dislikecourse} className="flex shrink-0 flex-row items-center text-2xl max-sm:w-10 max-sm:h-6">
           <ToastContainer />
-          <img className="h-10 w-15 mt-1 hover:scale-130 transition-all duration-300" src={Dislike} />
+          <img className="h-8 w-12 rotate-180 hover:scale-130 transition-all duration-300" src={Like} />
         </button>
       </div>
     </div>

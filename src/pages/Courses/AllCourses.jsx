@@ -54,7 +54,6 @@ const AllCourse = () => {
   const courses = courseData?.courseFilterDtos || [];
   const totalCount = courseData?.totalCount || 0;
 
-
   const totalPages = Math.max(1, Math.ceil(totalCount / urlParams.RowsOfPage));
 
   const handleCostChange = (key, value) => {
@@ -162,7 +161,6 @@ const AllCourse = () => {
                     pages.push(i);
                   }
 
-                  
                   if (currentPage < totalPages - 2) {
                     if (currentPage < totalPages - 3) pages.push("...");
                     pages.push(totalPages);
@@ -351,7 +349,7 @@ const AllCourse = () => {
                         ×
                       </button>
                     </span>
-                  )} 
+                  )}
                   {urlParams.techName && (
                     <span className="border-deep-blue bg-deep-blue/10 text-deep-blue hover:bg-deep-blue font-iransans flex cursor-pointer items-center gap-2 rounded-full border px-3 py-1 transition-colors hover:text-white dark:bg-transparent dark:text-white dark:hover:bg-gray-100 dark:hover:text-black">
                       {urlParams.techName}
@@ -386,7 +384,7 @@ const AllCourse = () => {
                   />
                 </div>
 
-                <div className="mb-5 scale-90 pt-4">
+                <div className="mb-5 scale-90 pt-4 border-b border-gray-200 py-4 dark:border-gray-700">
                   <FilterAccordionforType
                     setUrlParams={setUrlParams}
                     urlParams={urlParams}
@@ -394,7 +392,7 @@ const AllCourse = () => {
                   />
                 </div>
 
-                <div className="scale-90 pt-4">
+                <div className="scale-90 pt-4 py-4 dark:border-gray-700">
                   <FilterAccordionfortech
                     setUrlParams={setUrlParams}
                     urlParams={urlParams}
@@ -527,7 +525,7 @@ const AllCourse = () => {
                       />
                     </div>
 
-                    <div className="pt-4">
+                    <div className="pt-4 border-b border-gray-200 py-4 dark:border-gray-700">
                       <FilterAccordionforType
                         setUrlParams={setUrlParams}
                         urlParams={urlParams}
@@ -535,7 +533,7 @@ const AllCourse = () => {
                       />
                     </div>
 
-                    <div className="pt-4">
+                    <div className="pt-4 border-b border-gray-200 py-4 dark:border-gray-700">
                       <FilterAccordionfortech
                         setUrlParams={setUrlParams}
                         urlParams={urlParams}
