@@ -29,6 +29,8 @@ import { Mynewssetcomment } from "../components/Panel/Mynewscomment.jsx";
 import { Updatesecurity } from "../components/Panel/editsecurity.jsx";
 import { Loginlevel2 } from "../pages/Auth/twosteplogin.jsx";
 import { NotFoundPage } from "../pages/Notfound/NotFoundPage.jsx";
+import { Basket } from "../components/Basket/CartPage.jsx";
+
 
 function App() {
   const publicRoutes = [
@@ -151,8 +153,12 @@ function App() {
           path: "/sendyourthing",
           element: <Idk />,
         },
-    
+        {
+          path:'/basket',
+          element:<Basket />
+        }
       ],
+      
     },
   ];
   const router = createBrowserRouter(publicRoutes);

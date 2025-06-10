@@ -8,6 +8,7 @@ import learningIcon from "../../assets/Header/learning.png";
 import newspaperIcon from "../../assets/Header/newspaper-folded.png";
 import profile from "../../assets/Header/profile.png";
 import teacher from "../../assets/Header/icons8-teacher-48.png";
+import basket from "../../assets/landing/icons8-basket-60.png";
 import {
   getItem,
   getItemGeneric,
@@ -102,6 +103,15 @@ function Header() {
               </div>
             </div>
           </Link>
+          <Link
+            to="/basket"
+            className="bg-deep-blue flex h-12 w-12 cursor-pointer items-center justify-center rounded-full"
+          >
+            <img
+              className="scale-60 transition-transform duration-100 hover:scale-65"
+              src={basket}
+            />
+          </Link>
           {/* Search Icon */}
         </div>
       </div>
@@ -114,10 +124,10 @@ function Header() {
         <MobileNavItem to="/AllCourses" icon={learningIcon} alt="Courses" />
         <MobileNavItem to="/" icon={homeIcon} alt="Home" />
 
-              {/* dark buttom */}
+        {/* dark buttom */}
         <div
           onClick={handelToggleDarkMode}
-          className="bg-deep-blue flex h-12 w-12 cursor-pointer items-center justify-center rounded-full absolute bottom-20 left-5"
+          className="bg-deep-blue absolute bottom-15 left-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full"
         >
           <div>
             <img
@@ -127,6 +137,15 @@ function Header() {
             />
           </div>
         </div>
+         <Link
+            to="/basket"
+            className="bg-deep-blue absolute bottom-30 left-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full"
+          >
+            <img
+              className="scale-60 transition-transform duration-100 hover:scale-65"
+              src={basket}
+            />
+          </Link>
       </nav>
     </div>
   );
