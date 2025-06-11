@@ -75,7 +75,7 @@ const Panel3 = () => {
               <MycourseCard
                 item={course}
                 index={index}
-                handleNavigation={handleNavigation}
+                // handleNavigation={handleNavigation}
                 key={index}
               />
             ))
