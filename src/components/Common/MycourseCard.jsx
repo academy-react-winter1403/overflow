@@ -15,19 +15,19 @@ function MycourseCard({ item, index, className = "" }) {
     phone: Yup.string().required("شماره تماس ضروری است"),
   });
   const [isOpen, setIsOpen] = useState(false);
-  // console.log("CourseId",item.courseId)
-  // console.log("Paid",item.cost)
-  // console.log("PeymentDate",item.lastUpdate)
-  const formData = new FormData();
-  formData.append("CourseId", item.courseId);
-  formData.append("Paid", item.cost);
-  formData.append("PeymentDate", item.lastUpdate);
-  formData.append("PaymentInvoiceNumber", "");
 
-  const HandlePaystep1 = async () => {
-    const respone = await Step1(formData);
-    if (respone) {
+  const HandlePaystep1 = async (values) => {
+
+    const formData = new FormData();
+    formData.append("CourseId", item.courseId);
+    formData.append("Paid", item.cost);
+    formData.append("PeymentDate", item.lastUpdate);
+    formData.append("PaymentInvoiceNumber", values.PaymentInvoiceNumber);
+
+    const response = await Step1(formData);
+    if (response) {
       toast.success("ورود موفقیت‌آمیز بود");
+      alert("success");
     }
   };
   return (
@@ -86,14 +86,13 @@ function MycourseCard({ item, index, className = "" }) {
                 <Formik
                   initialValues={{ PaymentInvoiceNumber: "" }}
                   validationSchema={validationSchema}
-                  onSubmit={() => HandlePaystep1()}
-                  className="w-auto rounded bg-white p-6 shadow-lg "
+                  onSubmit={(values) => HandlePaystep1(values)}
                 >
-                  <Form className="max-sm:w-full max-sm:scale-90 flex h-auto w-4/10  transition-all duration-300 flex-col items-center gap-5 rounded-2xl border bg-white dark:bg-gray-500">
+                  <Form className="flex h-auto w-4/10 flex-col items-center gap-5 rounded-2xl border bg-white transition-all duration-300 max-sm:w-full max-sm:scale-90 dark:bg-gray-500">
                     <h2 className="font-iransans mt-10 text-2xl font-bold">
                       مراحل پرداخت
                     </h2>
-                    <div className="max-xl:w-6/10 max-lg:w-7/10 max-md:w-9/10 flex w-5/10 flex-col gap-5 rounded-2xl bg-gray-200 dark:bg-gray-400 p-5 transition-all duration-300 hover:scale-110">
+                    <div className="flex w-5/10 flex-col gap-5 rounded-2xl bg-gray-200 p-5 transition-all duration-300 hover:scale-110 max-xl:w-6/10 max-lg:w-7/10 max-md:w-9/10 dark:bg-gray-400">
                       <p className="font-iransans font-bold">
                         لطفاً اطلاعات پرداخت خود را وارد کنید.
                       </p>
@@ -107,7 +106,7 @@ function MycourseCard({ item, index, className = "" }) {
 
                     <button
                       type="submit"
-                      className=" max-md:w-3/10 max-lg:w-3/10 mb-3 w-1/10 rounded bg-[#436E8E] py-2 text-center font-bold text-white transition-all duration-100 hover:scale-110"
+                      className="mb-3 w-1/10 rounded bg-[#436E8E] py-2 text-center font-bold text-white transition-all duration-100 hover:scale-110 max-lg:w-3/10 max-md:w-3/10"
                     >
                       ادامه
                       <ToastContainer />

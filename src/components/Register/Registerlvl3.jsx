@@ -5,6 +5,8 @@ import { Register } from "../../core/services/api/Register/RegisterPages.js";
 import signin from '../../assets/register/Image 6.png';
 import academylogo from '../../assets/register/ac-Logo.png';
 import { Link, useNavigate } from "react-router";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const validationSchema = Yup.object({
   phone: Yup.string()
@@ -39,6 +41,7 @@ const Registerlvl3 = () => {
   
       
       if (response) {
+        toast.success("ثبت نام موفقیت‌آمیز بود");
         console.log("Payload successfully sent:", response);
         navigate('/login');
       } else {
@@ -115,7 +118,10 @@ const Registerlvl3 = () => {
 
               <button
                 type="submit"
-                className="w-8/11 h-12 outline-none border-none rounded-[5px] font-bold text-white text-center bg-sky-800 max-xl:w-10/10">ادامه</button>
+                className="w-8/11 h-12 outline-none border-none rounded-[5px] font-bold text-white text-center bg-sky-800 max-xl:w-10/10">
+                  ادامه  
+                  <ToastContainer />
+                  </button>
             </Form>
           )}
         </Formik>
