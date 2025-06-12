@@ -91,58 +91,78 @@ function Services() {
       <h2 className="font-peyda text-deep-blue relative z-10 mb-14 text-5xl font-black">
         خدمات
       </h2>
-      <section className="relative z-10 flex justify-center overflow-hidden">
-        <div className="relative flex h-119 w-264 flex-col items-center space-y-6">
-          <div className="absolute top-16 -left-1 h-95 w-241 rounded-sm dark:bg-deep-blue/55 bg-white opacity-80 shadow-[0px_5px_27.5px_rgba(0,0,0,0.16)]"></div>
+      <section className="relative z-10 flex justify-center max-xl:flex-col max-xl:items-center overflow-hidden">
 
-          {servicesData&&servicesData.map((service) => (
-            <div className="z-10 mt-11 mr-16" key={service.id}>
+        {/* Mobile (vertical) slider navigation */}
+        <div className="mb-6 flex items-center xl:hidden">
+          <div className="ml-8 flex items-center space-x-2">
+            <button onClick={nextService}>
+              <img
+                src={up}
+                className="w-8 hover:scale-110 hover:cursor-pointer"
+              />
+            </button>
+            <div className="font-vazir my-2 text-4xl font-bold text-gray-700 dark:text-gray-200">
+              {serviceSlider + 1}/ 6
+            </div>
+            <button onClick={prevService}>
+              <img
+                src={up}
+                className="w-8 rotate-180 hover:scale-110 hover:cursor-pointer"
+              />
+            </button>
+          </div>
+        </div>
+        {/* Slider container */}
+        <div className="flex h-119 w-264 flex-col items-center space-y-6 overflow-hidden">
+          <div className="dark:bg-deep-blue/55 absolute h-99 w-264 rounded-sm bg-white opacity-80 shadow-[0px_5px_27.5px_rgba(0,0,0,0.16)] max-xl:hidden"></div>
+
+          {servicesData &&
+            servicesData.map((service, index) => (
               <div
-                className="transition-all duration-300  hover:scale-102 hover:shadow-2xl hover:shadow-deep-blue flex h-95 w-241 flex-col gap-6 rounded-sm dark:bg-deep-blue/55  bg-white px-11 py-8 text-right shadow-[0px_5px_27.5px_rgba(0,0,0,0.16)] md:flex-row-reverse"
+                key={service.id}
                 style={{ transform: `translateY(-${serviceSlider * 448}px)` }}
+                className="z-10 mt-11 mr-16 transition-all duration-300 hover:scale-102 hover:shadow-2xl max-xl:ml-30 max-md:ml-15"
               >
-                {/* Image */}
-                <div className="flex w-full justify-center md:w-1/3">
-                  <img
-                    src={serviceImges}
-                    alt={service.title}
-                    className="h-[328px] w-[328px] rounded-md object-cover"
-                  />
-                </div>
-
-                {/* Text content */}
-                <div className="w-full space-y-4 md:w-2/3">
-                  <h3 className="font-kalameh text-deep-blue dark:text-gray-200 mt-16 text-5xl font-black">
-                    {service.title}
-                  </h3>
-                  <p className="font-vazir text-lg leading-relaxed font-semibold dark:text-gray-200 text-gray-400">
-                    {service.description}
-                  </p>
-                </div>
-
-                <div className="absolute -right-30 bottom-30 mb-6 flex items-center">
-                  <div className="z-10 ml-8 flex flex-col items-center space-x-2">
-                    <button onClick={nextService}>
-                      <img
-                        src={up}
-                        className="w-4 hover:scale-110 hover:cursor-pointer"
-                      />
-                    </button>
-
-                    <div className="font-vazir my-2 text-2xl font-bold dark:text-gray-200 text-gray-700">
-                      {serviceSlider + 1}/ 6
-                    </div>
-                    <button onClick={prevService}>
-                      <img
-                        src={up}
-                        className="w-4  rotate-180 hover:scale-110 hover:cursor-pointer"
-                      />
-                    </button>
+                <div className="flex h-95 w-241 flex-row-reverse gap-6 rounded-sm bg-white px-11 py-8 text-right shadow-[0px_5px_27.5px_rgba(0,0,0,0.16)] dark:bg-deep-blue/55 max-xl:w-220 max-lg:w-175 max-md:w-150 max-md:px-5 max-sm:w-100">
+                  <div className="flex w-full justify-center max-md:w-[120px] max-sm:hidden md:w-2/5 lg:w-1/3">
+                    <img
+                      src={serviceImges}
+                      alt={service.title}
+                      className="h-[328px] w-[328px] rounded-md object-cover"
+                    />
+                  </div>
+                  <div className="w-full space-y-4 text-center md:w-2/3">
+                    <h3 className="font-kalameh mt-16 text-5xl font-bold text-deep-blue dark:text-gray-200 max-md:text-3xl">
+                      {service.title}
+                    </h3>
+                    <p className="font-vazir text-2xl truncate leading-relaxed text-gray-400 dark:text-gray-200">
+                      {service.description}
+                    </p>
                   </div>
                 </div>
               </div>
+            ))}
+        </div>
+        {/* Desktop (side) slider navigation */}
+        <div className="mb-6 flex items-center max-xl:hidden">
+          <div className="ml-8 flex flex-col items-center space-x-2">
+            <button onClick={nextService}>
+              <img
+                src={up}
+                className="w-4 hover:scale-110 hover:cursor-pointer"
+              />
+            </button>
+            <div className="font-vazir my-2 text-2xl font-bold text-gray-700 dark:text-gray-200">
+              {serviceSlider + 1}/ 6
             </div>
-          ))}
+            <button onClick={prevService}>
+              <img
+                src={up}
+                className="w-4 rotate-180 hover:scale-110 hover:cursor-pointer"
+              />
+            </button>
+          </div>
         </div>
       </section>
     </div>
