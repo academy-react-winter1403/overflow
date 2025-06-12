@@ -4,23 +4,27 @@ import fallbackcourse from "../../assets/Coursesimage/product-img.png";
 import pay from "../../assets/userpanel/icons8-cash-in-hand-32.png";
 import { useState } from "react";
 import { Step1 } from "../../core/services/api/payment/Paymentstep1";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import Close from "../../assets/userpanel/icons8-exit-48.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function MycourseCard({ item, index, className = "" }) {
   const validationSchema = Yup.object({
-    PaymentInvoiceNumber: Yup.string().required("شناسه پرداخت ضروری است"),
+    PaymentInvoiceNumber: Yup.string().required("شماره ضروری است"),
   });
   const [isOpen, setIsOpen] = useState(false);
 
-  const HandlePaystep1 = async ({ PaymentInvoiceNumber }) => {
+  const HandlePaystep1 = async (values) => {
+    const currentDate = new Date().toISOString();
+
     const formData = new FormData();
     formData.append("CourseId", item.courseId);
-    formData.append("Paid", Number(item.cost.Number));
-    formData.append("PeymentDate", item.lastUpdate);
-    formData.append("PaymentInvoiceNumber", PaymentInvoiceNumber);
+    formData.append("Paid", item.cost);
+    formData.append("PeymentDate", currentDate);
+    formData.append("PaymentInvoiceNumber", values.PaymentInvoiceNumber);
+
+    console.log(formData);
 
     const response = await Step1(formData);
     if (response) {
@@ -78,20 +82,20 @@ function MycourseCard({ item, index, className = "" }) {
             >
               <img src={pay} />
             </button>
-
+                  
             {isOpen && (
               <div className="bg-opacity-50 fixed inset-0 z-50 flex flex-col-reverse items-center justify-end pt-40 backdrop-blur-sm">
                 <Formik
                   initialValues={{ PaymentInvoiceNumber: "" }}
                   validationSchema={validationSchema}
-                  onSubmit={HandlePaystep1}
+                  onSubmit={(values) => HandlePaystep1(values)}
                 >
                   {() => (
                     <Form className="flex h-auto w-4/10 flex-col items-center gap-5 rounded-2xl border bg-white transition-all duration-300 max-sm:w-full max-sm:scale-90 dark:bg-gray-500">
                       <h2 className="font-iransans mt-10 text-2xl font-bold">
                         مراحل پرداخت
                       </h2>
-                      <div className="flex w-5/10 flex-col gap-5 rounded-2xl bg-gray-200 p-5 transition-all duration-300 hover:scale-110 max-xl:w-6/10 max-lg:w-7/10 max-md:w-9/10 dark:bg-gray-400">
+                      <div className="flex w-6/10 flex-col h-auto gap-5 rounded-2xl bg-gray-200 p-5 transition-all duration-300 hover:scale-110 max-xl:w-6/10 max-lg:w-7/10 max-md:w-9/10 dark:bg-gray-400">
                         <p className="font-iransans font-bold">
                           لطفاً اطلاعات پرداخت خود را وارد کنید.
                         </p>
@@ -101,6 +105,11 @@ function MycourseCard({ item, index, className = "" }) {
                           placeholder=" شناسه پرداخت"
                           className="h-10 w-full rounded-xl bg-gray-300 pr-3 text-right outline-none dark:text-gray-500"
                         />
+                        <ErrorMessage
+                          name="PaymentInvoiceNumber"
+                          component="div"
+                          className="pr-2 text-sm text-red-500"
+                        />
                       </div>
 
                       <button
@@ -109,6 +118,7 @@ function MycourseCard({ item, index, className = "" }) {
                       >
                         ادامه
                         <ToastContainer />
+                        
                       </button>
                     </Form>
                   )}
