@@ -82,8 +82,9 @@ function MycourseCard({ item, index, className = "" }) {
             >
               <img src={pay} />
             </button>
-                  {/* step 1 */}
+                  
             {isOpen && (
+              
               <div className="bg-opacity-50 fixed inset-0 z-50 flex flex-col-reverse items-center justify-end pt-40 backdrop-blur-sm">
                 <Formik
                   initialValues={{ PaymentInvoiceNumber: "" }}

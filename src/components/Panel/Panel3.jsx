@@ -9,19 +9,21 @@ const Panel3 = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const [newCoursesData, setNewCoursesData] = useState([]);
-const getNewCoursesData = async () => {
+  const getNewCoursesData = async () => {
     try {
-        const response = await Getmycourse();
-        if (Array.isArray(response.listOfMyCourses)) {
-            const filteredCourses = response.listOfMyCourses.filter(course => course.paymentStatus !== "پرداخت شده");
-            setNewCoursesData(filteredCourses);
-        } else {
-            console.error("Unexpected response format:", response);
-        }
+      const response = await Getmycourse();
+      if (Array.isArray(response.listOfMyCourses)) {
+        const filteredCourses = response.listOfMyCourses.filter(
+          (course) => course.paymentStatus !== "پرداخت شده",
+        );
+        setNewCoursesData(filteredCourses);
+      } else {
+        console.error("Unexpected response format:", response);
+      }
     } catch (error) {
-        console.error("Error fetching courses data:", error);
+      console.error("Error fetching courses data:", error);
     }
-};
+  };
 
   useEffect(() => {
     getNewCoursesData();
@@ -42,7 +44,7 @@ const getNewCoursesData = async () => {
   );
 
   return (
-    <div className="font-kalameh flex w-10/10 flex-row-reverse flex-wrap ">
+    <div className="font-kalameh flex w-10/10 flex-row-reverse flex-wrap">
       <div className="flex w-10/10 flex-row-reverse flex-wrap">
         <div>
           <input
@@ -55,18 +57,17 @@ const getNewCoursesData = async () => {
         </div>
 
         <div className="mt-10 flex h-155 w-10/10 flex-col items-end gap-8 overflow-auto max-lg:h-150 max-lg:overflow-auto max-sm:h-150 max-sm:gap-0 max-sm:overflow-auto">
-          <div className="border-deep-blue flex flex-row-reverse justify-center border-b-4 pr-10 max-md:justify-start max-md:gap-8 max-md:text-xl w-10/10">
-            <p className="w-4/10 text-center text-xl font-bold  transition-all duration-300 max-lg:mr-[-100px] max-lg:w-5/10 max-md:mr-[-1px]">
+          <div className="border-deep-blue flex w-10/10 flex-row-reverse justify-center border-b-4 pr-10 max-md:justify-start max-md:gap-8 max-md:text-xl">
+            <p className="w-4/10 text-center text-xl font-bold transition-all duration-300 max-lg:mr-[-100px] max-lg:w-5/10 max-md:mr-[-1px]">
               نام دوره
             </p>
-            <p className="max-xl:hidden w-3/10 text-center text-xl font-bold pl-15 transition-all duration-300 max-xl:mr-[-65px] max-lg:w-5/10 max-lg:text-center max-md:hidden">
+            <p className="w-3/10 pl-15 text-center text-xl font-bold transition-all duration-300 max-xl:mr-[-65px] max-xl:hidden max-lg:w-5/10 max-lg:text-center max-md:hidden">
               مدرس دوره
             </p>
-            <p className="w-3/10   text-right pr-15 text-xl font-bold transition-all duration-300 max-lg:hidden ">
-             تاریخ شروع
-
+            <p className="w-3/10 pr-15 text-right text-xl font-bold transition-all duration-300 max-lg:hidden">
+              تاریخ شروع
             </p>
-            <p className="w-3/10 text-xl font-bold pl-30 text-center max-xl:pl-0 transition-all duration-300 ">
+            <p className="w-3/10 pl-30 text-center text-xl font-bold transition-all duration-300 max-xl:pl-0">
               قیمت
             </p>
           </div>
