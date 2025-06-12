@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import { Getmycourse } from "../../core/services/api/userpanelapi/panelapis";
 import MycourseCard from "../Common/MycourseCard";
 
 const Panel3 = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [searchQuery, setSearchQuery] = useState("");
 
   const [newCoursesData, setNewCoursesData] = useState([]);
-
-  const getNewCoursesData = async () => {
+const getNewCoursesData = async () => {
     try {
-      const response = await Getmycourse();
-      if (Array.isArray(response.listOfMyCourses)) {
-        setNewCoursesData(response.listOfMyCourses);
-      } else {
-        console.error("Unexpected response format:", response);
-      }
+        const response = await Getmycourse();
+        if (Array.isArray(response.listOfMyCourses)) {
+            const filteredCourses = response.listOfMyCourses.filter(course => course.paymentStatus !== "پرداخت شده");
+            setNewCoursesData(filteredCourses);
+        } else {
+            console.error("Unexpected response format:", response);
+        }
     } catch (error) {
-      console.error("Error fetching courses data:", error);
+        console.error("Error fetching courses data:", error);
     }
-  };
+};
 
   useEffect(() => {
     getNewCoursesData();
   }, []);
 
-  const handleNavigation = (id) => {
-    console.log(id);
-    navigate(`/Courses/${id}`);
-  };
+  // const handleNavigation = (id) => {
+  //   console.log(id);
+  //   navigate(`/Courses/${id}`);
+  // };
 
   const filtermycours = newCoursesData.filter(
     (mycourse) =>
