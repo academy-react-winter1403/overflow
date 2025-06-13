@@ -39,7 +39,7 @@ function Card({ item, index, handleNavigation, className = "" }) {
           </div>
 
           {/* Description */}
-          <div className="text-right max-lg:mt-[-50px] max-sm:absolute max-sm:bottom-5 max-sm:h-30 max-sm:w-50">
+          <div className="  text-right max-lg:mt-[-50px] max-sm:right-40 max-sm:absolute max-sm:bottom-5 max-sm:h-30 max-sm:w-70">
             <h3 className="font-iransans mb-2 truncate text-2xl font-bold text-gray-600 max-2xl:h-10 max-sm:h-10 max-sm:pr-3 max-sm:text-xs dark:text-gray-700">
               {item.title}
             </h3>
