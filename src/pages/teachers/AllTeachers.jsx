@@ -29,7 +29,7 @@ const AllTeacers = () => {
   //  Calculate the teachers to display based on pagination
   const indexOfLastTeacher = currentPage * itemsPerPage;
   const indexOfFirstTeacher = indexOfLastTeacher - itemsPerPage;
-  const currentTeachers = teacherData.slice(indexOfFirstTeacher, indexOfLastTeacher);
+  const currentTeachers = teacherData?.slice(indexOfFirstTeacher, indexOfLastTeacher);
 
   return (
     <div className="w-9/10 pt-5 m-auto relative flex flex-row flex-wrap gap-10 justify-center  max-lg:mb-50 ">
@@ -64,7 +64,7 @@ const AllTeacers = () => {
         </button>
 
         {/* Page Numbers */}
-        {Array.from({ length: Math.ceil(teacherData.length / itemsPerPage) }, (_, index) => (
+        {Array.from({ length: Math.ceil(teacherData?.length / itemsPerPage) }, (_, index) => (
           <button
             key={index}
             className={`px-4 py-2 mx-1 rounded-[50px] max-sm:mx-0.5 ${currentPage === index + 1 ? "bg-deep-blue text-white" : "bg-gray-300"}`}
