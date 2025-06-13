@@ -5,12 +5,14 @@ import { Coursesmap } from "../../components/coursesPage/Courses.map";
 import { useParams } from "react-router-dom";
 import { getApi } from "../../core/services/api/getApi";
 import { useEffect, useState } from "react";
-import { useGetCourseComment } from "../../core/services/api/GetCourses/Comment";
+import { useGetCourseComment, usePostComment } from "../../core/services/api/GetCourses/Comment";
 import SendNewComment from "../../components/Comment/SendNewComment";
 import { Addlikeforcourse } from "../../components/coursesPage/Addlikeforcourse";
 import CommentSection from "../../components/Comment/CommentSection";
 
 const Courses = () => {
+    const { mutate } = usePostComment();
+
   const { id } = useParams();
   const [courseData, setCourseData] = useState(null);
   const { data: commentsData, isLoading, error } = useGetCourseComment(id);
@@ -62,7 +64,7 @@ const Courses = () => {
         <div className=" pt-10 flex flex-col  w-10/10 items-end">
           
           <Addlikeforcourse data={id} courseData={courseData}/>
-          <SendNewComment id={id} />
+          <SendNewComment id={id} onSubmit={mutate}/>
         </div>
 
       {/* Comments Section */}

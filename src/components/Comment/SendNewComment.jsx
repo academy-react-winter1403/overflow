@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import http from "../../core/services/interceptor"; // Assuming you are using an interceptor for http requests
+import {
+  PostComment,
+} from "../../core/services/api/GetCourses/Comment";
 
-function SendNewComment({ id }) {
+function SendNewComment({ id,onSubmit }) {
   const [focusedCommentId, setFocusedCommentId] = useState(null); // Track focused comment by ID
-const CourseId = id; // Assuming id is the course ID
+  const CourseId = id; // Assuming id is the course ID
   const handleFocus = (id) => {
     setFocusedCommentId(id); // Set the focused comment ID
   };
@@ -12,39 +14,15 @@ const CourseId = id; // Assuming id is the course ID
   const handleBlur = () => {
     setFocusedCommentId(null); // Reset focused comment when blur
   };
-
-  const handleSubmit = async (values) => {
-    const { courseId, title, describe } = values;
-
-    const formData = new FormData();
-    formData.append("CourseId", id);
-    formData.append("Title", title);
-    formData.append("Describe", describe);
-
-    try {
-      const responseData = await http.post(
-        "/Course/AddCommentCourse",
-        formData,
-      );
-
-      if (responseData.success) {
-        alert("Comment posted successfully!");
-      } else {
-        alert("Failed to post comment");
-      }
-
-      return responseData;
-    } catch (error) {
-      alert(
-        "Error: " +
-          (error.response ? error.response.message : error.message),
-      );
-    }
+  const handleSubmit =  (values) => {
+    console.log('thsi is value of iuse post coommenr',values)
+   
+    onSubmit(values);
   };
-
+ 
   return (
     <div
-      className={`dark:bg-deep-blue/75 mt-10 h-auto max-w-2/3 min-w-1/2 rounded-xl bg-white p-2 dark:text-amber-50 max-lg:w-10/10  ${
+      className={`dark:bg-deep-blue/75 mt-10 h-auto max-w-2/3 min-w-1/2 rounded-xl bg-white p-2 max-lg:w-10/10 dark:text-amber-50 ${
         focusedCommentId === id ? "w-full" : "w-1/2"
       } transition-all duration-300`}
     >
@@ -63,7 +41,7 @@ const CourseId = id; // Assuming id is the course ID
         onSubmit={handleSubmit}
       >
         {({ isSubmitting }) => (
-          <Form className="rounded-lg bg-gray-50 ">
+          <Form className="rounded-lg bg-gray-50">
             {/* Title Field */}
             <div className="mb-4 dark:bg-gray-800">
               <Field
@@ -86,7 +64,7 @@ const CourseId = id; // Assuming id is the course ID
             </div>
 
             {/* Description Field */}
-            <div className="mb-4 ">
+            <div className="mb-4">
               <Field
                 onFocus={() => handleFocus(id)} // On focus, set focused comment
                 onBlur={handleBlur}
@@ -96,7 +74,7 @@ const CourseId = id; // Assuming id is the course ID
                 rows="4"
                 placeholder="نظر خود را بنویسید"
                 style={{ outline: "none", resize: "none" }} // Add this inline style to remove the focus outline
-                className={`dark:bg-gray-800 w-full bg-gray-50 px-8 pl-2 text-right ${
+                className={`w-full bg-gray-50 px-8 pl-2 text-right dark:bg-gray-800 ${
                   focusedCommentId === id ? "h-40 w-full" : "h-10 w-1/2"
                 } transition-all duration-300`}
               />
@@ -121,5 +99,4 @@ const CourseId = id; // Assuming id is the course ID
     </div>
   );
 }
-
 export default SendNewComment;

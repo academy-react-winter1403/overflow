@@ -9,8 +9,12 @@ import addtofave from "../../assets/Coursesimage/icons8-add-to-favorites-482.png
 import { Addnewstofave } from "../../core/services/api/news/Addnewsfavorite";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { usePostNewsComment } from "../../core/services/api/GetCourses/Comment";
+import SendNewComment from "../../components/Comment/SendNewComment";
 
 const NewsDetails = () => {
+  const { mutate: postNewsComment } = usePostNewsComment();
+
   const [newsData, setNewsData] = useState(null);
   const [similarNews, setSimilarNews] = useState([]);
   const [newsComment, setNewsComment] = useState(null);
@@ -91,7 +95,7 @@ const NewsDetails = () => {
     <>
       <div className="font-kalameh flex justify-center gap-10 px-6 py-8 font-semibold text-gray-700 dark:text-gray-300">
         <div
-          className={`flex ${similarNews.length == 0 ? "max-w-8/10" : "max-w-6/10"} max-md: flex-col items-center `}
+          className={`flex ${similarNews.length == 0 ? "max-w-8/10" : "max-w-6/10"} max-md: flex-col items-center`}
         >
           <div className="flex w-full flex-col items-center space-y-6 lg:space-y-0">
             <div className="relative mb-8 flex h-[500px] w-3/3 justify-center transition-all duration-300 max-sm:h-60 max-sm:w-100 max-sm:scale-90">
@@ -102,7 +106,7 @@ const NewsDetails = () => {
                 className="shadow-deep-blue z-10 h-full w-full rounded-2xl object-contain shadow-lg"
               />
             </div>
-            <div className="flex w-full items-center justify-between  max-sm:w-100 max-sm:pl-5 max-sm:scale-90">
+            <div className="flex w-full items-center justify-between max-sm:w-100 max-sm:scale-90 max-sm:pl-5">
               <div className="flex gap-4">
                 <p className="text-deep-blue pt-3 text-sm break-all dark:text-gray-400">
                   {addUserFullName}
@@ -113,11 +117,11 @@ const NewsDetails = () => {
                   <ToastContainer />
                 </button>
               </div>
-              <div className="flex items-center space-x-4 ">
-                <p className="text-xs text-gray-400 dark:text-gray-500 ">
+              <div className="flex items-center space-x-4">
+                <p className="text-xs text-gray-400 dark:text-gray-500">
                   {new Date(insertDate).toLocaleDateString("fa-IR")}
                 </p>
-                <p className="text-xs text-gray-400 dark:text-gray-500 max-sm:hidden">
+                <p className="text-xs text-gray-400 max-sm:hidden dark:text-gray-500">
                   {new Date(insertDate).toLocaleTimeString("fa-IR")}
                 </p>
                 <NavLink
@@ -128,29 +132,30 @@ const NewsDetails = () => {
                 </NavLink>
               </div>
             </div>
-            <header className="w-full p-8 text-right text-gray-700 dark:text-gray-300 max-sm:w-100 max-sm:scale-90 ">
+            <header className="w-full p-8 text-right text-gray-700 max-sm:w-100 max-sm:scale-90 dark:text-gray-300">
               <h1 className="mb-4 text-3xl font-bold break-all lg:text-4xl dark:text-gray-100">
                 {title || googleTitle}
               </h1>
               {miniDescribe && (
-                <p className="mb-4 text-lg break-all text-gray-600 dark:text-gray-400 ">
+                <p className="mb-4 text-lg break-all text-gray-600 dark:text-gray-400">
                   {miniDescribe}
                 </p>
               )}
             </header>
           </div>
 
-          <div className="mt-10 flex w-full max-w-9/10 text-right max-sm:h-27 max-sm:absolute  max-sm:overflow-hidden top-120 max-sm:scale-90 max-sm:pr-2 truncate">
-            <p className="font-iransans text-lg break-all  whitespace-pre-line text-gray-700 dark:text-gray-300 ">
+          <div className="top-120 mt-10 flex w-full max-w-9/10 truncate text-right max-sm:absolute max-sm:h-27 max-sm:scale-90 max-sm:overflow-hidden max-sm:pr-2">
+            <p className="font-iransans text-lg break-all whitespace-pre-line text-gray-700 dark:text-gray-300">
               {describe || googleDescribe}
             </p>
           </div>
+          <SendNewComment id={id} onSubmit={postNewsComment} />
+
           <CommentSection
             commentData={newsComment}
             commentsCount={commentsCount}
             type={"News"}
-          ></CommentSection>          
-          
+          ></CommentSection>
         </div>
 
         {similarNews.length > 0 ? (
