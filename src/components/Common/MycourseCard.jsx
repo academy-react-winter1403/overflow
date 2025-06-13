@@ -14,7 +14,7 @@ function MycourseCard({ item, index, className = "" }) {
     PaymentInvoiceNumber: Yup.string().required("شماره ضروری است"),
   });
   const [isOpen, setIsOpen] = useState(false);
-
+  const isPaid = item?.paymentStatus === "پرداخت شده";
   const HandlePaystep1 = async (values) => {
     const currentDate = new Date().toISOString();
 
@@ -77,12 +77,19 @@ function MycourseCard({ item, index, className = "" }) {
           </div>
           <div className="mt-3 w-1/10">
             <button
-              onClick={() => setIsOpen(true)}
-              className="w-10/10 rounded px-4 py-2 text-white"
+              onClick={() => {
+                if (!isPaid) setIsOpen(true);
+              }}
+              className={`w-10/10 rounded h-auto transition-all duration-300 text-black font-bold border ${
+                isPaid
+                  ? "cursor-not-allowed bg-gray-400 opacity-50"
+                  : "bg-[#436E8E]"
+              }`}
+              disabled={isPaid}
             >
-              <img src={pay} />
+              {isPaid ? "پرداخت شده" : <img src={pay} />}
             </button>
-                  
+
             {isOpen && (
               <div className="bg-opacity-50 fixed inset-0 z-50 flex flex-col-reverse items-center justify-end pt-40 backdrop-blur-sm">
                 <Formik
@@ -95,7 +102,7 @@ function MycourseCard({ item, index, className = "" }) {
                       <h2 className="font-iransans mt-10 text-2xl font-bold">
                         مراحل پرداخت
                       </h2>
-                      <div className="flex w-6/10 flex-col h-auto gap-5 rounded-2xl bg-gray-200 p-5 transition-all duration-300 hover:scale-110 max-xl:w-6/10 max-lg:w-7/10 max-md:w-9/10 dark:bg-gray-400">
+                      <div className="flex h-auto w-6/10 flex-col gap-5 rounded-2xl bg-gray-200 p-5 transition-all duration-300 hover:scale-110 max-xl:w-6/10 max-lg:w-7/10 max-md:w-9/10 dark:bg-gray-400">
                         <p className="font-iransans font-bold">
                           لطفاً اطلاعات پرداخت خود را وارد کنید.
                         </p>
@@ -118,7 +125,6 @@ function MycourseCard({ item, index, className = "" }) {
                       >
                         ادامه
                         <ToastContainer />
-                        
                       </button>
                     </Form>
                   )}

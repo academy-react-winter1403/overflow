@@ -13,10 +13,7 @@ const Panel3 = () => {
     try {
       const response = await Getmycourse();
       if (Array.isArray(response.listOfMyCourses)) {
-        const filteredCourses = response.listOfMyCourses.filter(
-          (course) => course.paymentStatus !== "پرداخت شده",
-        );
-        setNewCoursesData(filteredCourses);
+        setNewCoursesData(response.listOfMyCourses);
       } else {
         console.error("Unexpected response format:", response);
       }
