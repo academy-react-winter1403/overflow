@@ -8,13 +8,19 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import Close from "../../assets/userpanel/icons8-exit-48.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  getItem,
+  removeItem,
+} from "../../core/services/common/storage.services";
 
 function MycourseCard({ item, index, className = "" }) {
   const validationSchema = Yup.object({
     PaymentInvoiceNumber: Yup.string().required("شماره ضروری است"),
   });
   const [isOpen, setIsOpen] = useState(false);
+  const [Step2, setStep2] = useState(false);
   const isPaid = item?.paymentStatus === "پرداخت شده";
+
   const HandlePaystep1 = async (values) => {
     const currentDate = new Date().toISOString();
 
@@ -26,12 +32,29 @@ function MycourseCard({ item, index, className = "" }) {
 
     console.log(formData);
 
+    removeItem("paymentid");
+
     const response = await Step1(formData);
     if (response) {
       toast.success("ورود موفقیت‌آمیز بود");
-      alert("success");
+      setStep2(true);
     }
   };
+  const HandlePaystep2 = async (e) => {
+    const files = e.target.files[0];
+    const payid = getItem("paymentid");
+    const formData = new FormData();
+    formData.append("PaymentId", payid);
+    formData.append("Image", files);
+    console.log("formDatastep2", formData);
+
+    const response = await Step2(formData);
+
+    if (response) {
+      toast.success("ورود موفقیت‌آمیز بود");
+    }
+  };
+
   return (
     <div
       className={`${className}w-10/10 p-5 max-sm:relative max-sm:h-auto max-sm:w-10/10`}
@@ -80,7 +103,7 @@ function MycourseCard({ item, index, className = "" }) {
               onClick={() => {
                 if (!isPaid) setIsOpen(true);
               }}
-              className={`w-10/10 rounded h-auto transition-all duration-300 text-black font-bold border ${
+              className={`h-auto w-10/10 rounded border font-bold text-black transition-all duration-300 ${
                 isPaid
                   ? "cursor-not-allowed bg-gray-400 opacity-50"
                   : "bg-[#436E8E]"
@@ -92,43 +115,75 @@ function MycourseCard({ item, index, className = "" }) {
 
             {isOpen && (
               <div className="bg-opacity-50 fixed inset-0 z-50 flex flex-col-reverse items-center justify-end pt-40 backdrop-blur-sm">
-                <Formik
-                  initialValues={{ PaymentInvoiceNumber: "" }}
-                  validationSchema={validationSchema}
-                  onSubmit={(values) => HandlePaystep1(values)}
-                >
-                  {() => (
-                    <Form className="flex h-auto w-4/10 flex-col items-center gap-5 rounded-2xl border bg-white transition-all duration-300 max-sm:w-full max-sm:scale-90 dark:bg-gray-500">
-                      <h2 className="font-iransans mt-10 text-2xl font-bold">
-                        مراحل پرداخت
-                      </h2>
-                      <div className="flex h-auto w-6/10 flex-col gap-5 rounded-2xl bg-gray-200 p-5 transition-all duration-300 hover:scale-110 max-xl:w-6/10 max-lg:w-7/10 max-md:w-9/10 dark:bg-gray-400">
-                        <p className="font-iransans font-bold">
-                          لطفاً اطلاعات پرداخت خود را وارد کنید.
-                        </p>
-                        <Field
-                          type="text"
-                          name="PaymentInvoiceNumber"
-                          placeholder=" شناسه پرداخت"
-                          className="h-10 w-full rounded-xl bg-gray-300 pr-3 text-right outline-none dark:text-gray-500"
-                        />
-                        <ErrorMessage
-                          name="PaymentInvoiceNumber"
-                          component="div"
-                          className="pr-2 text-sm text-red-500"
-                        />
-                      </div>
+                {!Step2 && (
+                  <Formik
+                    initialValues={{ PaymentInvoiceNumber: "" }}
+                    validationSchema={validationSchema}
+                    onSubmit={(values) => HandlePaystep1(values)}
+                  >
+                    {() => (
+                      <Form className="flex h-auto w-4/10 flex-col items-center gap-5 rounded-2xl border bg-white transition-all duration-300 max-sm:w-full max-sm:scale-90 dark:bg-gray-500">
+                        <h2 className="font-iransans mt-10 text-2xl font-bold">
+                          مراحل پرداخت
+                        </h2>
+                        <div className="flex h-auto w-6/10 flex-col gap-5 rounded-2xl bg-gray-200 p-5 transition-all duration-300 hover:scale-110 max-xl:w-6/10 max-lg:w-7/10 max-md:w-9/10 dark:bg-gray-400">
+                          <p className="font-iransans font-bold">
+                            لطفاً اطلاعات پرداخت خود را وارد کنید.
+                          </p>
+                          <Field
+                            type="text"
+                            name="PaymentInvoiceNumber"
+                            placeholder=" شناسه پرداخت"
+                            className="h-10 w-full rounded-xl bg-gray-300 pr-3 text-right outline-none dark:text-gray-500"
+                          />
+                          <ErrorMessage
+                            name="PaymentInvoiceNumber"
+                            component="div"
+                            className="pr-2 text-sm text-red-500"
+                          />
+                        </div>
 
-                      <button
-                        type="submit"
-                        className="mb-3 w-1/10 rounded bg-[#436E8E] py-2 text-center font-bold text-white transition-all duration-100 hover:scale-110 max-lg:w-3/10 max-md:w-3/10"
-                      >
-                        ادامه
-                        <ToastContainer />
-                      </button>
-                    </Form>
-                  )}
-                </Formik>
+                        <button
+                          type="submit"
+                          className="mb-3 w-1/10 rounded bg-[#436E8E] py-2 text-center font-bold text-white transition-all duration-100 hover:scale-110 max-lg:w-3/10 max-md:w-3/10"
+                        >
+                          ادامه
+                          <ToastContainer />
+                        </button>
+                      </Form>
+                    )}
+                  </Formik>
+                )}
+
+                {Step2 && (
+                  <form className="flex h-auto w-4/10 flex-col items-center gap-5 rounded-2xl border bg-white transition-all duration-300 max-sm:w-full max-sm:scale-90 dark:bg-gray-500">
+                    <h2 className="font-iransans mt-10 text-2xl font-bold">
+                      مراحل پرداخت
+                    </h2>
+                    <div className="flex h-auto w-6/10 flex-col gap-5 rounded-2xl bg-gray-200 p-5 transition-all duration-300 hover:scale-110 max-xl:w-6/10 max-lg:w-7/10 max-md:w-9/10 dark:bg-gray-400">
+                      <p className="font-iransans font-bold">
+                        لطفاً اطلاعات پرداخت خود را وارد کنید.
+                      </p>
+                      <input
+                        type="file"
+                        name="Image"
+                        placeholder=" شناسه پرداخت"
+                        className="h-10 w-full rounded-xl bg-gray-300 pr-3 text-right outline-none dark:text-gray-500"
+                      />
+                      <div
+                        className="pr-2 text-sm text-red-500"
+                        id="error-message"
+                      ></div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="mb-3 w-1/10 rounded bg-[#436E8E] py-2 text-center font-bold text-white transition-all duration-100 hover:scale-110 max-lg:w-3/10 max-md:w-3/10"
+                    >
+                      ادامه
+                    </button>
+                  </form>
+                )}
                 <button
                   onClick={() => setIsOpen(false)}
                   className="font-iransans mt-4 mb-3 flex w-4/10 flex-row justify-end rounded px-4 py-2 text-xl font-bold text-white"
