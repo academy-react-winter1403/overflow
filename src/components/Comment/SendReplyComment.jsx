@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
 function SendReplyComment({commentId}) {
-  const [focusedCommentId, setFocusedCommentId] = useState(null); // Track focused comment by ID
+  const [focusedCommentId, setFocusedCommentId] = useState(null); 
   const handleFocus = (commentId) => {
-    setFocusedCommentId(commentId); // Set the focused comment ID
+    setFocusedCommentId(commentId); 
   };
 
   const handleBlur = () => {
-    setFocusedCommentId(null); // Reset focused comment when blur
+    setFocusedCommentId(null); 
   };
 
   return (
@@ -23,11 +23,11 @@ function SendReplyComment({commentId}) {
             </button>
           )}
           <textarea
-            style={{ outline: "none", resize: "none" }} // Add this inline style to remove the focus outline
+            style={{ outline: "none", resize: "none" }} 
             className={`w-full pl-2 ${focusedCommentId === commentId ? "h-40 w-full" : "h-10 w-1/2"} transition-all duration-300`}
             placeholder="Write your reply here..."
-            onFocus={() => handleFocus(commentId)} // On focus, set focused comment
-            onBlur={handleBlur} // On blur, reset focus
+            onFocus={() => handleFocus(commentId)} 
+            onBlur={handleBlur} 
           ></textarea>
         </div>
       </div>

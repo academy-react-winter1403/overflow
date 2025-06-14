@@ -3,8 +3,8 @@ import user from "../../assets/Header/user.png";
 import SendReplyComment from "./SendReplyComment.jsx";
 import Like from "../../assets/Coursesimage/like.png";
 import disLike from "../../assets/Coursesimage/dislike.png";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   useCourseLikecommnet,
   useGetNewsReply,
@@ -14,7 +14,7 @@ import {
 import SmartImage from "../Common/SmartImage.jsx";
 
 function Comments({ comment, type, index }) {
-  // Handel News Comment Like and Dislike
+  
   const newsLikecommnets = useNewsLikecommnet();
   const handelLikeNews = (id, state) => {
     newsLikecommnets.mutate({ id, state });
@@ -22,18 +22,15 @@ function Comments({ comment, type, index }) {
   const [commentId, setcommentId] = useState("");
   const [courseId, setCourseId] = useState("");
   const [isExpanded, setisExpanded] = useState(false);
-  // get reply of course coments
+
   const { data: replyData } = UseGetReply(courseId, commentId);
 
-  
   const { data: newsReplyData } = useGetNewsReply(commentId);
 
-  // Pick the correct reply list based on the comment type
+
   const replies = type === "Course" ? replyData : newsReplyData;
 
 
-
-  // Handel Course Comment Like and Dislike
   const courseLikecommnets = useCourseLikecommnet();
 
   const handelLikeCourse = (id, state) => {
@@ -47,26 +44,24 @@ function Comments({ comment, type, index }) {
     } else if (type === "News") {
       handelLikeNews(id, state);
     }
-
-
   };
 
   return (
-    <div className="mb-5 ">
-      <div className="relative mr-10  shadow-deep-blue/50 shadow-xl flex flex-row-reverse rounded-2xl border-r-2 border-deep-blue bg-white/55 p-2 dark:bg-gray-800">
+    <div className="mb-5">
+      <div className="shadow-deep-blue/50 border-deep-blue relative mr-10 flex flex-row-reverse rounded-2xl border-r-2 bg-white/55 p-2 shadow-xl dark:bg-gray-800">
         <div className="absolute -top-3 -right-10 z-30 h-18 w-18 space-y-3 py-2">
           <SmartImage
-            className="rounded-full bg-gray-500 h-18 dark:bg-gray-600 shadow-2xl"
+            className="h-18 rounded-full bg-gray-500 shadow-2xl dark:bg-gray-600"
             src={comment.pictureAddress || user}
             alt="Author"
             fallback={user}
           />
         </div>
         <div className="mr-10 h-full w-full">
-          <div className=" relative min-h-45" key={index}>
-            <div className=" relative flex flex-row-reverse justify-between">
+          <div className="relative min-h-45" key={index}>
+            <div className="relative flex flex-row-reverse justify-between">
               <div className="m-1 grow-5 p-2 text-right">
-                <p className="dark:text-gray-300 text-deep-blue">
+                <p className="text-deep-blue dark:text-gray-300">
                   {comment.author || "کاربر"}
                 </p>
 
@@ -111,21 +106,23 @@ function Comments({ comment, type, index }) {
               </>
             </div>
             {(comment.acceptReplysCount > 0 || comment.replyCount > 0) && (
+              <button
+                onClick={() => {
+                  setisExpanded((prev) => !prev);
+                  setcommentId(comment.id);
+                  setCourseId(comment.courseId);
+                }}
+                className="cursor-pointer p-1 text-[12px] font-semibold text-gray-700 transition-all hover:scale-105 hover:text-gray-500 dark:text-gray-100"
+              >
+                {isExpanded
+                  ? " پنهان کردن "
+                  : ` نمایش ${comment.acceptReplysCount?.toLocaleString("fa-IR") || comment.replyCount} پاسخ `}
+              </button>
+            )}
 
-            <button
-              onClick={() => {
-                setisExpanded((prev) => !prev);
-                setcommentId(comment.id);
-                setCourseId(comment.courseId);
-              }}
-              className=" hover:text-gray-500 hover:scale-105 cursor-pointer p-1 text-[12px] font-semibold text-gray-700 transition-all dark:text-gray-100"
-            >
-              {isExpanded
-                ? " پنهان کردن "
-                : ` نمایش ${comment.acceptReplysCount?.toLocaleString("fa-IR") || comment.replyCount} پاسخ `}
-            </button> )}
-
-            {isExpanded && replies && replies.length > 0 && (
+            {isExpanded &&
+              replies &&
+              replies.length > 0 &&
               replies.map((reply, index) => (
                 <Comments
                   key={reply.id || index}
@@ -133,8 +130,7 @@ function Comments({ comment, type, index }) {
                   type={type}
                   index={index}
                 />
-              ))
-            )}
+              ))}
           </div>
         </div>
       </div>

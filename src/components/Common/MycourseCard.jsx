@@ -23,7 +23,7 @@ function MycourseCard({ item, index, className = "" }) {
   const [retrievedImage, setRetrievedImage] = useState(null);
   const isPaid = item?.paymentStatus === "پرداخت شده";
 
-  // Step 1: Handle Payment Submission & Fetch Image
+
   const HandlePaystep1 = async (values) => {
     const currentDate = new Date().toISOString();
     const formData = new FormData();
@@ -43,7 +43,7 @@ function MycourseCard({ item, index, className = "" }) {
     }
   };
 
-  // Step 2: Fetch the Invoice Image
+
   const fetchInvoiceImage = async (invoiceNumber) => {
     try {
       const response = await fetch(`/api/payment/image/${invoiceNumber}`);
@@ -56,7 +56,7 @@ function MycourseCard({ item, index, className = "" }) {
     }
   };
 
-  // Step 3: Upload the Image
+
   const HandlePaystep2 = async (e) => {
     const files = e.target.files[0];
     const payid = getItem("paymentid");
@@ -114,11 +114,11 @@ function MycourseCard({ item, index, className = "" }) {
               className={`h-auto w-10/10 rounded border font-bold text-black transition-all duration-300 ${
                 isPaid
                   ? "cursor-not-allowed bg-gray-400 opacity-50"
-                  : "bg-[#436E8E]"
+                  : "mt-2 bg-gray-300"
               }`}
               disabled={isPaid}
             >
-              {isPaid ? "پرداخت شده" : <img src={pay} />}
+              {isPaid ? "پرداخت شده" : <img className="m-auto" src={pay} />}
             </button>
 
             {isOpen && (

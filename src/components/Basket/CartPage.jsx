@@ -5,21 +5,19 @@ import { Getpaymentdetail } from "../../core/services/api/payment/getpaymentdeta
 const Basket = () => {
   const [cart, setCart] = useState([]);
 
-  const Getpayment = async () =>{
-
+  const Getpayment = async () => {
     const respone = await Getpaymentdetail();
 
     setCart(respone);
-  }
+  };
 
   const removeItem = (id) => {
     setCart(cart.filter((item) => item.id !== id));
   };
 
   useEffect(() => {
-// Getpayment()
-  }, [])
-  
+    Getpayment()
+  }, []);
 
   return (
     <>
@@ -33,7 +31,7 @@ const Basket = () => {
                 جمع کل:{" "}
               </p>
               <span className="font-iransans w-10/10 text-2xl text-white max-lg:text-xl">
-                تومان 
+                تومان
               </span>
             </div>
             <div className="font-iransans flex scale-90 flex-col gap-5 border-b text-right font-bold">

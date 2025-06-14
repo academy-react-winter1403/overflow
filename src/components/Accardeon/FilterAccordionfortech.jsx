@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 
 import { Gettechnology } from "../../core/services/api/filterapi/tech";
 
-const FilterAccordionfortech = ({setUrlParams,urlParams,setSearchParams,}) => {
+const FilterAccordionfortech = ({
+  setUrlParams,
+  urlParams,
+  setSearchParams,
+}) => {
   const [openSection, setOpenSection] = useState(null);
   const [tech, setTech] = useState([]);
   const [selectedTech, setSelectedTech] = useState({});

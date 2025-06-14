@@ -122,7 +122,7 @@ const AllCourse = () => {
       </div>
 
       <div className="flex w-full justify-center transition-all duration-300 max-xl:flex-row max-xl:flex-wrap max-xl:overflow-auto max-lg:w-10/10 max-sm:flex-col-reverse">
-        <div className="mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4 pt-10 max-xl:w-6/10 max-lg:h-190 max-lg:w-6/10 max-lg:overflow-auto max-sm:mt-10 max-sm:w-10/10 max-sm:overflow-auto max-sm:p-0">
+        <div className="mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4  pt-10 max-xl:w-6/10 max-lg:h-190 max-lg:w-6/10 max-lg:overflow-auto max-sm:mt-10 max-sm:w-10/10 max-sm:h-150 max-sm:overflow-auto max-sm:p-0">
           {courses.map((item) => (
             <Card item={item} key={item.courseId} />
           ))}
@@ -384,7 +384,7 @@ const AllCourse = () => {
                   />
                 </div>
 
-                <div className="mb-5 scale-90 pt-4 border-b border-gray-200 py-4 dark:border-gray-700">
+                <div className="mb-5 scale-90 border-b border-gray-200 py-4 pt-4 dark:border-gray-700">
                   <FilterAccordionforType
                     setUrlParams={setUrlParams}
                     urlParams={urlParams}
@@ -392,7 +392,7 @@ const AllCourse = () => {
                   />
                 </div>
 
-                <div className="scale-90 pt-4 py-4 dark:border-gray-700">
+                <div className="scale-90 py-4 pt-4 dark:border-gray-700">
                   <FilterAccordionfortech
                     setUrlParams={setUrlParams}
                     urlParams={urlParams}
@@ -525,7 +525,7 @@ const AllCourse = () => {
                       />
                     </div>
 
-                    <div className="pt-4 border-b border-gray-200 py-4 dark:border-gray-700">
+                    <div className="border-b border-gray-200 py-4 pt-4 dark:border-gray-700">
                       <FilterAccordionforType
                         setUrlParams={setUrlParams}
                         urlParams={urlParams}
@@ -533,7 +533,7 @@ const AllCourse = () => {
                       />
                     </div>
 
-                    <div className="pt-4 border-b border-gray-200 py-4 dark:border-gray-700">
+                    <div className="border-b border-gray-200 py-4 pt-4 dark:border-gray-700">
                       <FilterAccordionfortech
                         setUrlParams={setUrlParams}
                         urlParams={urlParams}

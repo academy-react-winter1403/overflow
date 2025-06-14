@@ -137,15 +137,15 @@ const NewsDetails = () => {
                 {title || googleTitle}
               </h1>
               {miniDescribe && (
-                <p className="mb-4 text-lg break-all text-gray-600 dark:text-gray-400">
+                <p className="mb-4 text-lg break-all text-gray-600 dark:text-gray-400 ">
                   {miniDescribe}
                 </p>
               )}
             </header>
           </div>
 
-          <div className="top-120 mt-10 flex w-full max-w-9/10 truncate text-right max-sm:absolute max-sm:h-27 max-sm:scale-90 max-sm:overflow-hidden max-sm:pr-2">
-            <p className="font-iransans text-lg break-all whitespace-pre-line text-gray-700 dark:text-gray-300">
+          <div className="top-120 mt-10 flex w-full max-w-9/10 truncate text-right ">
+            <p className="font-iransans text-lg break-all whitespace-pre-line text-gray-700 dark:text-gray-300 max-sm:w-full ">
               {describe || googleDescribe}
             </p>
           </div>

@@ -1,25 +1,23 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import {
-  PostComment,
-} from "../../core/services/api/GetCourses/Comment";
+import { PostComment } from "../../core/services/api/GetCourses/Comment";
 
-function SendNewComment({ id,onSubmit }) {
-  const [focusedCommentId, setFocusedCommentId] = useState(null); // Track focused comment by ID
-  const CourseId = id; // Assuming id is the course ID
+function SendNewComment({ id, onSubmit }) {
+  const [focusedCommentId, setFocusedCommentId] = useState(null); 
+  const CourseId = id; 
   const handleFocus = (id) => {
-    setFocusedCommentId(id); // Set the focused comment ID
+    setFocusedCommentId(id); 
   };
 
   const handleBlur = () => {
-    setFocusedCommentId(null); // Reset focused comment when blur
+    setFocusedCommentId(null); 
   };
-  const handleSubmit =  (values) => {
-    console.log('thsi is value of iuse post coommenr',values)
-   
+  const handleSubmit = (values) => {
+    console.log("thsi is value of iuse post coommenr", values);
+
     onSubmit(values);
   };
- 
+
   return (
     <div
       className={`dark:bg-deep-blue/75 mt-10 h-auto max-w-2/3 min-w-1/2 rounded-xl bg-white p-2 max-lg:w-10/10 dark:text-amber-50 ${
@@ -28,7 +26,7 @@ function SendNewComment({ id,onSubmit }) {
     >
       <Formik
         initialValues={{
-          courseId: CourseId || "", // Set the courseId to the prop value
+          courseId: CourseId || "", 
           title: "",
           describe: "",
         }}
@@ -45,13 +43,13 @@ function SendNewComment({ id,onSubmit }) {
             {/* Title Field */}
             <div className="mb-4 dark:bg-gray-800">
               <Field
-                onFocus={() => handleFocus(id)} // On focus, set focused comment
+                onFocus={() => handleFocus(id)} 
                 onBlur={handleBlur}
                 type="text"
                 id="title"
                 name="title"
                 placeholder="موضوع"
-                style={{ outline: "none", resize: "none" }} // Add this inline style to remove the focus outline
+                style={{ outline: "none", resize: "none" }} 
                 className={`bg-deep-blue/10 w-full rounded-lg px-4 pl-2 text-right ${
                   focusedCommentId === id ? "h-10 w-full" : "h-10 w-1/2"
                 } transition-all duration-300`}
@@ -66,14 +64,14 @@ function SendNewComment({ id,onSubmit }) {
             {/* Description Field */}
             <div className="mb-4">
               <Field
-                onFocus={() => handleFocus(id)} // On focus, set focused comment
+                onFocus={() => handleFocus(id)} 
                 onBlur={handleBlur}
                 as="textarea"
                 id="describe"
                 name="describe"
                 rows="4"
                 placeholder="نظر خود را بنویسید"
-                style={{ outline: "none", resize: "none" }} // Add this inline style to remove the focus outline
+                style={{ outline: "none", resize: "none" }} 
                 className={`w-full bg-gray-50 px-8 pl-2 text-right dark:bg-gray-800 ${
                   focusedCommentId === id ? "h-40 w-full" : "h-10 w-1/2"
                 } transition-all duration-300`}

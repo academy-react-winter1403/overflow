@@ -52,7 +52,7 @@ function NewCourses() {
 
       <Link
         to="/AllCourses"
-        className="mt-6 flex flex-row justify-start font-bold text-blue-500 hover:underline max-sm:ml-10"
+        className="mt-6 flex flex-row justify-start font-bold text-blue-500 hover:underline max-2xl:ml-30 max-xl:ml-20 max-sm:ml-10"
       >
         مشاهده همه
       </Link>

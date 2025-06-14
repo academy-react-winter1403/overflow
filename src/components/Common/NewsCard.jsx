@@ -24,17 +24,17 @@ function NewsCard({ item, index }) {
             />
           </div>
 
-          <div className="overflow-hidden text-right overflow-ellipsis max-sm:flex max-sm:h-30 max-sm:w-7/10 max-sm:flex-col max-sm:items-end">
-            <h3 className="font-iransans mb-2 text-2xl font-bold text-gray-600 max-sm:mt-4 max-sm:h-20 max-sm:w-10/10 max-sm:pr-2 max-sm:text-xl dark:text-gray-100">
+          <div className="overflow-hidden text-right overflow-ellipsis h-90 max-sm:flex max-sm:h-30 max-sm:w-7/10 max-sm:flex-col max-sm:items-end ">
+            <h3 className="h-25 font-iransans mb-2 text-xl font-bold text-gray-600 max-sm:mt-4 max-sm:h-20 max-sm:w-10/10 max-sm:pr-2 max-sm:text-xl dark:text-gray-100 ">
               {item.title}
             </h3>
-            <div className="relative mb-4 h-[160px] w-full pt-1 text-ellipsis max-sm:hidden">
-              <h5 className="font-vazir text-[20px] font-semibold text-ellipsis text-gray-400 dark:text-gray-200">
+            <div className="relative  h-[160px] w-full pt-1 text-ellipsis max-sm:hidden">
+              <h5 className="font-vazir text-[20px] font-semibold text-ellipsis text-gray-400 dark:text-gray-200  h-30">
                 {item.miniDescribe}
               </h5>
             </div>
-            <div className="mb-2 h-1/9 items-center border-b-3 border-gray-300 pb-7 text-right max-sm:border-none">
-              <div className="text-deep-blue font-vazir text-lg font-semibold max-sm:w-10/10">
+            <div className="mb-2 h-1/9 items-center border-b-3 border-gray-300 pb-7 text-right max-sm:border-none ">
+              <div className="text-deep-blue font-vazir text-lg font-semibold max-sm:w-10/10 ">
                 {item.addUserFullName} ●
               </div>
             </div>

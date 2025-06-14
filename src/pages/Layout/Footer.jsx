@@ -64,7 +64,7 @@ function Footer() {
             </ul>
 
             <div
-              className={`flex flex-row justify-end gap-10 hover:cursor-pointer ${isOpen3 || window.innerWidth >= 1024 ? "flex" : "hidden"} max-2xl:hidden`}
+              className={`flex flex-row justify-end gap-10 hover:cursor-pointer ${isOpen3 || window.innerWidth >= 1024 ? "flex" : "hidden"} `}
             >
               <img src={instagram} alt="" />
               <img src={facebook} alt="" />
@@ -74,7 +74,7 @@ function Footer() {
             </div>
 
             <div
-              className={`flex flex-row justify-end  ${isOpen3 || window.innerWidth >= 1024 ? "flex" : "hidden"} lg:flex`}
+              className={`flex flex-row justify-end  ${isOpen3 || window.innerWidth >= 1024 ? "flex" : "hidden"} max-2xl:hidden`}
             >
               <img
                 className="h-20 w-60 hover:cursor-pointer max-xl:w-40"

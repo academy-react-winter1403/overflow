@@ -46,9 +46,9 @@ function SidePanel({setIsMenuOpen}) {
 
   return (
     <div className=" bg-white h-185 rounded-2xl  dark:bg-gray-800">
-      <div className='flex flex-wrap items-end flex-row-reverse w-10/10 h-20 pr-9 max-lg:pr-2  max-sm:hidden'>
+      <div className='flex flex-wrap items-end flex-row-reverse w-10/10 h-20 pr-9 max-lg:pr-2  max-sm:hidden  '>
         <img className='w-15 h-15 rounded-[50px] ' src={Profile?.userImage?.[1]?.puctureAddress || logo} alt="User Profile"/>
-        <span className='text-deep-blue text-2xl font-bold mr-5 max-sm:text-xs max-sm:font-bold dark:text-white  max-lg:mr-2'> {Profile?.fName} {Profile?.lName}  </span>
+        <span className='text-deep-blue text-xl font-bold mr-5 max-sm:text-xs max-sm:font-bold dark:text-white  max-lg:mr-2 max-xl:truncate max-xl:text-sm'> {Profile?.fName} {Profile?.lName}  </span>
         {/* <ImageUpload /> */}
       </div>
 
