@@ -89,21 +89,47 @@ const Favenews = () => {
       </div>
 
       {/* Pagination Controls */}
-      <div className="mt-5 flex justify-center">
+      {/* Pagination Controls */}
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+        {/* Previous Button */}
         <button
           disabled={currentPage === 1}
-          className="mx-2 rounded-lg bg-gray-300 px-4 py-2 hover:bg-gray-400"
           onClick={() => setCurrentPage((prev) => prev - 1)}
+          className={`rounded-xl px-3 py-2 transition duration-300 ${
+            currentPage === 1
+              ? "cursor-not-allowed border"
+              : "border"
+          }`}
         >
           قبلی
         </button>
-        <span className="font-iransans px-4">
-          صفحه {currentPage} از {totalPages}
-        </span>
+
+        {/* Page numbers */}
+        {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+          (pageNumber) => (
+            <button
+              key={pageNumber}
+              onClick={() => setCurrentPage(pageNumber)}
+              className={`rounded-xl border border-gray-300 px-4 py-2 transition duration-300 ${
+                pageNumber === currentPage
+                  ? "bg-blue-500 border"
+                  : "border"
+              }`}
+            >
+              {pageNumber}
+            </button>
+          ),
+        )}
+
+        {/* Next Button */}
         <button
           disabled={currentPage === totalPages}
-          className="mx-2 rounded-lg bg-gray-300 px-4 py-2 hover:bg-gray-400"
           onClick={() => setCurrentPage((prev) => prev + 1)}
+          className={`rounded-xl px-3 py-2 transition duration-300 ${
+            currentPage === totalPages
+              ? "cursor-not-allowed border"
+              : "border"
+          }`}
         >
           بعدی
         </button>

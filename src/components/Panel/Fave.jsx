@@ -27,8 +27,9 @@ const Fave = () => {
     (favorite) =>
       favorite?.courseTitle
         ?.toLowerCase()
-        .includes(searchQuery.toLowerCase()) ||
-      favorite?.describe?.toLowerCase().includes(searchQuery.toLowerCase())
+        ?.includes(searchQuery.toLowerCase()) ||
+      favorite?.describe?.toLowerCase()
+        ?.includes(searchQuery.toLowerCase())
   );
 
   const totalPages = Math.ceil(filteredCourses.length / itemsPerPage);
@@ -37,18 +38,36 @@ const Fave = () => {
     currentPage * itemsPerPage
   );
 
+  // Generate array for page numbers
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prev => prev - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(prev => prev + 1);
+    }
+  };
+
   return (
     <div className="font-kalameh flex h-185 w-full flex-col overflow-auto pt-10 text-2xl font-bold">
+      
+      {/* Search Input */}
       <div>
         <input
           type="text"
           placeholder="جستجو دوره..."
           className="w-1/2 rounded-lg border border-gray-400 p-2 text-right"
           value={searchQuery}
-          onChange={(search) => setsearchQuery(search.target.value)}
+          onChange={(e) => setsearchQuery(e.target.value)}
         />
       </div>
 
+      {/* Header Row */}
       <div className="border-deep-blue flex flex-row-reverse justify-center border-b-4 pr-35 max-md:justify-start max-md:gap-8 max-md:text-xl">
         <p className="w-4/10 text-right">نام دوره</p>
         <p className="w-3/10 text-right max-md:hidden">مدرس دوره</p>
@@ -56,7 +75,8 @@ const Fave = () => {
         <p className="w-3/10 pr-6 text-right max-lg:hidden">وضعیت</p>
       </div>
 
-      <div className="">
+      {/* Courses List */}
+      <div>
         {paginatedCourses.length > 0 ? (
           paginatedCourses.map((item, index) => (
             <div
@@ -88,20 +108,42 @@ const Fave = () => {
         )}
       </div>
 
-      {/* Pagination Controls */}
-      <div className="flex justify-center mt-5">
+      {/* Custom Pagination Buttons */}
+      <div className="flex justify-center items-center mt-5 space-x-2">
+
+        {/* قبلی */}
         <button
+          onClick={handlePrevious}
           disabled={currentPage === 1}
-          className="mx-2 px-4 py-2  rounded-lg bg-gray-300 hover:bg-gray-400"
-          onClick={() => setCurrentPage((prev) => prev - 1)}
+          className={`mx-2 px-4 py-2 rounded-lg border border-gray-300 transition-all ${
+            currentPage === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-200"
+          }`}
         >
           قبلی
         </button>
-        <span className="px-4">صفحه {currentPage} از {totalPages}</span>
+
+        {/* Numbered buttons */}
+        {pageNumbers.map((number) => (
+          <button
+            key={number}
+            onClick={() => setCurrentPage(number)}
+            className={`mx-1 px-4 py-2 rounded-lg border transition-all ${
+              currentPage === number
+                ? "bg-blue-500 text-white font-semibold"
+                : "hover:bg-gray-200"
+            }`}
+          >
+            {number}
+          </button>
+        ))}
+
+        {/* بعدی */}
         <button
+          onClick={handleNext}
           disabled={currentPage === totalPages}
-          className="mx-2 px-4 py-2  rounded-lg bg-gray-300 hover:bg-gray-400"
-          onClick={() => setCurrentPage((prev) => prev + 1)}
+          className={`mx-2 px-4 py-2 rounded-lg border border-gray-300 transition-all ${
+            currentPage === totalPages ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-200"
+          }`}
         >
           بعدی
         </button>

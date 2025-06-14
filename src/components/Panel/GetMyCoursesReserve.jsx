@@ -7,16 +7,14 @@ const GetMyCoursesReserve = () => {
   const [Reservecourse, setReservecourse] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5; // Number of items per page
+  const itemsPerPage = 4; // Number of items per page
 
   const getapi = async () => {
     try {
       const getresponse = await Getmyreserveapi();
-
       if (!getresponse || getresponse.length === 0) {
         return;
       }
-
       setReservecourse(getresponse);
     } catch (error) {
       console.error("Error fetching courses:", error);
@@ -27,7 +25,7 @@ const GetMyCoursesReserve = () => {
     getapi();
   }, []);
 
-  // Filtering and paginating data
+  // Filtering
   const filteredReserve = Reservecourse.filter(
     (reserve) =>
       reserve?.courseName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -40,8 +38,25 @@ const GetMyCoursesReserve = () => {
     currentPage * itemsPerPage
   );
 
+  // Generate array for page numbers
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
   return (
     <div className="font-kalameh flex h-full w-full flex-col text-2xl font-bold ">
+
+      {/* Search Bar */}
       <div className="mb-4 flex justify-center">
         <input
           type="text"
@@ -52,6 +67,7 @@ const GetMyCoursesReserve = () => {
         />
       </div>
 
+      {/* Header */}
       <div className="border-deep-blue flex w-10/10 flex-row-reverse justify-center gap-20 border-b-4 pr-10 max-md:justify-start max-md:gap-8 max-md:text-xl ">
         <p className="w-5/10 pr-25 text-right max-sm:pr-15">نام دوره</p>
         <p className="w-5/10 pr-35 text-right max-lg:pr-5 max-md:hidden max-sm:hidden">
@@ -59,6 +75,7 @@ const GetMyCoursesReserve = () => {
         </p>
       </div>
 
+      {/* Course List */}
       <div className="">
         {paginatedReserve.length > 0 ? (
           paginatedReserve.map((reserve, index) => (
@@ -81,22 +98,45 @@ const GetMyCoursesReserve = () => {
       </div>
 
       {/* Pagination Controls */}
-      <div className="flex justify-center mt-5 ">
+      <div className="flex justify-center items-center mt-5 space-x-2">
+
+        {/* Previous Button */}
         <button
+          onClick={handlePrevious}
           disabled={currentPage === 1}
-          className="mx-2 px-4 py-2  rounded-lg bg-gray-300 hover:bg-gray-400"
-          onClick={() => setCurrentPage((prev) => prev - 1)}
+          className={`mx-2 px-4 py-2 rounded-lg border border-gray-300 transition-all ${
+            currentPage === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-200"
+          }`}
         >
           قبلی
         </button>
-        <span className="px-4 ">صفحه {currentPage} از {totalPages}</span>
+
+        {/* Page Number Buttons */}
+        {pageNumbers.map((pageNumber) => (
+          <button
+            key={pageNumber}
+            onClick={() => setCurrentPage(pageNumber)}
+            className={`px-4 py-2 rounded-lg border border-gray-300 transition-all ${
+              currentPage === pageNumber
+                ? "bg-blue-500 text-white font-semibold"
+                : "hover:bg-gray-200"
+            }`}
+          >
+            {pageNumber}
+          </button>
+        ))}
+
+        {/* Next Button */}
         <button
+          onClick={handleNext}
           disabled={currentPage === totalPages}
-          className="mx-2 px-4 py-2  rounded-lg bg-gray-300 hover:bg-gray-400"
-          onClick={() => setCurrentPage((prev) => prev + 1)}
+          className={`mx-2 px-4 py-2 rounded-lg border border-gray-300 transition-all ${
+            currentPage === totalPages ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-200"
+          }`}
         >
           بعدی
         </button>
+
       </div>
     </div>
   );
