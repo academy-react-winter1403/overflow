@@ -18,6 +18,7 @@ const FilterAccordionfortech = ({
       .flat()
       .filter((tech) => tech.techName && tech.techName.trim() !== "");
     setTech(filteredTech);
+    console.log("fileterd tech state :",filteredTech)
   };
 
   useEffect(() => {
@@ -28,13 +29,13 @@ const FilterAccordionfortech = ({
     setOpenSection((prev) => (prev === section ? null : section));
   };
 
-  const handleCheckboxChange = (event, id, techName) => {
+  const handleCheckboxChange = (event, id ) => {
     event.stopPropagation();
     const newParams = {
       ...urlParams,
-      id: id,
+      ListTech: id,
       PageNumber: 1,
-      techName: techName,
+      TechCount: 1,
     };
     setUrlParams(newParams);
     // setSearchParams(newParams);
@@ -48,8 +49,9 @@ const FilterAccordionfortech = ({
     setSelectedTech({});
     const newParams = {
       ...urlParams,
-      id: "",
+      ListTech: "",
       PageNumber: 1,
+      TechCount:""
     };
     setUrlParams(newParams);
     // setSearchParams(newParams);
@@ -95,7 +97,7 @@ const FilterAccordionfortech = ({
                   className="border-deep-blue checked:bg-deep-blue h-5 w-5 appearance-none rounded-full border transition-all duration-300 ease-in-out hover:scale-110 focus:bg-blue-300"
                   checked={selectedTech[items.id] || false}
                   onChange={(event) =>
-                    handleCheckboxChange(event, items.id, items.techName)
+                    handleCheckboxChange(event, items.id)
                   }
                 />
                 <span className="font-iransans pr-2 font-bold">

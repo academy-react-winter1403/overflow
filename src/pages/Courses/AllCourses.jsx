@@ -34,6 +34,7 @@ const AllCourse = () => {
     RowsOfPage: parseInt(searchParams.get("RowsOfPage")) || 12,
     TeacherId: searchParams.get("TeacherId") || "",
     ListTech: searchParams.get("ListTech") || "",
+    TechCount: searchParams.get("TechCount") || "",
   });
 
   useEffect(() => {
@@ -83,6 +84,7 @@ const AllCourse = () => {
       RowsOfPage: 12,
       TeacherId: "",
       ListTech: "",
+      TechCount: "",
     });
   };
 
@@ -122,7 +124,7 @@ const AllCourse = () => {
       </div>
 
       <div className="flex w-full justify-center transition-all duration-300 max-xl:flex-row max-xl:flex-wrap max-xl:overflow-auto max-lg:w-10/10 max-sm:flex-col-reverse">
-        <div className="mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4  pt-10 max-xl:w-6/10 max-lg:h-190 max-lg:w-6/10 max-lg:overflow-auto max-sm:mt-10 max-sm:w-10/10 max-sm:h-150 max-sm:overflow-auto max-sm:p-0">
+        <div className="mr-3 flex w-[75%] flex-row flex-wrap justify-center gap-4 pt-10 max-xl:w-6/10 max-lg:h-190 max-lg:w-6/10 max-lg:overflow-auto max-sm:mt-10 max-sm:h-150 max-sm:w-10/10 max-sm:overflow-auto max-sm:p-0">
           {courses.map((item) => (
             <Card item={item} key={item.courseId} />
           ))}
