@@ -64,21 +64,21 @@ const Mysetcomment = () => {
                 comment?.map((c, index) => (
                   <div
                     key={index}
-                    className="mb-2 flex h-18 w-10/10 flex-row-reverse gap-5 rounded-2xl bg-gray-300 pr-10 text-gray-800 transition-all duration-300 hover:bg-gray-400 max-sm:h-50 max-sm:flex-col max-sm:w-full  max-sm:items-center max-sm:pr-0 dark:bg-gray-500"
+                    className="mb-2 flex h-18 w-10/10 flex-row-reverse gap-5 rounded-2xl bg-gray-300 pr-10 text-gray-800 transition-all duration-100 hover:bg-gray-400 max-sm:h-50 max-sm:w-full max-sm:flex-col max-sm:items-center max-sm:pr-0 dark:bg-gray-500"
                   >
-                    <p className="max-sm:scale-90 max-sm:pt-2 font-iransans w-2/10 truncate  pt-5 font-bold transition-all duration-300 max-lg:w-4/10 max-sm:flex max-sm:w-full max-sm:flex-row max-sm:justify-end max-sm:gap-5">
+                    <p className="font-iransans w-2/10 truncate pt-5 font-bold transition-all duration-300 max-lg:w-4/10 max-sm:flex max-sm:w-full max-sm:scale-90 max-sm:flex-row max-sm:justify-end max-sm:gap-5 max-sm:pt-2">
                       {c.courseTitle}
-                      <p className="w-3/10 border-l-2 p-2 sm:hidden">عنوان دوره</p>
+                      <p className="w-3/10 border-l-2 p-2 sm:hidden">
+                        عنوان دوره
+                      </p>
                     </p>
-                    <p className="max-sm:scale-90 max-sm:pt-2 font-iransans w-2/10 truncate  pt-5 font-bold transition-all duration-300 max-lg:w-3/10 max-sm:flex max-sm:w-full max-sm:flex-row max-sm:justify-end max-sm:gap-5">
+                    <p className="font-iransans w-2/10 truncate pt-5 font-bold transition-all duration-300 max-lg:w-3/10 max-sm:flex max-sm:w-full max-sm:scale-90 max-sm:flex-row max-sm:justify-end max-sm:gap-5 max-sm:pt-2">
                       {c.title}
                       <p className="w-3/10 border-l-2 p-2 sm:hidden">عنوان</p>
                     </p>
-                    <p className="max-sm:scale-90 max-sm:pt-2 font-iransans w-2/10 truncate  pt-5 font-bold transition-all duration-300 max-lg:w-4/10 max-sm:flex max-sm:w-full max-sm:flex-row max-sm:justify-end max-sm:gap-5">
+                    <p className="font-iransans w-2/10 truncate pt-5 font-bold transition-all duration-300 max-lg:w-4/10 max-sm:flex max-sm:w-full max-sm:scale-90 max-sm:flex-row max-sm:justify-end max-sm:gap-5 max-sm:pt-2">
                       {c.describe}
-                      <p className="w-3/10 border-l-2 p-2 sm:hidden">
-                        توضیحات
-                      </p>
+                      <p className="w-3/10 border-l-2 p-2 sm:hidden">توضیحات</p>
                     </p>
                     <p className="font-iransans w-1/10 truncate pt-5 font-bold max-lg:hidden">
                       {c.likeCount}

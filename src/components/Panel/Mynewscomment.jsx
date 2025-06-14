@@ -64,7 +64,7 @@ const Mynewssetcomment = () => {
                 comment?.map((c, index) => (
                   <div
                     key={index}
-                    className="mb-2 flex h-18 w-10/10 flex-row-reverse gap-5 rounded-2xl bg-gray-300 pr-10 text-gray-800 transition-all duration-300 hover:bg-gray-400 max-sm:h-50 max-sm:flex-col max-sm:w-full  max-sm:items-center max-sm:pr-0 dark:bg-gray-500"
+                    className="mb-2 flex h-18 w-10/10 flex-row-reverse gap-5 rounded-2xl bg-gray-300 pr-10 text-gray-800 transition-all duration-100 hover:bg-gray-400 max-sm:h-50 max-sm:flex-col max-sm:w-full  max-sm:items-center max-sm:pr-0 dark:bg-gray-500"
                   >
                     <p className="max-sm:scale-90 max-sm:pt-2 font-iransans w-2/10 truncate  pt-5 font-bold transition-all duration-300 max-lg:w-4/10 max-sm:flex max-sm:w-full max-sm:flex-row max-sm:justify-end max-sm:gap-5">
                       {c.courseTitle}
