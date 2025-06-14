@@ -106,12 +106,12 @@ function MycourseCard({ item, index, className = "" }) {
             {Number(item.cost).toLocaleString("fa-IR")}
           </div>
 
-          <div className="mt-3 w-1/10">
+          <div className="mt-3 w-1/10 max-sm:w-2/10 max-lg:w-2/10 max-xl:w-2/10">
             <button
               onClick={() => {
                 if (!isPaid) setIsOpen(true);
               }}
-              className={`h-auto w-10/10 rounded border font-bold text-black transition-all duration-300 ${
+              className={`h-auto w-10/10 max-lg:w-7/10 max-xl:w-7/10 max-sm:w-10/10 rounded border font-bold text-black transition-all duration-300 ${
                 isPaid
                   ? "cursor-not-allowed bg-gray-400 opacity-50"
                   : "mt-2 bg-gray-300"

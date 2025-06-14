@@ -115,9 +115,9 @@ const Panel3 = () => {
           )}
 
           {/* Pagination Controls */}
-          <div className="flex justify-center items-center mt-4 space-x-2  m-auto">
+          <div className="w-10/10 flex justify-center items-center mt-4 space-x-2  m-auto ">
             <button
-              className="px-3 py-2 border border-gray-300 rounded-xl text-2xl"
+              className="px-3 py-2 border border-gray-300 rounded-xl text-2xl "
               onClick={handlePrevPage}
               disabled={currentPage === 1}
             >
