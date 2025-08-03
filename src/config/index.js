@@ -1,1 +1,1 @@
-export const baseURL = 'https://classapi.sepehracademy.ir/api';
+export const baseURL = 'https://sepehracademy.liara.run';
